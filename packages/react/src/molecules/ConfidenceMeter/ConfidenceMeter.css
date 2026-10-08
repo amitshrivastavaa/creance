@@ -1,0 +1,103 @@
+.cr-confidence {
+  display: grid;
+  gap: var(--cr-space-4);
+  padding: var(--cr-space-5);
+  border-radius: var(--cr-radius-xl);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-confidence__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--cr-space-2);
+}
+
+.cr-confidence__title {
+  margin: 0;
+  font-family: var(--cr-font-family-display);
+  font-size: var(--cr-font-size-xl);
+  font-weight: var(--cr-font-weight-semibold);
+  letter-spacing: -0.015em;
+}
+
+.cr-confidence__agent,
+.cr-confidence__why {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-confidence__meter {
+  display: grid;
+  gap: var(--cr-space-2);
+}
+
+.cr-confidence__track {
+  position: relative;
+  display: block;
+  height: 8px;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-border-default);
+}
+
+.cr-confidence__band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-ink-bg);
+}
+
+.cr-confidence__scale {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+  text-align: center;
+}
+
+.cr-confidence__scale [data-active] {
+  color: var(--cr-color-text-default);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-confidence__reasons {
+  display: grid;
+  gap: var(--cr-space-2);
+}
+
+.cr-confidence__reasons ul {
+  display: grid;
+  gap: var(--cr-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cr-confidence__reasons li {
+  padding: 10px 14px;
+  border-radius: var(--cr-radius-md);
+  background: var(--cr-color-bg-subtle);
+  color: var(--cr-color-text-secondary);
+  line-height: var(--cr-font-line-height-normal);
+}
+
+.cr-confidence--compact {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  padding: 5px var(--cr-space-3) 5px 10px;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-glass-control);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-confidence--compact .cr-confidence__track {
+  width: 48px;
+  height: 6px;
+}

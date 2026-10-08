@@ -31,6 +31,12 @@ const stories = [
   'molecules-feedback-and-media--errors',
   'molecules-feedback-and-media--frames',
   'molecules-feedback-and-media--video-player',
+  'organisms-agent-controls--plan',
+  'organisms-agent-controls--questions',
+  'organisms-agent-controls--kill-switch-states',
+  'organisms-agent-controls--checkpoints',
+  'organisms-agent-controls--permissions',
+  'organisms-agent-controls--confidence',
   'organisms-approvalprompt--default',
   'organisms-approvalprompt--high-risk',
   'organisms-toolcallcard--error',
@@ -50,6 +56,15 @@ for (const theme of ['light', 'dark'] as const) {
       await page.clock.setFixedTime(new Date('2026-10-01T12:00:00Z'));
       await page.goto(`/iframe.html?id=${id}&viewMode=story&globals=theme:${theme}`);
       await page.locator('#storybook-root > *').first().waitFor();
+      // fonts.ready can resolve before a weight that has not been requested yet starts loading, which
+      // let semibold labels render in a fallback font now and then. Load every face the kit uses first.
+      await page.evaluate(() =>
+        Promise.all(
+          ['400', '500', '600', '700'].map((w) => document.fonts.load(`${w} 16px Inter`)).concat(
+            ['400', '600'].map((w) => document.fonts.load(`${w} 16px "JetBrains Mono"`)),
+          ),
+        ),
+      );
       await page.evaluate(() => document.fonts.ready);
       // FleetSky draws on a canvas after layout: wait until it has painted something.
       await page.waitForFunction(() => {

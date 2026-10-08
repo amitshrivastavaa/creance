@@ -36,6 +36,7 @@ export * from './molecules/ClearableInput';
 export * from './molecules/Collapse';
 export * from './molecules/Combobox';
 export * from './molecules/CommandMenu';
+export * from './molecules/ConfidenceMeter';
 export * from './molecules/ContextCard';
 export * from './molecules/ContextMenu';
 export * from './molecules/CopyButton';
@@ -81,9 +82,14 @@ export * from './molecules/Video';
 // Organisms
 export * from './organisms/AgentHandoffBanner';
 export * from './organisms/ApprovalPrompt';
+export * from './organisms/CheckpointRewind';
 export * from './organisms/DiffReview';
 export * from './organisms/FleetSky';
+export * from './organisms/KillSwitch';
 export * from './organisms/NeedsYouInbox';
+export * from './organisms/PermissionLedger';
+export * from './organisms/PlanEditor';
+export * from './organisms/QuestionCard';
 export * from './organisms/RunTimeline';
 export * from './organisms/ToolCallCard';
 

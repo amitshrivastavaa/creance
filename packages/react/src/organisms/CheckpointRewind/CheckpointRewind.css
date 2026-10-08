@@ -1,0 +1,137 @@
+.cr-rewind {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: start;
+  gap: var(--cr-space-6);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-rewind__list,
+.cr-rewind__preview {
+  display: grid;
+  gap: var(--cr-space-3);
+  padding: var(--cr-space-6);
+  border-radius: var(--cr-radius-xl);
+}
+
+.cr-rewind__title {
+  margin: 0;
+  font-family: var(--cr-font-family-display);
+  font-size: var(--cr-font-size-xl);
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: -0.015em;
+}
+
+.cr-rewind__options {
+  display: grid;
+  gap: var(--cr-space-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.cr-rewind__option {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-3);
+  padding: var(--cr-space-3) 14px;
+  border-radius: 14px;
+  background: var(--cr-color-glass-tile);
+  cursor: pointer;
+}
+
+.cr-rewind__option:has(:checked) {
+  background: var(--cr-color-glass-popover);
+  box-shadow: 0 0 0 1.5px var(--cr-color-ink-bg);
+}
+
+.cr-rewind__option[data-now] {
+  cursor: default;
+}
+
+.cr-rewind__option:has(:focus-visible) {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-rewind__option input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--cr-color-ink-bg);
+}
+
+.cr-rewind__option input:focus-visible {
+  outline: none;
+}
+
+.cr-rewind__text {
+  display: grid;
+  flex: 1;
+  gap: 2px;
+}
+
+.cr-rewind__label {
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-rewind__description,
+.cr-rewind__time {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-rewind__time {
+  font-variant-numeric: tabular-nums;
+}
+
+.cr-rewind__lead,
+.cr-rewind__limits {
+  margin: 0;
+  color: var(--cr-color-text-secondary);
+}
+
+.cr-rewind__limits {
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-rewind__undoes {
+  display: grid;
+  gap: var(--cr-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cr-rewind__undoes li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--cr-space-3);
+  padding: 10px 14px;
+  border-radius: var(--cr-radius-md);
+  background: var(--cr-color-bg-subtle);
+}
+
+.cr-rewind__undoes code {
+  font-family: var(--cr-font-family-mono);
+  font-size: 0.93em;
+}
+
+.cr-rewind__stat {
+  flex: none;
+  font-family: var(--cr-font-family-mono);
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-rewind__stat > :last-child {
+  color: var(--cr-color-diff-removed-fg);
+}
+
+.cr-rewind__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cr-space-2);
+}

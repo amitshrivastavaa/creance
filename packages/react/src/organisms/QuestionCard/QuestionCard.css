@@ -1,0 +1,106 @@
+.cr-question {
+  display: grid;
+  gap: var(--cr-space-3);
+  margin: 0;
+  padding: var(--cr-space-6);
+  border-radius: var(--cr-radius-xl);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-question__who {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-question__title {
+  margin: 0;
+  font-family: var(--cr-font-family-display);
+  font-size: var(--cr-font-size-2xl);
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: var(--cr-font-tracking-title);
+  line-height: 1.2;
+}
+
+.cr-question[data-answered] .cr-question__title {
+  font-size: var(--cr-font-size-lg);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-question__answer {
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-question__options {
+  display: grid;
+  gap: var(--cr-space-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.cr-question__option {
+  display: flex;
+  gap: var(--cr-space-3);
+  padding: 14px var(--cr-space-4);
+  border-radius: 14px;
+  background: var(--cr-color-glass-tile);
+  cursor: pointer;
+}
+
+.cr-question__option:has(:checked) {
+  background: var(--cr-color-glass-popover);
+  box-shadow: 0 0 0 1.5px var(--cr-color-ink-bg);
+}
+
+.cr-question__option:has(:focus-visible) {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-question__option input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  accent-color: var(--cr-color-ink-bg);
+}
+
+.cr-question__option input:focus-visible {
+  outline: none;
+}
+
+.cr-question__option-text {
+  display: grid;
+  gap: 2px;
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-question__option-description {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-regular);
+}
+
+.cr-question__free {
+  display: grid;
+  gap: var(--cr-space-2);
+}
+
+.cr-question__free-label {
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-question__note {
+  margin: 0;
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-question__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cr-space-2);
+}

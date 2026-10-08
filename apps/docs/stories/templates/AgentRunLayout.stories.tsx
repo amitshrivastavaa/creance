@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
+  KillSwitch,
   AgentHandoffBanner,
   AgentRunLayout,
   ApprovalPrompt,
@@ -30,6 +31,11 @@ function Screen({ run }: { run: RunState }) {
       budget={run.budget && { used: run.usage.tokens, limit: run.budget.limit, unit: run.budget.unit }}
       inbox={<NeedsYouInbox items={inbox} />}
       inboxCount={inbox.length}
+      actions={
+        (run.status === 'running' || run.status === 'waiting') && (
+          <KillSwitch compact onStop={() => {}} description={`Stops ${run.agent?.name ?? 'the agent'} after its current call. Press and hold for 1 second.`} />
+        )
+      }
       banner={
         run.handoff && (
           <AgentHandoffBanner agentName={run.agent?.name ?? 'Agent'} summary={run.handoff.summary} actions={run.handoff.nextActions} focusOnMount={false} />

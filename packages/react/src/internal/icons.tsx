@@ -50,3 +50,4 @@ export const PauseBarsIcon = (p: IconProps) => <Icon {...p}><path d="M5.5 3.5v9M
 export const VolumeIcon = (p: IconProps) => <Icon {...p}><path d="M3 6h2.5L9 3v10L5.5 10H3z" /><path d="M11.5 5.5a3.5 3.5 0 0 1 0 5" /></Icon>;
 export const MutedIcon = (p: IconProps) => <Icon {...p}><path d="M3 6h2.5L9 3v10L5.5 10H3z" /><path d="M11.5 6l3 4M14.5 6l-3 4" /></Icon>;
 export const ExpandIcon = (p: IconProps) => <Icon {...p}><path d="M2.5 6V2.5H6M10 2.5h3.5V6M13.5 10v3.5H10M6 13.5H2.5V10" /></Icon>;
+export const StopIcon = (p: IconProps) => <Icon {...p}><rect x="4" y="4" width="8" height="8" rx="1.5" fill="currentColor" stroke="none" /></Icon>;

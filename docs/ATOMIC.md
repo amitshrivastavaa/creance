@@ -37,7 +37,7 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **ErrorMessage** | One line of red text: what went wrong and what to do; announced only when asked. |
 | **Separator**, **Skeleton** | A hairline and a loading placeholder, both hidden from screen readers by default. |
 
-### Molecules (53)
+### Molecules (54)
 
 | Component | Built from | Why it is a molecule |
 |---|---|---|
@@ -74,9 +74,10 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **Banner**, **ProjectBanner** | Icon + text + action + dismiss | Page-wide notices in three tones; dismissals can be remembered per browser. |
 | **ErrorCard** | Heading + raw error + actions | A failure that needs a decision. |
 | **BrowserFrame**, **PhoneFrame**, **Video** | Figures | Frames named by their captions; a player with glass controls that never autoplays and shows captions. |
+| **ConfidenceMeter** | A band on a five-word scale + reasons | How sure the agent is, as a range in words, never a percentage. Rounds down when the range straddles two words. |
 | **DiffLine** | — | Same reasoning. One line of a diff has several coordinated parts (two line numbers, a sign, `<ins>`/`<del>`, screen-reader text) and only makes sense inside a diff. A strict reading would call it an atom; it's here because of what it means, not how it's built. |
 
-### Organisms (6)
+### Organisms (12)
 
 Each organism owns a whole interaction: its own structure, keyboard model, focus behaviour and live announcements.
 
@@ -88,6 +89,12 @@ Each organism owns a whole interaction: its own structure, keyboard model, focus
 | **DiffReview** | DiffLine, Button, Badge, KeyboardHint, Code | Per-hunk decisions, J/K/Y/N review, the apply gate. |
 | **NeedsYouInbox** | Avatar | Cross-agent prioritisation: sort order, counts, short accessible names. |
 | **AgentHandoffBanner** | Avatar, Button | The end of the agent's turn: outcome, summary, next actions, focus. |
+| **KillSwitch** | Button + a timed hold | Stopping an agent on purpose: hold for a second by pointer or keyboard; letting go early does nothing. |
+| **QuestionCard** | Radios + Textarea + Button | When the agent needs information, not permission: options, free text, its default shown openly. |
+| **PlanEditor** | Input, IconButton, Button, live region | Reordering (Alt+arrows, announced), editing, removing and adding steps before anything runs. |
+| **CheckpointRewind** | Radios + Button | Choosing a point to roll back to and seeing what it undoes before confirming. |
+| **PermissionLedger** | Table, Button | Standing "Always allow" grants, their use since, revoking with undo. |
+| **FleetSky** | Canvas + buttons | Many agents at once as birds on lines back to you; arrivals that need you are announced. |
 
 ### Template (1)
 
