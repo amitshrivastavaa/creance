@@ -1,6 +1,6 @@
 {
   "name": "creance",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "React components for human-in-the-loop agent interfaces: approvals, tool calls, run timelines, diff review and handoffs.",
   "license": "MIT",
   "type": "module",
@@ -19,7 +19,8 @@
     "./styles.css": "./dist/styles.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "codemods"
   ],
   "scripts": {
     "build": "vite build && tsc -p tsconfig.build.json",
@@ -50,5 +51,17 @@
     "typescript": "~6.0.3",
     "vite": "^8.3.3",
     "vitest": "^5.0.3"
+  },
+  "keywords": [
+    "react",
+    "agents",
+    "ai",
+    "human-in-the-loop",
+    "approval",
+    "design-system",
+    "accessibility"
+  ],
+  "engines": {
+    "node": ">=18"
   }
 }

@@ -16,10 +16,15 @@
     "test:e2e": "playwright test --project=demo",
     "test:visual": "playwright test --project=visual",
     "test:visual:update": "sh scripts/visual-docker.sh --update-snapshots",
-    "test:visual:docker": "sh scripts/visual-docker.sh"
+    "test:visual:docker": "sh scripts/visual-docker.sh",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish",
+    "release:dry-run": "pnpm build && pnpm -r --filter './packages/**' publish --dry-run --no-git-checks"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
+    "@changesets/cli": "^3.0.3",
     "@eslint/js": "^9.39.5",
     "@playwright/test": "1.64.0",
     "eslint": "^9.39.5",
