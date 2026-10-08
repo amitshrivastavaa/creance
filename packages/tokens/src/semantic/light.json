@@ -2,27 +2,27 @@
   "color": {
     "bg": {
       "canvas": {
-        "$value": "{dawn.50}",
+        "$value": "{slate.50}",
         "$type": "color"
       },
       "surface": {
-        "$value": "{dawn.0}",
+        "$value": "{slate.0}",
         "$type": "color"
       },
       "raised": {
-        "$value": "{dawn.0}",
+        "$value": "{slate.0}",
         "$type": "color"
       },
       "subtle": {
-        "$value": "rgb(29 24 56 / 0.06)",
+        "$value": "rgb(17 21 28 / 0.05)",
         "$type": "color"
       },
       "inverse": {
-        "$value": "{ink.900}",
+        "$value": "{slate.900}",
         "$type": "color"
       },
       "overlay": {
-        "$value": "rgb(29 24 56 / 0.28)",
+        "$value": "rgb(11 14 19 / 0.25)",
         "$type": "color"
       }
     },
@@ -34,126 +34,132 @@
     },
     "text": {
       "default": {
-        "$value": "{ink.900}",
+        "$value": "{slate.900}",
         "$type": "color"
       },
       "muted": {
-        "$value": "{ink.500}",
+        "$value": "{slate.500}",
         "$type": "color"
       },
       "inverse": {
-        "$value": "{ink.50}",
+        "$value": "{slate.0}",
         "$type": "color"
       },
       "link": {
-        "$value": "{moon.700}",
+        "$value": "{slate.900}",
         "$type": "color"
       }
     },
     "border": {
       "default": {
-        "$value": "rgb(29 24 56 / 0.12)",
+        "$value": "rgb(17 21 28 / 0.1)",
         "$type": "color"
       },
       "strong": {
-        "$value": "rgb(29 24 56 / 0.28)",
+        "$value": "rgb(17 21 28 / 0.24)",
         "$type": "color"
       }
     },
     "focus": {
-      "$value": "{aurora.600}",
+      "$value": "{slate.900}",
       "$type": "color"
     },
     "accent": {
       "bg": {
-        "$value": "{aurora.600}",
+        "$value": "{slate.900}",
         "$type": "color"
       },
       "bg-hover": {
-        "$value": "{aurora.700}",
+        "$value": "{slate.700}",
         "$type": "color"
       },
       "fg": {
-        "$value": "{dawn.0}",
+        "$value": "{slate.0}",
         "$type": "color"
       },
       "subtle": {
-        "$value": "color-mix(in srgb, {aurora.600} 12%, transparent)",
+        "$value": "rgb(17 21 28 / 0.07)",
         "$type": "color"
       }
     },
     "danger": {
       "bg": {
-        "$value": "{coral.600}",
+        "$value": "{red.600}",
         "$type": "color"
       },
       "bg-hover": {
-        "$value": "{coral.700}",
+        "$value": "{red.700}",
         "$type": "color"
       },
       "fg": {
-        "$value": "{dawn.0}",
+        "$value": "{slate.0}",
         "$type": "color"
       }
     },
     "tether": {
       "slack": {
-        "$value": "rgb(29 24 56 / 0.25)",
+        "$value": "rgb(17 21 28 / 0.2)",
         "$type": "color"
       },
       "taut": {
-        "$value": "{aurora.600}",
+        "$value": "{slate.900}",
+        "$type": "color"
+      }
+    },
+    "sky": {
+      "star": {
+        "$value": "rgb(17 21 28 / 0)",
         "$type": "color"
       }
     },
     "status": {
       "running": {
         "fg": {
-          "$value": "{moon.600}",
+          "$value": "{slate.700}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {moon.600} 12%, transparent)",
+          "$value": "rgb(17 21 28 / 0.06)",
           "$type": "color"
         }
       },
       "waiting": {
         "fg": {
-          "$value": "{aurora.700}",
+          "$value": "{slate.0}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {aurora.600} 12%, transparent)",
+          "$value": "{slate.900}",
           "$type": "color"
         }
       },
       "blocked": {
         "fg": {
-          "$value": "{lilac.600}",
+          "$value": "{slate.500}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {lilac.600} 12%, transparent)",
+          "$value": "rgb(17 21 28 / 0.04)",
           "$type": "color"
         }
       },
       "done": {
         "fg": {
-          "$value": "{sage.700}",
+          "$value": "{slate.500}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {sage.700} 12%, transparent)",
+          "$value": "rgb(17 21 28 / 0.04)",
           "$type": "color"
         }
       },
       "failed": {
         "fg": {
-          "$value": "{coral.700}",
+          "$value": "{red.700}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {coral.600} 12%, transparent)",
+          "$value": "color-mix(in srgb, {red.600} 9%, transparent)",
           "$type": "color"
         }
       }
@@ -161,80 +167,74 @@
     "risk": {
       "low": {
         "fg": {
-          "$value": "{sage.700}",
+          "$value": "{slate.500}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {sage.700} 12%, transparent)",
+          "$value": "rgb(17 21 28 / 0.04)",
           "$type": "color"
         }
       },
       "medium": {
         "fg": {
-          "$value": "{lilac.700}",
+          "$value": "{slate.700}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {lilac.600} 12%, transparent)",
+          "$value": "rgb(17 21 28 / 0.06)",
           "$type": "color"
         }
       },
       "high": {
         "fg": {
-          "$value": "{coral.600}",
+          "$value": "{red.700}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {coral.600} 12%, transparent)",
+          "$value": "color-mix(in srgb, {red.600} 9%, transparent)",
           "$type": "color"
         }
       }
     },
     "diff": {
       "added-bg": {
-        "$value": "color-mix(in srgb, {sage.600} 13%, transparent)",
+        "$value": "rgb(17 21 28 / 0.06)",
         "$type": "color"
       },
       "added-fg": {
-        "$value": "{sage.700}",
+        "$value": "{slate.700}",
         "$type": "color"
       },
       "removed-bg": {
-        "$value": "color-mix(in srgb, {coral.600} 11%, transparent)",
+        "$value": "color-mix(in srgb, {red.600} 8%, transparent)",
         "$type": "color"
       },
       "removed-fg": {
-        "$value": "{coral.700}",
-        "$type": "color"
-      }
-    },
-    "sky": {
-      "star": {
-        "$value": "rgb(29 24 56 / 0)",
+        "$value": "{red.600}",
         "$type": "color"
       }
     }
   },
   "shadow": {
     "sm": {
-      "$value": "0 1px 2px rgb(29 24 56 / 0.08)"
+      "$value": "0 1px 2px rgb(11 14 19 / 0.06)"
     },
     "md": {
-      "$value": "0 16px 40px rgb(29 24 56 / 0.16)"
+      "$value": "0 16px 40px rgb(11 14 19 / 0.1)"
     },
     "card": {
-      "$value": "0 1px 2px rgb(29 24 56 / 0.06), 0 8px 24px rgb(29 24 56 / 0.06)"
+      "$value": "0 1px 2px rgb(11 14 19 / 0.04), 0 8px 24px rgb(11 14 19 / 0.05)"
     },
     "glow": {
-      "$value": "0 0 0 1px rgb(11 110 138 / 0.3), 0 12px 40px rgb(11 110 138 / 0.14)"
+      "$value": "0 16px 40px rgb(11 14 19 / 0.12)"
     }
   },
   "gradient": {
     "canvas": {
-      "$value": "linear-gradient(180deg, #dfe7ff 0%, #ece6f4 50%, #e9e4ff 100%)"
+      "$value": "linear-gradient(180deg, #ffffff 0%, #f1f3f6 55%, #e6e9ee 100%)"
     },
     "horizon": {
-      "$value": "radial-gradient(80% 50% at 50% 100%, rgb(150 120 255 / 0.18), transparent 70%)"
+      "$value": "radial-gradient(80% 50% at 50% 100%, rgb(11 14 19 / 0.05), transparent 70%)"
     }
   }
 }

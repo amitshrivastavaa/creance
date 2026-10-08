@@ -90,7 +90,7 @@
 }
 
 .cr-inbox__item[data-kind='failed-run'] .cr-inbox__kind { color: var(--cr-color-status-failed-fg); }
-.cr-inbox__item[data-kind='approval'] .cr-inbox__kind { color: var(--cr-color-status-waiting-fg); }
+.cr-inbox__item[data-kind='approval'] .cr-inbox__kind { color: var(--cr-color-text-default); }
 
 .cr-inbox__urgent {
   margin-inline-start: var(--cr-space-1);

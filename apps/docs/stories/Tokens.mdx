@@ -18,14 +18,15 @@ The theme follows the operating system by default. Set `data-theme="light"` or `
 
 Tokens come in two tiers. **Primitives** (`--cr-blue-600`) are the raw palette and scales. **Semantic** tokens (`--cr-color-bg-surface`, `--cr-color-status-running-fg`) say what a value is for, and change between themes. Components use only semantic colour tokens.
 
-## Sky and night glass
+## Sky and glass, almost no colour
 
-Creance's look comes from its name. A *creance* is the line a falconer keeps on a bird in flight, so the kit is drawn as a sky: **dusk** (the dark theme) and **dawn** (the light theme), with a soft violet glow on the horizon (`--cr-gradient-canvas`, `--cr-gradient-horizon`). Agents fly in it on lines back to you; see **Organisms / FleetSky**.
+Creance's look comes from its name: a *creance* is the line a falconer keeps on a bird in flight, so the kit is drawn as a sky, a slate night sky in the dark theme and a pale grey one in the light theme, where agents fly on lines back to you (see **Organisms / FleetSky**).
 
-- **Aurora** (`--cr-color-accent-*`, `--cr-color-tether-taut`) is the one bright colour, kept for "needs you": the taut line, the request edge, the primary action. Text stays in the ink colours; colour marks state, it doesn't tint copy.
-- **Moonlight** is running, **sage** is done, **coral** is failed, **lilac** is blocked and medium risk.
-- **Type**: Instrument Serif for titles, Inter Tight for the interface, JetBrains Mono for commands. Load them from Google Fonts or self-host; the tokens fall back to system fonts.
-- **Night glass** (`.cr-glass`, `.cr-surface`): translucent panels with a backdrop blur so the sky shows through. Under `prefers-reduced-transparency: reduce`, `prefers-contrast: more`, or `data-transparency="reduce"` on `<html>`, they turn solid. Use the **Surfaces** toolbar button to see it.
+- **Neutral slate** does the work. Emphasis is contrast, not hue: "needs you" is a solid white pill in the dark theme (ink in the light theme), the taut line is bright, the primary button is solid.
+- **Red** is the only colour: failures, high risk, Deny, removed diff lines.
+- Statuses are told apart by icon and word first.
+- **Type:** Instrument Serif for titles, Inter Tight for the interface, JetBrains Mono for commands, with system fallbacks.
+- **Glass** (`.cr-glass`, `.cr-surface`): frosted, translucent panels so the sky shows through. They turn solid under `prefers-reduced-transparency: reduce`, `prefers-contrast: more`, or `data-transparency="reduce"` on `<html>`; the **Surfaces** toolbar button shows that.
 
 ## Semantic colours
 

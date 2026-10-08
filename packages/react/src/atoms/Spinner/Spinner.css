@@ -2,7 +2,7 @@
   display: inline-flex;
   width: 16px;
   height: 16px;
-  color: var(--cr-color-status-running-fg);
+  color: var(--cr-color-text-default);
 }
 
 .cr-spinner[data-size='sm'] {

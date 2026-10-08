@@ -63,7 +63,7 @@ button.cr-sky__tag-button:focus-visible {
   font-size: var(--cr-font-size-xs);
 }
 
-.cr-sky__tag[data-status='waiting'] .cr-sky__status { color: var(--cr-color-status-waiting-fg); }
+.cr-sky__tag[data-status='waiting'] .cr-sky__status { color: var(--cr-color-text-default); font-weight: var(--cr-font-weight-semibold); }
 .cr-sky__tag[data-status='failed'] .cr-sky__status { color: var(--cr-color-status-failed-fg); }
 .cr-sky__tag[data-status='done'] .cr-sky__status { color: var(--cr-color-status-done-fg); }
 
