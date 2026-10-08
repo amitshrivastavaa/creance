@@ -65,12 +65,16 @@
   },
   "font": {
     "family": {
+      "display": {
+        "$value": "'Instrument Serif', 'Iowan Old Style', Georgia, serif",
+        "$type": "fontFamily"
+      },
       "sans": {
-        "$value": "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+        "$value": "'Inter Tight', 'Inter', system-ui, -apple-system, sans-serif",
         "$type": "fontFamily"
       },
       "mono": {
-        "$value": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+        "$value": "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace",
         "$type": "fontFamily"
       }
     },
@@ -173,28 +177,10 @@
   },
   "glass": {
     "opacity": {
-      "$value": "46%"
-    },
-    "opacity-strong": {
-      "$value": "70%"
+      "$value": "62%"
     },
     "filter": {
-      "$value": "blur(10px) saturate(180%) brightness(1.05)"
-    },
-    "opacity-control": {
-      "$value": "34%"
-    },
-    "opacity-tint": {
-      "$value": "85%"
-    },
-    "filter-clear": {
-      "$value": "blur(1px) saturate(150%) brightness(1.1)"
-    },
-    "opacity-clear": {
-      "$value": "16%"
-    },
-    "filter-control": {
-      "$value": "blur(1.5px) saturate(165%) brightness(1.08)"
+      "$value": "blur(16px) saturate(140%)"
     }
   }
 }

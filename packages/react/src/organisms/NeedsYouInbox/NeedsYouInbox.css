@@ -13,13 +13,13 @@
 }
 
 .cr-inbox__title {
-  letter-spacing: var(--cr-font-tracking-tight);
   display: flex;
   align-items: center;
   gap: var(--cr-space-2);
   margin: 0;
-  font-size: var(--cr-font-size-lg);
-  font-weight: var(--cr-font-weight-semibold);
+  font-family: var(--cr-font-family-display);
+  font-size: var(--cr-font-size-2xl);
+  font-weight: 400;
 }
 
 .cr-inbox__total {
@@ -28,7 +28,9 @@
   border-radius: var(--cr-radius-full);
   background: var(--cr-color-accent-bg);
   color: var(--cr-color-accent-fg);
+  font-family: var(--cr-font-family-sans);
   font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
   text-align: center;
 }
 
@@ -71,8 +73,7 @@
 }
 
 .cr-inbox__item[data-urgency='high'] {
-  background-image: radial-gradient(120% 120% at 0% 0%, var(--cr-color-risk-high-bg), transparent 55%);
-  border-color: color-mix(in srgb, var(--cr-color-risk-high-fg) 35%, transparent);
+  border-color: var(--cr-color-risk-high-fg);
 }
 
 .cr-inbox__item:has(button.cr-inbox__item-title:hover) {

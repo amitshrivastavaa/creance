@@ -1,17 +1,16 @@
 .cr-handoff {
-  --cr-handoff-glow: var(--cr-color-status-done-bg);
   display: flex;
   gap: var(--cr-space-4);
   padding: var(--cr-space-5);
   border-radius: var(--cr-radius-xl);
-  background-image: radial-gradient(120% 120% at 0% 0%, var(--cr-handoff-glow), transparent 55%);
   color: var(--cr-color-text-default);
   font-family: var(--cr-font-family-sans);
   font-size: var(--cr-font-size-md);
 }
 
-.cr-handoff[data-outcome='stopped'] { --cr-handoff-glow: var(--cr-color-status-blocked-bg); }
-.cr-handoff[data-outcome='failed']  { --cr-handoff-glow: var(--cr-color-status-failed-bg); }
+.cr-handoff { border-color: var(--cr-color-status-done-fg); }
+.cr-handoff[data-outcome='stopped'] { border-color: var(--cr-color-status-blocked-fg); }
+.cr-handoff[data-outcome='failed']  { border-color: var(--cr-color-status-failed-fg); }
 
 .cr-handoff__body {
   display: grid;
@@ -22,9 +21,11 @@
 
 .cr-handoff__title {
   margin: 0;
-  font-size: var(--cr-font-size-xl);
-  font-weight: var(--cr-font-weight-semibold);
-  letter-spacing: var(--cr-font-tracking-title);
+  font-family: var(--cr-font-family-display);
+  font-size: var(--cr-font-size-3xl);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.1;
 }
 
 .cr-handoff__title:focus-visible {

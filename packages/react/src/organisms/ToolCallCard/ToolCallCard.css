@@ -9,7 +9,7 @@
 }
 
 .cr-tool-card[data-status='error'] {
-  background-image: radial-gradient(120% 90% at 0% 0%, var(--cr-color-status-failed-bg), transparent 60%);
+  border-color: var(--cr-color-status-failed-fg);
 }
 
 .cr-tool-card__section > summary {

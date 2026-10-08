@@ -15,11 +15,11 @@
 
 .cr-progress::-webkit-progress-bar { background: var(--cr-color-bg-subtle); }
 .cr-progress::-webkit-progress-value {
-  background: var(--cr-gradient-sheen), var(--cr-progress-fill);
+  background: var(--cr-progress-fill);
   border-radius: var(--cr-radius-full);
   transition: width var(--cr-motion-duration-slow) var(--cr-motion-easing-spring);
 }
 .cr-progress::-moz-progress-bar {
-  background: var(--cr-gradient-sheen), var(--cr-progress-fill);
+  background: var(--cr-progress-fill);
   border-radius: var(--cr-radius-full);
 }

@@ -4,17 +4,19 @@ import {
   ApprovalPrompt,
   Button,
   DiffReview,
+  FleetSky,
   NeedsYouInbox,
   RunTimeline,
   ToolCallCard,
   inboxItems,
+  skyAgent,
   timelineSteps,
   useAgentRun,
   type InboxItem,
 } from 'creance';
 import { deployFix, useSimulator } from 'creance/simulator';
 import { useState } from 'react';
-import { otherAgents } from './otherAgents';
+import { otherAgents, otherSkyAgents } from './otherAgents';
 
 const speeds = [1, 2, 4] as const;
 
@@ -59,6 +61,14 @@ function Run({ speed, onSpeedChange, onRestart }: { speed: number; onSpeedChange
       <aside className="demo-note" aria-label="About this demo">
         A simulated agent run. Nothing is installed, edited or deployed. Built only from <code>creance</code> components.
       </aside>
+      <div className="demo-sky">
+        <FleetSky
+          agents={[...(run.runId ? [skyAgent(run)] : []), ...otherSkyAgents]}
+          onSelect={(id) => {
+            if (id !== run.runId) setNote('In a real app, this would open that agent\'s run. This demo only simulates Deploy Fixer.');
+          }}
+        />
+      </div>
       <AgentRunLayout
         agentName={run.agent?.name ?? 'Deploy Fixer'}
         goal={run.goal}

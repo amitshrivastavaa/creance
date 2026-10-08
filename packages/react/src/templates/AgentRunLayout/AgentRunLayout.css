@@ -5,29 +5,11 @@
   min-height: 100%;
   padding: var(--cr-space-4);
   box-sizing: border-box;
-  background: var(--cr-gradient-canvas), var(--cr-color-bg-canvas);
+  background: var(--cr-gradient-horizon), var(--cr-gradient-canvas), var(--cr-color-bg-canvas);
   background-attachment: fixed;
   color: var(--cr-color-text-default);
   font-family: var(--cr-font-family-sans);
   font-size: var(--cr-font-size-md);
-}
-
-/*
- * Scroll edge effect: content scrolling up under the floating header is progressively blurred and
- * faded, so the glass bar stays legible over anything.
- */
-.cr-run-layout::before {
-  content: '';
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 9;
-  height: 112px;
-  pointer-events: none;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  background: linear-gradient(to bottom, var(--cr-color-bg-canvas), transparent);
-  -webkit-mask: linear-gradient(to bottom, #000 40%, transparent);
-  mask: linear-gradient(to bottom, #000 40%, transparent);
 }
 
 .cr-run-layout__header {
@@ -56,9 +38,9 @@
 
 .cr-run-layout__name {
   margin: 0;
-  letter-spacing: var(--cr-font-tracking-title);
-  font-size: var(--cr-font-size-xl);
-  font-weight: var(--cr-font-weight-semibold);
+  font-family: var(--cr-font-family-display);
+  font-size: var(--cr-font-size-2xl);
+  font-weight: 400;
   line-height: var(--cr-font-line-height-tight);
 }
 
@@ -141,7 +123,6 @@
   box-sizing: border-box;
   overflow-y: auto;
   border-radius: var(--cr-radius-xl);
-  --cr-glass-fill: var(--cr-color-glass-surface-strong);
   color: var(--cr-color-text-default);
   font-family: var(--cr-font-family-sans);
   animation: cr-drawer-in var(--cr-motion-duration-slow) var(--cr-motion-easing-spring);

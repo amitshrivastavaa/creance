@@ -13,12 +13,12 @@
   user-select: none;
 }
 
-/* Agents: a squircle with the agent gradient. People: a circle. Shape, not colour, tells them apart. */
+/* Agents: a squircle ringed in the tether colour. People: a plain circle. Shape tells them apart. */
 .cr-avatar[data-kind='agent'] {
   border-radius: var(--cr-radius-md);
-  background: var(--cr-gradient-sheen), var(--cr-gradient-agent);
-  box-shadow: inset 0 1px 0 var(--cr-color-glass-highlight), var(--cr-shadow-sm);
-  color: var(--cr-color-accent-fg);
+  box-shadow: inset 0 0 0 1.5px var(--cr-color-tether-taut);
+  background: var(--cr-color-accent-subtle);
+  color: var(--cr-color-text-default);
 }
 
 .cr-avatar[data-size='sm'] {

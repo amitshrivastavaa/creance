@@ -2,27 +2,27 @@
   "color": {
     "bg": {
       "canvas": {
-        "$value": "{gray.950}",
+        "$value": "{dusk.900}",
         "$type": "color"
       },
       "surface": {
-        "$value": "{gray.900}",
+        "$value": "{dusk.850}",
         "$type": "color"
       },
       "raised": {
-        "$value": "{gray.800}",
+        "$value": "{dusk.800}",
         "$type": "color"
       },
       "subtle": {
-        "$value": "rgb(120 120 128 / 0.24)",
+        "$value": "rgb(255 255 255 / 0.07)",
         "$type": "color"
       },
       "inverse": {
-        "$value": "{gray.50}",
+        "$value": "{ink.50}",
         "$type": "color"
       },
       "overlay": {
-        "$value": "rgb(0 0 0 / 0.5)",
+        "$value": "rgb(5 6 20 / 0.55)",
         "$type": "color"
       }
     },
@@ -30,144 +30,130 @@
       "surface": {
         "$value": "color-mix(in srgb, {color.bg.surface} {glass.opacity}, transparent)",
         "$type": "color"
-      },
-      "surface-strong": {
-        "$value": "color-mix(in srgb, {color.bg.raised} {glass.opacity-strong}, transparent)",
-        "$type": "color"
-      },
-      "highlight": {
-        "$value": "rgb(255 255 255 / 0.1)",
-        "$type": "color"
-      },
-      "control": {
-        "$value": "color-mix(in srgb, {color.bg.surface} {glass.opacity-control}, transparent)",
-        "$type": "color"
-      },
-      "clear": {
-        "$value": "color-mix(in srgb, {color.bg.surface} {glass.opacity-clear}, transparent)",
-        "$type": "color"
       }
     },
     "text": {
       "default": {
-        "$value": "{gray.50}",
+        "$value": "{ink.50}",
         "$type": "color"
       },
       "muted": {
-        "$value": "{gray.400}",
+        "$value": "{ink.300}",
         "$type": "color"
       },
       "inverse": {
-        "$value": "{gray.950}",
+        "$value": "{ink.900}",
         "$type": "color"
       },
       "link": {
-        "$value": "{blue.300}",
+        "$value": "{moon.300}",
         "$type": "color"
       }
     },
     "border": {
       "default": {
-        "$value": "rgb(235 235 245 / 0.14)",
+        "$value": "rgb(255 255 255 / 0.12)",
         "$type": "color"
       },
       "strong": {
-        "$value": "rgb(235 235 245 / 0.32)",
+        "$value": "rgb(255 255 255 / 0.26)",
         "$type": "color"
       }
     },
     "focus": {
-      "$value": "{blue.300}",
+      "$value": "{ember.300}",
       "$type": "color"
     },
     "accent": {
       "bg": {
-        "$value": "{blue.600}",
+        "$value": "{ember.400}",
         "$type": "color"
       },
       "bg-hover": {
-        "$value": "{blue.500}",
+        "$value": "{ember.300}",
         "$type": "color"
       },
       "fg": {
-        "$value": "{gray.0}",
+        "$value": "{ember.900}",
         "$type": "color"
       },
       "subtle": {
-        "$value": "color-mix(in srgb, {blue.500} 24%, transparent)",
-        "$type": "color"
-      },
-      "glass": {
-        "$value": "color-mix(in srgb, {blue.650} {glass.opacity-tint}, transparent)",
+        "$value": "color-mix(in srgb, {ember.400} 16%, transparent)",
         "$type": "color"
       }
     },
     "danger": {
       "bg": {
-        "$value": "{red.600}",
+        "$value": "{coral.400}",
         "$type": "color"
       },
       "bg-hover": {
-        "$value": "{red.300}",
+        "$value": "{coral.300}",
         "$type": "color"
       },
       "fg": {
-        "$value": "{gray.0}",
+        "$value": "{ember.900}",
+        "$type": "color"
+      }
+    },
+    "tether": {
+      "slack": {
+        "$value": "rgb(246 239 233 / 0.28)",
         "$type": "color"
       },
-      "glass": {
-        "$value": "color-mix(in srgb, {red.600} {glass.opacity-tint}, transparent)",
+      "taut": {
+        "$value": "{ember.400}",
         "$type": "color"
       }
     },
     "status": {
       "running": {
         "fg": {
-          "$value": "{blue.300}",
+          "$value": "{moon.400}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {blue.500} 22%, transparent)",
+          "$value": "color-mix(in srgb, {moon.400} 16%, transparent)",
           "$type": "color"
         }
       },
       "waiting": {
         "fg": {
-          "$value": "{violet.300}",
+          "$value": "{ember.400}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {violet.600} 22%, transparent)",
+          "$value": "color-mix(in srgb, {ember.400} 16%, transparent)",
           "$type": "color"
         }
       },
       "blocked": {
         "fg": {
-          "$value": "{amber.300}",
+          "$value": "{lilac.400}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {amber.600} 22%, transparent)",
+          "$value": "color-mix(in srgb, {lilac.400} 16%, transparent)",
           "$type": "color"
         }
       },
       "done": {
         "fg": {
-          "$value": "{green.300}",
+          "$value": "{sage.400}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {green.600} 22%, transparent)",
+          "$value": "color-mix(in srgb, {sage.400} 16%, transparent)",
           "$type": "color"
         }
       },
       "failed": {
         "fg": {
-          "$value": "{red.300}",
+          "$value": "{coral.300}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {red.600} 22%, transparent)",
+          "$value": "color-mix(in srgb, {coral.400} 16%, transparent)",
           "$type": "color"
         }
       }
@@ -175,83 +161,80 @@
     "risk": {
       "low": {
         "fg": {
-          "$value": "{green.300}",
+          "$value": "{sage.400}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {green.600} 22%, transparent)",
+          "$value": "color-mix(in srgb, {sage.400} 16%, transparent)",
           "$type": "color"
         }
       },
       "medium": {
         "fg": {
-          "$value": "{amber.300}",
+          "$value": "{ember.400}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {amber.600} 22%, transparent)",
+          "$value": "color-mix(in srgb, {ember.400} 16%, transparent)",
           "$type": "color"
         }
       },
       "high": {
         "fg": {
-          "$value": "{red.300}",
+          "$value": "{coral.400}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {red.600} 22%, transparent)",
+          "$value": "color-mix(in srgb, {coral.400} 16%, transparent)",
           "$type": "color"
         }
       }
     },
     "diff": {
       "added-bg": {
-        "$value": "color-mix(in srgb, {green.600} 26%, transparent)",
+        "$value": "color-mix(in srgb, {sage.400} 14%, transparent)",
         "$type": "color"
       },
       "added-fg": {
-        "$value": "{green.300}",
+        "$value": "{sage.300}",
         "$type": "color"
       },
       "removed-bg": {
-        "$value": "color-mix(in srgb, {red.600} 26%, transparent)",
+        "$value": "color-mix(in srgb, {coral.400} 14%, transparent)",
         "$type": "color"
       },
       "removed-fg": {
-        "$value": "{red.300}",
+        "$value": "{coral.300}",
+        "$type": "color"
+      }
+    },
+    "sky": {
+      "star": {
+        "$value": "rgb(255 255 255 / 0.55)",
         "$type": "color"
       }
     }
   },
   "shadow": {
     "sm": {
-      "$value": "0 1px 2px rgb(0 0 0 / 0.5)"
+      "$value": "0 1px 2px rgb(0 0 0 / 0.4)"
     },
     "md": {
-      "$value": "0 12px 32px rgb(0 0 0 / 0.55), 0 2px 6px rgb(0 0 0 / 0.4)"
-    },
-    "glass": {
-      "$value": "inset 1.5px 1.5px 1px -0.5px rgb(255 255 255 / 0.55), inset -1px -1px 1px -0.5px rgb(255 255 255 / 0.25), inset 0 0 14px rgb(255 255 255 / 0.08), 0 0 0 0.5px rgb(0 0 0 / 0.6), 0 2px 4px rgb(0 0 0 / 0.3), 0 10px 28px rgb(0 0 0 / 0.45)"
+      "$value": "0 16px 40px rgb(0 0 0 / 0.45)"
     },
     "card": {
-      "$value": "0 1px 2px rgb(0 0 0 / 0.5), 0 4px 16px rgb(0 0 0 / 0.3)"
+      "$value": "0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.25)"
     },
-    "text": {
-      "$value": "0 1px 1.5px rgb(0 0 0 / 0.22)"
+    "glow": {
+      "$value": "0 0 0 1px rgb(255 179 107 / 0.45), 0 0 60px rgb(255 170 90 / 0.22)"
     }
   },
   "gradient": {
     "canvas": {
-      "$value": "radial-gradient(70% 55% at 0% 0%, rgb(10 132 255 / 0.33), transparent 70%), radial-gradient(55% 50% at 100% 0%, rgb(191 90 242 / 0.3), transparent 70%), radial-gradient(70% 60% at 70% 100%, rgb(48 209 88 / 0.18), transparent 70%), radial-gradient(50% 50% at 0% 100%, rgb(255 159 10 / 0.12), transparent 70%)"
+      "$value": "linear-gradient(180deg, #0b1530 0%, #1b1a42 40%, #2a2350 70%, #4a2f55 100%)"
     },
-    "sheen": {
-      "$value": "linear-gradient(180deg, rgb(255 255 255 / 0.2), rgb(255 255 255 / 0) 60%)"
-    },
-    "agent": {
-      "$value": "linear-gradient(135deg, {blue.500}, {violet.600})"
-    },
-    "glare": {
-      "$value": "radial-gradient(120% 90% at 30% 0%, rgb(255 255 255 / 0.22), rgb(255 255 255 / 0) 50%)"
+    "horizon": {
+      "$value": "radial-gradient(80% 45% at 50% 100%, rgb(228 138 106 / 0.45), transparent 70%)"
     }
   }
 }

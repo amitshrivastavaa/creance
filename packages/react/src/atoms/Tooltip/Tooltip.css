@@ -1,5 +1,4 @@
 .cr-tooltip {
-  --cr-glass-fill: var(--cr-color-glass-surface-strong);
   z-index: 50;
   max-width: 280px;
   padding: var(--cr-space-1) var(--cr-space-3);

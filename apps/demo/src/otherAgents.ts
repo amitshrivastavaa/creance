@@ -1,4 +1,4 @@
-import type { InboxItem } from 'creance';
+import type { InboxItem, SkyAgent } from 'creance';
 
 const min = 60_000;
 
@@ -10,3 +10,10 @@ export function otherAgents(now: number): InboxItem[] {
     { id: 'r1', kind: 'review', title: 'Review changes to docs/onboarding.md', agentName: 'Docs Writer', createdAt: now - 6 * min, urgency: 'low', detail: '4 hunks' },
   ];
 }
+
+/** The same pretend agents, flying in the sky above the run. */
+export const otherSkyAgents: SkyAgent[] = [
+  { id: 'docs', name: 'Docs Writer', status: 'running', detail: '4 steps in' },
+  { id: 'data', name: 'Data Loader', status: 'blocked', detail: 'asked which database to seed' },
+  { id: 'upgrade', name: 'Upgrader', status: 'failed', detail: '3 tests failing' },
+];

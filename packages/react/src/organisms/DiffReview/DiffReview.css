@@ -119,7 +119,6 @@
   gap: var(--cr-space-2);
   padding: var(--cr-space-2) var(--cr-space-2) var(--cr-space-2) var(--cr-space-4);
   border-radius: var(--cr-radius-xl);
-  --cr-glass-fill: var(--cr-color-glass-surface-strong);
   font-size: var(--cr-font-size-sm);
 }
 

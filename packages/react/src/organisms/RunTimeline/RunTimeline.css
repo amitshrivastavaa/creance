@@ -122,8 +122,7 @@
 }
 
 .cr-timeline__call-button:hover {
-  border-color: var(--cr-color-border-default);
-  background: var(--cr-color-glass-surface-strong);
+  border-color: var(--cr-color-border-strong);
 }
 
 .cr-timeline__call-button:focus-visible {

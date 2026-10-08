@@ -2,7 +2,7 @@
 /* !important: Storybook's docs styles are injected after ours and would otherwise keep the page white. */
 body,
 .sbdocs.sbdocs-wrapper {
-  background: var(--cr-gradient-canvas), var(--cr-color-bg-canvas) !important;
+  background: var(--cr-gradient-horizon), var(--cr-gradient-canvas), var(--cr-color-bg-canvas) !important;
   background-attachment: fixed !important;
   color: var(--cr-color-text-default);
   font-family: var(--cr-font-family-sans);
@@ -144,93 +144,17 @@ body,
   font-size: var(--cr-font-size-sm);
 }
 
-/* See preview.ts: story tests render measurable glass. axe ignores pseudo-elements, so the glass
-   tint moves from ::before onto the element itself, still translucent, without blur or lens. */
+
+/* See preview.ts: story tests render measurable glass. Translucency stays (axe blends it);
+   blur and gradients go, because axe can't measure contrast through them. */
 :root[data-a11y-test] {
   --cr-glass-filter: none;
-  --cr-glass-filter-clear: none;
   --cr-gradient-canvas: none;
-}
-
-:root[data-a11y-test] .cr-glass {
-  background-color: var(--cr-glass-fill) !important;
-}
-
-:root[data-a11y-test] .cr-glass::before,
-:root[data-a11y-test] .cr-glass::after {
-  display: none !important;
+  --cr-gradient-horizon: none;
 }
 
 /* "none, none" still counts as an image to axe, so give the page a single solid layer. */
-:root[data-a11y-test] body {
+:root[data-a11y-test] body,
+:root[data-a11y-test] .cr-sky {
   background: var(--cr-color-bg-canvas) !important;
-}
-
-/* Liquid Glass showcase scene */
-.lg-scene {
-  position: relative;
-  min-height: 560px;
-  overflow: hidden;
-  background:
-    radial-gradient(40% 50% at 20% 30%, var(--cr-red-300) 0, transparent 70%),
-    radial-gradient(40% 50% at 80% 20%, var(--cr-amber-300) 0, transparent 70%),
-    radial-gradient(50% 60% at 60% 80%, var(--cr-blue-500) 0, transparent 70%),
-    radial-gradient(40% 50% at 10% 90%, var(--cr-green-300) 0, transparent 70%),
-    var(--cr-violet-900);
-}
-
-.lg-scene__copy {
-  position: absolute;
-  inset: 24px 40px auto;
-  margin: 0;
-  color: var(--cr-gray-0) !important;
-  font-size: 44px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-.lg-scene__grid {
-  position: absolute;
-  inset: auto 0 0;
-  height: 200px;
-  background-image:
-    linear-gradient(color-mix(in srgb, var(--cr-gray-0) 25%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--cr-gray-0) 25%, transparent) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-.lg-scene__content {
-  position: relative;
-  display: grid;
-  gap: 28px;
-  padding: 200px 40px 40px;
-}
-
-.lg-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 10px 10px 12px;
-  border-radius: 999px;
-  color: var(--cr-color-text-default);
-}
-
-.lg-bar__spacer {
-  flex: 1;
-}
-
-.lg-row {
-  display: flex;
-  gap: 12px;
-}
-
-.lg-tile {
-  display: grid;
-  place-items: center;
-  width: 220px;
-  height: 120px;
-  border-radius: 28px;
-  color: var(--cr-color-text-default);
-  font-weight: 600;
 }

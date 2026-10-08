@@ -16,55 +16,30 @@
 }
 
 /*
- * Liquid Glass. Reserved for the functional layer that floats above content: controls, bars,
- * toolbars, menus, popovers and sheets. Public, so apps can use it for their own controls.
- *   ::before  the lens: tint (--cr-glass-fill), blur and saturation (--cr-glass-blur), and
- *             refraction with magnification and colour fringing (--cr-glass-lens, set by
- *             useLiquidGlass in Chromium)
- *   ::after   glare, blended soft-light so it brightens rather than whitewashes
- *   box-shadow  the edges: a bright crescent where light catches, a fainter opposite rim,
- *             an inner glow for thickness, a hairline and a soft drop shadow
- * Reduced transparency or increased contrast make the fill opaque and set the blur variable to
- * `none`, which invalidates the whole backdrop-filter, removing blur and refraction together.
+ * Night glass: a translucent panel with a backdrop blur and a hairline edge, for what floats over
+ * the sky (bars, drawers, popovers, requests). Public, so apps can use it too. Turns solid with no
+ * blur under prefers-reduced-transparency or prefers-contrast: more.
  */
 .cr-glass {
-  --cr-glass-fill: var(--cr-color-glass-surface);
-  --cr-glass-blur: var(--cr-glass-filter);
-  position: relative;
-  isolation: isolate;
-  box-shadow: var(--cr-shadow-glass);
+  border: 1px solid var(--cr-color-border-default);
+  background-color: var(--cr-color-glass-surface);
+  -webkit-backdrop-filter: var(--cr-glass-filter);
+  backdrop-filter: var(--cr-glass-filter);
+  box-shadow: var(--cr-shadow-md);
 }
 
-.cr-glass[data-glass='clear'] {
-  --cr-glass-fill: var(--cr-color-glass-clear);
-  --cr-glass-blur: var(--cr-glass-filter-clear);
-}
-
-.cr-glass::before,
-.cr-glass::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-.cr-glass::before {
-  z-index: -1;
-  background: var(--cr-glass-fill);
-  -webkit-backdrop-filter: var(--cr-glass-blur);
-  backdrop-filter: var(--cr-glass-lens,) var(--cr-glass-blur);
-}
-
-.cr-glass::after {
-  z-index: -1;
-  background: var(--cr-gradient-glare);
-  mix-blend-mode: soft-light;
-}
-
-/* Content: solid, quiet surfaces. Glass is for what floats above them. */
+/* Content: solid, quiet surfaces. */
 .cr-surface {
   border: 1px solid var(--cr-color-border-default);
-  background-color: var(--cr-color-bg-surface);
+  background-color: var(--cr-color-glass-surface);
+  -webkit-backdrop-filter: var(--cr-glass-filter);
+  backdrop-filter: var(--cr-glass-filter);
   box-shadow: var(--cr-shadow-card);
+}
+
+/* Titles of organisms use the display serif: the kit's voice. */
+.cr-display {
+  font-family: var(--cr-font-family-display);
+  font-weight: 400;
+  letter-spacing: -0.005em;
 }

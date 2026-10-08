@@ -16,7 +16,8 @@ export default defineConfig({
   use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 860 } },
   expect: { toHaveScreenshot: { maxDiffPixels: 0, animations: 'disabled', caret: 'hide' } },
   projects: [
-    { name: 'visual', testMatch: 'visual.spec.ts', use: { baseURL: visualBase ?? 'http://localhost:6008' } },
+    // Reduced motion draws FleetSky still, so its screenshots are deterministic.
+    { name: 'visual', testMatch: 'visual.spec.ts', use: { baseURL: visualBase ?? 'http://localhost:6008', reducedMotion: 'reduce' } },
     { name: 'demo', testMatch: 'demo.spec.ts', use: { baseURL: 'http://localhost:6009' } },
   ],
   webServer: visualBase ? [] : [

@@ -1,0 +1,87 @@
+.cr-sky {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  border-radius: var(--cr-radius-xl);
+  background: var(--cr-gradient-horizon), var(--cr-gradient-canvas), var(--cr-color-bg-canvas);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+.cr-sky__canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.cr-sky__tags {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Tags follow their bird; the transform is set every frame. */
+.cr-sky__tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.cr-sky__tag-button {
+  display: grid;
+  justify-items: center;
+  padding: 2px var(--cr-space-2);
+  border: 0;
+  border-radius: var(--cr-radius-md);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  white-space: nowrap;
+  text-align: center;
+}
+
+button.cr-sky__tag-button {
+  cursor: pointer;
+}
+
+button.cr-sky__tag-button:hover {
+  background: var(--cr-color-bg-subtle);
+}
+
+button.cr-sky__tag-button:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-sky__name {
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-sky__status {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}
+
+.cr-sky__tag[data-status='waiting'] .cr-sky__status { color: var(--cr-color-status-waiting-fg); }
+.cr-sky__tag[data-status='failed'] .cr-sky__status { color: var(--cr-color-status-failed-fg); }
+.cr-sky__tag[data-status='done'] .cr-sky__status { color: var(--cr-color-status-done-fg); }
+
+.cr-sky__detail {
+  display: none;
+}
+
+.cr-sky__tag[data-status='waiting'] .cr-sky__detail {
+  display: inline;
+}
+
+.cr-sky__you {
+  position: absolute;
+  left: 50%;
+  bottom: 2%;
+  transform: translateX(-50%);
+  color: var(--cr-color-text-muted);
+  font-family: var(--cr-font-family-display);
+  font-size: var(--cr-font-size-lg);
+  font-style: italic;
+}

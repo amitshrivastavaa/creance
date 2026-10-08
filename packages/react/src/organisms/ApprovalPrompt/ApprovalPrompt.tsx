@@ -116,7 +116,7 @@ export function ApprovalPrompt({
       aria-describedby={reasonId}
       tabIndex={-1}
       onKeyDown={onKeyDown}
-      className={cx('cr-approval cr-surface', className)}
+      className={cx('cr-approval cr-glass', className)}
       data-risk={risk}
       data-resolved={decision ? true : undefined}
     >

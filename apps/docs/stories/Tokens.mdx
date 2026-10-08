@@ -18,24 +18,14 @@ The theme follows the operating system by default. Set `data-theme="light"` or `
 
 Tokens come in two tiers. **Primitives** (`--cr-blue-600`) are the raw palette and scales. **Semantic** tokens (`--cr-color-bg-surface`, `--cr-color-status-running-fg`) say what a value is for, and change between themes. Components use only semantic colour tokens.
 
-## Liquid Glass
+## Sky and night glass
 
-Creance follows Apple's [Liquid Glass](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass) model: glass is **a functional layer for controls and navigation that floats above content**, and content itself stays on quiet, solid surfaces. In the kit:
+Creance's look comes from its name. A *creance* is the line a falconer keeps on a bird in flight, so the kit is drawn as a sky: **dusk** (the dark theme) and **dawn** (the light theme), with an ember glow on the horizon (`--cr-gradient-canvas`, `--cr-gradient-horizon`). Agents fly in it on lines back to you; see **Organisms / FleetSky**.
 
-- **Glass:** buttons, tooltips, the floating run header, the diff review toolbar, the inbox drawer. Use the public `.cr-glass` class (`data-glass="clear"` for the clearer variant) for your own controls, sparingly.
-- **Solid (`.cr-surface`):** approval and tool call cards, diff hunks, inbox items, the timeline, the handoff banner.
-
-The material has three layers: a tinted fill with backdrop blur and saturation; **refraction**, where content behind bends near the rounded edges like a lens (an SVG displacement filter sized to each element; Chromium only, other browsers get the rest); and a **specular rim** that catches light on the edges. Tinted glass (primary, danger) uses a deep, translucent fill so white text stays above 4.5:1. Controls swell and brighten when pressed, and content scrolling under the run header gets Apple's scroll edge effect.
-
-**Known limit.** Apple's glass samples the content beneath it and flips between light and dark appearances to stay legible. CSS can't read the backdrop's colours, so Creance's glass can't adapt: over very bright or busy content, text on clear glass can fall below 4.5:1 (see **Atoms / Button / Over Content**). Keep glass controls over the canvas or calm content, which is where the contrast tests check them.
-
-One switch makes all of it solid, with no blur or refraction:
-
-- `prefers-reduced-transparency: reduce` (the macOS and iOS "Reduce transparency" setting)
-- `prefers-contrast: more`
-- `data-transparency="reduce"` on `<html>`, for an in-app setting
-
-Use the **Surfaces** toolbar button to see the solid version. Text contrast on glass is tested in both themes (with the blur and lens off, which axe can't measure through).
+- **Ember** (`--cr-color-accent-*`, `--cr-color-tether-taut`) is the one warm colour, kept for "needs you": the taut line, the request edge, the primary action.
+- **Moonlight** is running, **sage** is done, **coral** is failed, **lilac** is blocked.
+- **Type**: Instrument Serif for titles, Inter Tight for the interface, JetBrains Mono for commands. Load them from Google Fonts or self-host; the tokens fall back to system fonts.
+- **Night glass** (`.cr-glass`, `.cr-surface`): translucent panels with a backdrop blur so the sky shows through. Under `prefers-reduced-transparency: reduce`, `prefers-contrast: more`, or `data-transparency="reduce"` on `<html>`, they turn solid. Use the **Surfaces** toolbar button to see it.
 
 ## Semantic colours
 

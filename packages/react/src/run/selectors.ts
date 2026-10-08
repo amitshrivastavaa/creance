@@ -1,4 +1,5 @@
 // Adapters from RunState to the plain props the organisms take.
+import type { SkyAgent } from '../organisms/FleetSky';
 import type { InboxItem, InboxUrgency } from '../organisms/NeedsYouInbox';
 import type { TimelineStep } from '../organisms/RunTimeline';
 import type { RunState } from './reduceRun';
@@ -76,4 +77,16 @@ export function inboxItems(state: RunState): InboxItem[] {
     });
   }
   return items;
+}
+
+/** This run as one bird in a FleetSky. */
+export function skyAgent(state: RunState): SkyAgent {
+  const open = state.approvals.find((a) => !a.decision);
+  const status = { idle: 'blocked', running: 'running', waiting: 'waiting', completed: 'done', failed: 'failed' } as const;
+  return {
+    id: state.runId ?? 'run',
+    name: state.agent?.name ?? 'Agent',
+    status: status[state.status],
+    detail: open ? `wants to run ${open.action}` : state.diffs.some((d) => !d.resolution) ? 'has changes to review' : undefined,
+  };
 }

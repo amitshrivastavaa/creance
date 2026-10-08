@@ -1,18 +1,23 @@
 .cr-approval {
-  --cr-approval-glow: var(--cr-color-status-waiting-bg);
   display: grid;
   gap: var(--cr-space-3);
-  padding: var(--cr-space-5);
+  padding: var(--cr-space-5) var(--cr-space-6);
+  border-color: var(--cr-color-tether-taut);
   border-radius: var(--cr-radius-xl);
-  background-image: radial-gradient(120% 90% at 0% 0%, var(--cr-approval-glow), transparent 60%);
+  box-shadow: var(--cr-shadow-glow);
   color: var(--cr-color-text-default);
   font-family: var(--cr-font-family-sans);
   font-size: var(--cr-font-size-md);
 }
 
-.cr-approval[data-risk='medium'] { --cr-approval-glow: var(--cr-color-risk-medium-bg); }
-.cr-approval[data-risk='high']   { --cr-approval-glow: var(--cr-color-risk-high-bg); }
-.cr-approval[data-resolved]      { background-image: none; }
+.cr-approval[data-risk='high'] {
+  border-color: var(--cr-color-status-failed-fg);
+}
+
+.cr-approval[data-resolved] {
+  border-color: var(--cr-color-border-default);
+  box-shadow: var(--cr-shadow-card);
+}
 
 .cr-approval:focus-visible {
   outline: var(--cr-focus-width) solid var(--cr-color-focus);
@@ -29,10 +34,18 @@
 
 .cr-approval__title {
   margin: 0;
-  font-size: var(--cr-font-size-lg);
-  font-weight: var(--cr-font-weight-semibold);
-  letter-spacing: var(--cr-font-tracking-tight);
-  line-height: var(--cr-font-line-height-normal);
+  font-family: var(--cr-font-family-display);
+  font-size: var(--cr-font-size-3xl);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.cr-approval__title .cr-code {
+  padding: 0;
+  background: none;
+  color: var(--cr-color-tether-taut);
+  font-size: 0.66em;
+  font-weight: 500;
 }
 
 .cr-approval__reason {
@@ -53,11 +66,8 @@
   color: inherit;
 }
 
-.cr-approval__actions .cr-button:is([data-variant='primary'], [data-variant='danger']) .cr-kbd {
-  border-color: color-mix(in srgb, currentColor 45%, transparent);
-  background: transparent;
-  box-shadow: none;
-  color: inherit;
+.cr-approval__actions .cr-kbd {
+  border-color: color-mix(in srgb, currentColor 40%, transparent);
 }
 
 .cr-approval__outcome {

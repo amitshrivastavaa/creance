@@ -1,5 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { forwardRef, useRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Avatar } from '../../atoms/Avatar/Avatar';
 import type { Status } from '../../atoms/Badge/Badge';
 import { Button } from '../../atoms/Button/Button';
@@ -7,25 +7,8 @@ import { IconButton } from '../../atoms/IconButton/IconButton';
 import { BudgetMeter, type BudgetMeterProps } from '../../molecules/BudgetMeter/BudgetMeter';
 import { StatusBadge } from '../../molecules/StatusBadge/StatusBadge';
 import { cx } from '../../internal/cx';
-import { useLiquidGlass } from '../../internal/liquidGlass';
-import { mergeRefs } from '../../internal/mergeRefs';
 import { CrossIcon } from '../../internal/icons';
 import './AgentRunLayout.css';
-
-/** Radix Dialog content with Liquid Glass refraction. */
-const GlassDrawer = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<typeof Dialog.Content>>(function GlassDrawer(
-  { children, className, ...props },
-  ref,
-) {
-  const own = useRef<HTMLDivElement>(null);
-  const lens = useLiquidGlass(own);
-  return (
-    <Dialog.Content ref={mergeRefs(ref, own)} className={cx('cr-glass', className)} {...props}>
-      {lens}
-      {children}
-    </Dialog.Content>
-  );
-});
 
 export type RunLayoutStatus = 'idle' | 'running' | 'waiting' | 'completed' | 'failed';
 
@@ -83,12 +66,9 @@ export function AgentRunLayout({
   className,
 }: AgentRunLayoutProps) {
   const badge = statusBadge[status];
-  const headerRef = useRef<HTMLElement>(null);
-  const headerLens = useLiquidGlass(headerRef);
   return (
     <div className={cx('cr-run-layout', className)}>
-      <header ref={headerRef} className="cr-run-layout__header cr-glass">
-        {headerLens}
+      <header className="cr-run-layout__header cr-glass">
         <div className="cr-run-layout__agent">
           <Avatar name={agentName} decorative />
           <div className="cr-run-layout__titles">
@@ -108,7 +88,7 @@ export function AgentRunLayout({
               </Dialog.Trigger>
               <Dialog.Portal>
                 <Dialog.Overlay className="cr-run-layout__overlay" />
-                <GlassDrawer className="cr-run-layout__drawer" aria-describedby={undefined}>
+                <Dialog.Content className="cr-run-layout__drawer cr-glass" aria-describedby={undefined}>
                   <div className="cr-run-layout__drawer-bar">
                     <Dialog.Title className="cr-run-layout__drawer-title">Inbox</Dialog.Title>
                     <Dialog.Close asChild>
@@ -116,7 +96,7 @@ export function AgentRunLayout({
                     </Dialog.Close>
                   </div>
                   {inbox}
-                </GlassDrawer>
+                </Dialog.Content>
               </Dialog.Portal>
             </Dialog.Root>
           )}
