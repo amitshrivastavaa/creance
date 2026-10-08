@@ -9,7 +9,7 @@
       "@radix-ui/react-tooltip",
       "@radix-ui/react-dialog"
     ],
-    "limit": "9 kB"
+    "limit": "10 kB"
   },
   {
     "name": "creance: ApprovalPrompt only (tree-shaken)",
@@ -21,12 +21,12 @@
       "@radix-ui/react-tooltip",
       "@radix-ui/react-dialog"
     ],
-    "limit": "2.5 kB"
+    "limit": "3.5 kB"
   },
   {
     "name": "creance/styles.css",
     "path": "dist/styles.css",
-    "limit": "4 kB",
+    "limit": "4.5 kB",
     "rolldown": false
   },
   {

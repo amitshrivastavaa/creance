@@ -38,6 +38,14 @@
       "highlight": {
         "$value": "rgb(255 255 255 / 0.1)",
         "$type": "color"
+      },
+      "control": {
+        "$value": "color-mix(in srgb, {color.bg.surface} {glass.opacity-control}, transparent)",
+        "$type": "color"
+      },
+      "clear": {
+        "$value": "color-mix(in srgb, {color.bg.surface} {glass.opacity-clear}, transparent)",
+        "$type": "color"
       }
     },
     "text": {
@@ -88,6 +96,10 @@
       "subtle": {
         "$value": "color-mix(in srgb, {blue.500} 24%, transparent)",
         "$type": "color"
+      },
+      "glass": {
+        "$value": "color-mix(in srgb, {blue.650} {glass.opacity-tint}, transparent)",
+        "$type": "color"
       }
     },
     "danger": {
@@ -101,6 +113,10 @@
       },
       "fg": {
         "$value": "{gray.0}",
+        "$type": "color"
+      },
+      "glass": {
+        "$value": "color-mix(in srgb, {red.600} {glass.opacity-tint}, transparent)",
         "$type": "color"
       }
     },
@@ -215,7 +231,10 @@
       "$value": "0 12px 32px rgb(0 0 0 / 0.55), 0 2px 6px rgb(0 0 0 / 0.4)"
     },
     "glass": {
-      "$value": "inset 0 1px 0 rgb(255 255 255 / 0.1), inset 0 0 0 1px rgb(255 255 255 / 0.04), 0 8px 28px rgb(0 0 0 / 0.45)"
+      "$value": "inset 0 1px 1px rgb(255 255 255 / 0.12), inset 0 -1px 1px rgb(0 0 0 / 0.3), 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.45)"
+    },
+    "card": {
+      "$value": "0 1px 2px rgb(0 0 0 / 0.5), 0 4px 16px rgb(0 0 0 / 0.3)"
     }
   },
   "gradient": {
@@ -227,6 +246,9 @@
     },
     "agent": {
       "$value": "linear-gradient(135deg, {blue.500}, {violet.600})"
+    },
+    "rim": {
+      "$value": "linear-gradient(135deg, rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.12) 28%, rgb(255 255 255 / 0) 52%, rgb(255 255 255 / 0.12) 80%, rgb(255 255 255 / 0.4))"
     }
   }
 }

@@ -144,10 +144,21 @@ body,
   font-size: var(--cr-font-size-sm);
 }
 
-/* See preview.ts: story tests render measurable glass. */
+/* See preview.ts: story tests render measurable glass. axe ignores pseudo-elements, so the glass
+   tint moves from ::before onto the element itself, still translucent, without blur or lens. */
 :root[data-a11y-test] {
   --cr-glass-filter: none;
+  --cr-glass-filter-clear: none;
   --cr-gradient-canvas: none;
+}
+
+:root[data-a11y-test] .cr-glass {
+  background-color: var(--cr-glass-fill) !important;
+}
+
+:root[data-a11y-test] .cr-glass::before,
+:root[data-a11y-test] .cr-glass::after {
+  display: none !important;
 }
 
 /* "none, none" still counts as an image to axe, so give the page a single solid layer. */

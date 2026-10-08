@@ -12,6 +12,24 @@
   font-size: var(--cr-font-size-md);
 }
 
+/*
+ * Scroll edge effect: content scrolling up under the floating header is progressively blurred and
+ * faded, so the glass bar stays legible over anything.
+ */
+.cr-run-layout::before {
+  content: '';
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 9;
+  height: 112px;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  background: linear-gradient(to bottom, var(--cr-color-bg-canvas), transparent);
+  -webkit-mask: linear-gradient(to bottom, #000 40%, transparent);
+  mask: linear-gradient(to bottom, #000 40%, transparent);
+}
+
 .cr-run-layout__header {
   display: flex;
   flex-wrap: wrap;
@@ -23,7 +41,6 @@
   z-index: 10;
   padding: var(--cr-space-3) var(--cr-space-3) var(--cr-space-3) var(--cr-space-4);
   border-radius: var(--cr-radius-xl);
-  background-color: var(--cr-color-glass-surface-strong);
 }
 
 .cr-run-layout__agent {
@@ -109,7 +126,7 @@
   backdrop-filter: blur(2px);
 }
 
-.cr-run-layout__drawer {
+.cr-run-layout__drawer.cr-glass {
   position: fixed;
   z-index: 41;
   display: grid;
@@ -123,13 +140,9 @@
   padding: var(--cr-space-4);
   box-sizing: border-box;
   overflow-y: auto;
-  border: 1px solid var(--cr-color-border-default);
   border-radius: var(--cr-radius-xl);
-  background-color: var(--cr-color-glass-surface-strong);
-  -webkit-backdrop-filter: var(--cr-glass-filter);
-  backdrop-filter: var(--cr-glass-filter);
+  --cr-glass-fill: var(--cr-color-glass-surface-strong);
   color: var(--cr-color-text-default);
-  box-shadow: var(--cr-shadow-glass), var(--cr-shadow-md);
   font-family: var(--cr-font-family-sans);
   animation: cr-drawer-in var(--cr-motion-duration-slow) var(--cr-motion-easing-spring);
 }

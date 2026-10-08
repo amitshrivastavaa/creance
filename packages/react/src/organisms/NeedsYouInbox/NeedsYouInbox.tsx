@@ -88,7 +88,7 @@ export function NeedsYouInbox({
       ) : (
         <ol className="cr-inbox__list">
           {sorted.map((item) => (
-            <li key={item.id} className="cr-inbox__item cr-glass" data-kind={item.kind} data-urgency={item.urgency}>
+            <li key={item.id} className="cr-inbox__item cr-surface" data-kind={item.kind} data-urgency={item.urgency}>
               <span className="cr-inbox__kind">
                 {kinds[item.kind].icon}
                 {kinds[item.kind].label}

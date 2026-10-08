@@ -1,4 +1,5 @@
 import { useId, useRef, useState, type KeyboardEvent } from 'react';
+import { useLiquidGlass } from '../../internal/liquidGlass';
 import { Badge } from '../../atoms/Badge/Badge';
 import { Button } from '../../atoms/Button/Button';
 import { Code } from '../../atoms/Code/Code';
@@ -57,6 +58,8 @@ export function DiffReview({ file, hunks, onApply, applied, description, heading
   const [decisions, setDecisions] = useState<Record<string, HunkDecision>>({});
   const [message, setMessage] = useState('');
   const hunkRefs = useRef<Array<HTMLElement | null>>([]);
+  const barRef = useRef<HTMLElement>(null);
+  const barLens = useLiquidGlass(barRef);
   const Heading = `h${headingLevel}` as const;
   const HunkHeading = `h${headingLevel + 1}` as 'h3' | 'h4' | 'h5';
 
@@ -138,7 +141,7 @@ export function DiffReview({ file, hunks, onApply, applied, description, heading
               ref={(el) => {
                 hunkRefs.current[i] = el;
               }}
-              className="cr-diff-review__hunk cr-glass"
+              className="cr-diff-review__hunk cr-surface"
               data-decision={decision}
               aria-labelledby={headingId}
               tabIndex={-1}
@@ -187,7 +190,8 @@ export function DiffReview({ file, hunks, onApply, applied, description, heading
         })}
       </div>
 
-      <footer className="cr-diff-review__bar cr-glass">
+      <footer ref={barRef} className="cr-diff-review__bar cr-glass">
+        {barLens}
         {readOnly ? (
           <span>
             Applied {accepted.length} of {hunks.length} hunks

@@ -1,41 +1,70 @@
 .cr-button {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--cr-space-2);
-  min-height: 34px;
+  min-height: 36px;
   padding: 0 var(--cr-space-4);
-  border: 1px solid var(--cr-color-border-default);
+  border: 0;
   border-radius: var(--cr-radius-full);
-  background-color: var(--cr-color-glass-surface-strong);
-  -webkit-backdrop-filter: var(--cr-glass-filter);
-  backdrop-filter: var(--cr-glass-filter);
-  box-shadow: inset 0 1px 0 var(--cr-color-glass-highlight), var(--cr-shadow-sm);
+  background: transparent;
   color: var(--cr-color-text-default);
   font: inherit;
   font-size: var(--cr-font-size-md);
-  font-weight: var(--cr-font-weight-medium);
+  font-weight: var(--cr-font-weight-semibold);
   letter-spacing: var(--cr-font-tracking-tight);
   line-height: var(--cr-font-line-height-tight);
   white-space: nowrap;
   cursor: pointer;
-  transition:
-    background-color var(--cr-motion-duration-fast) var(--cr-motion-easing-standard),
-    transform var(--cr-motion-duration-base) var(--cr-motion-easing-spring);
+  transition: transform var(--cr-motion-duration-slow) var(--cr-motion-easing-spring);
 }
 
 .cr-button[data-size='sm'] {
-  min-height: 28px;
+  min-height: 30px;
   padding: 0 var(--cr-space-3);
   font-size: var(--cr-font-size-sm);
 }
 
-.cr-button:hover:not(:disabled) {
-  background-color: var(--cr-color-bg-raised);
+.cr-button.cr-glass {
+  --cr-glass-fill: var(--cr-color-glass-control);
 }
 
-.cr-button:active:not(:disabled) {
+.cr-button[data-variant='primary'] {
+  --cr-glass-fill: var(--cr-color-accent-glass);
+  color: var(--cr-color-accent-fg);
+}
+
+.cr-button[data-variant='danger'] {
+  --cr-glass-fill: var(--cr-color-danger-glass);
+  color: var(--cr-color-danger-fg);
+}
+
+/*
+ * Interactive glass: it brightens under the pointer and swells when pressed, like a droplet.
+ * Brightness goes on the lens layer, never on the button: a filter on the button would make it a
+ * backdrop root and cut the glass off from the page behind it.
+ */
+.cr-button.cr-glass::before {
+  transition: filter var(--cr-motion-duration-fast) var(--cr-motion-easing-standard);
+}
+
+.cr-button.cr-glass:hover:not(:disabled)::before {
+  filter: brightness(1.08) saturate(1.15);
+}
+
+.cr-button.cr-glass:active:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.cr-button.cr-glass:active:not(:disabled)::before {
+  filter: brightness(1.16) saturate(1.3);
+}
+
+.cr-button[data-variant='ghost']:hover:not(:disabled) {
+  background: var(--cr-color-bg-subtle);
+}
+
+.cr-button[data-variant='ghost']:active:not(:disabled) {
   transform: scale(0.97);
 }
 
@@ -47,39 +76,4 @@
 .cr-button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
-}
-
-.cr-button:is([data-variant='primary'], [data-variant='danger']) {
-  border-color: transparent;
-  box-shadow: inset 0 1px 0 var(--cr-color-glass-highlight), var(--cr-shadow-sm);
-}
-
-.cr-button[data-variant='primary'] {
-  background: var(--cr-gradient-sheen), var(--cr-color-accent-bg);
-  color: var(--cr-color-accent-fg);
-}
-
-.cr-button[data-variant='primary']:hover:not(:disabled) {
-  background: var(--cr-gradient-sheen), var(--cr-color-accent-bg-hover);
-}
-
-.cr-button[data-variant='danger'] {
-  background: var(--cr-gradient-sheen), var(--cr-color-danger-bg);
-  color: var(--cr-color-danger-fg);
-}
-
-.cr-button[data-variant='danger']:hover:not(:disabled) {
-  background: var(--cr-gradient-sheen), var(--cr-color-danger-bg-hover);
-}
-
-.cr-button[data-variant='ghost'] {
-  border-color: transparent;
-  background: transparent;
-  box-shadow: none;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}
-
-.cr-button[data-variant='ghost']:hover:not(:disabled) {
-  background: var(--cr-color-bg-subtle);
 }

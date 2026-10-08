@@ -9,7 +9,8 @@ let failures = 0;
 for (const file of files) {
   const lines = (await readFile(`${root}/${file}`, 'utf8')).split('\n');
   lines.forEach((line, i) => {
-    if (raw.test(line)) {
+    // Masks only use alpha, so a colour there is not a visible colour choice.
+    if (raw.test(line) && !/^\s*(-webkit-)?mask/.test(line)) {
       console.error(`${root}/${file}:${i + 1}: raw colour, use a token: ${line.trim()}`);
       failures++;
     }

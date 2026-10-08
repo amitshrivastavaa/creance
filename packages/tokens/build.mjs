@@ -55,13 +55,21 @@ ${withScheme(darkCss, 'dark')}
   :root {
     --${PREFIX}-glass-opacity: 100%;
     --${PREFIX}-glass-opacity-strong: 100%;
+    --${PREFIX}-glass-opacity-control: 100%;
+    --${PREFIX}-glass-opacity-tint: 100%;
+    --${PREFIX}-glass-opacity-clear: 100%;
     --${PREFIX}-glass-filter: none;
+    --${PREFIX}-glass-filter-clear: none;
   }
 }
 :root[data-transparency="reduce"] {
   --${PREFIX}-glass-opacity: 100%;
   --${PREFIX}-glass-opacity-strong: 100%;
+  --${PREFIX}-glass-opacity-control: 100%;
+  --${PREFIX}-glass-opacity-tint: 100%;
+  --${PREFIX}-glass-opacity-clear: 100%;
   --${PREFIX}-glass-filter: none;
+  --${PREFIX}-glass-filter-clear: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

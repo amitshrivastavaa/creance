@@ -51,7 +51,7 @@ export function AgentHandoffBanner({
   }, []);
 
   return (
-    <section className={cx('cr-handoff cr-glass', className)} aria-labelledby={headingId} data-outcome={outcome}>
+    <section className={cx('cr-handoff cr-surface', className)} aria-labelledby={headingId} data-outcome={outcome}>
       <Avatar name={agentName} decorative />
       <div className="cr-handoff__body">
         <Heading id={headingId} ref={headingRef} tabIndex={-1} className="cr-handoff__title">

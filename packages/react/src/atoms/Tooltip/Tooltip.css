@@ -1,13 +1,9 @@
 .cr-tooltip {
+  --cr-glass-fill: var(--cr-color-glass-surface-strong);
   z-index: 50;
   max-width: 280px;
   padding: var(--cr-space-1) var(--cr-space-3);
-  border: 1px solid var(--cr-color-border-default);
   border-radius: var(--cr-radius-md);
-  background-color: var(--cr-color-glass-surface-strong);
-  -webkit-backdrop-filter: var(--cr-glass-filter);
-  backdrop-filter: var(--cr-glass-filter);
-  box-shadow: var(--cr-shadow-md);
   color: var(--cr-color-text-default);
   font-family: var(--cr-font-family-sans);
   font-size: var(--cr-font-size-xs);

@@ -4,8 +4,10 @@ import { expect, test, type Page } from '@playwright/test';
 // axe can't measure contrast through backdrop blur or background gradients (it reports them as
 // incomplete), so scan with glass kept translucent but unblurred, on a solid page background.
 const measurableGlass = `
-  :root { --cr-glass-filter: none !important; --cr-gradient-canvas: none !important; }
+  :root { --cr-glass-filter: none !important; --cr-glass-filter-clear: none !important; --cr-gradient-canvas: none !important; }
   body, .cr-run-layout { background: var(--cr-color-bg-canvas) !important; }
+  .cr-glass { background-color: var(--cr-glass-fill) !important; }
+  .cr-glass::before, .cr-glass::after { display: none !important; }
 `;
 
 async function expectNoAxeViolations(page: Page) {

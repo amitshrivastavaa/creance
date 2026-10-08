@@ -119,8 +119,7 @@
   gap: var(--cr-space-2);
   padding: var(--cr-space-2) var(--cr-space-2) var(--cr-space-2) var(--cr-space-4);
   border-radius: var(--cr-radius-xl);
-  background-color: var(--cr-color-glass-surface-strong);
-  box-shadow: var(--cr-shadow-glass), var(--cr-shadow-md);
+  --cr-glass-fill: var(--cr-color-glass-surface-strong);
   font-size: var(--cr-font-size-sm);
 }
 

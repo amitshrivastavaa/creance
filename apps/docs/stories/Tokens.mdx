@@ -18,17 +18,22 @@ The theme follows the operating system by default. Set `data-theme="light"` or `
 
 Tokens come in two tiers. **Primitives** (`--cr-blue-600`) are the raw palette and scales. **Semantic** tokens (`--cr-color-bg-surface`, `--cr-color-status-running-fg`) say what a value is for, and change between themes. Components use only semantic colour tokens.
 
-## Glass
+## Liquid Glass
 
-Cards, bars, menus and drawers are frosted glass: a translucent surface with a backdrop blur, over the soft gradient canvas (`--cr-gradient-canvas`). Use the public `.cr-glass` class for your own panels.
+Creance follows Apple's [Liquid Glass](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass) model: glass is **a functional layer for controls and navigation that floats above content**, and content itself stays on quiet, solid surfaces. In the kit:
 
-The glass colours are `color-mix()`es of the solid surface colour at `--cr-glass-opacity`, and the blur is `--cr-glass-filter`. So one switch makes everything solid:
+- **Glass:** buttons, tooltips, the floating run header, the diff review toolbar, the inbox drawer. Use the public `.cr-glass` class (`data-glass="clear"` for the clearer variant) for your own controls, sparingly.
+- **Solid (`.cr-surface`):** approval and tool call cards, diff hunks, inbox items, the timeline, the handoff banner.
+
+The material has three layers: a tinted fill with backdrop blur and saturation; **refraction**, where content behind bends near the rounded edges like a lens (an SVG displacement filter sized to each element; Chromium only, other browsers get the rest); and a **specular rim** that catches light on the edges. Tinted glass (primary, danger) uses a deep, translucent fill so white text stays above 4.5:1. Controls swell and brighten when pressed, and content scrolling under the run header gets Apple's scroll edge effect.
+
+One switch makes all of it solid, with no blur or refraction:
 
 - `prefers-reduced-transparency: reduce` (the macOS and iOS "Reduce transparency" setting)
 - `prefers-contrast: more`
 - `data-transparency="reduce"` on `<html>`, for an in-app setting
 
-Use the **Surfaces** toolbar button to see the solid version. Text contrast is tested on the translucent surfaces in both themes.
+Use the **Surfaces** toolbar button to see the solid version. Text contrast on glass is tested in both themes (with the blur and lens off, which axe can't measure through).
 
 ## Semantic colours
 

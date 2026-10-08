@@ -1,5 +1,6 @@
 import * as RadixTooltip from '@radix-ui/react-tooltip';
-import type { ReactElement, ReactNode } from 'react';
+import { useRef, type ReactElement, type ReactNode } from 'react';
+import { useLiquidGlass } from '../../internal/liquidGlass';
 import './Tooltip.css';
 
 export interface TooltipProps {
@@ -11,15 +12,24 @@ export interface TooltipProps {
 }
 
 /** Radix Tooltip: shows on hover and keyboard focus, dismisses on Escape. */
+function GlassContent({ children, side }: { children: ReactNode; side: TooltipProps['side'] }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const lens = useLiquidGlass(ref);
+  return (
+    <RadixTooltip.Content ref={ref} className="cr-tooltip cr-glass" side={side} sideOffset={6}>
+      {lens}
+      {children}
+    </RadixTooltip.Content>
+  );
+}
+
 export function Tooltip({ content, children, side = 'top' }: TooltipProps) {
   return (
     <RadixTooltip.Provider delayDuration={400}>
       <RadixTooltip.Root>
         <RadixTooltip.Trigger asChild>{children}</RadixTooltip.Trigger>
         <RadixTooltip.Portal>
-          <RadixTooltip.Content className="cr-tooltip" side={side} sideOffset={6}>
-            {content}
-          </RadixTooltip.Content>
+          <GlassContent side={side}>{content}</GlassContent>
         </RadixTooltip.Portal>
       </RadixTooltip.Root>
     </RadixTooltip.Provider>

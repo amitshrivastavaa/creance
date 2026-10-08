@@ -179,7 +179,19 @@
       "$value": "84%"
     },
     "filter": {
-      "$value": "blur(24px) saturate(180%)"
+      "$value": "blur(8px) saturate(185%) brightness(1.04)"
+    },
+    "opacity-control": {
+      "$value": "45%"
+    },
+    "opacity-tint": {
+      "$value": "85%"
+    },
+    "filter-clear": {
+      "$value": "blur(2px) saturate(160%) brightness(1.06)"
+    },
+    "opacity-clear": {
+      "$value": "16%"
     }
   }
 }
