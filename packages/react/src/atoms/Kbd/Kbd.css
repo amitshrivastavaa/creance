@@ -3,7 +3,7 @@
   min-width: 1.7em;
   padding: 0 var(--cr-space-1);
   border: 1px solid var(--cr-color-border-strong);
-  border-radius: var(--cr-radius-sm);
+  border-radius: 6px;
   color: inherit;
   font-family: var(--cr-font-family-mono);
   font-size: var(--cr-font-size-xs);

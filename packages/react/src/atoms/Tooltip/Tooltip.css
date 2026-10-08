@@ -1,7 +1,7 @@
 .cr-tooltip {
   z-index: 50;
   max-width: 280px;
-  padding: var(--cr-space-1) var(--cr-space-3);
+  padding: var(--cr-space-2) var(--cr-space-3);
   border-radius: var(--cr-radius-md);
   color: var(--cr-color-text-default);
   font-family: var(--cr-font-family-sans);

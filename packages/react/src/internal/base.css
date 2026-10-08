@@ -16,30 +16,48 @@
 }
 
 /*
- * Night glass: a translucent panel with a backdrop blur and a hairline edge, for what floats over
- * the sky (bars, drawers, popovers, requests). Public, so apps can use it too. Turns solid with no
- * blur under prefers-reduced-transparency or prefers-contrast: more.
+ * Glass layers, public so apps can use them. Each is a tint at a layer opacity with a bright
+ * hairline edge and a top highlight. All turn solid with no blur under prefers-reduced-transparency,
+ * prefers-contrast: more, or data-transparency="reduce" on the root.
+ *   .cr-window   the frame of a screen: most translucent, strongest blur
+ *   .cr-surface  a tile inside a window (cards, rows, panels): no blur of its own
+ *   .cr-glass    a sheet that floats above (requests, bars, drawers)
+ *   .cr-popover  menus, tooltips, popovers: nearly opaque so text stays crisp
  */
-.cr-glass {
-  border: 1px solid var(--cr-color-border-default);
-  background-color: var(--cr-color-glass-surface);
-  -webkit-backdrop-filter: var(--cr-glass-filter);
-  backdrop-filter: var(--cr-glass-filter);
-  box-shadow: var(--cr-shadow-md);
+.cr-window,
+.cr-glass,
+.cr-popover {
+  border: 1px solid var(--cr-color-glass-edge);
+  box-shadow: var(--cr-shadow-md), inset 0 1px 0 var(--cr-color-glass-highlight);
 }
 
-/* Content: solid, quiet surfaces. */
+.cr-window {
+  background-color: var(--cr-color-glass-window);
+  -webkit-backdrop-filter: var(--cr-glass-filter-window);
+  backdrop-filter: var(--cr-glass-filter-window);
+}
+
+.cr-glass,
+.cr-popover {
+  background-color: var(--cr-color-glass-sheet);
+  -webkit-backdrop-filter: var(--cr-glass-filter-sheet);
+  backdrop-filter: var(--cr-glass-filter-sheet);
+  box-shadow: var(--cr-shadow-sheet), inset 0 1px 0 var(--cr-color-glass-highlight);
+}
+
+.cr-popover {
+  background-color: var(--cr-color-glass-popover);
+}
+
 .cr-surface {
-  border: 1px solid var(--cr-color-border-default);
-  background-color: var(--cr-color-glass-surface);
-  -webkit-backdrop-filter: var(--cr-glass-filter);
-  backdrop-filter: var(--cr-glass-filter);
+  border: 1px solid var(--cr-color-glass-edge);
+  background-color: var(--cr-color-glass-tile);
   box-shadow: var(--cr-shadow-card);
 }
 
-/* Titles of organisms use the display serif: the kit's voice. */
+/* Titles: the system face, bold and tightly tracked. */
 .cr-display {
   font-family: var(--cr-font-family-display);
-  font-weight: 400;
-  letter-spacing: -0.005em;
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: var(--cr-font-tracking-title);
 }

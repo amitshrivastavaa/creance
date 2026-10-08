@@ -55,7 +55,11 @@
       "$type": "dimension"
     },
     "xl": {
-      "$value": "24px",
+      "$value": "22px",
+      "$type": "dimension"
+    },
+    "2xl": {
+      "$value": "28px",
       "$type": "dimension"
     },
     "full": {
@@ -65,16 +69,16 @@
   },
   "font": {
     "family": {
-      "display": {
-        "$value": "'Instrument Serif', 'Iowan Old Style', Georgia, serif",
+      "sans": {
+        "$value": "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', system-ui, sans-serif",
         "$type": "fontFamily"
       },
-      "sans": {
-        "$value": "'Inter Tight', 'Inter', system-ui, -apple-system, sans-serif",
+      "display": {
+        "$value": "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', system-ui, sans-serif",
         "$type": "fontFamily"
       },
       "mono": {
-        "$value": "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace",
+        "$value": "'SF Mono', ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace",
         "$type": "fontFamily"
       }
     },
@@ -88,7 +92,7 @@
         "$type": "dimension"
       },
       "md": {
-        "$value": "14px",
+        "$value": "15px",
         "$type": "dimension"
       },
       "lg": {
@@ -106,6 +110,10 @@
       "3xl": {
         "$value": "30px",
         "$type": "dimension"
+      },
+      "4xl": {
+        "$value": "44px",
+        "$type": "dimension"
       }
     },
     "weight": {
@@ -119,6 +127,10 @@
       },
       "semibold": {
         "$value": 600,
+        "$type": "fontWeight"
+      },
+      "bold": {
+        "$value": "700",
         "$type": "fontWeight"
       }
     },
@@ -167,7 +179,7 @@
   },
   "focus": {
     "width": {
-      "$value": "2px",
+      "$value": "3px",
       "$type": "dimension"
     },
     "offset": {
@@ -177,10 +189,41 @@
   },
   "glass": {
     "opacity": {
-      "$value": "62%"
+      "window": {
+        "$value": "32%"
+      },
+      "tile": {
+        "$value": "50%"
+      },
+      "sheet": {
+        "$value": "62%"
+      },
+      "popover": {
+        "$value": "80%"
+      },
+      "control": {
+        "$value": "70%"
+      }
     },
     "filter": {
-      "$value": "blur(16px) saturate(140%)"
+      "window": {
+        "$value": "blur(40px) saturate(170%)"
+      },
+      "sheet": {
+        "$value": "blur(24px) saturate(180%)"
+      }
+    }
+  },
+  "control": {
+    "height": {
+      "md": {
+        "$value": "44px",
+        "$type": "dimension"
+      },
+      "sm": {
+        "$value": "36px",
+        "$type": "dimension"
+      }
     }
   }
 }

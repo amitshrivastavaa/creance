@@ -81,7 +81,6 @@ button.cr-sky__tag-button:focus-visible {
   bottom: 2%;
   transform: translateX(-50%);
   color: var(--cr-color-text-muted);
-  font-family: var(--cr-font-family-display);
-  font-size: var(--cr-font-size-lg);
-  font-style: italic;
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
 }

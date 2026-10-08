@@ -17,7 +17,7 @@ export function Tooltip({ content, children, side = 'top' }: TooltipProps) {
       <RadixTooltip.Root>
         <RadixTooltip.Trigger asChild>{children}</RadixTooltip.Trigger>
         <RadixTooltip.Portal>
-          <RadixTooltip.Content className="cr-tooltip cr-glass" side={side} sideOffset={6}>
+          <RadixTooltip.Content className="cr-tooltip cr-popover" side={side} sideOffset={6}>
             {content}
           </RadixTooltip.Content>
         </RadixTooltip.Portal>

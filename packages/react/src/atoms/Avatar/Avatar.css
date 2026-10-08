@@ -5,7 +5,8 @@
   width: 34px;
   height: 34px;
   border-radius: var(--cr-radius-full);
-  background: var(--cr-color-bg-subtle);
+  background: var(--cr-color-bg-raised);
+  box-shadow: inset 0 0 0 1px var(--cr-color-border-default);
   color: var(--cr-color-text-default);
   font-size: var(--cr-font-size-xs);
   font-weight: var(--cr-font-weight-semibold);
@@ -16,8 +17,8 @@
 /* Agents: a squircle ringed in the tether colour. People: a plain circle. Shape tells them apart. */
 .cr-avatar[data-kind='agent'] {
   border-radius: var(--cr-radius-md);
-  box-shadow: inset 0 0 0 1.5px var(--cr-color-tether-taut);
-  background: var(--cr-color-accent-subtle);
+  box-shadow: inset 0 0 0 1px var(--cr-color-border-default);
+  background: var(--cr-color-bg-raised);
   color: var(--cr-color-text-default);
 }
 

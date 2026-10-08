@@ -19,15 +19,16 @@
   margin: 0;
   font-family: var(--cr-font-family-display);
   font-size: var(--cr-font-size-2xl);
-  font-weight: 400;
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: var(--cr-font-tracking-title);
 }
 
 .cr-inbox__total {
   min-width: 1.6em;
   padding: 0 var(--cr-space-2);
   border-radius: var(--cr-radius-full);
-  background: var(--cr-color-accent-bg);
-  color: var(--cr-color-accent-fg);
+  background: var(--cr-color-ink-bg);
+  color: var(--cr-color-ink-fg);
   font-family: var(--cr-font-family-sans);
   font-size: var(--cr-font-size-sm);
   font-weight: var(--cr-font-weight-semibold);
@@ -48,9 +49,8 @@
   align-items: center;
   gap: var(--cr-space-1);
   padding: 2px var(--cr-space-2);
-  border: 1px solid var(--cr-color-border-default);
   border-radius: var(--cr-radius-full);
-  background: var(--cr-color-glass-surface);
+  background: var(--cr-color-bg-subtle);
   color: var(--cr-color-text-muted);
   font-size: var(--cr-font-size-xs);
 }
@@ -73,7 +73,7 @@
 }
 
 .cr-inbox__item[data-urgency='high'] {
-  border-color: var(--cr-color-risk-high-fg);
+  box-shadow: var(--cr-shadow-card), inset 3px 0 0 var(--cr-color-danger-text);
 }
 
 .cr-inbox__item:has(button.cr-inbox__item-title:hover) {

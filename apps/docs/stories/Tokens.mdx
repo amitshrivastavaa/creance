@@ -18,15 +18,21 @@ The theme follows the operating system by default. Set `data-theme="light"` or `
 
 Tokens come in two tiers. **Primitives** (`--cr-blue-600`) are the raw palette and scales. **Semantic** tokens (`--cr-color-bg-surface`, `--cr-color-status-running-fg`) say what a value is for, and change between themes. Components use only semantic colour tokens.
 
-## Sky and glass, almost no colour
+## Glass, grey and one blue
 
-Creance's look comes from its name: a *creance* is the line a falconer keeps on a bird in flight, so the kit is drawn as a sky, a slate night sky in the dark theme and a pale grey one in the light theme, where agents fly on lines back to you (see **Organisms / FleetSky**).
+Frosted surfaces over a soft, blurred backdrop. Agents still fly on lines back to you in the sky (see **Organisms / FleetSky**): a *creance* is the line a falconer keeps on a bird in flight.
 
-- **Neutral slate** does the work. Emphasis is contrast, not hue: "needs you" is a solid white pill in the dark theme (ink in the light theme), the taut line is bright, the primary button is solid.
-- **Red** is the only colour: failures, high risk, Deny, removed diff lines.
-- Statuses are told apart by icon and word first.
-- **Type:** Instrument Serif for titles, Inter Tight for the interface, JetBrains Mono for commands, with system fallbacks.
-- **Glass** (`.cr-glass`, `.cr-surface`): frosted, translucent panels so the sky shows through. They turn solid under `prefers-reduced-transparency: reduce`, `prefers-contrast: more`, or `data-transparency="reduce"` on `<html>`; the **Surfaces** toolbar button shows that.
+- **Neutral greys** carry the interface. Statuses are told apart by icon and word first.
+- **Blue** is for the one action that answers a request, such as Allow once.
+- **Ink** marks what needs you and what is selected: solid near-black in the light theme, off-white in the dark theme.
+- **Red** is only for failure and refusal: failed runs, high risk, Deny, removed diff lines.
+- **Type:** the system face (SF Pro on Apple devices, Inter elsewhere), bold and tightly tracked for titles; SF Mono or JetBrains Mono for commands.
+- **Glass layers**, public classes apps can use too:
+  - `.cr-window` frames a screen: the most translucent, with the strongest blur.
+  - `.cr-surface` is a tile inside a window: cards, rows, panels.
+  - `.cr-glass` is a sheet that floats above: requests, bars, drawers.
+  - `.cr-popover` holds menus and tooltips, nearly opaque so text stays crisp.
+- **Solid mode:** every layer turns opaque with no blur under `prefers-reduced-transparency: reduce`, `prefers-contrast: more`, or `data-transparency="reduce"` on `<html>`. The **Surfaces** toolbar button shows it.
 
 ## Semantic colours
 

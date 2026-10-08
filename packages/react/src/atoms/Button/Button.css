@@ -1,13 +1,15 @@
+/* A glass capsule. Blue is reserved for the one primary action; red text marks refusal. */
 .cr-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--cr-space-2);
-  min-height: 36px;
-  padding: 0 var(--cr-space-4);
-  border: 1px solid var(--cr-color-border-strong);
+  min-height: var(--cr-control-height-md);
+  padding: 0 var(--cr-space-5);
+  border: 1px solid var(--cr-color-glass-edge);
   border-radius: var(--cr-radius-full);
-  background: transparent;
+  background: var(--cr-color-glass-control);
+  box-shadow: var(--cr-shadow-sm);
   color: var(--cr-color-text-default);
   font: inherit;
   font-family: var(--cr-font-family-sans);
@@ -18,19 +20,18 @@
   cursor: pointer;
   transition:
     background-color var(--cr-motion-duration-fast) var(--cr-motion-easing-standard),
-    border-color var(--cr-motion-duration-fast) var(--cr-motion-easing-standard),
+    color var(--cr-motion-duration-fast) var(--cr-motion-easing-standard),
     transform var(--cr-motion-duration-base) var(--cr-motion-easing-spring);
 }
 
 .cr-button[data-size='sm'] {
-  min-height: 30px;
+  min-height: var(--cr-control-height-sm);
   padding: 0 var(--cr-space-3);
   font-size: var(--cr-font-size-sm);
 }
 
 .cr-button:hover:not(:disabled) {
-  border-color: var(--cr-color-text-muted);
-  background: var(--cr-color-bg-subtle);
+  background: var(--cr-color-glass-popover);
 }
 
 .cr-button:active:not(:disabled) {
@@ -47,10 +48,10 @@
   opacity: 0.5;
 }
 
-/* Solid ink: the one loud button, kept for the action that answers "needs you". */
 .cr-button[data-variant='primary'] {
   border-color: transparent;
   background: var(--cr-color-accent-bg);
+  box-shadow: var(--cr-shadow-accent);
   color: var(--cr-color-accent-fg);
 }
 
@@ -58,9 +59,12 @@
   background: var(--cr-color-accent-bg-hover);
 }
 
+.cr-button[data-variant='primary']:active:not(:disabled) {
+  background: var(--cr-color-accent-bg-active);
+}
+
 .cr-button[data-variant='danger'] {
-  border-color: var(--cr-color-status-failed-fg);
-  color: var(--cr-color-status-failed-fg);
+  color: var(--cr-color-danger-text);
 }
 
 .cr-button[data-variant='danger']:hover:not(:disabled) {
@@ -71,4 +75,10 @@
 
 .cr-button[data-variant='ghost'] {
   border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.cr-button[data-variant='ghost']:hover:not(:disabled) {
+  background: var(--cr-color-bg-subtle);
 }

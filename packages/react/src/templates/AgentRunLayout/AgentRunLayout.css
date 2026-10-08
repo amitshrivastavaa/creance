@@ -39,8 +39,8 @@
 .cr-run-layout__name {
   margin: 0;
   font-family: var(--cr-font-family-display);
-  font-size: var(--cr-font-size-2xl);
-  font-weight: 400;
+  font-size: var(--cr-font-size-lg);
+  font-weight: var(--cr-font-weight-semibold);
   line-height: var(--cr-font-line-height-tight);
 }
 
@@ -61,8 +61,8 @@
   min-width: 1.4em;
   padding: 0 var(--cr-space-1);
   border-radius: var(--cr-radius-full);
-  background: var(--cr-color-accent-bg);
-  color: var(--cr-color-accent-fg);
+  background: var(--cr-color-ink-bg);
+  color: var(--cr-color-ink-fg);
   font-size: var(--cr-font-size-xs);
   text-align: center;
 }
@@ -142,9 +142,7 @@
   margin: 0;
   color: var(--cr-color-text-muted);
   font-size: var(--cr-font-size-sm);
-  font-weight: var(--cr-font-weight-medium);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-weight: var(--cr-font-weight-semibold);
 }
 
 @keyframes cr-drawer-in {

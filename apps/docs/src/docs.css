@@ -148,7 +148,8 @@ body,
 /* See preview.ts: story tests render measurable glass. Translucency stays (axe blends it);
    blur and gradients go, because axe can't measure contrast through them. */
 :root[data-a11y-test] {
-  --cr-glass-filter: none;
+  --cr-glass-filter-window: none;
+  --cr-glass-filter-sheet: none;
   --cr-gradient-canvas: none;
   --cr-gradient-horizon: none;
 }

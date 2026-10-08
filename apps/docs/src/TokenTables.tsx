@@ -13,7 +13,7 @@ function flatten(refs: Tree, raw: Tree, prefix = ''): Array<[string, string, str
   });
 }
 
-const palettes = ['slate', 'red'] as const;
+const palettes = ['gray', 'blue', 'red'] as const;
 
 function Swatches({ rows }: { rows: Array<[string, string, string]> }) {
   return (

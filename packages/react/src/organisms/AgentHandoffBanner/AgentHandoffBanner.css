@@ -8,9 +8,8 @@
   font-size: var(--cr-font-size-md);
 }
 
-.cr-handoff { border-color: var(--cr-color-status-done-fg); }
-.cr-handoff[data-outcome='stopped'] { border-color: var(--cr-color-status-blocked-fg); }
-.cr-handoff[data-outcome='failed']  { border-color: var(--cr-color-status-failed-fg); }
+/* Only failure gets a colour; the outcome is also in the title. */
+.cr-handoff[data-outcome='failed'] { box-shadow: var(--cr-shadow-card), inset 3px 0 0 var(--cr-color-danger-text); }
 
 .cr-handoff__body {
   display: grid;
@@ -22,10 +21,10 @@
 .cr-handoff__title {
   margin: 0;
   font-family: var(--cr-font-family-display);
-  font-size: var(--cr-font-size-3xl);
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.1;
+  font-size: var(--cr-font-size-2xl);
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: var(--cr-font-tracking-title);
+  line-height: 1.2;
 }
 
 .cr-handoff__title:focus-visible {

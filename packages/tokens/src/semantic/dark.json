@@ -2,15 +2,15 @@
   "color": {
     "bg": {
       "canvas": {
-        "$value": "{slate.950}",
+        "$value": "{gray.950}",
         "$type": "color"
       },
       "surface": {
-        "$value": "{slate.850}",
+        "$value": "{gray.850}",
         "$type": "color"
       },
       "raised": {
-        "$value": "{slate.800}",
+        "$value": "{gray.800}",
         "$type": "color"
       },
       "subtle": {
@@ -18,41 +18,77 @@
         "$type": "color"
       },
       "inverse": {
-        "$value": "{slate.50}",
+        "$value": "{gray.50}",
         "$type": "color"
       },
       "overlay": {
-        "$value": "rgb(0 0 0 / 0.6)",
+        "$value": "rgb(0 0 0 / 0.5)",
         "$type": "color"
       }
     },
     "glass": {
+      "tint": {
+        "$value": "rgb(40 43 52)",
+        "$type": "color"
+      },
+      "window": {
+        "$value": "color-mix(in srgb, {color.glass.tint} {glass.opacity.window}, transparent)",
+        "$type": "color"
+      },
+      "tile": {
+        "$value": "color-mix(in srgb, {color.glass.tint} {glass.opacity.tile}, transparent)",
+        "$type": "color"
+      },
+      "sheet": {
+        "$value": "color-mix(in srgb, {color.glass.tint} {glass.opacity.sheet}, transparent)",
+        "$type": "color"
+      },
+      "popover": {
+        "$value": "color-mix(in srgb, {color.glass.tint} {glass.opacity.popover}, transparent)",
+        "$type": "color"
+      },
+      "control": {
+        "$value": "color-mix(in srgb, {color.glass.tint} {glass.opacity.control}, transparent)",
+        "$type": "color"
+      },
       "surface": {
-        "$value": "color-mix(in srgb, {color.bg.surface} {glass.opacity}, transparent)",
+        "$value": "{color.glass.sheet}",
+        "$type": "color"
+      },
+      "edge": {
+        "$value": "rgb(255 255 255 / 0.12)",
+        "$type": "color"
+      },
+      "highlight": {
+        "$value": "rgb(255 255 255 / 0.1)",
         "$type": "color"
       }
     },
     "text": {
       "default": {
-        "$value": "{slate.50}",
+        "$value": "{gray.50}",
+        "$type": "color"
+      },
+      "secondary": {
+        "$value": "{gray.200}",
         "$type": "color"
       },
       "muted": {
-        "$value": "{slate.300}",
+        "$value": "{gray.300}",
         "$type": "color"
       },
       "inverse": {
-        "$value": "{slate.950}",
+        "$value": "{gray.900}",
         "$type": "color"
       },
       "link": {
-        "$value": "{slate.50}",
+        "$value": "{blue.300}",
         "$type": "color"
       }
     },
     "border": {
       "default": {
-        "$value": "rgb(255 255 255 / 0.11)",
+        "$value": "rgb(255 255 255 / 0.12)",
         "$type": "color"
       },
       "strong": {
@@ -61,20 +97,42 @@
       }
     },
     "focus": {
-      "$value": "{slate.50}",
+      "$value": "rgb(77 163 255 / 0.7)",
       "$type": "color"
     },
     "accent": {
       "bg": {
-        "$value": "{slate.50}",
+        "$value": "{blue.500}",
         "$type": "color"
       },
       "bg-hover": {
-        "$value": "{slate.200}",
+        "$value": "{blue.600}",
+        "$type": "color"
+      },
+      "bg-active": {
+        "$value": "{blue.700}",
         "$type": "color"
       },
       "fg": {
-        "$value": "{slate.950}",
+        "$value": "{gray.0}",
+        "$type": "color"
+      },
+      "subtle": {
+        "$value": "rgb(77 163 255 / 0.18)",
+        "$type": "color"
+      }
+    },
+    "ink": {
+      "bg": {
+        "$value": "{gray.50}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$value": "{gray.200}",
+        "$type": "color"
+      },
+      "fg": {
+        "$value": "{gray.900}",
         "$type": "color"
       },
       "subtle": {
@@ -84,25 +142,29 @@
     },
     "danger": {
       "bg": {
-        "$value": "{red.400}",
+        "$value": "{red.500}",
         "$type": "color"
       },
       "bg-hover": {
-        "$value": "{red.300}",
+        "$value": "{red.600}",
         "$type": "color"
       },
       "fg": {
-        "$value": "{slate.950}",
+        "$value": "{gray.0}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{red.400}",
         "$type": "color"
       }
     },
     "tether": {
       "slack": {
-        "$value": "rgb(255 255 255 / 0.22)",
+        "$value": "rgb(245 245 247 / 0.22)",
         "$type": "color"
       },
       "taut": {
-        "$value": "{slate.50}",
+        "$value": "{gray.50}",
         "$type": "color"
       }
     },
@@ -115,7 +177,7 @@
     "status": {
       "running": {
         "fg": {
-          "$value": "{slate.200}",
+          "$value": "{gray.200}",
           "$type": "color"
         },
         "bg": {
@@ -125,17 +187,17 @@
       },
       "waiting": {
         "fg": {
-          "$value": "{slate.950}",
+          "$value": "{gray.900}",
           "$type": "color"
         },
         "bg": {
-          "$value": "{slate.50}",
+          "$value": "{gray.50}",
           "$type": "color"
         }
       },
       "blocked": {
         "fg": {
-          "$value": "{slate.300}",
+          "$value": "{gray.300}",
           "$type": "color"
         },
         "bg": {
@@ -145,7 +207,7 @@
       },
       "done": {
         "fg": {
-          "$value": "{slate.300}",
+          "$value": "{gray.300}",
           "$type": "color"
         },
         "bg": {
@@ -155,7 +217,7 @@
       },
       "failed": {
         "fg": {
-          "$value": "{red.400}",
+          "$value": "{red.300}",
           "$type": "color"
         },
         "bg": {
@@ -167,7 +229,7 @@
     "risk": {
       "low": {
         "fg": {
-          "$value": "{slate.300}",
+          "$value": "{gray.300}",
           "$type": "color"
         },
         "bg": {
@@ -177,7 +239,7 @@
       },
       "medium": {
         "fg": {
-          "$value": "{slate.200}",
+          "$value": "{gray.200}",
           "$type": "color"
         },
         "bg": {
@@ -187,7 +249,7 @@
       },
       "high": {
         "fg": {
-          "$value": "{red.400}",
+          "$value": "{red.300}",
           "$type": "color"
         },
         "bg": {
@@ -202,39 +264,45 @@
         "$type": "color"
       },
       "added-fg": {
-        "$value": "{slate.200}",
+        "$value": "{gray.200}",
         "$type": "color"
       },
       "removed-bg": {
-        "$value": "color-mix(in srgb, {red.400} 12%, transparent)",
+        "$value": "color-mix(in srgb, {red.400} 14%, transparent)",
         "$type": "color"
       },
       "removed-fg": {
-        "$value": "{red.400}",
+        "$value": "{red.300}",
         "$type": "color"
       }
     }
   },
   "shadow": {
     "sm": {
-      "$value": "0 1px 2px rgb(0 0 0 / 0.5)"
-    },
-    "md": {
-      "$value": "0 16px 40px rgb(0 0 0 / 0.5)"
+      "$value": "0 1px 3px rgb(0 0 0 / 0.4)"
     },
     "card": {
-      "$value": "0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.3)"
+      "$value": "0 2px 6px rgb(0 0 0 / 0.3)"
+    },
+    "md": {
+      "$value": "0 30px 80px rgb(0 0 0 / 0.4), 0 2px 6px rgb(0 0 0 / 0.13)"
+    },
+    "sheet": {
+      "$value": "0 20px 50px rgb(0 0 0 / 0.35)"
     },
     "glow": {
-      "$value": "0 0 60px rgb(255 255 255 / 0.07)"
+      "$value": "{shadow.sheet}"
+    },
+    "accent": {
+      "$value": "0 6px 16px rgb(0 113 227 / 0.35)"
     }
   },
   "gradient": {
     "canvas": {
-      "$value": "linear-gradient(180deg, #07090d 0%, #0e1218 50%, #1a2029 100%)"
+      "$value": "radial-gradient(60% 55% at 12% 18%, #1c2840, transparent 70%), radial-gradient(50% 55% at 88% 12%, #2a2140, transparent 70%), radial-gradient(70% 60% at 70% 95%, #17282f, transparent 70%)"
     },
     "horizon": {
-      "$value": "radial-gradient(80% 45% at 50% 100%, rgb(255 255 255 / 0.07), transparent 70%)"
+      "$value": "radial-gradient(80% 50% at 50% 100%, rgb(255 255 255 / 0.04), transparent 70%)"
     }
   }
 }
