@@ -239,3 +239,17 @@ Each ends with green local checks, one commit, and a stop for your review.
 1. ~~Name~~ Decided: **Creance**, unscoped packages `creance` and `creance-tokens`. Names are claimed on first publish. Note: `hitl-ui` on npm targets the same space; the README will position against it.
 2. ~~Styling~~ Decided: plain CSS with the `cr-` prefix (§1).
 3. ~~Hosting~~ Decided: Storybook and the demo deploy to GitHub Pages in milestone 5.
+
+---
+
+## 9. What changed during the build
+
+Recorded so the plan stays an honest account, not just the starting intention.
+
+- **Tooling versions.** ESLint 9 rather than 10 (jsx-a11y doesn't support 10 yet) and TypeScript 6.0 rather than 7 (typescript-eslint supports below 6.1). `exactOptionalPropertyTypes` was dropped: it forced consumers to fight the prop types.
+- **Contrast checks.** Instead of a separate token-pair contrast unit test, axe runs every story in both light and dark colour schemes, which checks contrast on real rendered components. It caught a real failure (dimmed rejected hunks).
+- **`useAgentRun`** re-reduces the whole stream on each change instead of reducing only the new tail. It is simpler and fast enough for runs of hundreds of events; the incremental version is noted in the code for when runs get much longer.
+- **Added along the way:** `scenarioEvents()` and frozen-run stories give deterministic screenshots; `ToolCallCard.previousAttempts` keeps a retried call's earlier failure visible (the end-to-end test exposed that it disappeared after a successful retry); `timelineSteps()` and `inboxItems()` selectors; an Atomic import-direction lint rule.
+- **Visual baselines** are generated in the Playwright Docker image (`scripts/visual-docker.sh`), and the CI visual job runs in that same image.
+- **Release dry run** uses `pnpm publish --dry-run`, because Changesets v3's `publish` has no dry-run flag; `changeset status` runs alongside it.
+- **Radix Popover** was never needed; only Tooltip and Dialog are used.
