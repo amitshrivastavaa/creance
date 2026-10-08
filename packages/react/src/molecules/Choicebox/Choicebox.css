@@ -1,0 +1,74 @@
+.cr-choicebox {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+.cr-choicebox__legend {
+  margin-bottom: var(--cr-space-3);
+  padding: 0;
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-choicebox__options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--cr-space-3);
+}
+
+.cr-choicebox__card {
+  display: flex;
+  gap: var(--cr-space-3);
+  padding: var(--cr-space-4);
+  border-radius: var(--cr-radius-lg);
+  background: var(--cr-color-glass-tile);
+  cursor: pointer;
+  transition: background-color var(--cr-motion-duration-fast) var(--cr-motion-easing-standard),
+    box-shadow var(--cr-motion-duration-fast) var(--cr-motion-easing-standard);
+}
+
+.cr-choicebox__card:has(:checked) {
+  background: var(--cr-color-glass-popover);
+  box-shadow: 0 0 0 1.5px var(--cr-color-ink-bg);
+}
+
+.cr-choicebox__card:has(:disabled) {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.cr-choicebox__card:has(:focus-visible) {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-choicebox__input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  accent-color: var(--cr-color-ink-bg);
+  cursor: inherit;
+}
+
+.cr-choicebox__input:focus-visible {
+  outline: none;
+}
+
+.cr-choicebox__text {
+  display: grid;
+  gap: var(--cr-space-1);
+}
+
+.cr-choicebox__title {
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-choicebox__description {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+}

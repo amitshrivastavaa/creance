@@ -1,0 +1,61 @@
+.cr-clearable {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.cr-clearable > .cr-input {
+  padding-inline-end: 96px;
+}
+
+.cr-clearable[data-leading] > .cr-input {
+  padding-inline-start: 40px;
+}
+
+.cr-clearable[data-shape='pill'] > .cr-input {
+  border-radius: var(--cr-radius-full);
+}
+
+.cr-clearable__leading {
+  position: absolute;
+  left: 14px;
+  display: flex;
+  color: var(--cr-color-text-muted);
+  pointer-events: none;
+}
+
+.cr-clearable__trailing {
+  position: absolute;
+  right: 7px;
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+}
+
+.cr-clearable__clear {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-bg-subtle);
+  color: var(--cr-color-text-secondary);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.cr-clearable__clear:hover {
+  color: var(--cr-color-text-default);
+}
+
+.cr-clearable__clear:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+/* Hints such as a shortcut only make sense while the field is empty. */
+.cr-clearable:not([data-empty]) .cr-clearable__hint {
+  display: none;
+}

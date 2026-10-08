@@ -36,3 +36,11 @@ export const ShieldIcon = (p: IconProps) => <Icon {...p}><path d="M8 1.5l5 2v4c0
 export const ArrowDownIcon = (p: IconProps) => <Icon {...p}><path d="M8 3v10M4 9l4 4 4-4" /></Icon>;
 export const ChevronDownIcon = (p: IconProps) => <Icon {...p}><path d="M4 6l4 4 4-4" /></Icon>;
 export const InfoIcon = (p: IconProps) => <Icon {...p}><circle cx="8" cy="8" r="6.5" /><path d="M8 7.5v4M8 4.8v.01" /></Icon>;
+export const ChevronLeftIcon = (p: IconProps) => <Icon {...p}><path d="M10 4l-4 4 4 4" /></Icon>;
+export const SearchIcon = (p: IconProps) => <Icon {...p}><circle cx="7" cy="7" r="4.5" /><path d="M10.5 10.5l3 3" /></Icon>;
+export const CopyIcon = (p: IconProps) => <Icon {...p}><rect x="5" y="5" width="8" height="8" rx="2" /><path d="M3 10V4a1 1 0 0 1 1-1h6" /></Icon>;
+export const PlusIcon = (p: IconProps) => <Icon {...p}><path d="M8 3v10M3 8h10" /></Icon>;
+export const SunIcon = (p: IconProps) => <Icon {...p}><circle cx="8" cy="8" r="3" /><path d="M8 1.5v1.5M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1 1M11.6 11.6l1 1M3.4 12.6l1-1M11.6 4.4l1-1" /></Icon>;
+export const MoonIcon = (p: IconProps) => <Icon {...p}><path d="M13 9.5A5.5 5.5 0 0 1 6.5 3a5.5 5.5 0 1 0 6.5 6.5z" /></Icon>;
+export const MonitorIcon = (p: IconProps) => <Icon {...p}><rect x="2" y="3" width="12" height="8" rx="1.5" /><path d="M6 14h4M8 11v3" /></Icon>;
+export const ThumbIcon = (p: IconProps) => <Icon {...p}><path d="M5 7l2.5-5c1 0 1.8.8 1.6 1.8L8.7 6.5H12a1.5 1.5 0 0 1 1.5 1.8l-.8 4.5A1.5 1.5 0 0 1 11.2 14H5zM2 7h3v7H2z" /></Icon>;

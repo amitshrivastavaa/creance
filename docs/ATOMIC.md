@@ -16,7 +16,7 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 
 ## Where each component sits, and why
 
-### Atoms (17)
+### Atoms (18)
 
 | Component | Why it is an atom |
 |---|---|
@@ -31,9 +31,10 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **Tooltip** | Radix Tooltip with the kit's styling. Built on Radix because positioning, dismissal and hover/focus timing are the hard parts. |
 | **Input**, **Textarea**, **Select** | Native text controls, styled. `Select` is the native `<select>`, so the operating system draws its menu and it works on phones. |
 | **Checkbox**, **Radio**, **Switch** | Native inputs with their label. `Switch` is a checkbox with `role="switch"`, so it still submits with forms. Each carries its own label because a check without one is never correct. |
+| **Toggle** | A button that stays on or off (`aria-pressed`). |
 | **Separator**, **Skeleton** | A hairline and a loading placeholder, both hidden from screen readers by default. |
 
-### Molecules (14)
+### Molecules (29)
 
 | Component | Built from | Why it is a molecule |
 |---|---|---|
@@ -49,6 +50,15 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **Dialog** | Radix Dialog | Title, description and actions in a sheet over a dimmed page; traps and returns focus. |
 | **Toast** | Radix Toast + a small queue | `toast()` from anywhere, rendered by one `<Toaster />`; announced politely, kept while hovered. |
 | **Alert**, **Card** | — | A message in the page, and a glass tile. Generic, but they combine an icon, title and text (Alert) or set the tile's rhythm (Card), so they sit with the other composed pieces. |
+| **ClearableInput**, **SearchInput** | Input + clear button (+ icon, shortcut, spinner) | Clearing returns focus to the field; search sits in a named `search` landmark. |
+| **Combobox**, **MultiSelect** | Input + listbox | Hand-built ARIA 1.2 comboboxes: focus stays in the field, `aria-activedescendant` moves, matches are bolded, an optional create option. MultiSelect adds chips. No Radix equivalent exists. |
+| **Calendar** | Buttons in a grid | Day, week, month and year keys, single or range, `Intl` names. Hand-built. |
+| **Slider**, **ToggleGroup** | Radix Slider, Radix ToggleGroup | Value formatting for screen readers, range thumbs, marks; a segmented control. |
+| **Choicebox** | Native radios or checkboxes in cards | A choice that needs a sentence each. |
+| **CopyButton**, **TextWithCopy** | IconButton + live region | Copies, confirms with a check, announces "Copied". |
+| **SplitButton** | Button + Menu | A main action with alternatives. |
+| **LoadMoreButton**, **ShowMore** | Button + Spinner; a fade and a toggle | Keep the person's place in long lists and long text. |
+| **Feedback**, **ThemeSwitcher** | Toggle buttons + Textarea; native radios | A rating with an optional comment; light, dark or system, applied to `<html>`. |
 | **DiffLine** | — | Same reasoning. One line of a diff has several coordinated parts (two line numbers, a sign, `<ins>`/`<del>`, screen-reader text) and only makes sense inside a diff. A strict reading would call it an atom; it's here because of what it means, not how it's built. |
 
 ### Organisms (6)

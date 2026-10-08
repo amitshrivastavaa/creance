@@ -1,0 +1,47 @@
+/* Shared by Toggle and ToggleGroup items. */
+.cr-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: var(--cr-control-height-sm);
+  min-height: var(--cr-control-height-sm);
+  padding: 0 var(--cr-space-3);
+  border: 1px solid var(--cr-color-glass-edge);
+  border-radius: 10px;
+  background: var(--cr-color-glass-control);
+  color: var(--cr-color-text-secondary);
+  font: inherit;
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
+  cursor: pointer;
+  transition: background-color var(--cr-motion-duration-fast) var(--cr-motion-easing-standard),
+    color var(--cr-motion-duration-fast) var(--cr-motion-easing-standard);
+}
+
+.cr-toggle[data-size='md'] {
+  min-height: var(--cr-control-height-md);
+  padding: 0 var(--cr-space-4);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-toggle:hover:not(:disabled) {
+  color: var(--cr-color-text-default);
+}
+
+.cr-toggle[aria-pressed='true'] {
+  border-color: transparent;
+  background: var(--cr-color-ink-bg);
+  color: var(--cr-color-ink-fg);
+}
+
+.cr-toggle:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

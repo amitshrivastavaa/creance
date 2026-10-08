@@ -1,0 +1,9 @@
+.cr-copy-button[data-copied] {
+  border-color: transparent;
+  background: var(--cr-color-ink-bg);
+  color: var(--cr-color-ink-fg);
+}
+
+.cr-copy-button[data-copied]:hover:not(:disabled) {
+  background: var(--cr-color-ink-bg-hover);
+}

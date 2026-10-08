@@ -1,0 +1,83 @@
+.cr-slider {
+  display: grid;
+  gap: var(--cr-space-3);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+.cr-slider[data-disabled] {
+  opacity: 0.55;
+}
+
+.cr-slider__head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--cr-space-3);
+}
+
+.cr-slider__label {
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-slider__value {
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+.cr-slider__root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 24px;
+  touch-action: none;
+  user-select: none;
+}
+
+.cr-slider__track {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  overflow: hidden;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-border-default);
+}
+
+.cr-slider__range {
+  position: absolute;
+  height: 100%;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-ink-bg);
+}
+
+.cr-slider__thumb {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-bg-raised);
+  box-shadow: 0 2px 6px var(--cr-color-border-strong), inset 0 0 0 0.5px var(--cr-color-border-default);
+  cursor: grab;
+}
+
+.cr-slider__thumb:active {
+  cursor: grabbing;
+}
+
+.cr-slider__thumb:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-slider__marks {
+  display: flex;
+  justify-content: space-between;
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}
+
+.cr-slider__marks [data-active] {
+  color: var(--cr-color-text-default);
+  font-weight: var(--cr-font-weight-semibold);
+}

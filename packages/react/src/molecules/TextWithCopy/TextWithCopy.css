@@ -1,0 +1,28 @@
+.cr-text-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  max-width: 100%;
+  color: var(--cr-color-text-default);
+}
+
+.cr-text-copy__text {
+  min-width: 0;
+  overflow: hidden;
+  font-family: var(--cr-font-family-mono);
+  font-size: 0.93em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cr-text-copy[data-variant='block'] {
+  display: flex;
+  padding: 6px 6px 6px var(--cr-space-4);
+  border-radius: 14px;
+  background: var(--cr-color-bg-subtle);
+}
+
+.cr-text-copy[data-variant='block'] .cr-text-copy__text {
+  flex: 1;
+  font-size: var(--cr-font-size-md);
+}

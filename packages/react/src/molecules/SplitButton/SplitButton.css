@@ -1,0 +1,32 @@
+.cr-split-button {
+  display: inline-flex;
+  /* Keep its own height when a grid or flex parent would stretch it. */
+  align-self: flex-start;
+  border-radius: var(--cr-radius-full);
+}
+
+.cr-split-button[data-variant='primary'] {
+  box-shadow: var(--cr-shadow-accent);
+}
+
+.cr-split-button .cr-button {
+  box-shadow: none;
+}
+
+.cr-split-button__main {
+  padding-inline-end: var(--cr-space-4);
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+.cr-split-button__arrow {
+  min-width: 42px;
+  padding: 0;
+  border-inline-start: 1px solid var(--cr-color-border-default);
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+
+.cr-split-button[data-variant='primary'] .cr-split-button__arrow {
+  border-inline-start-color: var(--cr-color-glass-edge);
+}

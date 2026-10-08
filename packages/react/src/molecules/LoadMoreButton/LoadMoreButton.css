@@ -1,0 +1,8 @@
+.cr-load-more {
+  width: 100%;
+}
+
+.cr-load-more[aria-busy='true'] {
+  cursor: progress;
+  opacity: 0.7;
+}
