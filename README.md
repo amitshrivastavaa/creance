@@ -24,19 +24,19 @@ Creance is a design system for those screens. It deliberately has no chat compon
 
 ## What's in it
 
-22 components across four Atomic Design levels, plus a typed event model and a run simulator. [`docs/ATOMIC.md`](docs/ATOMIC.md) explains where each one sits and why.
+90 components across four Atomic Design levels, plus a typed event model and a run simulator. The general-purpose set covers the same ground as Vercel's Geist component list (built in Creance's own style, not copied); the agent-specific organisms are Creance's own. [`docs/ATOMIC.md`](docs/ATOMIC.md) explains where each one sits and why.
 
 | Level | Components |
 |---|---|
-| **Atoms** (9) | Button, IconButton, Badge, Spinner, Kbd, Code, ProgressBar, Avatar, Tooltip |
-| **Molecules** (6) | StatusBadge ("Running · 12s"), ToolCallHeader, RiskLabel, BudgetMeter, DiffLine, KeyboardHint |
-| **Organisms** (6) | **ApprovalPrompt**, **ToolCallCard**, **RunTimeline**, **DiffReview**, **NeedsYouInbox**, **AgentHandoffBanner** |
+| **Atoms** (23) | Button, IconButton, Toggle, Badge, StatusDot, Spinner, LoadingDots, Skeleton, Kbd, Code, ProgressBar, Gauge, Avatar, Tooltip, Input, Textarea, Select, Checkbox, Radio, Switch, Separator, MiddleTruncate, ErrorMessage |
+| **Molecules** (54) | Forms: Field, RadioGroup, Choicebox, ClearableInput, SearchInput, Combobox, MultiSelect, Calendar, Slider, ToggleGroup, ThemeSwitcher, Feedback. Actions: SplitButton, CopyButton, TextWithCopy, LoadMoreButton, ShowMore. Navigation: Tabs, Menu, ContextMenu, DotsMenu, CommandMenu, Breadcrumbs, Pagination, Scroller, Collapse. Overlays: Dialog, Sheet, DestructiveActionModal, ContextCard, RelativeTimeCard, Toast. Data: Table, FileTree, JsonView, Snippet, Entity, Description, EmptyState, Card. Feedback and media: Alert, Banner, ProjectBanner, ErrorCard, BrowserFrame, PhoneFrame, Video. Agent: StatusBadge ("Running · 12s"), ToolCallHeader, RiskLabel, BudgetMeter, ConfidenceMeter, DiffLine, KeyboardHint |
+| **Organisms** (12) | **ApprovalPrompt**, **ToolCallCard**, **RunTimeline**, **DiffReview**, **NeedsYouInbox**, **AgentHandoffBanner**, **FleetSky**, **PlanEditor**, **QuestionCard**, **KillSwitch**, **CheckpointRewind**, **PermissionLedger** |
 | **Template** (1) | AgentRunLayout |
 | **Page** | `apps/demo`, wired to the simulator |
 
 | Package | What it is |
 |---|---|
-| [`creance-tokens`](packages/tokens) | Design tokens in JSON, built with Style Dictionary into CSS custom properties (light, dark, reduced motion) and a typed JS export |
+| [`creance-tokens`](packages/tokens) | Design tokens in JSON, built with Style Dictionary into CSS custom properties (light, dark, solid surfaces for reduced transparency, reduced motion) and a typed JS export |
 | [`creance`](packages/react) | The components, the event model, `useAgentRun`, selectors, and `creance/simulator` |
 | [`apps/docs`](apps/docs) | Storybook: usage guidelines for every organism, a Tokens page, live stories |
 | [`apps/demo`](apps/demo) | A Vite app that runs one full scenario, consuming the built package like any app would |
@@ -90,7 +90,7 @@ The target is WCAG 2.2 AA. What is in place, and how it's checked:
 - **Motion:** all durations come from tokens that drop to `0ms` under `prefers-reduced-motion`; the spinner and pulsing badge stop, and "Jump to latest" scrolls instantly.
 - **Not colour alone:** every status and risk level has an icon and text.
 
-The automated checks caught real problems during development: rejected diff hunks dimmed with opacity failed contrast in both themes, headings skipped a level in the demo and template, and a shared stylesheet with the screen-reader-only class was being tree-shaken out of the Storybook bundle. Automated checks don't replace testing with assistive technology; I haven't yet run a structured screen-reader pass (VoiceOver and NVDA) on every organism, and that is the next accessibility task.
+The automated checks caught real problems during development: rejected diff hunks dimmed with opacity failed contrast in both themes, headings skipped a level in the demo and template, and a shared stylesheet with the screen-reader-only class was being tree-shaken out of the Storybook bundle. Building the full library surfaced more: two red-on-tint combinations at 4.29:1 and 4.16:1, two unnamed `search` landmarks on one page, two controls whose visible text was missing from their accessible name, and a FleetSky canvas that stayed blank under reduced motion. Bundle measurement also showed the single-file build kept every component for any import; the package now ships one module per source file, and importing only ApprovalPrompt costs 1.87 kB. Automated checks don't replace testing with assistive technology; I haven't yet run a structured screen-reader pass (VoiceOver and NVDA) on every organism, and that is the next accessibility task.
 
 ## Testing and quality gates
 
@@ -102,7 +102,7 @@ All of these run in GitHub Actions on every push and pull request (`.github/work
 | Lint | ESLint (typescript-eslint, react-hooks, jsx-a11y), Atomic import-direction rules, raw-colour check on CSS | Repo |
 | Unit and interaction | Vitest + React Testing Library | Reducer, selectors, simulator, codemod, keyboard and focus behaviour of each organism (35 tests) |
 | Accessibility | Storybook addon-vitest + axe, violations fail the build | Every story, in light **and** dark (92 stories, 184 runs) |
-| Visual regression | Playwright screenshots, Linux baselines from the Playwright Docker image | 14 key stories × light and dark (28 screenshots) |
+| Visual regression | Playwright screenshots, Linux baselines from the Playwright Docker image | 46 key stories × light and dark (92 screenshots) |
 | End to end | Playwright + axe | The demo: the full scenario, and the deny path |
 | Bundle size | size-limit | All components 9 kB, ApprovalPrompt alone 2.5 kB, CSS 4 kB, simulator 2.5 kB (brotli) |
 | Release | Changesets status + `pnpm publish --dry-run` | Both packages |
