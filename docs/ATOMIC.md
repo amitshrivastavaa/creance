@@ -34,7 +34,7 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **Toggle** | A button that stays on or off (`aria-pressed`). |
 | **Separator**, **Skeleton** | A hairline and a loading placeholder, both hidden from screen readers by default. |
 
-### Molecules (29)
+### Molecules (36)
 
 | Component | Built from | Why it is a molecule |
 |---|---|---|
@@ -59,6 +59,10 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **SplitButton** | Button + Menu | A main action with alternatives. |
 | **LoadMoreButton**, **ShowMore** | Button + Spinner; a fade and a toggle | Keep the person's place in long lists and long text. |
 | **Feedback**, **ThemeSwitcher** | Toggle buttons + Textarea; native radios | A rating with an optional comment; light, dark or system, applied to `<html>`. |
+| **Breadcrumbs**, **Pagination** | Links; buttons | Where you are, folding long trails; page numbers with gaps folded. |
+| **CommandMenu** | Radix Dialog + the Combobox keyboard model | ⌘K search across agents, runs and actions, grouped. |
+| **ContextMenu**, **DotsMenu** | Radix ContextMenu; IconButton + Menu | Secondary actions on right-click or a "…" button, sharing Menu's styles. |
+| **Scroller**, **Collapse** | A focusable region; Radix Accordion | A horizontal strip with edge fades; sections that open and close, at a chosen heading level. |
 | **DiffLine** | — | Same reasoning. One line of a diff has several coordinated parts (two line numbers, a sign, `<ins>`/`<del>`, screen-reader text) and only makes sense inside a diff. A strict reading would call it an atom; it's here because of what it means, not how it's built. |
 
 ### Organisms (6)

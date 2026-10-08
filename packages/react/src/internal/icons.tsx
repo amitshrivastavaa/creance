@@ -44,3 +44,4 @@ export const SunIcon = (p: IconProps) => <Icon {...p}><circle cx="8" cy="8" r="3
 export const MoonIcon = (p: IconProps) => <Icon {...p}><path d="M13 9.5A5.5 5.5 0 0 1 6.5 3a5.5 5.5 0 1 0 6.5 6.5z" /></Icon>;
 export const MonitorIcon = (p: IconProps) => <Icon {...p}><rect x="2" y="3" width="12" height="8" rx="1.5" /><path d="M6 14h4M8 11v3" /></Icon>;
 export const ThumbIcon = (p: IconProps) => <Icon {...p}><path d="M5 7l2.5-5c1 0 1.8.8 1.6 1.8L8.7 6.5H12a1.5 1.5 0 0 1 1.5 1.8l-.8 4.5A1.5 1.5 0 0 1 11.2 14H5zM2 7h3v7H2z" /></Icon>;
+export const DotsIcon = (p: IconProps) => <Icon {...p}><circle cx="3.5" cy="8" r="1.2" fill="currentColor" stroke="none" /><circle cx="8" cy="8" r="1.2" fill="currentColor" stroke="none" /><circle cx="12.5" cy="8" r="1.2" fill="currentColor" stroke="none" /></Icon>;

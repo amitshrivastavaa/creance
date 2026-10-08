@@ -1,0 +1,69 @@
+.cr-scroller {
+  position: relative;
+}
+
+.cr-scroller__track {
+  display: flex;
+  gap: var(--cr-space-3);
+  padding: var(--cr-space-1);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  /* Snap to the padding edge, so the strip rests at scrollLeft 0 and shows no start fade. */
+  scroll-padding-inline: var(--cr-space-1);
+  scrollbar-width: none;
+}
+
+.cr-scroller__track::-webkit-scrollbar {
+  display: none;
+}
+
+.cr-scroller__track > * {
+  flex: none;
+  scroll-snap-align: start;
+}
+
+.cr-scroller__track:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+  border-radius: var(--cr-radius-md);
+}
+
+/* Fade only the edges that have more beyond them. */
+.cr-scroller[data-start] .cr-scroller__track {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 80px);
+  mask-image: linear-gradient(to right, transparent, black 80px);
+}
+
+.cr-scroller[data-end] .cr-scroller__track {
+  -webkit-mask-image: linear-gradient(to left, transparent, black 80px);
+  mask-image: linear-gradient(to left, transparent, black 80px);
+}
+
+.cr-scroller[data-start][data-end] .cr-scroller__track {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
+  mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
+}
+
+.cr-scroller__arrow {
+  position: absolute;
+  top: 50%;
+  display: none;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--cr-color-glass-edge);
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-glass-popover);
+  box-shadow: var(--cr-shadow-sheet);
+  color: var(--cr-color-text-default);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.cr-scroller__arrow[data-side='start'] { left: 8px; }
+.cr-scroller__arrow[data-side='end'] { right: 8px; }
+
+.cr-scroller:is(:hover, :focus-within)[data-start] .cr-scroller__arrow[data-side='start'],
+.cr-scroller:is(:hover, :focus-within)[data-end] .cr-scroller__arrow[data-side='end'] {
+  display: grid;
+}
