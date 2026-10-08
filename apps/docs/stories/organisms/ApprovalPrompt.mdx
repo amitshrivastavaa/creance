@@ -33,7 +33,9 @@ The simulated agent investigates a failing deploy, then asks to install a packag
 
 <ArgTypes of={Stories} />
 
-`onApprove` receives the scope, `'once'` or `'always'`. Pass `decision` once the person has answered and the prompt switches to its resolved state.
+`onAllow` receives the scope, `'once'` or `'always'`. Pass `decision` once the person has answered and the prompt switches to its resolved state.
+
+> **Deprecated: `onApprove`.** Renamed to `onAllow` in 0.2.0 so the prop matches the buttons people actually press. `onApprove` still works and logs a one-time warning in development; it will be removed in 1.0. Run `npx creance-codemod-on-allow src` to migrate, or see `docs/MIGRATIONS.md`.
 
 ## Accessibility
 

@@ -70,10 +70,28 @@ jobs:
             test-results
           retention-days: 7
 
+  release-dry-run:
+    name: Changesets status and publish dry run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # Lists pending changesets and the version bumps they would make.
+      - run: pnpm changeset status
+      # Builds and packs both packages exactly as `npm publish` would, without publishing.
+      - run: pnpm release:dry-run
+
   pages:
     name: Deploy Storybook and demo to GitHub Pages
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: [checks, storybook-a11y, visual-and-e2e]
+    needs: [checks, storybook-a11y, visual-and-e2e, release-dry-run]
     runs-on: ubuntu-latest
     permissions:
       pages: write

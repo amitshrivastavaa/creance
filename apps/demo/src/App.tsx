@@ -121,7 +121,7 @@ function Run({ speed, onSpeedChange, onRestart }: { speed: number; onSpeedChange
                 risk={approval.risk}
                 reason={approval.reason}
                 headingLevel={2}
-                onApprove={(scope) =>
+                onAllow={(scope) =>
                   sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: scope === 'once' ? 'allow-once' : 'always-allow' })
                 }
                 onDeny={() => sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: 'deny' })}

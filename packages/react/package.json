@@ -1,6 +1,6 @@
 {
   "name": "creance",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "React components for human-in-the-loop agent interfaces: approvals, tool calls, run timelines, diff review and handoffs.",
   "license": "MIT",
   "type": "module",
@@ -20,7 +20,7 @@
   },
   "files": [
     "dist",
-    "codemods"
+    "codemods/*.mjs"
   ],
   "scripts": {
     "build": "vite build && tsc -p tsconfig.build.json",
@@ -63,5 +63,8 @@
   ],
   "engines": {
     "node": ">=18"
+  },
+  "bin": {
+    "creance-codemod-on-allow": "./codemods/on-approve-to-on-allow.mjs"
   }
 }

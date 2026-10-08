@@ -5,6 +5,7 @@ import { Code } from '../../atoms/Code/Code';
 import { KeyboardHint } from '../../molecules/KeyboardHint/KeyboardHint';
 import { RiskLabel, type Risk } from '../../molecules/RiskLabel/RiskLabel';
 import { cx } from '../../internal/cx';
+import { deprecate } from '../../internal/deprecate';
 import { LiveRegion } from '../../internal/LiveRegion';
 import './ApprovalPrompt.css';
 
@@ -19,7 +20,12 @@ export interface ApprovalPromptProps {
   /** Why the agent wants to do this, in the agent's words. */
   reason: string;
   agentName?: string | undefined;
-  /** Called with the scope the person approved. */
+  /** Called with the scope the person allowed: just this once, or always. */
+  onAllow?: (scope: 'once' | 'always') => void;
+  /**
+   * @deprecated Renamed to `onAllow` in 0.2.0, to match the "Allow" buttons. Still works, with a
+   * development warning; removed in 1.0. Run `npx creance-codemod-on-allow src` to migrate.
+   */
   onApprove?: (scope: 'once' | 'always') => void;
   onDeny?: () => void;
   /** Once set, the prompt shows the outcome instead of the buttons. */
@@ -46,6 +52,7 @@ export function ApprovalPrompt({
   risk,
   reason,
   agentName = 'The agent',
+  onAllow,
   onApprove,
   onDeny,
   decision,
@@ -60,6 +67,17 @@ export function ApprovalPrompt({
   const rootRef = useRef<HTMLDivElement>(null);
   const outcomeRef = useRef<HTMLParagraphElement>(null);
   const Heading = `h${headingLevel}` as const;
+
+  const usesOnApprove = onApprove !== undefined;
+  useEffect(() => {
+    if (usesOnApprove) {
+      deprecate(
+        'ApprovalPrompt.onApprove',
+        'ApprovalPrompt: `onApprove` is deprecated and will be removed in 1.0. Rename it to `onAllow`. See docs/MIGRATIONS.md.',
+      );
+    }
+  }, [usesOnApprove]);
+  const allow = onAllow ?? onApprove;
 
   useEffect(() => {
     if (autoFocus && !decision) rootRef.current?.focus();
@@ -77,8 +95,8 @@ export function ApprovalPrompt({
     if (!shortcuts || decision || e.metaKey || e.ctrlKey || e.altKey) return;
     if ((e.target as HTMLElement).closest('input, textarea, select, [contenteditable="true"]')) return;
     const key = e.key.toLowerCase();
-    if (key === 'a' && e.shiftKey && allowAlways) onApprove?.('always');
-    else if (key === 'a' && !e.shiftKey) onApprove?.('once');
+    if (key === 'a' && e.shiftKey && allowAlways) allow?.('always');
+    else if (key === 'a' && !e.shiftKey) allow?.('once');
     else if (key === 'd' && !e.shiftKey) onDeny?.();
     else return;
     e.preventDefault();
@@ -124,11 +142,11 @@ export function ApprovalPrompt({
         </p>
       ) : (
         <div className="cr-approval__actions">
-          <Button variant="primary" onClick={() => onApprove?.('once')} aria-keyshortcuts={shortcuts ? 'A' : undefined}>
+          <Button variant="primary" onClick={() => allow?.('once')} aria-keyshortcuts={shortcuts ? 'A' : undefined}>
             Allow once {shortcuts && <KeyboardHint keys={['A']} />}
           </Button>
           {allowAlways && (
-            <Button onClick={() => onApprove?.('always')} aria-keyshortcuts={shortcuts ? 'Shift+A' : undefined}>
+            <Button onClick={() => allow?.('always')} aria-keyshortcuts={shortcuts ? 'Shift+A' : undefined}>
               Always allow {shortcuts && <KeyboardHint keys={['Shift', 'A']} />}
             </Button>
           )}

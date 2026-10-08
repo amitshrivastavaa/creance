@@ -17,7 +17,7 @@ import { ApprovalPrompt } from 'creance';
   target="web/package.json"
   risk="medium"
   reason="server/validate.ts imports zod, but it is missing from dependencies."
-  onApprove={(scope) => allow(scope)}
+  onAllow={(scope) => allow(scope)}
   onDeny={deny}
 />;
 ```

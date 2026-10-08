@@ -1,5 +1,13 @@
 # creance
 
+## 0.2.0
+
+### Minor Changes
+
+- `ApprovalPrompt`: new `onAllow` prop replaces `onApprove`, matching the **Allow once** / **Always allow** buttons. `onApprove` is deprecated: it keeps working, logs a one-time warning in development, and will be removed in 1.0. Migrate by renaming the prop, or run `npx creance-codemod-on-allow src`. See [docs/MIGRATIONS.md](../../docs/MIGRATIONS.md#020-approvalprompt-onapprove--onallow).
+  
+  `ToolCallCard`: new `previousAttempts` prop, so a call that succeeded on retry still shows why earlier attempts failed.
+
 ## 0.1.0
 
 ### Minor Changes

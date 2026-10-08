@@ -14,7 +14,7 @@ const meta = {
     risk: 'medium',
     reason:
       'server/validate.ts imports zod, but it is missing from dependencies, so the production build fails. Installing adds one runtime package and changes the lockfile.',
-    onApprove: fn(),
+    onAllow: fn(),
     onDeny: fn(),
     autoFocus: false,
   },
@@ -50,7 +50,7 @@ export const Interactive: Story = {
       <ApprovalPrompt
         {...args}
         decision={decision}
-        onApprove={(scope) => setDecision(scope === 'once' ? 'allow-once' : 'always-allow')}
+        onAllow={(scope) => setDecision(scope === 'once' ? 'allow-once' : 'always-allow')}
         onDeny={() => setDecision('deny')}
       />
     );
@@ -73,7 +73,7 @@ export const Live: Story = {
             reason={approval.reason}
             decision={approval.decision}
             autoFocus={args.autoFocus}
-            onApprove={(scope) =>
+            onAllow={(scope) =>
               sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: scope === 'once' ? 'allow-once' : 'always-allow' })
             }
             onDeny={() => sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: 'deny' })}
