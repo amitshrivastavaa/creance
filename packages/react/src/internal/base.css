@@ -18,11 +18,14 @@
 /*
  * Liquid Glass. Reserved for the functional layer that floats above content: controls, bars,
  * toolbars, menus, popovers and sheets. Public, so apps can use it for their own controls.
- *   ::before  the lens: tint (--cr-glass-fill), backdrop blur and saturation, plus refraction
- *             (--cr-glass-lens, set by useLiquidGlass in Chromium)
- *   ::after   the specular rim, brighter where light would catch the edge
- * Reduced transparency or increased contrast make the fill opaque, and invalidate the
- * backdrop-filter (its blur variable becomes `none`), which removes blur and refraction together.
+ *   ::before  the lens: tint (--cr-glass-fill), blur and saturation (--cr-glass-blur), and
+ *             refraction with magnification and colour fringing (--cr-glass-lens, set by
+ *             useLiquidGlass in Chromium)
+ *   ::after   glare, blended soft-light so it brightens rather than whitewashes
+ *   box-shadow  the edges: a bright crescent where light catches, a fainter opposite rim,
+ *             an inner glow for thickness, a hairline and a soft drop shadow
+ * Reduced transparency or increased contrast make the fill opaque and set the blur variable to
+ * `none`, which invalidates the whole backdrop-filter, removing blur and refraction together.
  */
 .cr-glass {
   --cr-glass-fill: var(--cr-color-glass-surface);
@@ -54,11 +57,9 @@
 }
 
 .cr-glass::after {
-  padding: 1px;
-  background: var(--cr-gradient-rim);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  z-index: -1;
+  background: var(--cr-gradient-glare);
+  mix-blend-mode: soft-light;
 }
 
 /* Content: solid, quiet surfaces. Glass is for what floats above them. */

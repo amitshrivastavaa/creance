@@ -10,7 +10,16 @@ import { useId, useLayoutEffect, useState, type ReactNode, type RefObject } from
 
 const cache = new Map<string, string>();
 
-/** Encodes, per pixel, the outward edge normal scaled by closeness to the edge: R = x, G = y, 128 = none. */
+/** How much the whole body magnifies, like a convex lens, on top of the edge refraction. */
+const MAGNIFY = 0.1;
+/** Chromatic aberration: green and blue are displaced this much less than red, per step. */
+const FRINGE = 0.06;
+
+/**
+ * Encodes, per pixel, where to sample the backdrop from: R = x, G = y, 128 = no shift.
+ * Near the rounded edge the shift follows the outward normal with a sharp (cubic) roll-off, which
+ * compresses content into the rim; across the body a small radial term magnifies it.
+ */
 function lensMap(w: number, h: number, r: number, depth: number): string {
   const key = `${w}x${h}x${r}x${depth}`;
   const hit = cache.get(key);
@@ -47,10 +56,12 @@ function lensMap(w: number, h: number, r: number, depth: number): string {
         inside = r - qy;
       }
       const t = Math.max(0, Math.min(1, 1 - inside / depth));
-      const strength = t * t;
+      const edge = t * t * t;
+      const dx = Math.sign(px || 1) * nx * edge + (px / (w / 2)) * MAGNIFY;
+      const dy = Math.sign(py || 1) * ny * edge + (py / (h / 2)) * MAGNIFY;
       const i = (y * w + x) * 4;
-      img.data[i] = 128 + Math.sign(px || 1) * nx * strength * 127;
-      img.data[i + 1] = 128 + Math.sign(py || 1) * ny * strength * 127;
+      img.data[i] = 128 + Math.max(-1, Math.min(1, dx)) * 127;
+      img.data[i + 1] = 128 + Math.max(-1, Math.min(1, dy)) * 127;
       img.data[i + 2] = 128;
       img.data[i + 3] = 255;
     }
@@ -113,9 +124,17 @@ export function useLiquidGlass<T extends HTMLElement>(ref: RefObject<T | null>, 
   }, [ref, box, id]);
 
   if (!box || box.w < 2 || box.h < 2) return null;
-  const depth = Math.max(4, Math.min(18, box.h / 2.4, box.w / 2.4));
-  const href = lensMap(box.w, box.h, box.r, Math.round(depth));
+  const depth = Math.round(Math.max(4, Math.min(22, box.h / 2.2, box.w / 2.2)));
+  const href = lensMap(box.w, box.h, box.r, depth);
   if (!href) return null;
+  const scale = -depth * 1.6;
+  // One displacement per colour channel, each a little weaker, recombined: a faint rainbow fringe.
+  const channel = (n: number, matrix: string) => (
+    <>
+      <feDisplacementMap in="SourceGraphic" in2="map" scale={scale * (1 - n * FRINGE)} xChannelSelector="R" yChannelSelector="G" result={`d${n}`} />
+      <feColorMatrix in={`d${n}`} type="matrix" values={matrix} result={`c${n}`} />
+    </>
+  );
   return (
     <svg aria-hidden="true" focusable="false" width="0" height="0" style={{ position: 'absolute', pointerEvents: 'none' }}>
       <filter
@@ -128,7 +147,11 @@ export function useLiquidGlass<T extends HTMLElement>(ref: RefObject<T | null>, 
         colorInterpolationFilters="sRGB"
       >
         <feImage href={href} x="0" y="0" width={box.w} height={box.h} result="map" />
-        <feDisplacementMap in="SourceGraphic" in2="map" scale={-depth * 1.4} xChannelSelector="R" yChannelSelector="G" />
+        {channel(0, '1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0')}
+        {channel(1, '0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0')}
+        {channel(2, '0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0')}
+        <feBlend in="c0" in2="c1" mode="screen" result="c01" />
+        <feBlend in="c01" in2="c2" mode="screen" />
       </filter>
     </svg>
   );

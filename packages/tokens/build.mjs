@@ -60,6 +60,7 @@ ${withScheme(darkCss, 'dark')}
     --${PREFIX}-glass-opacity-clear: 100%;
     --${PREFIX}-glass-filter: none;
     --${PREFIX}-glass-filter-clear: none;
+    --${PREFIX}-glass-filter-control: none;
   }
 }
 :root[data-transparency="reduce"] {
@@ -70,6 +71,7 @@ ${withScheme(darkCss, 'dark')}
   --${PREFIX}-glass-opacity-clear: 100%;
   --${PREFIX}-glass-filter: none;
   --${PREFIX}-glass-filter-clear: none;
+  --${PREFIX}-glass-filter-control: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

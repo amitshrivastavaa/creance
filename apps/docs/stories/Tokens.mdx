@@ -27,6 +27,8 @@ Creance follows Apple's [Liquid Glass](https://developer.apple.com/documentation
 
 The material has three layers: a tinted fill with backdrop blur and saturation; **refraction**, where content behind bends near the rounded edges like a lens (an SVG displacement filter sized to each element; Chromium only, other browsers get the rest); and a **specular rim** that catches light on the edges. Tinted glass (primary, danger) uses a deep, translucent fill so white text stays above 4.5:1. Controls swell and brighten when pressed, and content scrolling under the run header gets Apple's scroll edge effect.
 
+**Known limit.** Apple's glass samples the content beneath it and flips between light and dark appearances to stay legible. CSS can't read the backdrop's colours, so Creance's glass can't adapt: over very bright or busy content, text on clear glass can fall below 4.5:1 (see **Atoms / Button / Over Content**). Keep glass controls over the canvas or calm content, which is where the contrast tests check them.
+
 One switch makes all of it solid, with no blur or refraction:
 
 - `prefers-reduced-transparency: reduce` (the macOS and iOS "Reduce transparency" setting)

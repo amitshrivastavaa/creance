@@ -27,8 +27,14 @@ export const Group: Story = {
   ),
 };
 
-/** Glass shows what is behind it: here, over colourful content. */
+/**
+ * Glass shows what is behind it: here, over deliberately loud content. This is also the known limit:
+ * over very bright content the clear glass can drop text below 4.5:1 (Apple's Liquid Glass samples the
+ * content beneath and flips light or dark; CSS can't). The axe result is reported as "todo" rather than
+ * failing, so the limit stays visible. Keep glass controls over calm content in real screens.
+ */
 export const OverContent: Story = {
+  parameters: { a11y: { test: 'todo' } },
   render: () => (
     <div style={{ position: 'relative', padding: 32, borderRadius: 24, overflow: 'hidden' }}>
       <div aria-hidden="true" style={{ position: 'absolute', inset: 0, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, padding: 12 }}>

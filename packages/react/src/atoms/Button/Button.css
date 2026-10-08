@@ -27,16 +27,19 @@
 
 .cr-button.cr-glass {
   --cr-glass-fill: var(--cr-color-glass-control);
+  --cr-glass-blur: var(--cr-glass-filter-control);
 }
 
 .cr-button[data-variant='primary'] {
   --cr-glass-fill: var(--cr-color-accent-glass);
   color: var(--cr-color-accent-fg);
+  text-shadow: var(--cr-shadow-text);
 }
 
 .cr-button[data-variant='danger'] {
   --cr-glass-fill: var(--cr-color-danger-glass);
   color: var(--cr-color-danger-fg);
+  text-shadow: var(--cr-shadow-text);
 }
 
 /*

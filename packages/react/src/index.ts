@@ -5,6 +5,7 @@ export * from './atoms/Button';
 export * from './atoms/Code';
 export * from './atoms/IconButton';
 export * from './atoms/Kbd';
+export * from './atoms/LiquidGlass';
 export * from './atoms/ProgressBar';
 export * from './atoms/Spinner';
 export * from './atoms/Tooltip';
