@@ -1,0 +1,48 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './AgentHandoffBanner.stories';
+
+<Meta of={Stories} />
+
+# AgentHandoffBanner
+
+Tells the person the agent has finished, or stopped, and that control is back with them. It summarises what the agent did and what state things are in, and offers the next actions.
+
+<Canvas of={Stories.Completed} />
+
+## When to use
+
+- At the end of a run, successful or not.
+- When an agent stops early, for example after a denied approval, so the person knows the run is not just stalled.
+
+## When not to use
+
+- **Progress updates.** Use the **RunTimeline**. The banner marks the end of the agent's turn.
+- **Errors mid-run.** Those belong on the step that failed.
+
+## Live
+
+Deny the approval in the live run to see the "stopped" variant.
+
+<Canvas of={Stories.Live} />
+
+## Variants
+
+<Canvas of={Stories.Stopped} />
+<Canvas of={Stories.Failed} />
+
+## Props
+
+<ArgTypes of={Stories} />
+
+## Accessibility
+
+- **Structure.** A labelled section. The heading says who handed back and how: "Deploy Fixer finished and handed back to you".
+- **Focus.** By default the heading takes focus when the banner appears, so keyboard and screen-reader users land on the summary and next actions without hunting. Turn `focusOnMount` off when the banner is shown on page load, for example in history.
+- **Announcement.** The headline and summary are announced through a polite live region.
+- **Outcome.** Completed, stopped and failed differ in the heading text, not only in the accent colour.
+
+## Do and don't
+
+- **Do** say what was left undone: "Nothing has been deployed yet."
+- **Don't** claim success the agent didn't verify. Report what was checked ("All 42 tests pass").
+- **Do** make the most likely next step the one primary action.

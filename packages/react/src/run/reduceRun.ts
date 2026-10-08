@@ -1,5 +1,7 @@
-import type { AgentEvent, AgentInfo, Budget, DiffHunk, NextAction } from '../events';
+import type { AgentEvent, AgentInfo, Budget } from '../events';
+import type { HandoffAction } from '../organisms/AgentHandoffBanner';
 import type { ApprovalDecision } from '../organisms/ApprovalPrompt';
+import type { DiffHunk } from '../organisms/DiffReview';
 import type { Risk } from '../molecules/RiskLabel';
 import type { ToolCallStatus } from '../molecules/ToolCallHeader';
 
@@ -78,7 +80,7 @@ export interface RunState {
   approvals: Approval[];
   diffs: Diff[];
   usage: { tokens: number; costUsd: number };
-  handoff?: { summary: string; nextActions: NextAction[]; at: number };
+  handoff?: { summary: string; nextActions: HandoffAction[]; at: number };
   /** The time of the latest event: a stable "now" for anything derived from the stream. */
   updatedAt?: number;
 }

@@ -1,0 +1,141 @@
+.cr-diff-review {
+  display: grid;
+  gap: var(--cr-space-3);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-diff-review__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--cr-space-2);
+}
+
+.cr-diff-review__title {
+  margin: 0;
+  font-size: var(--cr-font-size-lg);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-diff-review__stat {
+  font-family: var(--cr-font-family-mono);
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-diff-review__added { color: var(--cr-color-diff-added-fg); }
+.cr-diff-review__removed { color: var(--cr-color-diff-removed-fg); }
+
+.cr-diff-review__description {
+  margin: 0;
+  color: var(--cr-color-text-muted);
+}
+
+.cr-diff-review__hunks {
+  display: grid;
+  gap: var(--cr-space-3);
+}
+
+.cr-diff-review__hunk {
+  overflow: hidden;
+  border: 1px solid var(--cr-color-border-default);
+  border-radius: var(--cr-radius-md);
+  background: var(--cr-color-bg-surface);
+}
+
+.cr-diff-review__hunk:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-diff-review__hunk[data-decision='accepted'] {
+  border-color: var(--cr-color-status-done-fg);
+}
+
+.cr-diff-review__hunk[data-decision='rejected'] {
+  border-color: var(--cr-color-status-failed-fg);
+}
+
+/* Rejected hunks are marked by a dashed border and the Reject state, not by dimming: dimmed text fails contrast. */
+.cr-diff-review__hunk[data-decision='rejected'] {
+  border-style: dashed;
+}
+
+.cr-diff-review__hunk-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cr-space-2);
+  padding: var(--cr-space-2) var(--cr-space-3);
+  border-bottom: 1px solid var(--cr-color-border-default);
+  background: var(--cr-color-bg-subtle);
+}
+
+.cr-diff-review__hunk-title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cr-space-2);
+  margin: 0;
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-diff-review__hunk-header {
+  color: var(--cr-color-text-muted);
+  font-family: var(--cr-font-family-mono);
+  font-weight: var(--cr-font-weight-regular);
+}
+
+.cr-diff-review__hunk-actions {
+  display: flex;
+  gap: var(--cr-space-1);
+}
+
+.cr-diff-review__hunk-actions .cr-button[data-choice='accept'][aria-pressed='true'] {
+  border-color: var(--cr-color-status-done-fg);
+  background: var(--cr-color-status-done-bg);
+  color: var(--cr-color-status-done-fg);
+}
+
+.cr-diff-review__hunk-actions .cr-button[data-choice='reject'][aria-pressed='true'] {
+  border-color: var(--cr-color-status-failed-fg);
+  background: var(--cr-color-status-failed-bg);
+  color: var(--cr-color-status-failed-fg);
+}
+
+.cr-diff-review__lines {
+  overflow-x: auto;
+  padding-block: var(--cr-space-1);
+}
+
+.cr-diff-review__bar {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cr-space-2);
+  padding: var(--cr-space-2) var(--cr-space-3);
+  border: 1px solid var(--cr-color-border-default);
+  border-radius: var(--cr-radius-md);
+  background: var(--cr-color-bg-raised);
+  box-shadow: var(--cr-shadow-md);
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-diff-review__progress {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cr-space-3);
+}
+
+.cr-diff-review__bar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cr-space-2);
+}

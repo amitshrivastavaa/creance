@@ -1,0 +1,47 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './NeedsYouInbox.stories';
+
+<Meta of={Stories} />
+
+# NeedsYouInbox
+
+One list of everything waiting on a person, across all agents: approvals, questions, failed runs and reviews. Sorted by urgency, then by how long the agent has been waiting, with a count of each kind.
+
+<Canvas of={Stories.Default} />
+
+## When to use
+
+- A person supervises more than one agent or run and needs to know what to look at next.
+- As a drawer or side panel next to a single run (see **AgentRunLayout**), so blocked work elsewhere stays visible.
+
+## When not to use
+
+- **Notifications that need no action.** "Run finished" belongs in the run history, not here. Every inbox item should be something only a person can unblock.
+- **Answering inline.** The inbox routes the person to the decision; the decision itself happens in **ApprovalPrompt**, **DiffReview** or your own question UI.
+
+## Sorting
+
+1. Urgency: `high`, then `normal`, then `low`.
+2. Within the same urgency, the item that has waited longest comes first.
+
+`sortInbox(items)` is exported if you need the same order elsewhere. `inboxItems(run)` turns one run's open approvals, open diffs and failure into items: high-risk approvals and failed runs are `high` urgency.
+
+## Live
+
+<Canvas of={Stories.Live} />
+
+## Props
+
+<ArgTypes of={Stories} />
+
+## Accessibility
+
+- **Structure.** A labelled section whose heading includes the total ("Needs you 5"), followed by a list of counts by kind and an ordered list of items.
+- **Short names.** Each item's button is just its title, so a screen-reader user tabbing through hears "Allow git push --force origin main?", not every line of the card. The whole card is still the click target for pointer users.
+- **Urgency.** Urgent items carry the word "Urgent" and a thicker border, not only a colour.
+- **Time.** "waiting 14m 00s" is static text relative to `now`; it doesn't tick or announce.
+
+## Do and don't
+
+- **Do** write titles as the decision: "Allow npm install zod@3?", "Review changes to config.yaml".
+- **Don't** mark everything urgent. Reserve `high` for destructive approvals and broken runs.

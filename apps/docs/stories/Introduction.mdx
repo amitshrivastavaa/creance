@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# Creance
+
+**React components for supervising AI agents.** Creance covers the screens where a person approves, watches, reviews and takes back the work that agents do.
+
+In falconry, a *creance* is the long line tied to a bird in training. The bird flies and hunts on its own, and the falconer can always bring it back. That is the idea here: agents act on their own; people keep the line.
+
+## What it is for
+
+Most agent UI work goes into chat: message bubbles, streaming text, prompt boxes. Creance deliberately leaves that out. Once an agent can run commands, edit files and spend money, the hard interface problem is **control and trust**:
+
+- **Approving** an action before it happens, knowing exactly what it is and how risky. → **ApprovalPrompt**
+- **Seeing** what the agent actually did, call by call. → **ToolCallCard**, **RunTimeline**
+- **Reviewing** a proposed change before it lands. → **DiffReview**
+- **Knowing** what is blocked on you across every agent. → **NeedsYouInbox**
+- **Taking back** control when the agent is done. → **AgentHandoffBanner**
+
+## How it fits together
+
+```
+your agent backend ──┐
+                     ├── AgentEvent stream ──► useAgentRun(events) ──► RunState ──► components (plain props)
+creance/simulator ───┘
+```
+
+- **Components take plain props.** None of them knows about the event model. Use any one on its own with your own data.
+- **The event model is the integration point.** `AgentEvent` is a typed union: `run.started`, `step.started`, `tool.call.failed`, `approval.requested` and so on. `useAgentRun(events)` reduces any stream of them into `RunState`, and selectors like `timelineSteps(run)` and `inboxItems(run)` turn that into props.
+- **The simulator** plays a scripted run ("Fix the failing deploy") as real events, with timing, a failure and retry, an approval and a diff review that block until you answer. The **Live** stories and the demo app both use it.
+
+## Install
+
+```sh
+npm install creance creance-tokens
+```
+
+```tsx
+import 'creance-tokens/tokens.css';
+import 'creance/styles.css';
+import { ApprovalPrompt } from 'creance';
+```
+
+## Principles
+
+1. **Say exactly what will happen.** "npm install zod@3 on web/package.json", not "fix dependencies".
+2. **Never hide risk in colour.** Every status and risk level has text and an icon.
+3. **Keyboard first, scoped.** Shortcuts work only where focus is, and never override browser or page keys.
+4. **Announce transitions, not noise.** Screen readers hear failures, requests and handoffs, not every tick.
+5. **Plain CSS on tokens.** No runtime styling; theme by overriding `--cr-*` custom properties.
+
+## Where to go next
+
+- **Foundations / Tokens**: colours, spacing, type and radius, in light and dark.
+- **Organisms**: each has usage guidelines, accessibility notes and a live story.

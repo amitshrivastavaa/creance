@@ -1,5 +1,3 @@
-import './internal/base.css';
-
 // Atoms
 export * from './atoms/Avatar';
 export * from './atoms/Badge';
@@ -20,7 +18,11 @@ export * from './molecules/StatusBadge';
 export * from './molecules/ToolCallHeader';
 
 // Organisms
+export * from './organisms/AgentHandoffBanner';
 export * from './organisms/ApprovalPrompt';
+export * from './organisms/DiffReview';
+export * from './organisms/NeedsYouInbox';
+export * from './organisms/RunTimeline';
 export * from './organisms/ToolCallCard';
 
 // Event model and state

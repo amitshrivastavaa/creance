@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Button, ToolCallCard } from 'creance';
+import { ToolCallCard } from 'creance';
 import { fn } from 'storybook/test';
-import { LiveRun } from '../../src/LiveRun';
+import { LiveRun, WaitingControls } from '../../src/LiveRun';
 
 const meta = {
   title: 'Organisms/ToolCallCard',
@@ -43,8 +43,6 @@ export const Live: Story = {
       {(run, sim) => {
         const calls = Object.values(run.toolCalls);
         if (!calls.length) return <p className="live__empty">No tool calls yet.</p>;
-        const approval = run.approvals.find((a) => !a.decision);
-        const diff = run.diffs.find((d) => !d.resolution);
         return (
           <div className="stack">
             {calls.map((c) => (
@@ -60,22 +58,7 @@ export const Live: Story = {
                 attempt={c.attempt}
               />
             ))}
-            {approval && (
-              <p className="live__empty">
-                The run is waiting for an approval.{' '}
-                <Button size="sm" onClick={() => sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: 'allow-once' })}>
-                  Allow it
-                </Button>
-              </p>
-            )}
-            {diff && (
-              <p className="live__empty">
-                The run is waiting for a diff review.{' '}
-                <Button size="sm" onClick={() => sim.respond({ type: 'diff.resolved', diffId: diff.id, accepted: diff.hunks.map((h) => h.id), rejected: [] })}>
-                  Accept all
-                </Button>
-              </p>
-            )}
+            <WaitingControls run={run} sim={sim} />
           </div>
         );
       }}

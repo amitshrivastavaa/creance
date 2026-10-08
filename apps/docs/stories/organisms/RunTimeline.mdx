@@ -1,0 +1,54 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './RunTimeline.stories';
+
+<Meta of={Stories} />
+
+# RunTimeline
+
+The steps of an agent run as they happen: nested steps, the tool calls inside each step, retries, failures and durations. It follows new steps as they stream in, stops following when the person scrolls up, and offers **Jump to latest** to catch up.
+
+<Canvas of={Stories.WaitingForApproval} />
+
+## When to use
+
+- Supervising a run while it happens, or reading back one that finished.
+- As the main column of an agent run screen (see **AgentRunLayout**), with a detail panel for the selected tool call.
+
+## When not to use
+
+- **Across many runs.** One timeline is one run. To show what needs attention across agents, use **NeedsYouInbox**.
+- **Raw logs.** The timeline shows steps and tool calls the agent reports. Link to logs instead of pouring them in.
+
+## Live
+
+Scroll up while it streams: following stops and a **Jump to latest** button appears when new steps arrive.
+
+<Canvas of={Stories.Live} />
+
+## Data
+
+`RunTimeline` takes plain `TimelineStep` objects. If you use the event model, `timelineSteps(useAgentRun(events))` builds them, and marks a step `waiting` while it has an open approval or diff.
+
+```tsx
+const run = useAgentRun(events);
+<RunTimeline steps={timelineSteps(run)} onSelectToolCall={setSelected} selectedToolCallId={selected} />
+```
+
+## Props
+
+<ArgTypes of={Stories} />
+
+## Accessibility
+
+- **Structure.** Steps are a nested ordered list (`<ol>`), so screen readers report position and nesting ("list, 4 items, level 2"). Tool calls are a labelled list inside each step.
+- **Scrolling.** The scroll container is a labelled, focusable region, so keyboard users can scroll it. Auto-follow stops as soon as the person scrolls up, which also avoids yanking content away from screen-magnifier users.
+- **Announcements.** Only transitions that need attention are announced: a step or tool call failing, or a step waiting for you. Routine progress is not announced, so screen-reader users are not flooded during a long run.
+- **Selection.** With `onSelectToolCall`, tool calls are buttons and the selected one has `aria-current`.
+- **Motion.** Jump to latest scrolls smoothly, or instantly under `prefers-reduced-motion`.
+- **Status.** Each step's marker and badge use icon and text, not colour alone.
+
+## Do and don't
+
+- **Do** give the timeline a fixed height inside your layout. It scrolls internally, which is what makes follow and jump work.
+- **Don't** let the whole page scroll to follow the agent. People lose their place in the rest of the page.
+- **Do** pass `live={false}` when showing a finished run from history, so opening it never jumps.

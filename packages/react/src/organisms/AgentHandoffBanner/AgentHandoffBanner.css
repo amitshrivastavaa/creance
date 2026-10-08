@@ -1,0 +1,46 @@
+.cr-handoff {
+  display: flex;
+  gap: var(--cr-space-3);
+  padding: var(--cr-space-4);
+  border: 1px solid var(--cr-color-border-default);
+  border-inline-start: 4px solid var(--cr-color-status-done-fg);
+  border-radius: var(--cr-radius-lg);
+  background: var(--cr-color-bg-surface);
+  color: var(--cr-color-text-default);
+  box-shadow: var(--cr-shadow-sm);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-handoff[data-outcome='stopped'] { border-inline-start-color: var(--cr-color-status-blocked-fg); }
+.cr-handoff[data-outcome='failed']  { border-inline-start-color: var(--cr-color-status-failed-fg); }
+
+.cr-handoff__body {
+  display: grid;
+  flex: 1;
+  gap: var(--cr-space-2);
+  min-width: 0;
+}
+
+.cr-handoff__title {
+  margin: 0;
+  font-size: var(--cr-font-size-lg);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-handoff__title:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-handoff__summary {
+  margin: 0;
+  line-height: var(--cr-font-line-height-normal);
+}
+
+.cr-handoff__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cr-space-2);
+  margin-top: var(--cr-space-1);
+}

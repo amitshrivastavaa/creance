@@ -1,0 +1,55 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './DiffReview.stories';
+
+<Meta of={Stories} />
+
+# DiffReview
+
+Reviews a change the agent proposes to one file. The person accepts or rejects each hunk, then applies the result. Nothing is applied until every hunk has a decision.
+
+<Canvas of={Stories.Default} />
+
+## When to use
+
+- An agent proposes edits to code, config or docs and should not write them unreviewed.
+- The change can be split into independent hunks, so partial acceptance makes sense.
+
+## When not to use
+
+- **Running a command.** Use **ApprovalPrompt**. A diff is for content, not side effects.
+- **Very large changes.** Hunk-by-hunk review of hundreds of lines is not real review. Ask the agent for a smaller change or send the person to a full code review tool.
+
+## Keyboard
+
+| Key | Action |
+|---|---|
+| <kbd>J</kbd> / <kbd>K</kbd> | Next / previous hunk |
+| <kbd>Y</kbd> | Accept the focused hunk |
+| <kbd>N</kbd> | Reject the focused hunk |
+| <kbd>Tab</kbd> | Through every button, as normal |
+
+Shortcuts only work while focus is inside the review, and never with <kbd>Ctrl</kbd>, <kbd>Alt</kbd> or <kbd>⌘</kbd>.
+
+## Live
+
+<Canvas of={Stories.Live} />
+
+## Props
+
+<ArgTypes of={Stories} />
+
+Once you pass `applied`, the review becomes read-only and shows what was applied and rejected.
+
+## Accessibility
+
+- **Structure.** The review is a region named "Review changes to *file*". Each hunk is a region named "Hunk 1 of 2" with its own heading, so screen-reader users can jump between hunks by heading or landmark.
+- **Lines.** The +/− signs and line numbers are hidden from screen readers. Added and removed lines are read as "Added: …" and "Removed: …" and sit in `<ins>` and `<del>`.
+- **Decisions.** Accept and Reject are toggle buttons with `aria-pressed`, so the current decision is announced. Decision state is also shown by border and badge, not colour alone.
+- **Apply.** The apply button stays disabled until every hunk is decided, and the bar next to it says how many are left.
+- **Announcements.** Keyboard decisions and the final apply are announced through a polite live region.
+
+## Do and don't
+
+- **Do** give the agent's reason for the change in `description`.
+- **Don't** auto-apply after a timeout. If the person hasn't decided, the change waits.
+- **Do** show the applied state afterwards, so the run history records what the person chose.

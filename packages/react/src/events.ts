@@ -3,9 +3,10 @@
  * Any backend that can emit these events (over SSE, a WebSocket, a log replay or the bundled simulator)
  * can drive every organism through `useAgentRun`. Components never import this file.
  */
-import type { DiffLineType } from './molecules/DiffLine';
-import type { ApprovalDecision } from './organisms/ApprovalPrompt';
 import type { Risk } from './molecules/RiskLabel';
+import type { ApprovalDecision } from './organisms/ApprovalPrompt';
+import type { DiffHunk } from './organisms/DiffReview';
+import type { HandoffAction } from './organisms/AgentHandoffBanner';
 
 export interface AgentInfo {
   id: string;
@@ -15,26 +16,6 @@ export interface AgentInfo {
 export interface Budget {
   limit: number;
   unit: 'tokens' | 'usd';
-}
-
-export interface DiffHunkLine {
-  type: DiffLineType;
-  content: string;
-  oldNumber?: number;
-  newNumber?: number;
-}
-
-export interface DiffHunk {
-  id: string;
-  /** The `@@ -12,4 +12,6 @@` header. */
-  header: string;
-  lines: DiffHunkLine[];
-}
-
-export interface NextAction {
-  id: string;
-  label: string;
-  primary?: boolean;
 }
 
 /** Event payloads without the envelope. Scenarios are written in this shape. */
@@ -62,7 +43,7 @@ export type AgentEventBody =
   | { type: 'usage'; tokens: number; costUsd?: number }
   | { type: 'run.completed' }
   | { type: 'run.failed'; error: string }
-  | { type: 'handoff'; summary: string; nextActions: NextAction[] };
+  | { type: 'handoff'; summary: string; nextActions: HandoffAction[] };
 
 /** Every event carries the run it belongs to and a timestamp (epoch ms). */
 export type AgentEvent = AgentEventBody & { runId: string; ts: number };
