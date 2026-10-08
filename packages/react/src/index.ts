@@ -18,3 +18,11 @@ export * from './molecules/KeyboardHint';
 export * from './molecules/RiskLabel';
 export * from './molecules/StatusBadge';
 export * from './molecules/ToolCallHeader';
+
+// Organisms
+export * from './organisms/ApprovalPrompt';
+export * from './organisms/ToolCallCard';
+
+// Event model and state
+export type * from './events';
+export * from './run';

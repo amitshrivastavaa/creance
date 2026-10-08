@@ -41,7 +41,8 @@ export function ToolCallHeader({
       {createElement(
         `h${headingLevel}`,
         { className: 'cr-tool-header__name' },
-        <span className="cr-visually-hidden">Tool call: </span>,
+        <span className="cr-visually-hidden">Tool call:</span>,
+        ' ',
         <Code>{tool}</Code>,
       )}
       {attempt > 1 && <span className="cr-tool-header__attempt">Attempt {attempt}</span>}

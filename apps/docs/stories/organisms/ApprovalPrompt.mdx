@@ -1,0 +1,61 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { ApprovalPrompt, Button } from 'creance';
+import { DoDont } from '../../src/DoDont';
+import * as Stories from './ApprovalPrompt.stories';
+
+<Meta of={Stories} />
+
+# ApprovalPrompt
+
+Asks a person to allow or deny one specific action before an agent takes it. It shows the exact action, what it acts on, how risky it is and why the agent wants it, and offers **Allow once**, **Always allow** and **Deny**.
+
+<Canvas of={Stories.Default} />
+
+## When to use
+
+- The agent is about to do something with side effects: run a command, write outside its sandbox, spend money, contact someone.
+- The run should block until a person decides.
+- You can name the action precisely. "npm install zod@3" can be approved; "fix the build" can't.
+
+## When not to use
+
+- **Asking an open question.** If the agent needs information, not permission, use a question in **NeedsYouInbox** or your own form.
+- **Confirming many actions at once.** Batch approvals hide what is being approved. Show one prompt per action, or a **DiffReview** for code changes.
+- **Read-only, reversible actions.** Prompting for every file read trains people to click Allow without reading. Allow those by policy.
+
+## Live
+
+The simulated agent investigates a failing deploy, then asks to install a package. Press <kbd>A</kbd>, <kbd>Shift</kbd>+<kbd>A</kbd> or <kbd>D</kbd> with the prompt focused, or use the buttons. Denying stops the run with a handoff.
+
+<Canvas of={Stories.Live} />
+
+## Props
+
+<ArgTypes of={Stories} />
+
+`onApprove` receives the scope, `'once'` or `'always'`. Pass `decision` once the person has answered and the prompt switches to its resolved state.
+
+## Accessibility
+
+- **Structure.** The prompt is a `role="group"` labelled by its heading ("Deploy Fixer wants to run npm install zod@3 on web/package.json") and described by the reason, so screen readers read both when focus enters.
+- **Not a modal.** It does not trap focus or hide the page. People often need to read the run before deciding.
+- **Focus.** By default the prompt takes focus when it appears, so keyboard users land on it. Turn off `autoFocus` when several prompts render at once, or when the prompt appears while the person is typing elsewhere. After a decision the buttons are removed and focus moves to the outcome line, never to `<body>`.
+- **Shortcuts.** <kbd>A</kbd> allows once, <kbd>Shift</kbd>+<kbd>A</kbd> always allows, <kbd>D</kbd> denies. They only work while focus is inside the prompt and never with <kbd>Ctrl</kbd>, <kbd>Alt</kbd> or <kbd>⌘</kbd>, so the kit never takes over page-wide keys. Each button exposes its shortcut with `aria-keyshortcuts`.
+- **Announcements.** A polite live region says "Approval needed. Deploy Fixer wants to run npm install zod@3. medium risk." when the prompt appears, and the outcome when it is answered.
+- **Risk.** The risk level is text and icon, not colour alone.
+
+## Do and don't
+
+<DoDont
+  doThis={<ApprovalPrompt autoFocus={false} agentName="Deploy Fixer" action="npm install zod@3" target="web/package.json" risk="medium" reason="server/validate.ts imports zod, but it is missing from dependencies." />}
+  doText="Name the exact command and target, and give the agent's reason in plain words."
+  dont={<ApprovalPrompt autoFocus={false} agentName="Deploy Fixer" action="fix dependencies" risk="medium" reason="Needed to continue." />}
+  dontText="Ask for permission to do something vague. People can't judge what they can't see."
+/>
+
+<DoDont
+  doThis={<ApprovalPrompt autoFocus={false} action="git push --force origin main" risk="high" reason="Rewrites main to drop the broken release commit." />}
+  doText="Let high-risk actions hide Always allow (the default), so they are confirmed every time."
+  dont={<ApprovalPrompt autoFocus={false} action="git push --force origin main" risk="high" allowAlways reason="Rewrites main to drop the broken release commit." />}
+  dontText="Offer Always allow on destructive actions."
+/>

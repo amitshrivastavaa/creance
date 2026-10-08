@@ -1,0 +1,74 @@
+.cr-approval {
+  display: grid;
+  gap: var(--cr-space-3);
+  padding: var(--cr-space-4);
+  border: 1px solid var(--cr-color-border-default);
+  border-inline-start: 4px solid var(--cr-color-status-waiting-fg);
+  border-radius: var(--cr-radius-lg);
+  background: var(--cr-color-bg-surface);
+  color: var(--cr-color-text-default);
+  box-shadow: var(--cr-shadow-sm);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-approval[data-risk='high'] {
+  border-inline-start-color: var(--cr-color-risk-high-fg);
+}
+
+.cr-approval[data-resolved] {
+  border-inline-start-color: var(--cr-color-border-strong);
+  box-shadow: none;
+}
+
+.cr-approval:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-approval__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--cr-space-2);
+}
+
+.cr-approval__title {
+  margin: 0;
+  font-size: var(--cr-font-size-lg);
+  font-weight: var(--cr-font-weight-semibold);
+  line-height: var(--cr-font-line-height-normal);
+}
+
+.cr-approval__reason {
+  margin: 0;
+  color: var(--cr-color-text-muted);
+  line-height: var(--cr-font-line-height-normal);
+}
+
+.cr-approval__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cr-space-2);
+}
+
+/* Hints inside buttons inherit the button colour so they stay readable on filled variants. */
+.cr-approval__actions .cr-kbd-hint {
+  color: inherit;
+}
+
+.cr-approval__actions .cr-kbd {
+  border-color: currentColor;
+  background: transparent;
+  color: inherit;
+}
+
+.cr-approval__outcome {
+  margin: 0;
+}
+
+.cr-approval__outcome:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}

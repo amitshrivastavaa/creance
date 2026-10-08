@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: { index: 'src/index.ts' },
+      entry: { index: 'src/index.ts', simulator: 'src/simulator/index.ts' },
       formats: ['es'],
       cssFileName: 'styles',
     },

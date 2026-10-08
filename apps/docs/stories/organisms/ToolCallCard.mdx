@@ -1,0 +1,63 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { ToolCallCard } from 'creance';
+import { DoDont } from '../../src/DoDont';
+import * as Stories from './ToolCallCard.stories';
+
+<Meta of={Stories} />
+
+# ToolCallCard
+
+One tool call made by an agent: the tool's name, the arguments it passed, where it is in its lifecycle (pending, running, success, error), and the result or error. Failed calls can offer a retry.
+
+<Canvas of={Stories.Success} />
+
+## When to use
+
+- Showing what an agent actually did, so a person can check its work.
+- Debugging a run: inputs and outputs are one click away, collapsed by default.
+- Inside **RunTimeline**, which renders one card per tool call under its step.
+
+## When not to use
+
+- **Approving a call before it runs.** Use **ApprovalPrompt**. A tool call card describes something that has happened or is happening.
+- **Large outputs.** The result panel scrolls after 240px. For logs or files, link out to a full viewer instead of dumping them here.
+
+## Lifecycle
+
+| Status | Shows |
+|---|---|
+| `pending` | "Waiting to start" |
+| `running` | A spinner and a ticking duration |
+| `success` | The result, collapsed |
+| `error` | The error message, and **Retry** if you pass `onRetry` and `retryable` isn't false |
+
+When the call is retried, pass the new `attempt` number. The header shows "Attempt 2".
+
+<Canvas of={Stories.Error} />
+
+## Live
+
+Every tool call in the simulated run. The second `run_tests` call hits a network error and the agent retries it on its own.
+
+<Canvas of={Stories.Live} />
+
+## Props
+
+<ArgTypes of={Stories} />
+
+## Accessibility
+
+- **Structure.** Each card is an `<article>` whose heading is the tool name, read as "Tool call: run_tests". Set `headingLevel` to fit your page outline.
+- **Collapsibles.** Input and result use native `<details>` and `<summary>`: keyboard and screen reader support come from the browser.
+- **Scrolling code.** JSON blocks are focusable so keyboard users can scroll them.
+- **Errors.** A failure is announced through a polite live region ("Tool call run_tests failed: …"). Set `announce={false}` when a parent such as RunTimeline already announces failures, so nothing is read twice.
+- **Status.** The status badge carries icon and text as well as colour. The ticking time is not announced.
+
+## Do and don't
+
+<DoDont
+  doThis={<ToolCallCard tool="run_tests" status="error" error="ECONNRESET: request to registry.npmjs.org timed out after 10s" onRetry={() => {}} />}
+  doText="Show the real error message, and offer Retry only when a retry could succeed."
+  dont={<ToolCallCard tool="run_tests" status="error" error="Something went wrong." onRetry={() => {}} />}
+  dontText="Hide the error behind a generic message. The person needs it to decide what to do."
+/>

@@ -12,5 +12,9 @@ export default tseslint.config(
   jsxA11y.flatConfigs.recommended,
   {
     languageOptions: { globals: { ...globals.browser, ...globals.node } },
+    rules: {
+      // Native autofocus stays banned; components like ApprovalPrompt manage focus deliberately.
+      'jsx-a11y/no-autofocus': ['error', { ignoreNonDOM: true }],
+    },
   },
 );
