@@ -1,0 +1,15 @@
+.cr-error-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 0;
+  color: var(--cr-color-status-failed-fg);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+  line-height: var(--cr-font-line-height-normal);
+}
+
+.cr-error-message > .cr-icon {
+  flex: none;
+  margin-top: 0.25em;
+}

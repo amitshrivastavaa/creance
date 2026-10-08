@@ -4,6 +4,7 @@ export * from './atoms/Badge';
 export * from './atoms/Button';
 export * from './atoms/Checkbox';
 export * from './atoms/Code';
+export * from './atoms/ErrorMessage';
 export * from './atoms/Gauge';
 export * from './atoms/IconButton';
 export * from './atoms/Input';
@@ -24,7 +25,9 @@ export * from './atoms/Tooltip';
 
 // Molecules
 export * from './molecules/Alert';
+export * from './molecules/Banner';
 export * from './molecules/Breadcrumbs';
+export * from './molecules/BrowserFrame';
 export * from './molecules/BudgetMeter';
 export * from './molecules/Calendar';
 export * from './molecules/Card';
@@ -43,6 +46,7 @@ export * from './molecules/DiffLine';
 export * from './molecules/DotsMenu';
 export * from './molecules/EmptyState';
 export * from './molecules/Entity';
+export * from './molecules/ErrorCard';
 export * from './molecules/Feedback';
 export * from './molecules/Field';
 export * from './molecules/FileTree';
@@ -52,6 +56,8 @@ export * from './molecules/LoadMoreButton';
 export * from './molecules/Menu';
 export * from './molecules/MultiSelect';
 export * from './molecules/Pagination';
+export * from './molecules/PhoneFrame';
+export * from './molecules/ProjectBanner';
 export * from './molecules/RadioGroup';
 export * from './molecules/RelativeTimeCard';
 export * from './molecules/RiskLabel';
@@ -70,6 +76,7 @@ export * from './molecules/ThemeSwitcher';
 export * from './molecules/Toast';
 export * from './molecules/ToggleGroup';
 export * from './molecules/ToolCallHeader';
+export * from './molecules/Video';
 
 // Organisms
 export * from './organisms/AgentHandoffBanner';

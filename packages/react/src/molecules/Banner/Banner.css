@@ -1,0 +1,56 @@
+.cr-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-3);
+  min-height: 48px;
+  box-sizing: border-box;
+  padding: 6px 6px 6px 18px;
+  border-radius: var(--cr-radius-lg);
+  background: var(--cr-color-glass-tile);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-banner > .cr-icon {
+  flex: none;
+}
+
+.cr-banner__text {
+  flex: 1;
+  min-width: 0;
+  padding-block: 6px;
+}
+
+.cr-banner__action a,
+.cr-banner__action .cr-link {
+  color: inherit;
+  font-weight: var(--cr-font-weight-semibold);
+  text-underline-offset: 3px;
+}
+
+.cr-banner[data-tone='ink'] {
+  background: var(--cr-color-ink-bg);
+  color: var(--cr-color-ink-fg);
+}
+
+.cr-banner[data-tone='ink'] .cr-banner__dismiss {
+  color: inherit;
+}
+
+.cr-banner[data-tone='ink'] .cr-banner__dismiss:hover:not(:disabled) {
+  background: var(--cr-color-ink-bg-hover);
+}
+
+.cr-banner[data-tone='danger'] {
+  box-shadow: inset 3px 0 0 var(--cr-color-danger-text);
+}
+
+.cr-banner[data-tone='danger'] > .cr-icon,
+.cr-banner[data-tone='danger'] .cr-banner__action a {
+  color: var(--cr-color-status-failed-fg);
+}
+
+.cr-banner__dismiss {
+  flex: none;
+}

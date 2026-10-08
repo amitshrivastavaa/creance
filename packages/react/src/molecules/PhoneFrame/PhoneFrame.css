@@ -1,0 +1,50 @@
+.cr-phone-frame {
+  display: grid;
+  gap: var(--cr-space-3);
+  justify-items: center;
+  margin: 0;
+  font-family: var(--cr-font-family-sans);
+}
+
+/* The hardware stays near-black in both themes. */
+.cr-phone-frame__body {
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 9 / 18.5;
+  padding: 10px;
+  border-radius: 44px;
+  background: var(--cr-gray-950);
+  /* A faint edge keeps the black body visible on dark pages. */
+  box-shadow: var(--cr-shadow-md), 0 0 0 1px var(--cr-color-border-strong);
+}
+
+.cr-phone-frame__screen {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding: 44px var(--cr-space-4) var(--cr-space-4);
+  overflow: hidden;
+  border-radius: 34px;
+  background: var(--cr-color-bg-canvas);
+  color: var(--cr-color-text-default);
+}
+
+.cr-phone-frame__island {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 72px;
+  height: 20px;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-gray-950);
+  transform: translateX(-50%);
+}
+
+.cr-phone-frame__caption {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-semibold);
+}

@@ -1,0 +1,105 @@
+.cr-video {
+  display: grid;
+  gap: var(--cr-space-2);
+  margin: 0;
+  font-family: var(--cr-font-family-sans);
+}
+
+.cr-video__stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--cr-radius-xl);
+  background: var(--cr-gray-950);
+}
+
+.cr-video__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
+/* Controls sit on the picture, so they use fixed light-on-dark glass in both themes. */
+.cr-video__big-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  border: 1px solid var(--cr-color-glass-edge);
+  border-radius: var(--cr-radius-full);
+  background: color-mix(in srgb, var(--cr-gray-950) 45%, transparent);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  color: var(--cr-gray-0);
+  font-size: 22px;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.cr-video__bar {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-3);
+  padding: 8px 14px 8px 8px;
+  border-radius: var(--cr-radius-full);
+  background: color-mix(in srgb, var(--cr-gray-950) 55%, transparent);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  color: var(--cr-gray-0);
+}
+
+.cr-video__button {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: var(--cr-radius-full);
+  background: color-mix(in srgb, var(--cr-gray-0) 18%, transparent);
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.cr-video__cc {
+  font-size: 11px;
+  font-weight: var(--cr-font-weight-bold);
+}
+
+.cr-video__cc[aria-pressed='true'] {
+  background: var(--cr-gray-0);
+  color: var(--cr-gray-950);
+}
+
+.cr-video__time {
+  font-size: var(--cr-font-size-xs);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.cr-video__seek {
+  flex: 1;
+  min-width: 60px;
+  accent-color: var(--cr-gray-0);
+}
+
+.cr-video__button:focus-visible,
+.cr-video__big-play:focus-visible,
+.cr-video__seek:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-video__caption {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}

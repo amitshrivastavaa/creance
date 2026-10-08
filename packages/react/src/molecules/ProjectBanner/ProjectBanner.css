@@ -1,0 +1,38 @@
+.cr-project-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cr-space-4);
+  padding: 18px var(--cr-space-5);
+  border-radius: var(--cr-radius-xl);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-project-banner__badge {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  background: var(--cr-color-bg-raised);
+  box-shadow: inset 0 0 0 1px var(--cr-color-border-default);
+  font-weight: var(--cr-font-weight-bold);
+}
+
+.cr-project-banner__text {
+  display: grid;
+  flex: 1 1 240px;
+  gap: 2px;
+}
+
+.cr-project-banner__message {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-project-banner__progress {
+  width: 160px;
+}
