@@ -1,0 +1,64 @@
+.cr-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cr-space-2);
+  min-height: 32px;
+  padding: 0 var(--cr-space-3);
+  border: 1px solid var(--cr-color-border-strong);
+  border-radius: var(--cr-radius-md);
+  background: var(--cr-color-bg-surface);
+  color: var(--cr-color-text-default);
+  font: inherit;
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-medium);
+  line-height: var(--cr-font-line-height-tight);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--cr-motion-duration-fast) var(--cr-motion-easing-standard);
+}
+
+.cr-button[data-size='sm'] {
+  min-height: 26px;
+  padding: 0 var(--cr-space-2);
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-button:hover:not(:disabled) {
+  background: var(--cr-color-bg-subtle);
+}
+
+.cr-button:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.cr-button[data-variant='primary'] {
+  border-color: transparent;
+  background: var(--cr-color-accent-bg);
+  color: var(--cr-color-accent-fg);
+}
+
+.cr-button[data-variant='primary']:hover:not(:disabled) {
+  background: var(--cr-color-accent-bg-hover);
+}
+
+.cr-button[data-variant='danger'] {
+  border-color: transparent;
+  background: var(--cr-color-danger-bg);
+  color: var(--cr-color-danger-fg);
+}
+
+.cr-button[data-variant='danger']:hover:not(:disabled) {
+  background: var(--cr-color-danger-bg-hover);
+}
+
+.cr-button[data-variant='ghost'] {
+  border-color: transparent;
+  background: transparent;
+}

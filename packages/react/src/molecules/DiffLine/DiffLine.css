@@ -1,0 +1,45 @@
+.cr-diff-line {
+  display: grid;
+  grid-template-columns: 3.5em 3.5em 1.5em 1fr;
+  font-family: var(--cr-font-family-mono);
+  font-size: var(--cr-font-size-sm);
+  line-height: 1.6;
+}
+
+.cr-diff-line__num {
+  padding-inline-end: var(--cr-space-2);
+  color: var(--cr-color-text-muted);
+  text-align: end;
+  user-select: none;
+}
+
+.cr-diff-line__sign {
+  text-align: center;
+  user-select: none;
+}
+
+.cr-diff-line__content {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.cr-diff-line[data-type='add'] {
+  background: var(--cr-color-diff-added-bg);
+}
+
+.cr-diff-line[data-type='add'] :is(.cr-diff-line__sign, .cr-diff-line__num) {
+  color: var(--cr-color-diff-added-fg);
+}
+
+.cr-diff-line[data-type='remove'] {
+  background: var(--cr-color-diff-removed-bg);
+}
+
+.cr-diff-line[data-type='remove'] :is(.cr-diff-line__sign, .cr-diff-line__num) {
+  color: var(--cr-color-diff-removed-fg);
+}
+
+.cr-diff-line__content:is(ins, del) {
+  color: var(--cr-color-text-default);
+}

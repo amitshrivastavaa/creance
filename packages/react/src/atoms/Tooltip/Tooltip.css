@@ -1,0 +1,12 @@
+.cr-tooltip {
+  z-index: 50;
+  max-width: 280px;
+  padding: var(--cr-space-1) var(--cr-space-2);
+  border-radius: var(--cr-radius-sm);
+  background: var(--cr-color-bg-inverse);
+  color: var(--cr-color-text-inverse);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-xs);
+  line-height: var(--cr-font-line-height-normal);
+  box-shadow: var(--cr-shadow-md);
+}

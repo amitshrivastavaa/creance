@@ -1,0 +1,24 @@
+.cr-budget {
+  display: grid;
+  gap: var(--cr-space-1);
+  min-width: 160px;
+  font-size: var(--cr-font-size-xs);
+}
+
+.cr-budget__row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--cr-space-2);
+}
+
+.cr-budget__label {
+  color: var(--cr-color-text-muted);
+}
+
+.cr-budget__value {
+  color: var(--cr-color-text-default);
+  font-variant-numeric: tabular-nums;
+}
+
+.cr-budget[data-tone='warning'] .cr-budget__value { color: var(--cr-color-status-blocked-fg); }
+.cr-budget[data-tone='danger'] .cr-budget__value  { color: var(--cr-color-status-failed-fg); font-weight: var(--cr-font-weight-semibold); }

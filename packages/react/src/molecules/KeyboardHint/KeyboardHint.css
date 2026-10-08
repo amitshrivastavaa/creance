@@ -1,0 +1,13 @@
+.cr-kbd-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}
+
+.cr-kbd-hint__keys {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}

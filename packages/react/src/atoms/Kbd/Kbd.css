@@ -1,0 +1,14 @@
+.cr-kbd {
+  display: inline-block;
+  min-width: 1.6em;
+  padding: 0 var(--cr-space-1);
+  border: 1px solid var(--cr-color-border-strong);
+  border-bottom-width: 2px;
+  border-radius: var(--cr-radius-sm);
+  background: var(--cr-color-bg-surface);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-mono);
+  font-size: var(--cr-font-size-xs);
+  line-height: 1.5;
+  text-align: center;
+}

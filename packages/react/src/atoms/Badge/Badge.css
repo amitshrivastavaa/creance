@@ -1,0 +1,29 @@
+.cr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cr-space-1);
+  padding: 2px var(--cr-space-2);
+  border-radius: var(--cr-radius-full);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-medium);
+  line-height: var(--cr-font-line-height-normal);
+  white-space: nowrap;
+}
+
+.cr-badge[data-status='running'] { background: var(--cr-color-status-running-bg); color: var(--cr-color-status-running-fg); }
+.cr-badge[data-status='waiting'] { background: var(--cr-color-status-waiting-bg); color: var(--cr-color-status-waiting-fg); }
+.cr-badge[data-status='blocked'] { background: var(--cr-color-status-blocked-bg); color: var(--cr-color-status-blocked-fg); }
+.cr-badge[data-status='done']    { background: var(--cr-color-status-done-bg);    color: var(--cr-color-status-done-fg); }
+.cr-badge[data-status='failed']  { background: var(--cr-color-status-failed-bg);  color: var(--cr-color-status-failed-fg); }
+
+.cr-badge[data-status='running'] .cr-icon {
+  animation: cr-badge-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes cr-badge-pulse {
+  50% { opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cr-badge[data-status='running'] .cr-icon { animation: none; }
+}

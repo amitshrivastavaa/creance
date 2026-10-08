@@ -1,7 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "paths": {
+      "creance": ["../../packages/react/src/index.ts"],
+      "creance/simulator": ["../../packages/react/src/simulator/index.ts"]
+    }
   },
-  "include": ["src", ".storybook", "stories"]
+  "include": ["src", ".storybook", "stories", "vitest.config.ts"]
 }

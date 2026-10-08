@@ -23,4 +23,20 @@ jobs:
       - run: pnpm build
       - run: pnpm typecheck
       - run: pnpm lint
+      - run: pnpm --filter creance test
+
+  storybook-a11y:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm --filter docs exec playwright install --with-deps chromium
+      # Renders every story in light and dark and fails on any axe violation.
+      - run: pnpm --filter docs test
       - run: pnpm build-storybook

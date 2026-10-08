@@ -1,0 +1,47 @@
+{
+  "name": "creance",
+  "version": "0.0.0",
+  "description": "React components for human-in-the-loop agent interfaces: approvals, tool calls, run timelines, diff review and handoffs.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": ["*.css"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./simulator": {
+      "types": "./dist/simulator/index.d.ts",
+      "default": "./dist/simulator.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit -p .",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.2.0",
+    "@radix-ui/react-tooltip": "^1.3.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "jsdom": "^30.1.2",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.3",
+    "vitest": "^5.0.3"
+  }
+}

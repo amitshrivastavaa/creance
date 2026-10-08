@@ -1,0 +1,13 @@
+.cr-icon-button {
+  min-width: 32px;
+  padding: 0;
+}
+
+.cr-icon-button[data-size='sm'] {
+  min-width: 26px;
+}
+
+.cr-icon-button__icon {
+  display: inline-flex;
+  font-size: var(--cr-font-size-lg);
+}

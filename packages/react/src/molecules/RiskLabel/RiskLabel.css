@@ -1,0 +1,16 @@
+.cr-risk {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cr-space-1);
+  padding: 2px var(--cr-space-2);
+  border: 1px solid currentColor;
+  border-radius: var(--cr-radius-sm);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-semibold);
+  line-height: var(--cr-font-line-height-normal);
+  white-space: nowrap;
+}
+
+.cr-risk[data-level='low']    { background: var(--cr-color-risk-low-bg);    color: var(--cr-color-risk-low-fg); }
+.cr-risk[data-level='medium'] { background: var(--cr-color-risk-medium-bg); color: var(--cr-color-risk-medium-fg); }
+.cr-risk[data-level='high']   { background: var(--cr-color-risk-high-bg);   color: var(--cr-color-risk-high-fg); }

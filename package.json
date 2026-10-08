@@ -9,9 +9,10 @@
   "scripts": {
     "build": "pnpm -r --filter ./packages/** build",
     "typecheck": "pnpm -r typecheck",
-    "lint": "eslint .",
+    "lint": "eslint . && node scripts/check-css-tokens.mjs",
     "storybook": "pnpm --filter docs storybook",
-    "build-storybook": "pnpm --filter docs build-storybook"
+    "build-storybook": "pnpm --filter docs build-storybook",
+    "test": "pnpm -r test"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",

@@ -1,0 +1,24 @@
+.cr-avatar {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-bg-subtle);
+  color: var(--cr-color-text-default);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-semibold);
+  user-select: none;
+}
+
+.cr-avatar[data-kind='agent'] {
+  border-radius: var(--cr-radius-md);
+  background: var(--cr-color-accent-subtle);
+  color: var(--cr-color-text-link);
+}
+
+.cr-avatar[data-size='sm'] {
+  width: 24px;
+  height: 24px;
+}

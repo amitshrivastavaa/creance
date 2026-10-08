@@ -1,0 +1,18 @@
+.cr-tool-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cr-space-2);
+}
+
+.cr-tool-header__name {
+  margin: 0;
+  margin-inline-end: auto;
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-tool-header__attempt {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}
