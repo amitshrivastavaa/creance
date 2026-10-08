@@ -1,0 +1,26 @@
+.cr-status-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-status-dot__mark {
+  box-sizing: border-box;
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--cr-radius-full);
+}
+
+/* Running: a ring. Waiting: a solid ink dot with a halo. Done: a quiet grey dot. Failed: red. Queued: dashed. */
+.cr-status-dot[data-status='running'] .cr-status-dot__mark { border: 2px solid var(--cr-color-ink-bg); }
+.cr-status-dot[data-status='waiting'] { font-weight: var(--cr-font-weight-semibold); }
+.cr-status-dot[data-status='waiting'] .cr-status-dot__mark { background: var(--cr-color-ink-bg); box-shadow: 0 0 0 4px var(--cr-color-ink-subtle); }
+.cr-status-dot[data-status='done'] .cr-status-dot__mark { background: var(--cr-color-text-muted); }
+.cr-status-dot[data-status='failed'] { color: var(--cr-color-status-failed-fg); }
+.cr-status-dot[data-status='failed'] .cr-status-dot__mark { background: var(--cr-color-danger-text); }
+.cr-status-dot[data-status='queued'] { color: var(--cr-color-text-muted); }
+.cr-status-dot[data-status='queued'] .cr-status-dot__mark { border: 2px dashed var(--cr-color-text-muted); }

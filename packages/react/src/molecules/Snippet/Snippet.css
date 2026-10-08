@@ -1,0 +1,50 @@
+.cr-snippet {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 6px 6px var(--cr-space-4);
+  border-radius: 14px;
+  background: var(--cr-color-glass-tile);
+  color: var(--cr-color-text-default);
+}
+
+/* Dark stays dark in both themes: it reads as a terminal. */
+.cr-snippet[data-tone='dark'] {
+  background: var(--cr-gray-900);
+  color: var(--cr-gray-50);
+}
+
+.cr-snippet[data-tone='dark'] .cr-button {
+  border-color: transparent;
+  background: var(--cr-gray-800);
+  color: var(--cr-gray-50);
+}
+
+.cr-snippet__lines {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding-block: 8px;
+  overflow-x: auto;
+  font-family: var(--cr-font-family-mono);
+  font-size: var(--cr-font-size-md);
+  line-height: 1.6;
+}
+
+.cr-snippet__line {
+  display: flex;
+  gap: 10px;
+}
+
+.cr-snippet__prompt {
+  color: var(--cr-gray-400);
+  user-select: none;
+}
+
+.cr-snippet[data-tone='light'] .cr-snippet__prompt {
+  color: var(--cr-color-text-muted);
+}
+
+.cr-snippet__line code {
+  font: inherit;
+}

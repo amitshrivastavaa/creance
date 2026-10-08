@@ -1,0 +1,25 @@
+.cr-destructive__confirm {
+  display: grid;
+  gap: var(--cr-space-2);
+  margin-top: var(--cr-space-1);
+}
+
+.cr-destructive__label {
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-destructive__label code {
+  font-family: var(--cr-font-family-mono);
+}
+
+/* Solid red: the one place the kit fills a button with red. */
+.cr-destructive__action {
+  border-color: transparent;
+  background: var(--cr-color-danger-bg);
+  color: var(--cr-color-danger-fg);
+}
+
+.cr-destructive__action:hover:not(:disabled) {
+  background: var(--cr-color-danger-bg-hover);
+}

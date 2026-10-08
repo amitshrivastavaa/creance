@@ -1,0 +1,86 @@
+.cr-json {
+  position: relative;
+  padding: var(--cr-space-4) 18px;
+  border-radius: var(--cr-radius-lg);
+  background: var(--cr-color-glass-tile);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-mono);
+  font-size: var(--cr-font-size-sm);
+  line-height: 1.8;
+}
+
+.cr-json__copy {
+  position: absolute;
+  top: var(--cr-space-2);
+  right: var(--cr-space-2);
+}
+
+.cr-json__tree {
+  overflow-x: auto;
+}
+
+.cr-json__line {
+  display: flex;
+  align-items: center;
+  white-space: pre;
+}
+
+.cr-json__children {
+  padding-inline-start: var(--cr-space-6);
+}
+
+.cr-json__children > .cr-json__line {
+  padding-inline-start: 20px;
+}
+
+.cr-json__close {
+  padding-inline-start: 20px;
+}
+
+.cr-json__toggle {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--cr-color-text-muted);
+  cursor: pointer;
+}
+
+.cr-json__toggle .cr-icon {
+  transition: transform var(--cr-motion-duration-fast) var(--cr-motion-easing-standard);
+}
+
+.cr-json__toggle[aria-expanded='true'] .cr-icon {
+  transform: rotate(90deg);
+}
+
+.cr-json__toggle:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: 1px;
+}
+
+.cr-json__key {
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-json__string {
+  color: var(--cr-color-text-secondary);
+}
+
+.cr-json__punct {
+  color: var(--cr-color-text-muted);
+}
+
+.cr-json__count {
+  margin: 0 4px;
+  padding: 0 6px;
+  border-radius: 6px;
+  background: var(--cr-color-bg-subtle);
+  color: var(--cr-color-text-muted);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-xs);
+}

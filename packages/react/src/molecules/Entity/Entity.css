@@ -1,0 +1,38 @@
+.cr-entity {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-3);
+  padding: 14px var(--cr-space-4);
+  border-radius: 14px;
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+.cr-entity .cr-avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.cr-entity__text {
+  display: grid;
+  flex: 1;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cr-entity__name {
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-entity__description {
+  overflow: hidden;
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cr-entity__actions {
+  display: flex;
+  gap: var(--cr-space-2);
+}

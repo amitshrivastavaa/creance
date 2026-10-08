@@ -16,7 +16,7 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 
 ## Where each component sits, and why
 
-### Atoms (18)
+### Atoms (22)
 
 | Component | Why it is an atom |
 |---|---|
@@ -32,9 +32,11 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **Input**, **Textarea**, **Select** | Native text controls, styled. `Select` is the native `<select>`, so the operating system draws its menu and it works on phones. |
 | **Checkbox**, **Radio**, **Switch** | Native inputs with their label. `Switch` is a checkbox with `role="switch"`, so it still submits with forms. Each carries its own label because a check without one is never correct. |
 | **Toggle** | A button that stays on or off (`aria-pressed`). |
+| **StatusDot**, **LoadingDots** | A status as shape, tone and word; three pulsing dots beside what is happening. |
+| **Gauge**, **MiddleTruncate** | A ring meter that turns red only past a set limit; a path or ID shortened in the middle, whole for screen readers. |
 | **Separator**, **Skeleton** | A hairline and a loading placeholder, both hidden from screen readers by default. |
 
-### Molecules (36)
+### Molecules (47)
 
 | Component | Built from | Why it is a molecule |
 |---|---|---|
@@ -63,6 +65,11 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **CommandMenu** | Radix Dialog + the Combobox keyboard model | ⌘K search across agents, runs and actions, grouped. |
 | **ContextMenu**, **DotsMenu** | Radix ContextMenu; IconButton + Menu | Secondary actions on right-click or a "…" button, sharing Menu's styles. |
 | **Scroller**, **Collapse** | A focusable region; Radix Accordion | A horizontal strip with edge fades; sections that open and close, at a chosen heading level. |
+| **Sheet**, **DestructiveActionModal** | Radix Dialog | A panel from an edge; an alert dialog that starts on Cancel and can require typing a name. |
+| **ContextCard**, **RelativeTimeCard** | Radix Popover, anchored | A preview on hover or focus that never takes focus; "2 hours ago" with exact local and UTC times. |
+| **Table**, **FileTree** | A real `<table>`; an ARIA tree | Sorting announced through `aria-sort`, Shift-click ranges and bulk actions; tree keyboard model with one tab stop. |
+| **JsonView**, **Snippet** | Buttons; CopyButton | Foldable JSON in ink and grey; commands whose prompt sign is never copied. |
+| **Entity**, **Description**, **EmptyState** | Avatar; `<dl>`; a heading and an action | Small compositions that set the kit's rhythm for identity rows, term lists and empty pages. |
 | **DiffLine** | — | Same reasoning. One line of a diff has several coordinated parts (two line numbers, a sign, `<ins>`/`<del>`, screen-reader text) and only makes sense inside a diff. A strict reading would call it an atom; it's here because of what it means, not how it's built. |
 
 ### Organisms (6)

@@ -1,0 +1,96 @@
+.cr-tree,
+.cr-tree ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cr-tree {
+  padding: var(--cr-space-2);
+  border-radius: var(--cr-radius-lg);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-tree__item {
+  border-radius: var(--cr-radius-sm);
+  outline: none;
+}
+
+.cr-tree__row {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  height: 32px;
+  padding-inline-end: 10px;
+  border-radius: var(--cr-radius-sm);
+  cursor: pointer;
+}
+
+.cr-tree__row:hover {
+  background: var(--cr-color-bg-subtle);
+}
+
+.cr-tree__item[aria-selected='true'] > .cr-tree__row {
+  background: var(--cr-color-ink-subtle);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-tree__item:focus-visible > .cr-tree__row {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: -1px;
+}
+
+.cr-tree__twist {
+  display: flex;
+  width: 12px;
+  color: var(--cr-color-text-muted);
+  font-size: 12px;
+}
+
+.cr-tree__twist .cr-icon {
+  transition: transform var(--cr-motion-duration-fast) var(--cr-motion-easing-standard);
+}
+
+.cr-tree__item[aria-expanded='true'] > .cr-tree__row .cr-tree__twist .cr-icon {
+  transform: rotate(90deg);
+}
+
+/* Folder and file glyphs drawn with borders, so they follow the theme. */
+.cr-tree__icon {
+  box-sizing: border-box;
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--cr-color-text-muted);
+}
+
+.cr-tree__icon[data-kind='folder'] {
+  height: 11px;
+  border-radius: 2px 3px 3px 3px;
+}
+
+.cr-tree__icon[data-kind='file'] {
+  width: 11px;
+  border-radius: 2px;
+}
+
+.cr-tree__name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-family: var(--cr-font-family-mono);
+  font-size: var(--cr-font-size-sm);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cr-tree__status {
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-bold);
+}
+
+.cr-tree__status[data-status='D'] {
+  color: var(--cr-color-danger-text);
+}

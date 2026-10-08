@@ -1,0 +1,85 @@
+.cr-sheet {
+  position: fixed;
+  z-index: 41;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--cr-radius-xl);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-sheet:focus-visible {
+  outline: none;
+}
+
+.cr-sheet[data-side='right'],
+.cr-sheet[data-side='left'] {
+  top: var(--cr-space-3);
+  bottom: var(--cr-space-3);
+  width: min(400px, calc(100vw - 2 * var(--cr-space-3)));
+}
+
+.cr-sheet[data-side='right'] {
+  right: var(--cr-space-3);
+  animation: cr-sheet-in-right var(--cr-motion-duration-slow) var(--cr-motion-easing-spring);
+}
+
+.cr-sheet[data-side='left'] {
+  left: var(--cr-space-3);
+  animation: cr-sheet-in-left var(--cr-motion-duration-slow) var(--cr-motion-easing-spring);
+}
+
+.cr-sheet[data-side='bottom'] {
+  right: var(--cr-space-3);
+  bottom: var(--cr-space-3);
+  left: var(--cr-space-3);
+  max-height: 70vh;
+  animation: cr-sheet-in-bottom var(--cr-motion-duration-slow) var(--cr-motion-easing-spring);
+}
+
+.cr-sheet__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--cr-space-5) var(--cr-space-5) var(--cr-space-3);
+}
+
+.cr-sheet__title {
+  flex: 1;
+  margin: 0;
+  font-family: var(--cr-font-family-display);
+  font-size: var(--cr-font-size-xl);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-sheet__description {
+  margin: 0;
+  padding: 0 var(--cr-space-5) var(--cr-space-3);
+  color: var(--cr-color-text-secondary);
+}
+
+.cr-sheet__body {
+  flex: 1;
+  min-height: 0;
+  padding: 0 var(--cr-space-5) var(--cr-space-5);
+  overflow-y: auto;
+}
+
+.cr-sheet__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: var(--cr-space-4) var(--cr-space-5);
+  border-top: 1px solid var(--cr-color-border-default);
+}
+
+@keyframes cr-sheet-in-right { from { opacity: 0; transform: translateX(24px); } }
+@keyframes cr-sheet-in-left { from { opacity: 0; transform: translateX(-24px); } }
+@keyframes cr-sheet-in-bottom { from { opacity: 0; transform: translateY(24px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .cr-sheet { animation: none !important; }
+}

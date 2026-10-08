@@ -1,0 +1,18 @@
+.cr-context-card {
+  z-index: 50;
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--cr-space-3);
+  width: 320px;
+  max-width: calc(100vw - 2 * var(--cr-space-4));
+  padding: 18px;
+  border-radius: var(--cr-radius-lg);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+  animation: cr-menu-in var(--cr-motion-duration-fast) var(--cr-motion-easing-standard);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cr-context-card { animation: none; }
+}

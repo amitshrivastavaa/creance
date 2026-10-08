@@ -1,0 +1,8 @@
+.cr-middle-truncate {
+  white-space: nowrap;
+}
+
+.cr-middle-truncate[data-mono] {
+  font-family: var(--cr-font-family-mono);
+  font-size: 0.93em;
+}
