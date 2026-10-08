@@ -31,7 +31,9 @@ One tool call made by an agent: the tool's name, the arguments it passed, where 
 | `success` | The result, collapsed |
 | `error` | The error message, and **Retry** if you pass `onRetry` and `retryable` isn't false |
 
-When the call is retried, pass the new `attempt` number. The header shows "Attempt 2".
+When the call is retried, pass the new `attempt` number and the failed ones in `previousAttempts`. The header shows "Attempt 2", and the earlier failures stay visible after the retry succeeds, so nobody has to wonder why it took two tries.
+
+<Canvas of={Stories.Retried} />
 
 <Canvas of={Stories.Error} />
 

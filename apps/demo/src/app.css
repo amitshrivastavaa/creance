@@ -1,0 +1,64 @@
+/* Page chrome for the demo. Everything else comes from the kit. */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--cr-color-bg-canvas);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+.demo-note {
+  margin: 0;
+  padding: var(--cr-space-2) var(--cr-space-4);
+  background: var(--cr-color-bg-subtle);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+  text-align: center;
+}
+
+.demo-sim {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  padding-inline-start: var(--cr-space-4);
+  border-inline-start: 1px solid var(--cr-color-border-default);
+}
+
+.demo-speed {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-1);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+}
+
+.demo-speed select {
+  min-height: 26px;
+  border: 1px solid var(--cr-color-border-strong);
+  border-radius: var(--cr-radius-md);
+  background: var(--cr-color-bg-surface);
+  color: var(--cr-color-text-default);
+  font: inherit;
+}
+
+.demo-speed select:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.demo-empty {
+  margin: 0;
+  color: var(--cr-color-text-muted);
+}
+
+.demo-status p {
+  margin: 0;
+  padding: 0 var(--cr-space-4) var(--cr-space-4);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+}

@@ -17,6 +17,8 @@ export interface ToolCallCardProps {
   startedAt?: number | undefined;
   endedAt?: number | undefined;
   attempt?: number;
+  /** Earlier attempts that failed, oldest first, so a retried call still shows what went wrong. */
+  previousAttempts?: Array<{ attempt: number; error?: string | undefined }>;
   /** Shows a Retry button on error. Omit it when the agent retries on its own. */
   onRetry?: () => void;
   /** Hide Retry when the backend says the failure is permanent. Default true. */
@@ -42,6 +44,7 @@ export function ToolCallCard({
   startedAt,
   endedAt,
   attempt = 1,
+  previousAttempts = [],
   onRetry,
   retryable = true,
   defaultOpen = false,
@@ -59,6 +62,16 @@ export function ToolCallCard({
         attempt={attempt}
         headingLevel={headingLevel}
       />
+
+      {previousAttempts.length > 0 && (
+        <ul className="cr-tool-card__attempts" aria-label="Earlier attempts">
+          {previousAttempts.map((a) => (
+            <li key={a.attempt}>
+              Attempt {a.attempt} failed{a.error ? `: ${a.error}` : ''}
+            </li>
+          ))}
+        </ul>
+      )}
 
       {input !== undefined && (
         <details className="cr-tool-card__section" open={defaultOpen}>

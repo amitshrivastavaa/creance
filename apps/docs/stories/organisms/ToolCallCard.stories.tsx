@@ -33,7 +33,9 @@ export const Error: Story = {
   },
 };
 /** The second attempt after a failure. */
-export const Retried: Story = { args: { attempt: 2 } };
+export const Retried: Story = {
+  args: { attempt: 2, previousAttempts: [{ attempt: 1, error: 'ECONNRESET: request to registry.npmjs.org timed out after 10s' }] },
+};
 export const InputOpen: Story = { args: { defaultOpen: true } };
 
 /** Live: every tool call of the simulated run, including a failure and the agent's automatic retry. */
@@ -56,6 +58,7 @@ export const Live: Story = {
                 startedAt={c.startedAt}
                 endedAt={c.endedAt}
                 attempt={c.attempt}
+                previousAttempts={c.attempts.slice(0, -1)}
               />
             ))}
             <WaitingControls run={run} sim={sim} />

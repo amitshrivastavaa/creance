@@ -4,7 +4,9 @@
   "description": "React components for human-in-the-loop agent interfaces: approvals, tool calls, run timelines, diff review and handoffs.",
   "license": "MIT",
   "type": "module",
-  "sideEffects": ["*.css"],
+  "sideEffects": [
+    "*.css"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -16,11 +18,14 @@
     },
     "./styles.css": "./dist/styles.css"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "vite build && tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit -p .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "size": "size-limit"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -31,6 +36,7 @@
     "@radix-ui/react-tooltip": "^1.3.0"
   },
   "devDependencies": {
+    "@size-limit/preset-small-lib": "^14.2.0",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
@@ -40,6 +46,7 @@
     "jsdom": "^30.1.2",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
+    "size-limit": "^14.2.0",
     "typescript": "~6.0.3",
     "vite": "^8.3.3",
     "vitest": "^5.0.3"

@@ -28,3 +28,6 @@ export * from './organisms/ToolCallCard';
 // Event model and state
 export type * from './events';
 export * from './run';
+
+// Templates
+export * from './templates/AgentRunLayout';

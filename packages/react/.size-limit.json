@@ -1,0 +1,42 @@
+[
+  {
+    "name": "creance (all components, JS)",
+    "path": "dist/index.js",
+    "import": "*",
+    "ignore": [
+      "react",
+      "react-dom",
+      "@radix-ui/react-tooltip",
+      "@radix-ui/react-dialog"
+    ],
+    "limit": "9 kB"
+  },
+  {
+    "name": "creance: ApprovalPrompt only (tree-shaken)",
+    "path": "dist/index.js",
+    "import": "{ ApprovalPrompt }",
+    "ignore": [
+      "react",
+      "react-dom",
+      "@radix-ui/react-tooltip",
+      "@radix-ui/react-dialog"
+    ],
+    "limit": "2.5 kB"
+  },
+  {
+    "name": "creance/styles.css",
+    "path": "dist/styles.css",
+    "limit": "4 kB",
+    "rolldown": false
+  },
+  {
+    "name": "creance/simulator",
+    "path": "dist/simulator.js",
+    "import": "*",
+    "ignore": [
+      "react",
+      "react-dom"
+    ],
+    "limit": "2.5 kB"
+  }
+]

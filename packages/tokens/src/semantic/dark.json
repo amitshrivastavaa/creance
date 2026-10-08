@@ -20,6 +20,10 @@
       "inverse": {
         "$value": "{gray.50}",
         "$type": "color"
+      },
+      "overlay": {
+        "$value": "rgb(0 0 0 / 0.6)",
+        "$type": "color"
       }
     },
     "text": {
