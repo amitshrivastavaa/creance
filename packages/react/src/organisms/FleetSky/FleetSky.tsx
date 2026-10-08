@@ -68,6 +68,7 @@ export function FleetSky({ agents, onSelect, label = 'Your agents', you = 'You',
   const tagRefs = useRef(new Map<string, HTMLElement>());
   const birds = useRef(new Map<string, Bird>());
   const agentsRef = useRef(agents);
+  const redrawRef = useRef<(() => void) | undefined>(undefined);
   useLayoutEffect(() => {
     agentsRef.current = agents;
   }, [agents]);
@@ -116,11 +117,9 @@ export function FleetSky({ agents, onSelect, label = 'Your agents', you = 'You',
       canvas.height = height * dpr;
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
+      // Resizing clears the canvas; under reduced motion nothing else would repaint it.
+      redraw();
     };
-    const observer = new ResizeObserver(resize);
-    observer.observe(root);
-    resize();
-    readColors();
 
     const draw = (ms: number) => {
       const t = reduce ? 0 : ms / 1000;
@@ -215,12 +214,34 @@ export function FleetSky({ agents, onSelect, label = 'Your agents', you = 'You',
 
       if (!reduce) raf = requestAnimationFrame(draw);
     };
-    raf = requestAnimationFrame(draw);
+    const redraw = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(draw);
+    };
+    // Reduced motion draws on demand: on resize, on a theme change, and when agents change.
+    redrawRef.current = () => {
+      readColors();
+      redraw();
+    };
+    const theme = new MutationObserver(redrawRef.current);
+    theme.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'data-transparency'] });
+    const scheme = window.matchMedia?.('(prefers-color-scheme: dark)');
+    scheme?.addEventListener('change', redrawRef.current);
+
+    const observer = new ResizeObserver(resize);
+    observer.observe(root);
+    resize();
+    readColors();
     return () => {
       cancelAnimationFrame(raf);
       observer.disconnect();
+      theme.disconnect();
+      if (redrawRef.current) scheme?.removeEventListener('change', redrawRef.current);
+      redrawRef.current = undefined;
     };
   }, []);
+
+  useEffect(() => redrawRef.current?.(), [agents]);
 
   // Forget birds for agents that left.
   useEffect(() => {

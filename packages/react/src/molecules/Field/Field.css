@@ -1,0 +1,29 @@
+.cr-field {
+  display: grid;
+  align-content: start;
+  gap: var(--cr-space-2);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+.cr-field__label {
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-field[data-disabled] .cr-field__label {
+  color: var(--cr-color-text-muted);
+}
+
+.cr-field__hint {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}
+
+.cr-field__error {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--cr-color-status-failed-fg);
+  font-size: var(--cr-font-size-xs);
+}

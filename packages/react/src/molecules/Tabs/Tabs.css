@@ -1,0 +1,51 @@
+.cr-tabs {
+  display: grid;
+  gap: var(--cr-space-4);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+.cr-tabs__list {
+  display: inline-flex;
+  justify-self: start;
+  gap: var(--cr-space-1);
+  padding: var(--cr-space-1);
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-bg-subtle);
+}
+
+.cr-tabs__trigger {
+  min-height: 34px;
+  padding: 0 var(--cr-space-4);
+  border: 0;
+  border-radius: var(--cr-radius-full);
+  background: transparent;
+  color: var(--cr-color-text-secondary);
+  font: inherit;
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
+  cursor: pointer;
+  transition: background-color var(--cr-motion-duration-base) var(--cr-motion-easing-standard),
+    box-shadow var(--cr-motion-duration-base) var(--cr-motion-easing-standard);
+}
+
+.cr-tabs__trigger:hover {
+  color: var(--cr-color-text-default);
+}
+
+.cr-tabs__trigger[data-state='active'] {
+  background: var(--cr-color-glass-popover);
+  box-shadow: var(--cr-shadow-sm);
+  color: var(--cr-color-text-default);
+}
+
+.cr-tabs__trigger:focus-visible,
+.cr-tabs__content:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-tabs__trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

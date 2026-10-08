@@ -6,10 +6,20 @@
     "ignore": [
       "react",
       "react-dom",
-      "@radix-ui/react-tooltip",
-      "@radix-ui/react-dialog"
+      "@radix-ui/react-accordion",
+      "@radix-ui/react-collapsible",
+      "@radix-ui/react-context-menu",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-popover",
+      "@radix-ui/react-scroll-area",
+      "@radix-ui/react-slider",
+      "@radix-ui/react-tabs",
+      "@radix-ui/react-toast",
+      "@radix-ui/react-toggle-group",
+      "@radix-ui/react-tooltip"
     ],
-    "limit": "10 kB"
+    "limit": "13 kB"
   },
   {
     "name": "creance: ApprovalPrompt only (tree-shaken)",
@@ -18,15 +28,25 @@
     "ignore": [
       "react",
       "react-dom",
-      "@radix-ui/react-tooltip",
-      "@radix-ui/react-dialog"
+      "@radix-ui/react-accordion",
+      "@radix-ui/react-collapsible",
+      "@radix-ui/react-context-menu",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-popover",
+      "@radix-ui/react-scroll-area",
+      "@radix-ui/react-slider",
+      "@radix-ui/react-tabs",
+      "@radix-ui/react-toast",
+      "@radix-ui/react-toggle-group",
+      "@radix-ui/react-tooltip"
     ],
     "limit": "2.5 kB"
   },
   {
     "name": "creance/styles.css",
     "path": "dist/styles.css",
-    "limit": "4.5 kB",
+    "limit": "6 kB",
     "rolldown": false
   },
   {

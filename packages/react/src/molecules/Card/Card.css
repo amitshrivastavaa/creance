@@ -1,0 +1,10 @@
+.cr-card {
+  display: grid;
+  align-content: start;
+  gap: var(--cr-space-2);
+  padding: var(--cr-space-5);
+  border-radius: var(--cr-radius-lg);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}

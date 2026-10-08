@@ -12,6 +12,8 @@ export default defineConfig({
     cssCodeSplit: false,
     rollupOptions: {
       external: [/^react($|\/)/, /^react-dom($|\/)/, /^@radix-ui\//],
+      // One output file per source module, so bundlers drop the components an app does not import.
+      output: { preserveModules: true, preserveModulesRoot: 'src', entryFileNames: '[name].js' },
     },
   },
   test: {

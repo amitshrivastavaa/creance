@@ -16,7 +16,7 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 
 ## Where each component sits, and why
 
-### Atoms (9)
+### Atoms (17)
 
 | Component | Why it is an atom |
 |---|---|
@@ -29,8 +29,11 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **ProgressBar** | A native `<progress>` with tones. |
 | **Avatar** | Agent or person identity. Agents are square and people round, so the difference doesn't rely on colour. |
 | **Tooltip** | Radix Tooltip with the kit's styling. Built on Radix because positioning, dismissal and hover/focus timing are the hard parts. |
+| **Input**, **Textarea**, **Select** | Native text controls, styled. `Select` is the native `<select>`, so the operating system draws its menu and it works on phones. |
+| **Checkbox**, **Radio**, **Switch** | Native inputs with their label. `Switch` is a checkbox with `role="switch"`, so it still submits with forms. Each carries its own label because a check without one is never correct. |
+| **Separator**, **Skeleton** | A hairline and a loading placeholder, both hidden from screen readers by default. |
 
-### Molecules (6)
+### Molecules (14)
 
 | Component | Built from | Why it is a molecule |
 |---|---|---|
@@ -39,6 +42,13 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **BudgetMeter** | ProgressBar + labels | Turns a number into "18.2K / 50K tokens", with warning and over-limit thresholds. |
 | **KeyboardHint** | Kbd group + label | A shortcut and what it does. |
 | **RiskLabel** | — | Structurally it is as simple as an atom. It is a molecule because it encodes product policy: the risk vocabulary (low, medium, high) and how each level is presented. Keeping it next to the other domain pieces makes it easier to find than putting it among generic atoms. |
+| **Field** | Label + any control + hint or error | Wires `id`, `aria-describedby` and `aria-invalid` onto the control it wraps. |
+| **RadioGroup** | Radio + fieldset | The question as a legend and one choice from a list. |
+| **Tabs** | Radix Tabs | A segmented control and its panels; arrow keys move between tabs. |
+| **Menu** | Radix DropdownMenu | Items, separators, shortcuts, a danger tone for destructive items. |
+| **Dialog** | Radix Dialog | Title, description and actions in a sheet over a dimmed page; traps and returns focus. |
+| **Toast** | Radix Toast + a small queue | `toast()` from anywhere, rendered by one `<Toaster />`; announced politely, kept while hovered. |
+| **Alert**, **Card** | — | A message in the page, and a glass tile. Generic, but they combine an icon, title and text (Alert) or set the tile's rhythm (Card), so they sit with the other composed pieces. |
 | **DiffLine** | — | Same reasoning. One line of a diff has several coordinated parts (two line numbers, a sign, `<ins>`/`<del>`, screen-reader text) and only makes sense inside a diff. A strict reading would call it an atom; it's here because of what it means, not how it's built. |
 
 ### Organisms (6)

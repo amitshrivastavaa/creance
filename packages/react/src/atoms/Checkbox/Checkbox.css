@@ -1,0 +1,100 @@
+/* Native checks, radios and switches: forms, keyboard and screen readers work without script. */
+.cr-check {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--cr-space-3);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+  line-height: var(--cr-font-line-height-normal);
+  cursor: pointer;
+}
+
+.cr-check:has(input:disabled) {
+  color: var(--cr-color-text-muted);
+  cursor: not-allowed;
+}
+
+.cr-check__input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  accent-color: var(--cr-color-ink-bg);
+  cursor: inherit;
+}
+
+.cr-check__input:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-check__text {
+  display: grid;
+  gap: 2px;
+}
+
+.cr-check__description {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+}
+
+/* Switch: a checkbox drawn as a capsule. Ink when on. */
+.cr-switch__input {
+  position: relative;
+  flex: none;
+  width: 52px;
+  height: 32px;
+  margin: 0;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-border-strong);
+  appearance: none;
+  cursor: inherit;
+  transition: background-color var(--cr-motion-duration-base) var(--cr-motion-easing-standard);
+}
+
+.cr-switch__input::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--cr-radius-full);
+  /* White on ink in light; graphite on off-white in dark, so the knob always shows. */
+  background: var(--cr-color-bg-raised);
+  box-shadow: var(--cr-shadow-sm);
+  transition: transform var(--cr-motion-duration-base) var(--cr-motion-easing-spring),
+    width var(--cr-motion-duration-fast) var(--cr-motion-easing-standard);
+}
+
+.cr-switch__input:checked {
+  background: var(--cr-color-ink-bg);
+}
+
+.cr-switch__input:checked::before {
+  transform: translateX(20px);
+}
+
+/* While pressed, the knob stretches toward where it will go. */
+.cr-switch__input:active:not(:disabled)::before {
+  width: 32px;
+}
+
+.cr-switch__input:checked:active:not(:disabled)::before {
+  transform: translateX(14px);
+}
+
+.cr-switch__input:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-switch__input:disabled {
+  opacity: 0.5;
+}
+
+.cr-switch {
+  align-items: center;
+  justify-content: space-between;
+}

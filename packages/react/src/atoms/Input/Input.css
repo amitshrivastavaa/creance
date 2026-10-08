@@ -1,0 +1,67 @@
+/* Text fields share one look: a frosted well with a soft inner shadow. Blue ring on focus, red edge when invalid. */
+.cr-input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: var(--cr-control-height-md);
+  padding: 0 14px;
+  border: 1px solid var(--cr-color-border-default);
+  border-radius: var(--cr-radius-md);
+  background: var(--cr-color-glass-control);
+  box-shadow: inset 0 1px 2px var(--cr-color-bg-subtle);
+  color: var(--cr-color-text-default);
+  font: inherit;
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+  transition: border-color var(--cr-motion-duration-fast) var(--cr-motion-easing-standard),
+    box-shadow var(--cr-motion-duration-fast) var(--cr-motion-easing-standard);
+}
+
+.cr-input::placeholder {
+  color: var(--cr-color-text-muted);
+}
+
+.cr-input:focus-visible {
+  border-color: var(--cr-color-accent-bg);
+  outline: none;
+  box-shadow: 0 0 0 4px var(--cr-color-accent-subtle);
+}
+
+.cr-input[aria-invalid='true'] {
+  border-color: var(--cr-color-danger-text);
+}
+
+.cr-input:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.cr-input[data-size='sm'] {
+  min-height: var(--cr-control-height-sm);
+  font-size: var(--cr-font-size-sm);
+}
+
+textarea.cr-input {
+  padding: var(--cr-space-3) 14px;
+  line-height: var(--cr-font-line-height-normal);
+  resize: vertical;
+}
+
+.cr-select {
+  position: relative;
+  display: block;
+}
+
+.cr-select > select.cr-input {
+  padding-inline-end: 40px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.cr-select > .cr-icon {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  color: var(--cr-color-text-muted);
+  pointer-events: none;
+  transform: translateY(-50%);
+}

@@ -34,3 +34,5 @@ export const ChevronIcon = (p: IconProps) => <Icon {...p}><path d="M6 4l4 4-4 4"
 export const RetryIcon = (p: IconProps) => <Icon {...p}><path d="M13 8a5 5 0 1 1-1.5-3.5M13 2.5v3h-3" /></Icon>;
 export const ShieldIcon = (p: IconProps) => <Icon {...p}><path d="M8 1.5l5 2v4c0 3.3-2.2 5.8-5 7-2.8-1.2-5-3.7-5-7v-4z" /></Icon>;
 export const ArrowDownIcon = (p: IconProps) => <Icon {...p}><path d="M8 3v10M4 9l4 4 4-4" /></Icon>;
+export const ChevronDownIcon = (p: IconProps) => <Icon {...p}><path d="M4 6l4 4 4-4" /></Icon>;
+export const InfoIcon = (p: IconProps) => <Icon {...p}><circle cx="8" cy="8" r="6.5" /><path d="M8 7.5v4M8 4.8v.01" /></Icon>;
