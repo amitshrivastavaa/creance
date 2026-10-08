@@ -47,7 +47,7 @@
   opacity: 0.5;
 }
 
-/* Ember: the one warm colour, kept for the action that answers "needs you". */
+/* Aurora: the one bright colour, kept for the action that answers "needs you". */
 .cr-button[data-variant='primary'] {
   border-color: transparent;
   background: var(--cr-color-accent-bg);

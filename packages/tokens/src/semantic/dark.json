@@ -61,24 +61,24 @@
       }
     },
     "focus": {
-      "$value": "{ember.300}",
+      "$value": "{aurora.300}",
       "$type": "color"
     },
     "accent": {
       "bg": {
-        "$value": "{ember.400}",
+        "$value": "{aurora.400}",
         "$type": "color"
       },
       "bg-hover": {
-        "$value": "{ember.300}",
+        "$value": "{aurora.300}",
         "$type": "color"
       },
       "fg": {
-        "$value": "{ember.900}",
+        "$value": "{aurora.900}",
         "$type": "color"
       },
       "subtle": {
-        "$value": "color-mix(in srgb, {ember.400} 16%, transparent)",
+        "$value": "color-mix(in srgb, {aurora.400} 16%, transparent)",
         "$type": "color"
       }
     },
@@ -92,7 +92,7 @@
         "$type": "color"
       },
       "fg": {
-        "$value": "{ember.900}",
+        "$value": "{ink.900}",
         "$type": "color"
       }
     },
@@ -102,7 +102,7 @@
         "$type": "color"
       },
       "taut": {
-        "$value": "{ember.400}",
+        "$value": "{aurora.400}",
         "$type": "color"
       }
     },
@@ -119,11 +119,11 @@
       },
       "waiting": {
         "fg": {
-          "$value": "{ember.400}",
+          "$value": "{aurora.300}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {ember.400} 16%, transparent)",
+          "$value": "color-mix(in srgb, {aurora.400} 16%, transparent)",
           "$type": "color"
         }
       },
@@ -171,11 +171,11 @@
       },
       "medium": {
         "fg": {
-          "$value": "{ember.400}",
+          "$value": "{lilac.300}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {ember.400} 16%, transparent)",
+          "$value": "color-mix(in srgb, {lilac.400} 16%, transparent)",
           "$type": "color"
         }
       },
@@ -226,7 +226,7 @@
       "$value": "0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.25)"
     },
     "glow": {
-      "$value": "0 0 0 1px rgb(255 179 107 / 0.45), 0 0 60px rgb(255 170 90 / 0.22)"
+      "$value": "0 0 0 1px rgb(111 220 242 / 0.45), 0 0 60px rgb(111 220 242 / 0.18)"
     }
   },
   "gradient": {
@@ -234,7 +234,7 @@
       "$value": "linear-gradient(180deg, #0b1530 0%, #1b1a42 40%, #2a2350 70%, #4a2f55 100%)"
     },
     "horizon": {
-      "$value": "radial-gradient(80% 45% at 50% 100%, rgb(228 138 106 / 0.45), transparent 70%)"
+      "$value": "radial-gradient(80% 45% at 50% 100%, rgb(150 120 255 / 0.32), transparent 70%)"
     }
   }
 }

@@ -43,7 +43,7 @@
 .cr-approval__title .cr-code {
   padding: 0;
   background: none;
-  color: var(--cr-color-tether-taut);
+  color: var(--cr-color-text-default);
   font-size: 0.66em;
   font-weight: 500;
 }

@@ -20,10 +20,10 @@ Tokens come in two tiers. **Primitives** (`--cr-blue-600`) are the raw palette a
 
 ## Sky and night glass
 
-Creance's look comes from its name. A *creance* is the line a falconer keeps on a bird in flight, so the kit is drawn as a sky: **dusk** (the dark theme) and **dawn** (the light theme), with an ember glow on the horizon (`--cr-gradient-canvas`, `--cr-gradient-horizon`). Agents fly in it on lines back to you; see **Organisms / FleetSky**.
+Creance's look comes from its name. A *creance* is the line a falconer keeps on a bird in flight, so the kit is drawn as a sky: **dusk** (the dark theme) and **dawn** (the light theme), with a soft violet glow on the horizon (`--cr-gradient-canvas`, `--cr-gradient-horizon`). Agents fly in it on lines back to you; see **Organisms / FleetSky**.
 
-- **Ember** (`--cr-color-accent-*`, `--cr-color-tether-taut`) is the one warm colour, kept for "needs you": the taut line, the request edge, the primary action.
-- **Moonlight** is running, **sage** is done, **coral** is failed, **lilac** is blocked.
+- **Aurora** (`--cr-color-accent-*`, `--cr-color-tether-taut`) is the one bright colour, kept for "needs you": the taut line, the request edge, the primary action. Text stays in the ink colours; colour marks state, it doesn't tint copy.
+- **Moonlight** is running, **sage** is done, **coral** is failed, **lilac** is blocked and medium risk.
 - **Type**: Instrument Serif for titles, Inter Tight for the interface, JetBrains Mono for commands. Load them from Google Fonts or self-host; the tokens fall back to system fonts.
 - **Night glass** (`.cr-glass`, `.cr-surface`): translucent panels with a backdrop blur so the sky shows through. Under `prefers-reduced-transparency: reduce`, `prefers-contrast: more`, or `data-transparency="reduce"` on `<html>`, they turn solid. Use the **Surfaces** toolbar button to see it.
 

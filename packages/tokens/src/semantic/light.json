@@ -61,16 +61,16 @@
       }
     },
     "focus": {
-      "$value": "{ember.600}",
+      "$value": "{aurora.600}",
       "$type": "color"
     },
     "accent": {
       "bg": {
-        "$value": "{ember.600}",
+        "$value": "{aurora.600}",
         "$type": "color"
       },
       "bg-hover": {
-        "$value": "{ember.700}",
+        "$value": "{aurora.700}",
         "$type": "color"
       },
       "fg": {
@@ -78,7 +78,7 @@
         "$type": "color"
       },
       "subtle": {
-        "$value": "color-mix(in srgb, {ember.600} 12%, transparent)",
+        "$value": "color-mix(in srgb, {aurora.600} 12%, transparent)",
         "$type": "color"
       }
     },
@@ -102,7 +102,7 @@
         "$type": "color"
       },
       "taut": {
-        "$value": "{ember.600}",
+        "$value": "{aurora.600}",
         "$type": "color"
       }
     },
@@ -119,11 +119,11 @@
       },
       "waiting": {
         "fg": {
-          "$value": "{ember.700}",
+          "$value": "{aurora.700}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {ember.700} 12%, transparent)",
+          "$value": "color-mix(in srgb, {aurora.600} 12%, transparent)",
           "$type": "color"
         }
       },
@@ -171,11 +171,11 @@
       },
       "medium": {
         "fg": {
-          "$value": "{ember.700}",
+          "$value": "{lilac.700}",
           "$type": "color"
         },
         "bg": {
-          "$value": "color-mix(in srgb, {ember.700} 12%, transparent)",
+          "$value": "color-mix(in srgb, {lilac.600} 12%, transparent)",
           "$type": "color"
         }
       },
@@ -226,15 +226,15 @@
       "$value": "0 1px 2px rgb(29 24 56 / 0.06), 0 8px 24px rgb(29 24 56 / 0.06)"
     },
     "glow": {
-      "$value": "0 0 0 1px rgb(180 83 15 / 0.35), 0 12px 40px rgb(180 83 15 / 0.18)"
+      "$value": "0 0 0 1px rgb(11 110 138 / 0.3), 0 12px 40px rgb(11 110 138 / 0.14)"
     }
   },
   "gradient": {
     "canvas": {
-      "$value": "linear-gradient(180deg, #dfe7ff 0%, #ece6f4 45%, #f3e7f0 75%, #ffe2cf 100%)"
+      "$value": "linear-gradient(180deg, #dfe7ff 0%, #ece6f4 50%, #e9e4ff 100%)"
     },
     "horizon": {
-      "$value": "radial-gradient(80% 50% at 50% 100%, rgb(255 179 107 / 0.35), transparent 70%)"
+      "$value": "radial-gradient(80% 50% at 50% 100%, rgb(150 120 255 / 0.18), transparent 70%)"
     }
   }
 }

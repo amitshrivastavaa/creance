@@ -21,7 +21,7 @@
       "@radix-ui/react-tooltip",
       "@radix-ui/react-dialog"
     ],
-    "limit": "3.5 kB"
+    "limit": "2.5 kB"
   },
   {
     "name": "creance/styles.css",
