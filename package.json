@@ -1,0 +1,25 @@
+{
+  "name": "creance-monorepo",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.10.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "pnpm -r --filter ./packages/** build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "eslint .",
+    "storybook": "pnpm --filter docs storybook",
+    "build-storybook": "pnpm --filter docs build-storybook"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.13.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.71.1"
+  }
+}

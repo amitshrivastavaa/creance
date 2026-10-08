@@ -1,0 +1,57 @@
+{
+  "space": {
+    "0":  { "$value": "0px",  "$type": "dimension" },
+    "1":  { "$value": "4px",  "$type": "dimension" },
+    "2":  { "$value": "8px",  "$type": "dimension" },
+    "3":  { "$value": "12px", "$type": "dimension" },
+    "4":  { "$value": "16px", "$type": "dimension" },
+    "5":  { "$value": "20px", "$type": "dimension" },
+    "6":  { "$value": "24px", "$type": "dimension" },
+    "8":  { "$value": "32px", "$type": "dimension" },
+    "10": { "$value": "40px", "$type": "dimension" },
+    "12": { "$value": "48px", "$type": "dimension" }
+  },
+  "radius": {
+    "sm":   { "$value": "4px",    "$type": "dimension" },
+    "md":   { "$value": "6px",    "$type": "dimension" },
+    "lg":   { "$value": "10px",   "$type": "dimension" },
+    "full": { "$value": "9999px", "$type": "dimension" }
+  },
+  "font": {
+    "family": {
+      "sans": { "$value": "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif", "$type": "fontFamily" },
+      "mono": { "$value": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace", "$type": "fontFamily" }
+    },
+    "size": {
+      "xs":  { "$value": "12px", "$type": "dimension" },
+      "sm":  { "$value": "13px", "$type": "dimension" },
+      "md":  { "$value": "14px", "$type": "dimension" },
+      "lg":  { "$value": "16px", "$type": "dimension" },
+      "xl":  { "$value": "20px", "$type": "dimension" },
+      "2xl": { "$value": "24px", "$type": "dimension" }
+    },
+    "weight": {
+      "regular":  { "$value": 400, "$type": "fontWeight" },
+      "medium":   { "$value": 500, "$type": "fontWeight" },
+      "semibold": { "$value": 600, "$type": "fontWeight" }
+    },
+    "line-height": {
+      "tight":  { "$value": 1.25, "$type": "number" },
+      "normal": { "$value": 1.5,  "$type": "number" }
+    }
+  },
+  "motion": {
+    "duration": {
+      "fast": { "$value": "120ms", "$type": "duration" },
+      "base": { "$value": "200ms", "$type": "duration" },
+      "slow": { "$value": "320ms", "$type": "duration" }
+    },
+    "easing": {
+      "standard": { "$value": "cubic-bezier(0.2, 0, 0, 1)" }
+    }
+  },
+  "focus": {
+    "width":  { "$value": "2px", "$type": "dimension" },
+    "offset": { "$value": "2px", "$type": "dimension" }
+  }
+}

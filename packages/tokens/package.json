@@ -1,0 +1,26 @@
+{
+  "name": "creance-tokens",
+  "version": "0.0.0",
+  "description": "Design tokens for Creance, as CSS custom properties (light and dark) and a typed JS export.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.6.0"
+  }
+}

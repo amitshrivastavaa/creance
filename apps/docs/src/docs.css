@@ -1,0 +1,77 @@
+/* Docs-site chrome only. Not part of the kit. */
+/* !important: Storybook's docs styles are injected after ours and would otherwise keep the page white. */
+body,
+.sbdocs.sbdocs-wrapper {
+  background: var(--cr-color-bg-canvas) !important;
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+.sbdocs-wrapper :is(h1, h2, h3, p, li, td, th, strong) {
+  color: var(--cr-color-text-default) !important;
+}
+
+.tk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--cr-space-3);
+  margin-block: var(--cr-space-4) var(--cr-space-8);
+}
+
+.tk-swatch {
+  border: 1px solid var(--cr-color-border-default);
+  border-radius: var(--cr-radius-md);
+  overflow: hidden;
+  background: var(--cr-color-bg-surface);
+}
+
+.tk-swatch__chip {
+  height: 48px;
+  border-bottom: 1px solid var(--cr-color-border-default);
+}
+
+.tk-swatch__label {
+  padding: var(--cr-space-2);
+  font-size: var(--cr-font-size-xs);
+  line-height: var(--cr-font-line-height-normal);
+}
+
+.sbdocs .tk-name,
+.tk-name {
+  font-family: var(--cr-font-family-mono);
+  font-size: var(--cr-font-size-xs);
+  overflow-wrap: anywhere;
+}
+
+.sbdocs .tk-value,
+.tk-value {
+  color: var(--cr-color-text-muted);
+  font-family: var(--cr-font-family-mono);
+  font-size: var(--cr-font-size-xs);
+}
+
+.tk-rows {
+  display: grid;
+  gap: var(--cr-space-3);
+  margin-block: var(--cr-space-4) var(--cr-space-8);
+}
+
+.tk-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  align-items: center;
+  gap: var(--cr-space-4);
+}
+
+.tk-bar {
+  height: var(--cr-space-4);
+  background: var(--cr-color-accent-bg);
+  border-radius: var(--cr-radius-sm);
+}
+
+.tk-box {
+  width: 64px;
+  height: 64px;
+  background: var(--cr-color-accent-subtle);
+  border: 2px solid var(--cr-color-accent-bg);
+}
