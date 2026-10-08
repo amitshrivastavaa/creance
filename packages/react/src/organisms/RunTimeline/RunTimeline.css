@@ -60,6 +60,7 @@
   height: 20px;
   margin-top: 1px;
   border-radius: var(--cr-radius-full);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 25%, transparent);
   font-size: var(--cr-font-size-xs);
 }
 
@@ -101,10 +102,10 @@
   align-items: center;
   gap: var(--cr-space-2);
   width: 100%;
-  padding: var(--cr-space-1) var(--cr-space-2);
-  border: 1px solid var(--cr-color-border-default);
+  padding: 6px var(--cr-space-3);
+  border: 1px solid transparent;
   border-radius: var(--cr-radius-md);
-  background: var(--cr-color-bg-surface);
+  background: var(--cr-color-bg-subtle);
   color: inherit;
   font: inherit;
   font-size: var(--cr-font-size-sm);
@@ -121,7 +122,8 @@
 }
 
 .cr-timeline__call-button:hover {
-  background: var(--cr-color-bg-subtle);
+  border-color: var(--cr-color-border-default);
+  background: var(--cr-color-glass-surface-strong);
 }
 
 .cr-timeline__call-button:focus-visible {
@@ -131,11 +133,12 @@
 
 .cr-timeline__call-button[aria-current='true'] {
   border-color: var(--cr-color-accent-bg);
-  box-shadow: inset 3px 0 0 var(--cr-color-accent-bg);
+  background: var(--cr-color-accent-subtle);
 }
 
 .cr-timeline__call[data-status='error'] > :first-child {
-  border-color: var(--cr-color-status-failed-fg);
+  border-color: color-mix(in srgb, var(--cr-color-status-failed-fg) 50%, transparent);
+  background: var(--cr-color-status-failed-bg);
 }
 
 .cr-timeline__attempt {
@@ -157,6 +160,7 @@
 
 .cr-timeline__jump {
   position: absolute;
+  z-index: 1;
   bottom: var(--cr-space-3);
   left: 50%;
   transform: translateX(-50%);

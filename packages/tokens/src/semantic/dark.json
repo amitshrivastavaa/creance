@@ -14,7 +14,7 @@
         "$type": "color"
       },
       "subtle": {
-        "$value": "{gray.800}",
+        "$value": "rgb(120 120 128 / 0.24)",
         "$type": "color"
       },
       "inverse": {
@@ -22,7 +22,21 @@
         "$type": "color"
       },
       "overlay": {
-        "$value": "rgb(0 0 0 / 0.6)",
+        "$value": "rgb(0 0 0 / 0.5)",
+        "$type": "color"
+      }
+    },
+    "glass": {
+      "surface": {
+        "$value": "color-mix(in srgb, {color.bg.surface} {glass.opacity}, transparent)",
+        "$type": "color"
+      },
+      "surface-strong": {
+        "$value": "color-mix(in srgb, {color.bg.raised} {glass.opacity-strong}, transparent)",
+        "$type": "color"
+      },
+      "highlight": {
+        "$value": "rgb(255 255 255 / 0.1)",
         "$type": "color"
       }
     },
@@ -46,11 +60,11 @@
     },
     "border": {
       "default": {
-        "$value": "{gray.700}",
+        "$value": "rgb(235 235 245 / 0.14)",
         "$type": "color"
       },
       "strong": {
-        "$value": "{gray.500}",
+        "$value": "rgb(235 235 245 / 0.32)",
         "$type": "color"
       }
     },
@@ -60,19 +74,19 @@
     },
     "accent": {
       "bg": {
-        "$value": "{blue.500}",
+        "$value": "{blue.600}",
         "$type": "color"
       },
       "bg-hover": {
-        "$value": "{blue.300}",
+        "$value": "{blue.500}",
         "$type": "color"
       },
       "fg": {
-        "$value": "{gray.950}",
+        "$value": "{gray.0}",
         "$type": "color"
       },
       "subtle": {
-        "$value": "{blue.900}",
+        "$value": "color-mix(in srgb, {blue.500} 24%, transparent)",
         "$type": "color"
       }
     },
@@ -97,7 +111,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{blue.900}",
+          "$value": "color-mix(in srgb, {blue.500} 22%, transparent)",
           "$type": "color"
         }
       },
@@ -107,7 +121,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{violet.900}",
+          "$value": "color-mix(in srgb, {violet.600} 22%, transparent)",
           "$type": "color"
         }
       },
@@ -117,7 +131,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{amber.900}",
+          "$value": "color-mix(in srgb, {amber.600} 22%, transparent)",
           "$type": "color"
         }
       },
@@ -127,7 +141,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{green.900}",
+          "$value": "color-mix(in srgb, {green.600} 22%, transparent)",
           "$type": "color"
         }
       },
@@ -137,7 +151,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{red.900}",
+          "$value": "color-mix(in srgb, {red.600} 22%, transparent)",
           "$type": "color"
         }
       }
@@ -149,7 +163,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{green.900}",
+          "$value": "color-mix(in srgb, {green.600} 22%, transparent)",
           "$type": "color"
         }
       },
@@ -159,7 +173,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{amber.900}",
+          "$value": "color-mix(in srgb, {amber.600} 22%, transparent)",
           "$type": "color"
         }
       },
@@ -169,14 +183,14 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{red.900}",
+          "$value": "color-mix(in srgb, {red.600} 22%, transparent)",
           "$type": "color"
         }
       }
     },
     "diff": {
       "added-bg": {
-        "$value": "{green.900}",
+        "$value": "color-mix(in srgb, {green.600} 26%, transparent)",
         "$type": "color"
       },
       "added-fg": {
@@ -184,7 +198,7 @@
         "$type": "color"
       },
       "removed-bg": {
-        "$value": "{red.900}",
+        "$value": "color-mix(in srgb, {red.600} 26%, transparent)",
         "$type": "color"
       },
       "removed-fg": {
@@ -198,7 +212,21 @@
       "$value": "0 1px 2px rgb(0 0 0 / 0.5)"
     },
     "md": {
-      "$value": "0 4px 16px rgb(0 0 0 / 0.6)"
+      "$value": "0 12px 32px rgb(0 0 0 / 0.55), 0 2px 6px rgb(0 0 0 / 0.4)"
+    },
+    "glass": {
+      "$value": "inset 0 1px 0 rgb(255 255 255 / 0.1), inset 0 0 0 1px rgb(255 255 255 / 0.04), 0 8px 28px rgb(0 0 0 / 0.45)"
+    }
+  },
+  "gradient": {
+    "canvas": {
+      "$value": "radial-gradient(70% 55% at 0% 0%, rgb(10 132 255 / 0.33), transparent 70%), radial-gradient(55% 50% at 100% 0%, rgb(191 90 242 / 0.3), transparent 70%), radial-gradient(70% 60% at 70% 100%, rgb(48 209 88 / 0.18), transparent 70%), radial-gradient(50% 50% at 0% 100%, rgb(255 159 10 / 0.12), transparent 70%)"
+    },
+    "sheen": {
+      "$value": "linear-gradient(180deg, rgb(255 255 255 / 0.2), rgb(255 255 255 / 0) 60%)"
+    },
+    "agent": {
+      "$value": "linear-gradient(135deg, {blue.500}, {violet.600})"
     }
   }
 }

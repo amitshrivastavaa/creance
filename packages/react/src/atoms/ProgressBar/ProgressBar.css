@@ -2,7 +2,7 @@
   --cr-progress-fill: var(--cr-color-accent-bg);
   display: block;
   width: 100%;
-  height: 6px;
+  height: 8px;
   overflow: hidden;
   border: 0;
   border-radius: var(--cr-radius-full);
@@ -15,11 +15,11 @@
 
 .cr-progress::-webkit-progress-bar { background: var(--cr-color-bg-subtle); }
 .cr-progress::-webkit-progress-value {
-  background: var(--cr-progress-fill);
+  background: var(--cr-gradient-sheen), var(--cr-progress-fill);
   border-radius: var(--cr-radius-full);
-  transition: width var(--cr-motion-duration-base) var(--cr-motion-easing-standard);
+  transition: width var(--cr-motion-duration-slow) var(--cr-motion-easing-spring);
 }
 .cr-progress::-moz-progress-bar {
-  background: var(--cr-progress-fill);
+  background: var(--cr-gradient-sheen), var(--cr-progress-fill);
   border-radius: var(--cr-radius-full);
 }

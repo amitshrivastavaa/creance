@@ -49,6 +49,21 @@ ${withScheme(lightCss, 'light')}
 }
 
 ${withScheme(darkCss, 'dark')}
+/* Solid surfaces and no blur when the person asks for less transparency or more contrast.
+   Glass colours are color-mix()es of these variables, so components need no changes. */
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  :root {
+    --${PREFIX}-glass-opacity: 100%;
+    --${PREFIX}-glass-opacity-strong: 100%;
+    --${PREFIX}-glass-filter: none;
+  }
+}
+:root[data-transparency="reduce"] {
+  --${PREFIX}-glass-opacity: 100%;
+  --${PREFIX}-glass-opacity-strong: 100%;
+  --${PREFIX}-glass-filter: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root {
     --${PREFIX}-motion-duration-fast: 0ms;

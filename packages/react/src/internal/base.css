@@ -14,3 +14,15 @@
   flex: none;
   vertical-align: -0.125em;
 }
+
+/*
+ * The frosted-glass surface every card, bar and panel is built on. Public: apps can use it too.
+ * Under prefers-reduced-transparency or prefers-contrast: more the tokens make it solid with no blur.
+ */
+.cr-glass {
+  border: 1px solid var(--cr-color-border-default);
+  background-color: var(--cr-color-glass-surface);
+  -webkit-backdrop-filter: var(--cr-glass-filter);
+  backdrop-filter: var(--cr-glass-filter);
+  box-shadow: var(--cr-shadow-glass);
+}

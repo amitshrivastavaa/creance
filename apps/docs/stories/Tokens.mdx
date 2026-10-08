@@ -18,6 +18,18 @@ The theme follows the operating system by default. Set `data-theme="light"` or `
 
 Tokens come in two tiers. **Primitives** (`--cr-blue-600`) are the raw palette and scales. **Semantic** tokens (`--cr-color-bg-surface`, `--cr-color-status-running-fg`) say what a value is for, and change between themes. Components use only semantic colour tokens.
 
+## Glass
+
+Cards, bars, menus and drawers are frosted glass: a translucent surface with a backdrop blur, over the soft gradient canvas (`--cr-gradient-canvas`). Use the public `.cr-glass` class for your own panels.
+
+The glass colours are `color-mix()`es of the solid surface colour at `--cr-glass-opacity`, and the blur is `--cr-glass-filter`. So one switch makes everything solid:
+
+- `prefers-reduced-transparency: reduce` (the macOS and iOS "Reduce transparency" setting)
+- `prefers-contrast: more`
+- `data-transparency="reduce"` on `<html>`, for an in-app setting
+
+Use the **Surfaces** toolbar button to see the solid version. Text contrast is tested on the translucent surfaces in both themes.
+
 ## Semantic colours
 
 Values shown are for the light theme. Each swatch renders the live variable, so it changes with the theme.

@@ -253,3 +253,22 @@ Recorded so the plan stays an honest account, not just the starting intention.
 - **Visual baselines** are generated in the Playwright Docker image (`scripts/visual-docker.sh`), and the CI visual job runs in that same image.
 - **Release dry run** uses `pnpm publish --dry-run`, because Changesets v3's `publish` has no dry-run flag; `changeset status` runs alongside it.
 - **Radix Popover** was never needed; only Tooltip and Dialog are used.
+
+---
+
+## 10. Phase 2: glass visual language, core primitives, more agent components
+
+Requested after 0.2.0.
+
+**M7. Frosted-glass visual language.** Translucent surfaces with backdrop blur over a soft gradient canvas, capsule controls, larger continuous radii, Apple-style system colours (the higher-contrast variants, so text still meets AA). All of it lives in tokens: surfaces are `color-mix()` of the solid surface colour at `--cr-glass-opacity`, so `prefers-reduced-transparency`, `prefers-contrast: more` and a `data-transparency="reduce"` override turn every surface opaque and drop the blur without touching component CSS. Every existing component is restyled; the visual baselines are regenerated. *Stop here and show it.*
+
+**M8. Core primitives** (no new runtime dependencies: native elements, plus Radix Popover and Dialog, which the original brief already allows):
+- Atoms: Card, Input, Textarea, Select (native), Checkbox, Switch, Separator, Skeleton
+- Molecules: Field (label, hint and error wiring), RadioGroup, Alert, Tabs (ARIA tabs, roving focus), Menu (Radix Popover with the menu keyboard pattern), Dialog (Radix Dialog), Toast (with a Toaster region)
+
+**M9. New agent components:**
+- Molecule: ConfidenceMeter (a range with reasons, never a fake-precise single number)
+- Organisms: PlanEditor (reorder, edit, remove and add steps before the run; keyboard reordering, not drag-only), QuestionCard (structured question with options or free text), KillSwitch (hold-to-confirm stop that is always within reach), CheckpointRewind (pick a checkpoint and preview what will be undone), PermissionLedger (everything granted with "Always allow", with usage and revoke), FleetBoard (many agents at a glance)
+- Event model: `plan.proposed` / `plan.resolved`, `question.asked` / `question.answered`, `checkpoint.created`, `run.stopped`, `permission.granted` / `permission.revoked`; reducer, selectors and the scenario updated; the demo gains a plan step, a question, the kill switch, checkpoints, the ledger and a Fleet view
+
+Each milestone ships with stories (axe in both themes), usage docs for every organism, unit tests and updated visual baselines.

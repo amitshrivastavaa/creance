@@ -7,7 +7,8 @@ body,
 }
 
 body {
-  background: var(--cr-color-bg-canvas);
+  background: var(--cr-gradient-canvas), var(--cr-color-bg-canvas);
+  background-attachment: fixed;
   color: var(--cr-color-text-default);
   font-family: var(--cr-font-family-sans);
 }
@@ -15,7 +16,6 @@ body {
 .demo-note {
   margin: 0;
   padding: var(--cr-space-2) var(--cr-space-4);
-  background: var(--cr-color-bg-subtle);
   color: var(--cr-color-text-muted);
   font-size: var(--cr-font-size-sm);
   text-align: center;
@@ -38,10 +38,11 @@ body {
 }
 
 .demo-speed select {
-  min-height: 26px;
-  border: 1px solid var(--cr-color-border-strong);
-  border-radius: var(--cr-radius-md);
-  background: var(--cr-color-bg-surface);
+  min-height: 28px;
+  padding: 0 var(--cr-space-2);
+  border: 1px solid var(--cr-color-border-default);
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-glass-surface-strong);
   color: var(--cr-color-text-default);
   font: inherit;
 }

@@ -2,7 +2,8 @@
 /* !important: Storybook's docs styles are injected after ours and would otherwise keep the page white. */
 body,
 .sbdocs.sbdocs-wrapper {
-  background: var(--cr-color-bg-canvas) !important;
+  background: var(--cr-gradient-canvas), var(--cr-color-bg-canvas) !important;
+  background-attachment: fixed !important;
   color: var(--cr-color-text-default);
   font-family: var(--cr-font-family-sans);
 }
@@ -22,7 +23,7 @@ body,
   border: 1px solid var(--cr-color-border-default);
   border-radius: var(--cr-radius-md);
   overflow: hidden;
-  background: var(--cr-color-bg-surface);
+  background: var(--cr-color-glass-surface);
 }
 
 .tk-swatch__chip {
@@ -82,6 +83,7 @@ body,
 }
 
 .live__bar {
+  background: var(--cr-color-glass-surface);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -89,7 +91,7 @@ body,
   gap: var(--cr-space-2);
   padding: var(--cr-space-2) var(--cr-space-3);
   border: 1px dashed var(--cr-color-border-strong);
-  border-radius: var(--cr-radius-md);
+  border-radius: var(--cr-radius-full);
   color: var(--cr-color-text-muted);
   font-size: var(--cr-font-size-sm);
 }
@@ -120,6 +122,7 @@ body,
 
 .dodont__item {
   margin: 0;
+  background: var(--cr-color-glass-surface);
   border: 1px solid var(--cr-color-border-default);
   border-top: 4px solid var(--cr-color-status-done-fg);
   border-radius: var(--cr-radius-md);
@@ -132,11 +135,22 @@ body,
 
 .dodont__example {
   padding: var(--cr-space-4);
-  background: var(--cr-color-bg-canvas);
+  background: var(--cr-gradient-canvas), var(--cr-color-bg-canvas);
 }
 
 .dodont__item figcaption {
   padding: var(--cr-space-3);
   border-top: 1px solid var(--cr-color-border-default);
   font-size: var(--cr-font-size-sm);
+}
+
+/* See preview.ts: story tests render measurable glass. */
+:root[data-a11y-test] {
+  --cr-glass-filter: none;
+  --cr-gradient-canvas: none;
+}
+
+/* "none, none" still counts as an image to axe, so give the page a single solid layer. */
+:root[data-a11y-test] body {
+  background: var(--cr-color-bg-canvas) !important;
 }

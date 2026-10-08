@@ -1,10 +1,10 @@
 .cr-icon-button {
-  min-width: 32px;
+  min-width: 34px;
   padding: 0;
 }
 
 .cr-icon-button[data-size='sm'] {
-  min-width: 26px;
+  min-width: 28px;
 }
 
 .cr-icon-button__icon {

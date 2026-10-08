@@ -1,26 +1,28 @@
 .cr-tool-card {
   display: grid;
   gap: var(--cr-space-2);
-  padding: var(--cr-space-3);
-  border: 1px solid var(--cr-color-border-default);
-  border-radius: var(--cr-radius-md);
-  background: var(--cr-color-bg-surface);
+  padding: var(--cr-space-4);
+  border-radius: var(--cr-radius-lg);
   color: var(--cr-color-text-default);
   font-family: var(--cr-font-family-sans);
   font-size: var(--cr-font-size-md);
 }
 
 .cr-tool-card[data-status='error'] {
-  border-color: var(--cr-color-status-failed-fg);
+  background-image: radial-gradient(120% 90% at 0% 0%, var(--cr-color-status-failed-bg), transparent 60%);
 }
 
 .cr-tool-card__section > summary {
   width: fit-content;
-  padding: 2px var(--cr-space-1);
-  border-radius: var(--cr-radius-sm);
+  padding: 2px var(--cr-space-2);
+  border-radius: var(--cr-radius-full);
   color: var(--cr-color-text-muted);
   font-size: var(--cr-font-size-sm);
   cursor: pointer;
+}
+
+.cr-tool-card__section > summary:hover {
+  background: var(--cr-color-bg-subtle);
 }
 
 .cr-tool-card__section > summary:focus-visible {
@@ -52,7 +54,7 @@
   justify-content: space-between;
   gap: var(--cr-space-2);
   padding: var(--cr-space-2) var(--cr-space-3);
-  border-radius: var(--cr-radius-sm);
+  border-radius: var(--cr-radius-md);
   background: var(--cr-color-status-failed-bg);
   color: var(--cr-color-status-failed-fg);
   font-size: var(--cr-font-size-sm);

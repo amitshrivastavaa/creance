@@ -2,23 +2,30 @@
   display: inline-grid;
   flex: none;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--cr-radius-full);
   background: var(--cr-color-bg-subtle);
   color: var(--cr-color-text-default);
   font-size: var(--cr-font-size-xs);
   font-weight: var(--cr-font-weight-semibold);
+  letter-spacing: 0.02em;
   user-select: none;
 }
 
+/* Agents: a squircle with the agent gradient. People: a circle. Shape, not colour, tells them apart. */
 .cr-avatar[data-kind='agent'] {
   border-radius: var(--cr-radius-md);
-  background: var(--cr-color-accent-subtle);
-  color: var(--cr-color-text-link);
+  background: var(--cr-gradient-sheen), var(--cr-gradient-agent);
+  box-shadow: inset 0 1px 0 var(--cr-color-glass-highlight), var(--cr-shadow-sm);
+  color: var(--cr-color-accent-fg);
 }
 
 .cr-avatar[data-size='sm'] {
   width: 24px;
   height: 24px;
+}
+
+.cr-avatar[data-kind='agent'][data-size='sm'] {
+  border-radius: var(--cr-radius-sm);
 }

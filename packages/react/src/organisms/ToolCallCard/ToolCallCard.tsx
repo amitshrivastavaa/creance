@@ -53,7 +53,7 @@ export function ToolCallCard({
   className,
 }: ToolCallCardProps) {
   return (
-    <article className={cx('cr-tool-card', className)} data-status={status}>
+    <article className={cx('cr-tool-card cr-glass', className)} data-status={status}>
       <ToolCallHeader
         tool={tool}
         status={status}

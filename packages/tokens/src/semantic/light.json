@@ -14,7 +14,7 @@
         "$type": "color"
       },
       "subtle": {
-        "$value": "{gray.100}",
+        "$value": "rgb(120 120 128 / 0.12)",
         "$type": "color"
       },
       "inverse": {
@@ -22,7 +22,21 @@
         "$type": "color"
       },
       "overlay": {
-        "$value": "rgb(15 17 21 / 0.4)",
+        "$value": "rgb(0 0 0 / 0.2)",
+        "$type": "color"
+      }
+    },
+    "glass": {
+      "surface": {
+        "$value": "color-mix(in srgb, {color.bg.surface} {glass.opacity}, transparent)",
+        "$type": "color"
+      },
+      "surface-strong": {
+        "$value": "color-mix(in srgb, {color.bg.raised} {glass.opacity-strong}, transparent)",
+        "$type": "color"
+      },
+      "highlight": {
+        "$value": "rgb(255 255 255 / 0.75)",
         "$type": "color"
       }
     },
@@ -32,7 +46,7 @@
         "$type": "color"
       },
       "muted": {
-        "$value": "{gray.600}",
+        "$value": "{gray.500}",
         "$type": "color"
       },
       "inverse": {
@@ -46,11 +60,11 @@
     },
     "border": {
       "default": {
-        "$value": "{gray.200}",
+        "$value": "rgb(60 60 67 / 0.18)",
         "$type": "color"
       },
       "strong": {
-        "$value": "{gray.400}",
+        "$value": "rgb(60 60 67 / 0.4)",
         "$type": "color"
       }
     },
@@ -72,7 +86,7 @@
         "$type": "color"
       },
       "subtle": {
-        "$value": "{blue.100}",
+        "$value": "color-mix(in srgb, {blue.600} 12%, transparent)",
         "$type": "color"
       }
     },
@@ -97,7 +111,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{blue.100}",
+          "$value": "color-mix(in srgb, {blue.600} 13%, transparent)",
           "$type": "color"
         }
       },
@@ -107,7 +121,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{violet.100}",
+          "$value": "color-mix(in srgb, {violet.600} 13%, transparent)",
           "$type": "color"
         }
       },
@@ -117,7 +131,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{amber.100}",
+          "$value": "color-mix(in srgb, {amber.600} 13%, transparent)",
           "$type": "color"
         }
       },
@@ -127,7 +141,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{green.100}",
+          "$value": "color-mix(in srgb, {green.600} 13%, transparent)",
           "$type": "color"
         }
       },
@@ -137,7 +151,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{red.100}",
+          "$value": "color-mix(in srgb, {red.600} 13%, transparent)",
           "$type": "color"
         }
       }
@@ -149,7 +163,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{green.100}",
+          "$value": "color-mix(in srgb, {green.600} 13%, transparent)",
           "$type": "color"
         }
       },
@@ -159,7 +173,7 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{amber.100}",
+          "$value": "color-mix(in srgb, {amber.600} 13%, transparent)",
           "$type": "color"
         }
       },
@@ -169,14 +183,14 @@
           "$type": "color"
         },
         "bg": {
-          "$value": "{red.100}",
+          "$value": "color-mix(in srgb, {red.600} 13%, transparent)",
           "$type": "color"
         }
       }
     },
     "diff": {
       "added-bg": {
-        "$value": "{green.100}",
+        "$value": "color-mix(in srgb, {green.600} 14%, transparent)",
         "$type": "color"
       },
       "added-fg": {
@@ -184,7 +198,7 @@
         "$type": "color"
       },
       "removed-bg": {
-        "$value": "{red.100}",
+        "$value": "color-mix(in srgb, {red.600} 12%, transparent)",
         "$type": "color"
       },
       "removed-fg": {
@@ -195,10 +209,24 @@
   },
   "shadow": {
     "sm": {
-      "$value": "0 1px 2px rgb(15 17 21 / 0.08)"
+      "$value": "0 1px 2px rgb(0 0 0 / 0.06)"
     },
     "md": {
-      "$value": "0 4px 16px rgb(15 17 21 / 0.12)"
+      "$value": "0 12px 32px rgb(0 0 0 / 0.12), 0 2px 6px rgb(0 0 0 / 0.06)"
+    },
+    "glass": {
+      "$value": "inset 0 1px 0 rgb(255 255 255 / 0.8), inset 0 0 0 1px rgb(255 255 255 / 0.35), 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 28px rgb(0 0 0 / 0.08)"
+    }
+  },
+  "gradient": {
+    "canvas": {
+      "$value": "radial-gradient(70% 55% at 0% 0%, rgb(0 113 227 / 0.29), transparent 70%), radial-gradient(55% 50% at 100% 0%, rgb(191 90 242 / 0.26), transparent 70%), radial-gradient(70% 60% at 70% 100%, rgb(48 209 88 / 0.21), transparent 70%), radial-gradient(50% 50% at 0% 100%, rgb(255 159 10 / 0.16), transparent 70%)"
+    },
+    "sheen": {
+      "$value": "linear-gradient(180deg, rgb(255 255 255 / 0.2), rgb(255 255 255 / 0) 60%)"
+    },
+    "agent": {
+      "$value": "linear-gradient(135deg, {blue.500}, {violet.600})"
     }
   }
 }

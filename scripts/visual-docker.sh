@@ -5,8 +5,8 @@
 #   sh scripts/visual-docker.sh --update-snapshots   regenerate baselines
 set -e
 pnpm build && pnpm build-storybook
-# A plain static server: vite preview rejects the host.docker.internal hostname.
-python3 -m http.server 6008 --directory apps/docs/storybook-static >/dev/null 2>&1 &
+# allowedHosts: vite preview otherwise rejects the host.docker.internal hostname.
+pnpm --filter docs exec vite preview --config ../../scripts/preview-docker.config.mjs --outDir storybook-static --port 6008 --strictPort --host 0.0.0.0 >/dev/null 2>&1 &
 server=$!
 trap 'kill $server' EXIT
 sleep 2

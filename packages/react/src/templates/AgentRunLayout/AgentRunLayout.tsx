@@ -68,7 +68,7 @@ export function AgentRunLayout({
   const badge = statusBadge[status];
   return (
     <div className={cx('cr-run-layout', className)}>
-      <header className="cr-run-layout__header">
+      <header className="cr-run-layout__header cr-glass">
         <div className="cr-run-layout__agent">
           <Avatar name={agentName} decorative />
           <div className="cr-run-layout__titles">
@@ -107,7 +107,7 @@ export function AgentRunLayout({
       {banner && <div className="cr-run-layout__banner">{banner}</div>}
 
       <main className="cr-run-layout__main">
-        <section className="cr-run-layout__timeline" aria-label="Timeline">
+        <section className="cr-run-layout__timeline cr-glass" aria-label="Timeline">
           {timeline}
         </section>
         <section className="cr-run-layout__detail" aria-label="Details">

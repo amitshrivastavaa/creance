@@ -16,6 +16,7 @@
 
 .cr-diff-review__title {
   margin: 0;
+  letter-spacing: var(--cr-font-tracking-tight);
   font-size: var(--cr-font-size-lg);
   font-weight: var(--cr-font-weight-semibold);
 }
@@ -40,9 +41,7 @@
 
 .cr-diff-review__hunk {
   overflow: hidden;
-  border: 1px solid var(--cr-color-border-default);
-  border-radius: var(--cr-radius-md);
-  background: var(--cr-color-bg-surface);
+  border-radius: var(--cr-radius-lg);
 }
 
 .cr-diff-review__hunk:focus-visible {
@@ -71,7 +70,6 @@
   gap: var(--cr-space-2);
   padding: var(--cr-space-2) var(--cr-space-3);
   border-bottom: 1px solid var(--cr-color-border-default);
-  background: var(--cr-color-bg-subtle);
 }
 
 .cr-diff-review__hunk-title {
@@ -119,11 +117,10 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--cr-space-2);
-  padding: var(--cr-space-2) var(--cr-space-3);
-  border: 1px solid var(--cr-color-border-default);
-  border-radius: var(--cr-radius-md);
-  background: var(--cr-color-bg-raised);
-  box-shadow: var(--cr-shadow-md);
+  padding: var(--cr-space-2) var(--cr-space-2) var(--cr-space-2) var(--cr-space-4);
+  border-radius: var(--cr-radius-xl);
+  background-color: var(--cr-color-glass-surface-strong);
+  box-shadow: var(--cr-shadow-glass), var(--cr-shadow-md);
   font-size: var(--cr-font-size-sm);
 }
 

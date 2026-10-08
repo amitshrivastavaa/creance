@@ -138,7 +138,7 @@ export function DiffReview({ file, hunks, onApply, applied, description, heading
               ref={(el) => {
                 hunkRefs.current[i] = el;
               }}
-              className="cr-diff-review__hunk"
+              className="cr-diff-review__hunk cr-glass"
               data-decision={decision}
               aria-labelledby={headingId}
               tabIndex={-1}
@@ -187,7 +187,7 @@ export function DiffReview({ file, hunks, onApply, applied, description, heading
         })}
       </div>
 
-      <footer className="cr-diff-review__bar">
+      <footer className="cr-diff-review__bar cr-glass">
         {readOnly ? (
           <span>
             Applied {accepted.length} of {hunks.length} hunks
