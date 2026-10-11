@@ -132,9 +132,10 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm build-storybook
+      # A relative base, so the demo works at a domain root and under /<repository>/ alike.
       - run: pnpm --filter demo build
         env:
-          DEMO_BASE: /${{ github.event.repository.name }}/demo/
+          DEMO_BASE: ./
       - run: pnpm --filter site build
       # The site at the root, Storybook at /storybook/, the demo at /demo/.
       - run: |
