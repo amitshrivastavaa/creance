@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, useState, type ButtonHTMLAttributes } from 'react';
 import { cx } from '../../internal/cx';
 import './Toggle.css';

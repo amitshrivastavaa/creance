@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, useImperativeHandle, useRef, useState, type ReactNode } from 'react';
 import { Input, type InputProps } from '../../atoms/Input';
 import { cx } from '../../internal/cx';

@@ -1,3 +1,5 @@
+'use client';
+
 import { createElement, useId, useState, type ReactNode } from 'react';
 import { Avatar } from '../../atoms/Avatar/Avatar';
 import { cx } from '../../internal/cx';

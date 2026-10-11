@@ -1,3 +1,5 @@
+'use client';
+
 import * as RadixDialog from '@radix-ui/react-dialog';
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { Kbd } from '../../atoms/Kbd';

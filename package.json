@@ -9,7 +9,7 @@
   "scripts": {
     "build": "pnpm -r --filter './packages/**' run build",
     "typecheck": "pnpm -r typecheck",
-    "lint": "eslint . && node scripts/check-css-tokens.mjs",
+    "lint": "eslint . && node scripts/check-css-tokens.mjs && node scripts/check-use-client.mjs",
     "storybook": "pnpm --filter docs storybook",
     "build-storybook": "pnpm --filter docs build-storybook",
     "test": "pnpm -r test",
@@ -20,7 +20,9 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm build && changeset publish",
-    "release:dry-run": "pnpm build && pnpm -r --filter './packages/**' publish --dry-run --no-git-checks"
+    "release:dry-run": "pnpm build && pnpm -r --filter './packages/**' publish --dry-run --no-git-checks",
+    "test:next": "pnpm --filter next-app build && playwright test -c playwright.next.config.ts",
+    "test:react18": "sh scripts/test-react18.sh"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

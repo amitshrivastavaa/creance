@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  background: var(--cr-gradient-canvas), var(--cr-color-bg-canvas);
+  background-attachment: fixed;
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+main {
+  display: grid;
+  gap: var(--cr-space-8);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--cr-space-8) var(--cr-space-5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--cr-space-4);
+}
+
+/* One labelled cell per component, so the test can count them. */
+.cell {
+  display: grid;
+  align-content: start;
+  gap: var(--cr-space-2);
+  min-width: 0;
+  padding: var(--cr-space-4);
+  border-radius: var(--cr-radius-lg);
+}
+
+.cell[data-wide] {
+  grid-column: 1 / -1;
+}
+
+.cell > h3 {
+  margin: 0;
+  color: var(--cr-color-text-muted);
+  font-family: var(--cr-font-family-mono);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-semibold);
+}

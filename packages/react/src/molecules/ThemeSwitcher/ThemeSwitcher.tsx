@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useId, useState } from 'react';
 import { cx } from '../../internal/cx';
 import { MonitorIcon, MoonIcon, SunIcon } from '../../internal/icons';

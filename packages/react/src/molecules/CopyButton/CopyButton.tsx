@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, useEffect, useState } from 'react';
 import { IconButton, type IconButtonProps } from '../../atoms/IconButton';
 import { LiveRegion } from '../../internal/LiveRegion';

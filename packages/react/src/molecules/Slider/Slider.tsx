@@ -1,3 +1,5 @@
+'use client';
+
 import * as RadixSlider from '@radix-ui/react-slider';
 import { useId, useState, type ReactNode } from 'react';
 import { cx } from '../../internal/cx';

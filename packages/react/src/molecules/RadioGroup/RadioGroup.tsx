@@ -1,3 +1,5 @@
+'use client';
+
 import { useId, type ReactNode } from 'react';
 import { Radio } from '../../atoms/Radio';
 import { cx } from '../../internal/cx';

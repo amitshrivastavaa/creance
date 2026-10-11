@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { Badge, statusLabels, type Status } from '../../atoms/Badge/Badge';
 import { formatDuration } from '../../internal/formatDuration';

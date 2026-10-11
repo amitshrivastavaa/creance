@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { statusLabels, type Status } from '../../atoms/Badge/Badge';
 import { cx } from '../../internal/cx';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useState } from 'react';
 import { cx } from '../../internal/cx';
 import { CheckIcon, CrossIcon, PlusIcon } from '../../internal/icons';

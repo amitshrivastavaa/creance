@@ -27,6 +27,21 @@ jobs:
       - run: pnpm --filter creance test
       - run: pnpm --filter creance size
 
+  react-18:
+    name: Unit tests on React 18
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      # Installs React 18 for the run, then restores the lockfile.
+      - run: pnpm test:react18
+
   storybook-a11y:
     name: Axe on every story (light and dark)
     runs-on: ubuntu-latest
@@ -43,7 +58,7 @@ jobs:
       - run: pnpm --filter docs test
 
   visual-and-e2e:
-    name: Visual regression and demo end-to-end
+    name: Visual regression, demo end-to-end and Next.js
     runs-on: ubuntu-latest
     # The same image the baselines were generated in (scripts/visual-docker.sh), so rendering matches.
     container:
@@ -61,6 +76,8 @@ jobs:
       - run: pnpm build-storybook
       - run: pnpm --filter demo build
       - run: pnpm exec playwright test
+      # Next.js App Router: server rendering, hydration and interaction for all 90 components.
+      - run: pnpm test:next
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

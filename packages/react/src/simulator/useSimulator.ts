@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback, useEffect, useState } from 'react';
 import type { AgentEvent } from '../events';
 import { createSimulator, type Scenario, type Simulator, type SimulatorOptions, type SimulatorState } from './createSimulator';

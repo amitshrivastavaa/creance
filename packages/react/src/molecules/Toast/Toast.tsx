@@ -1,3 +1,5 @@
+'use client';
+
 import * as RadixToast from '@radix-ui/react-toast';
 import { useSyncExternalStore, type ReactNode } from 'react';
 import { CheckIcon, CrossIcon, InfoIcon } from '../../internal/icons';

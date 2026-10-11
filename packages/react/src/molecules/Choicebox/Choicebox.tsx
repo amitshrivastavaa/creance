@@ -1,3 +1,5 @@
+'use client';
+
 import { useId, useState, type ReactNode } from 'react';
 import { cx } from '../../internal/cx';
 import './Choicebox.css';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as RadixContextMenu from '@radix-ui/react-context-menu';
 import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
 import { cx } from '../../internal/cx';

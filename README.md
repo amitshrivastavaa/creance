@@ -65,13 +65,27 @@ const approval = run.approvals.find((a) => !a.decision);
 - **Components take plain props.** None of them imports the event model; a lint rule enforces it. Use `ToolCallCard` with data from anywhere.
 - **The simulator** plays a scripted run as real events with realistic timing. Approval and diff steps block until a person answers through `respond()`, and a denial takes a different branch. The live Storybook stories and the demo both use it.
 
+## Frameworks
+
+Creance is a React library. What has been tested:
+
+| | Status |
+|---|---|
+| React 19 and React 18 | Tested. Developed on 19; the unit suite also runs on 18 in CI. |
+| Vite | Tested. The demo app and Storybook run on it. |
+| Next.js 16, App Router | Tested in [`apps/next`](apps/next): every component is rendered by the server and hydrates without errors. |
+| Next.js Pages Router, React Router, Remix, Astro | Not tested. Plain React, so expected to work. |
+| Vue, Svelte, Angular, Solid | Not supported. Only `creance-tokens` (plain CSS variables) is usable there. |
+
+For the App Router, the 51 modules that use state, effects, Radix or their own event handlers start with `"use client"`, so they can be imported straight into a server component. The other 54, including Button, Input, Badge, Alert and the event reducer, have no client-only code and can run on the server alone. A lint step (`scripts/check-use-client.mjs`) fails if a file needs the directive and lacks it, or if the build drops it. A component that takes a callback, such as `onAllow`, has to be used from a client file, because a server component cannot pass a function as a prop.
+
 ## Key decisions and trade-offs
 
-**Plain CSS on tokens, not CSS-in-JS or Tailwind.** Every component has a co-located `.css` file using only `--cr-*` custom properties; the build concatenates them into one `styles.css`. No runtime cost, works with any framework and with server rendering, and theming is overriding variables. Class names are a public, stable API (`.cr-approval__actions`) with variants in `data-*` attributes, instead of CSS Modules' hashed names, so consumers can target parts. The cost is global class names, managed with a `cr-` prefix. A lint step rejects any raw colour in component CSS.
+**Plain CSS on tokens, not CSS-in-JS or Tailwind.** Every component has a co-located `.css` file using only `--cr-*` custom properties; the build concatenates them into one `styles.css`. No runtime cost, no CSS imported from JavaScript (which Next.js needs), and theming is overriding variables. Class names are a public, stable API (`.cr-approval__actions`) with variants in `data-*` attributes, instead of CSS Modules' hashed names, so consumers can target parts. The cost is global class names, managed with a `cr-` prefix. A lint step rejects any raw colour in component CSS.
 
 **Two token tiers.** Primitives (`--cr-blue-600`) and semantic tokens (`--cr-color-status-running-fg`); components use only semantic colours. I left out a third, per-component tier until someone needs to theme one component in isolation.
 
-**Headless where it is hard, hand-built where the platform helps.** Radix provides the Tooltip and the inbox Dialog (positioning, focus trapping, dismissal). Everything else uses native elements: `<details>` for collapsible JSON, `<progress>` for the budget, `<ins>`/`<del>` for diffs, nested `<ol>` for the timeline. Those are the only two runtime dependencies.
+**Headless where it is hard, hand-built where the platform helps.** Ten Radix packages provide the widgets with difficult focus, positioning and dismissal: dialogs, menus, tabs, popovers, tooltips, sliders, toasts, toggle groups and accordions. Checkboxes, radios, switches, selects and progress bars are native elements, as are `<details>` for collapsible JSON, `<ins>`/`<del>` for diffs and nested `<ol>` for the timeline. The combobox, calendar and file tree are hand-built to the ARIA patterns because Radix has no equivalent. Radix is the only runtime dependency.
 
 **Event-model-driven, but not event-model-coupled.** Driving the organisms from one event stream keeps them consistent (a step with an open approval shows as "waiting" everywhere). Keeping the components on plain props means teams with their own state management don't have to adopt it. Adapters like `timelineSteps(run)` sit in between.
 
@@ -100,11 +114,13 @@ All of these run in GitHub Actions on every push and pull request (`.github/work
 |---|---|---|
 | Types | TypeScript (strict, `noUncheckedIndexedAccess`) | All packages and apps |
 | Lint | ESLint (typescript-eslint, react-hooks, jsx-a11y), Atomic import-direction rules, raw-colour check on CSS | Repo |
-| Unit and interaction | Vitest + React Testing Library | Reducer, selectors, simulator, codemod, keyboard and focus behaviour of each organism (35 tests) |
-| Accessibility | Storybook addon-vitest + axe, violations fail the build | Every story, in light **and** dark (92 stories, 184 runs) |
+| Unit and interaction | Vitest + React Testing Library | Reducer, selectors, simulator, codemod, keyboard and focus behaviour (88 tests) |
+| React 18 | The same unit suite with React 18 installed (`pnpm test:react18`) | 88 tests; the package is developed on React 19 |
+| Accessibility | Storybook addon-vitest + axe, violations fail the build | Every story, in light **and** dark (146 stories, 292 runs) |
 | Visual regression | Playwright screenshots, Linux baselines from the Playwright Docker image | 46 key stories × light and dark (92 screenshots) |
 | End to end | Playwright + axe | The demo: the full scenario, and the deny path |
-| Bundle size | size-limit | All components 9 kB, ApprovalPrompt alone 2.5 kB, CSS 4 kB, simulator 2.5 kB (brotli) |
+| Next.js | Playwright on a Next.js 16 App Router app (`pnpm test:next`) | All 90 components: rendered by the server, hydrated without errors, interactive |
+| Bundle size | size-limit | Budgets: all components 28 kB, ApprovalPrompt alone 2.5 kB, CSS 12 kB, simulator 2.5 kB (brotli, without React and Radix). Today: 25.8 kB, 1.87 kB, 10.9 kB, 2.2 kB |
 | Release | Changesets status + `pnpm publish --dry-run` | Both packages |
 
 On `main`, a final job deploys Storybook and the demo to GitHub Pages.
@@ -141,7 +157,7 @@ pnpm storybook          # docs on http://localhost:6006
 pnpm --filter demo dev  # the demo app
 ```
 
-Checks: `pnpm typecheck`, `pnpm lint`, `pnpm test` (unit and story axe tests), `pnpm test:e2e`, `pnpm --filter creance size`. Visual regression runs in Docker so it matches CI: `pnpm test:visual:docker`, or `pnpm test:visual:update` to refresh baselines.
+Checks: `pnpm typecheck`, `pnpm lint`, `pnpm test` (unit and story axe tests), `pnpm test:e2e`, `pnpm test:next` (builds the Next.js app and tests it), `pnpm test:react18`, `pnpm --filter creance size`. Visual regression runs in Docker so it matches CI: `pnpm test:visual:docker`, or `pnpm test:visual:update` to refresh baselines.
 
 ## Status
 

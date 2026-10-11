@@ -1,3 +1,5 @@
+'use client';
+
 import * as RadixAccordion from '@radix-ui/react-accordion';
 import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
 import { cx } from '../../internal/cx';

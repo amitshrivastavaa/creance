@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, type MouseEventHandler, type ReactNode } from 'react';
 import { cx } from '../../internal/cx';
 import './Breadcrumbs.css';

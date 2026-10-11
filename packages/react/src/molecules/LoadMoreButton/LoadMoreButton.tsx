@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef } from 'react';
 import { Button, type ButtonProps } from '../../atoms/Button';
 import { Spinner } from '../../atoms/Spinner';

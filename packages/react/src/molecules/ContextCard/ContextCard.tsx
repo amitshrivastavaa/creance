@@ -1,3 +1,5 @@
+'use client';
+
 import * as RadixPopover from '@radix-ui/react-popover';
 import { useEffect, useRef, useState, type ReactElement, type ReactNode } from 'react';
 import { cx } from '../../internal/cx';

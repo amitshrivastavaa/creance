@@ -5,7 +5,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import globals from 'globals';
 
 export default tseslint.config(
-  { ignores: ['**/dist', '**/storybook-static', '**/node_modules', '.playwright-mcp'] },
+  { ignores: ['**/dist', '**/storybook-static', '**/node_modules', '**/.next', '**/next-env.d.ts', '.playwright-mcp'] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   reactHooks.configs.flat['recommended-latest'],

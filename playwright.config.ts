@@ -17,7 +17,10 @@ export default defineConfig({
   expect: { toHaveScreenshot: { maxDiffPixels: 0, animations: 'disabled', caret: 'hide' } },
   projects: [
     // Reduced motion draws FleetSky still, so its screenshots are deterministic.
-    { name: 'visual', testMatch: 'visual.spec.ts', use: { baseURL: visualBase ?? 'http://localhost:6008', reducedMotion: 'reduce' } },
+    // Retries: now and then a small right-aligned label lands a sub-pixel off, on a different story each
+    // run. The cause is not found. A real regression still fails all three attempts; the jitter is
+    // reported as flaky instead of failing the build.
+    { name: 'visual', testMatch: 'visual.spec.ts', retries: 2, use: { baseURL: visualBase ?? 'http://localhost:6008', reducedMotion: 'reduce' } },
     { name: 'demo', testMatch: 'demo.spec.ts', use: { baseURL: 'http://localhost:6009' } },
   ],
   webServer: visualBase ? [] : [

@@ -1,3 +1,5 @@
+'use client';
+
 import type { ReactNode } from 'react';
 import { cx } from '../../internal/cx';
 import { ChevronIcon, ChevronLeftIcon } from '../../internal/icons';

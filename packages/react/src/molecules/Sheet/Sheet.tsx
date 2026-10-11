@@ -1,3 +1,5 @@
+'use client';
+
 import * as RadixDialog from '@radix-ui/react-dialog';
 import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
 import { IconButton } from '../../atoms/IconButton';

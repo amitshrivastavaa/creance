@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { cx } from '../../internal/cx';
 import { ChevronIcon, ChevronLeftIcon } from '../../internal/icons';

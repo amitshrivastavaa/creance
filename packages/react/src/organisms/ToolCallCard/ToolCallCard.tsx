@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '../../atoms/Button/Button';
 import { Code } from '../../atoms/Code/Code';
 import { Spinner } from '../../atoms/Spinner/Spinner';

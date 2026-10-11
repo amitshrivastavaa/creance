@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useId, useRef } from 'react';
 import { Avatar } from '../../atoms/Avatar/Avatar';
 import { Button } from '../../atoms/Button/Button';

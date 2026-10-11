@@ -1,3 +1,5 @@
+'use client';
+
 import { useId, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { cx } from '../../internal/cx';
 import './ShowMore.css';

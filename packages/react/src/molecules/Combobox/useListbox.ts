@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useId, useState, type KeyboardEvent } from 'react';
 
 export interface ListItem {

@@ -1,3 +1,5 @@
+'use client';
+
 import * as RadixToggleGroup from '@radix-ui/react-toggle-group';
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 import { cx } from '../../internal/cx';

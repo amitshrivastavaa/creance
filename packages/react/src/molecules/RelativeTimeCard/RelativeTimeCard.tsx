@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { cx } from '../../internal/cx';
 import { Description } from '../Description';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { cx } from '../../internal/cx';
 import { ExpandIcon, MutedIcon, PauseBarsIcon, PlayIcon, VolumeIcon } from '../../internal/icons';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { Button } from '../../atoms/Button';
 import { IconButton } from '../../atoms/IconButton';

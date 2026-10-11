@@ -1,3 +1,5 @@
+'use client';
+
 import { useId, useState, type ReactNode } from 'react';
 import { Button } from '../../atoms/Button';
 import { Textarea } from '../../atoms/Textarea';

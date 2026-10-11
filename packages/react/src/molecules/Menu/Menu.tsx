@@ -1,3 +1,5 @@
+'use client';
+
 import * as RadixMenu from '@radix-ui/react-dropdown-menu';
 import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
 import { cx } from '../../internal/cx';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as RadixTabs from '@radix-ui/react-tabs';
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 import { cx } from '../../internal/cx';

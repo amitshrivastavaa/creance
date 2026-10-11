@@ -1,3 +1,5 @@
+'use client';
+
 import { useId, useRef, useState, type KeyboardEvent } from 'react';
 import { Badge } from '../../atoms/Badge/Badge';
 import { Button } from '../../atoms/Button/Button';
