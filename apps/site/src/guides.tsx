@@ -128,7 +128,7 @@ export const guides: Guide[] = [
           <li>Every component takes plain props. None of them depends on the event model.</li>
         </ul>
         <h2>Where it stands</h2>
-        <Alert title="Version 0.3.0, on npm">
+        <Alert title="Early, and on npm">
           Creance is a one-person project. No real agent is connected to it, and it has no production users. The automated checks pass; a manual screen-reader pass has not been done.
         </Alert>
       </>
@@ -537,7 +537,7 @@ sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: 'all
   {
     name: 'Status',
     group: 'Project',
-    about: 'Version 0.3.0, on npm. The code is complete and passes its checks. This is what is not done.',
+    about: 'On npm. The code is complete and passes its checks. This is what is not done.',
     body: () => (
       <>
         <ul className="status-list">

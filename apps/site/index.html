@@ -44,10 +44,10 @@
 <!-- page:start -->
 <div class="page" id="page" data-view="overview">
   <header class="top">
-    <span class="brand">
+    <a class="brand" href="#overview">
       <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="9" fill="var(--ink-bg)"></rect><path d="M21.6 11.3A7.4 7.4 0 1 0 21.6 20.7" fill="none" stroke="var(--ink-fg)" stroke-width="2.6" stroke-linecap="round"></path><circle cx="21.6" cy="11.3" r="2.3" fill="var(--ink-fg)"></circle></svg>
       Creance
-    </span>
+    </a>
     <nav aria-label="Pages">
       <ul>
         <li><a href="#overview" data-tab="overview" aria-current="page">Overview</a></li>
@@ -170,7 +170,7 @@
 
     <section class="closing window" aria-labelledby="closing-title">
       <div>
-        <h2 class="h2" id="closing-title">Where version 0.3.0 stands</h2>
+        <h2 class="h2" id="closing-title">Where it stands</h2>
         <p class="lead">The code is complete, passes its checks and is on npm. No real agent is connected, and a manual screen-reader pass has not been done.</p>
       </div>
       <ul class="closing__links">
@@ -187,8 +187,14 @@
   </main>
 
   <footer class="foot">
-    <span>Creance 0.3.0. MIT licence. © 2026 Amit Shrivastava. <a href="https://github.com/amitshrivastavaa/creance">GitHub</a> · <a href="https://www.npmjs.com/package/@creance-ui/react">npm</a></span>
-    <span>Packages: <code>@creance-ui/react</code> and <code>@creance-ui/tokens</code></span>
+    <span>© 2026 Amit Shrivastava. MIT licence.</span>
+    <nav aria-label="Project links">
+      <a href="https://github.com/amitshrivastavaa/creance">GitHub</a>
+      <a href="https://www.npmjs.com/package/@creance-ui/react">npm</a>
+      <a href="https://creance.pages.dev/storybook/">Storybook</a>
+      <a href="https://creance.pages.dev/demo/">Demo</a>
+      <a href="https://github.com/amitshrivastavaa/creance/blob/main/packages/react/CHANGELOG.md">v%VITE_CREANCE_VERSION%</a>
+    </nav>
   </footer>
 </div>
 <!-- page:end -->

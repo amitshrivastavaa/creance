@@ -20,6 +20,11 @@ test('the overview shows the demo run and leads into the docs', async ({ page })
   await page.getByRole('link', { name: 'Overview' }).click();
   await page.getByRole('link', { name: 'Browse components', exact: true }).click();
   await expect(title(page)).toHaveText('Button');
+
+  // The logo leads back to the top of the overview.
+  await page.getByRole('link', { name: 'Creance', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 1, name: /React UI kit/ })).toBeVisible();
+  expect(await page.evaluate(() => window.scrollY)).toBe(0);
   expect(problems).toEqual([]);
 });
 
@@ -114,6 +119,9 @@ test('the page describes itself to search engines and link previews', async ({ p
   expect(icons).toHaveLength(3);
   for (const url of [...icons, '/og.png', '/robots.txt', '/sitemap.xml']) expect((await request.get(url)).status(), url).toBe(200);
   expect(await (await request.get('/robots.txt')).text()).toContain(`Sitemap: ${site}sitemap.xml`);
+
+  // The footer takes the version from the library's package.json.
+  await expect(page.locator('.foot')).toContainText(/v\d+\.\d+\.\d+/);
 
   // A component page names itself in the tab.
   await page.goto('/#Table');

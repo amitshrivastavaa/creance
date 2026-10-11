@@ -36,7 +36,7 @@ function go(target: string, scroll = true) {
     const section = view === 'overview' && id && id !== 'overview' ? document.getElementById(id) : null;
     if (section) section.scrollIntoView();
     // Back to the top for a new page or a new component, but not for a link inside an example.
-    else if (changed || (view === 'components' && id !== 'components' && id !== last)) window.scrollTo(0, 0);
+    else if (changed || id === 'overview' || (view === 'components' && id !== 'components' && id !== last)) window.scrollTo(0, 0);
   }
   last = id;
 }

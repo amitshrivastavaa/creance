@@ -212,7 +212,7 @@ Checks: `pnpm typecheck`, `pnpm lint`, `pnpm test` (unit and story axe tests), `
 
 ## Status
 
-Version 0.3.0, published to npm as [`@creance-ui/react`](https://www.npmjs.com/package/@creance-ui/react) and [`@creance-ui/tokens`](https://www.npmjs.com/package/@creance-ui/tokens). The scenario is simulated: no real agent is connected. Built as a portfolio project; there are no production users.
+Published to npm as [`@creance-ui/react`](https://www.npmjs.com/package/@creance-ui/react) and [`@creance-ui/tokens`](https://www.npmjs.com/package/@creance-ui/tokens). The scenario is simulated: no real agent is connected. Built as a portfolio project; there are no production users.
 
 [`docs/PLAN.md`](docs/PLAN.md) has the original plan and architecture notes.
 
