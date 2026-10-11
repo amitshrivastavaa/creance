@@ -311,6 +311,37 @@ importers:
         specifier: ~6.0.3
         version: 6.0.3
 
+  apps/site:
+    dependencies:
+      creance:
+        specifier: workspace:*
+        version: link:../../packages/react
+      creance-tokens:
+        specifier: workspace:*
+        version: link:../../packages/tokens
+      react:
+        specifier: ^19.3.0
+        version: 19.3.0
+      react-dom:
+        specifier: ^19.3.0
+        version: 19.3.0(react@19.3.0)
+    devDependencies:
+      '@types/react':
+        specifier: ^19.3.0
+        version: 19.3.0
+      '@types/react-dom':
+        specifier: ^19.3.0
+        version: 19.3.0(@types/react@19.3.0)
+      '@vitejs/plugin-react':
+        specifier: ^6.1.2
+        version: 6.1.2(vite@8.3.3(@types/node@24.19.2)(esbuild@0.28.2)(yaml@2.9.1))
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+      vite:
+        specifier: ^8.3.3
+        version: 8.3.3(@types/node@24.19.2)(esbuild@0.28.2)(yaml@2.9.1)
+
   packages/react:
     dependencies:
       '@radix-ui/react-accordion':

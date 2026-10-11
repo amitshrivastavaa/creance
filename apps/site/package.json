@@ -1,0 +1,26 @@
+{
+  "name": "site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "props": "node scripts/extract-props.mjs",
+    "dev": "pnpm props && vite",
+    "build": "pnpm props && vite build",
+    "build:artifact": "pnpm props && vite build --config vite.artifact.config.ts && node scripts/build-artifact.mjs",
+    "preview": "vite preview",
+    "typecheck": "pnpm props && tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "creance": "workspace:*",
+    "creance-tokens": "workspace:*",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.3"
+  }
+}

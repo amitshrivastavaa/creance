@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Creance UI Kit</title>
+    <meta name="description" content="Creance, a React UI kit for supervising AI agents: 90 components, running live with editable code, props and keyboard tables." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  </head>
+  <body>
+<!-- page:start -->
+<div class="page" id="page" data-view="overview">
+  <header class="top">
+    <span class="brand">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="9" fill="var(--ink-bg)"></rect><path d="M21.6 11.3A7.4 7.4 0 1 0 21.6 20.7" fill="none" stroke="var(--ink-fg)" stroke-width="2.6" stroke-linecap="round"></path><circle cx="21.6" cy="11.3" r="2.3" fill="var(--ink-fg)"></circle></svg>
+      Creance
+    </span>
+    <nav aria-label="Pages">
+      <ul>
+        <li><a href="#overview" data-tab="overview" aria-current="page">Overview</a></li>
+        <li><a href="#components" data-tab="components">Components</a></li>
+      </ul>
+    </nav>
+    <div class="tools" id="tools"></div>
+  </header>
+
+  <main class="view" id="view-overview">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__copy">
+        <h1 id="hero-title">A React UI kit for supervising AI agents</h1>
+        <div class="hero__side">
+        <p class="lead">90 components for the screens where a person approves what an agent wants to do, watches it work, reviews its changes and takes back control. Light, dark and solid themes, under the MIT licence.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="#Introduction">Get started</a>
+          <a class="btn" href="#components">Browse components</a>
+        </div>
+        </div>
+      </div>
+
+      <section class="run window" id="demo" aria-label="Demo: a simulated agent run">
+        <div class="run__bar">
+          <span class="avatar" aria-hidden="true">DF</span>
+          <span class="run__titles"><strong>Deploy Fixer</strong><span>Fix the failing production deploy</span></span>
+          <span class="pill pill--ink" id="demo-pill">Waiting for you</span>
+          <button type="button" class="kill" id="demo-kill" aria-describedby="demo-kill-help">
+            <span class="kill__sq" aria-hidden="true"></span><span class="kill__label">Hold to stop</span>
+            <span class="kill__fill" aria-hidden="true"><span class="kill__sq"></span><span class="kill__label">Hold to stop</span></span>
+          </button>
+          <span class="vh" id="demo-kill-help">Press and hold for 1 second to stop the agent.</span>
+        </div>
+        <div class="run__body">
+          <ol class="steps" aria-label="Steps">
+            <li class="step" data-status="done">
+              <span class="mark" aria-hidden="true"></span><span class="step__title">Investigate the failed deploy</span><span class="step__meta">Done, 9s</span>
+              <span class="step__calls"><code>read_logs</code> 1.8s, <code>run_tests</code> retried once</span>
+            </li>
+            <li class="step" id="demo-step-2" data-status="waiting">
+              <span class="mark" aria-hidden="true"></span><span class="step__title">Install the missing dependency</span><span class="step__meta">Waiting for you</span>
+            </li>
+            <li class="step" id="demo-step-3" data-status="queued">
+              <span class="mark" aria-hidden="true"></span><span class="step__title">Patch config and verify</span><span class="step__meta">Queued</span>
+            </li>
+          </ol>
+          <div class="run__detail">
+            <div class="card sheet" id="demo-approval" role="group" aria-labelledby="demo-approval-title" tabindex="-1">
+              <div class="card__who"><span>Deploy Fixer is asking for permission</span><span class="pill">Medium risk</span></div>
+              <h3 id="demo-approval-title">Run <code>npm install zod@3</code> on <code>web/package.json</code>?</h3>
+              <p>server/validate.ts imports zod, but it is missing from dependencies, so the production build fails.</p>
+              <div class="actions">
+                <button type="button" class="btn btn--primary" id="demo-allow">Allow once <kbd class="key">A</kbd></button>
+                <button type="button" class="btn btn--danger" id="demo-deny">Deny <kbd class="key">D</kbd></button>
+              </div>
+            </div>
+            <div class="card tile" id="demo-outcome" tabindex="-1" hidden>
+              <div class="card__who"><span id="demo-outcome-who"></span></div>
+              <h3 id="demo-outcome-title"></h3>
+              <p id="demo-outcome-text"></p>
+              <div class="actions"><button type="button" class="btn" id="demo-replay">Replay</button></div>
+            </div>
+          </div>
+        </div>
+        <p class="run__note">A simulated run. Nothing is installed, edited or deployed. Try Allow, Deny, or hold the stop button.</p>
+        <div class="vh" role="status" id="demo-live"></div>
+      </section>
+    </section>
+
+    <section class="section" id="questions" aria-labelledby="questions-title">
+      <div class="section__head">
+        <h2 class="h2" id="questions-title">The questions a supervision screen has to answer</h2>
+        <p class="lead">Most agent interface work goes into chat. Once an agent can run commands, edit files and spend money, the harder problem is control and trust. Each question below has a component that owns the answer.</p>
+      </div>
+      <dl class="qa">
+        <div class="qa__row"><dt>What exactly is it about to do, and how risky is that?</dt><dd><strong>ApprovalPrompt</strong> asks about one specific action, never "continue?". High-risk actions can't be set to always allow.</dd></div>
+        <div class="qa__row"><dt>What did it actually do?</dt><dd><strong>RunTimeline</strong> and <strong>ToolCallCard</strong> show every tool call, its input and its errors, including the ones it retried.</dd></div>
+        <div class="qa__row"><dt>Do I accept this change?</dt><dd><strong>DiffReview</strong> takes a decision per hunk, by mouse or keyboard, before anything lands.</dd></div>
+        <div class="qa__row"><dt>What is waiting on me?</dt><dd><strong>NeedsYouInbox</strong> gathers everything blocked on a person across agents. <strong>FleetSky</strong> shows many agents at once.</dd></div>
+        <div class="qa__row"><dt>What does it plan to do?</dt><dd><strong>PlanEditor</strong> lets you reorder, edit, remove and add steps before anything runs.</dd></div>
+        <div class="qa__row"><dt>What does it need to know?</dt><dd><strong>QuestionCard</strong> is for information rather than permission: options when the agent has them, free text when it doesn't.</dd></div>
+        <div class="qa__row"><dt>How sure is it?</dt><dd><strong>ConfidenceMeter</strong> gives a range in words with reasons, never a falsely precise percentage.</dd></div>
+        <div class="qa__row"><dt>Can I stop it, or undo what it did?</dt><dd><strong>KillSwitch</strong> stops on a one-second hold. <strong>CheckpointRewind</strong> shows what a rollback undoes before you confirm.</dd></div>
+        <div class="qa__row"><dt>What have I already allowed?</dt><dd><strong>PermissionLedger</strong> lists every standing permission, how often it has been used, and a way to revoke it.</dd></div>
+        <div class="qa__row"><dt>Is it finished?</dt><dd><strong>AgentHandoffBanner</strong> marks the point where the agent hands control back, with its summary and next actions.</dd></div>
+      </dl>
+    </section>
+
+    <section class="section" aria-labelledby="fit-title">
+      <div class="section__head">
+        <h2 class="h2" id="fit-title">Made to fit into another design system</h2>
+      </div>
+      <div class="fit">
+        <div><h3>Themed with tokens</h3><p>Every colour, radius, shadow and font is a <code>--cr-*</code> CSS variable from one token source. Override a handful to rebrand it. Light and dark ship together, and every glass layer turns solid when someone asks their system for less transparency or more contrast.</p></div>
+        <div><h3>Plain CSS, no runtime</h3><p>One stylesheet built from co-located CSS files. Tested with Vite and with the Next.js App Router, where every component is rendered by the server. Class names such as <code>.cr-approval__actions</code> are a stable, public API, with variants in <code>data-*</code> attributes.</p></div>
+        <div><h3>Pay for what you import</h3><p>The package ships one module per component, so bundlers drop the rest. Importing only ApprovalPrompt adds 1.87 kB of Creance code, minified and compressed.</p></div>
+        <div><h3>Native first, Radix where it is hard</h3><p>Checkboxes, radios, switches, selects and progress bars are the browser's own elements. Ten Radix packages handle the widgets with difficult focus and dismissal: dialogs, menus, tabs, popovers, sliders, toasts.</p></div>
+        <div><h3>Everything works by keyboard</h3><p>Shortcuts such as A to allow and D to deny only fire while focus is inside the component, and never with Ctrl, Alt or ⌘, so the kit doesn't take over page keys.</p></div>
+        <div><h3>Status never relies on colour</h3><p>Each status and risk level has its own shape, an icon and a word. Announcements are limited to the moments that need a person, so a long run doesn't flood a screen reader.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="list" aria-labelledby="list-title">
+      <div class="section__head">
+        <h2 class="h2" id="list-title">90 components, each one live and editable</h2>
+        <p class="lead">The general-purpose set covers the same ground as Vercel's Geist component list, built in Creance's own style. The agent components sit on top of it. Every name opens that component on the Components page, running from the real library with code you can edit.</p>
+        <div class="actions"><a class="btn btn--primary" href="#components">Browse the components</a></div>
+      </div>
+      <dl class="cats">
+        <div class="cats__row"><dt>Actions <span>9</span></dt><dd><a href="#Button">Button</a> <a href="#CopyButton">CopyButton</a> <a href="#IconButton">IconButton</a> <a href="#LoadMoreButton">LoadMoreButton</a> <a href="#ShowMore">ShowMore</a> <a href="#SplitButton">SplitButton</a> <a href="#TextWithCopy">TextWithCopy</a> <a href="#Toggle">Toggle</a> <a href="#ToggleGroup">ToggleGroup</a></dd></div>
+        <div class="cats__row"><dt>Forms <span>17</span></dt><dd><a href="#Calendar">Calendar</a> <a href="#Checkbox">Checkbox</a> <a href="#Choicebox">Choicebox</a> <a href="#ClearableInput">ClearableInput</a> <a href="#Combobox">Combobox</a> <a href="#Feedback">Feedback</a> <a href="#Field">Field</a> <a href="#Input">Input</a> <a href="#MultiSelect">MultiSelect</a> <a href="#Radio">Radio</a> <a href="#RadioGroup">RadioGroup</a> <a href="#SearchInput">SearchInput</a> <a href="#Select">Select</a> <a href="#Slider">Slider</a> <a href="#Switch">Switch</a> <a href="#Textarea">Textarea</a> <a href="#ThemeSwitcher">ThemeSwitcher</a></dd></div>
+        <div class="cats__row"><dt>Navigation <span>9</span></dt><dd><a href="#Breadcrumbs">Breadcrumbs</a> <a href="#Collapse">Collapse</a> <a href="#CommandMenu">CommandMenu</a> <a href="#ContextMenu">ContextMenu</a> <a href="#DotsMenu">DotsMenu</a> <a href="#Menu">Menu</a> <a href="#Pagination">Pagination</a> <a href="#Scroller">Scroller</a> <a href="#Tabs">Tabs</a></dd></div>
+        <div class="cats__row"><dt>Overlays <span>7</span></dt><dd><a href="#ContextCard">ContextCard</a> <a href="#DestructiveActionModal">DestructiveActionModal</a> <a href="#Dialog">Dialog</a> <a href="#RelativeTimeCard">RelativeTimeCard</a> <a href="#Sheet">Sheet</a> <a href="#Toast">Toast</a> <a href="#Tooltip">Tooltip</a></dd></div>
+        <div class="cats__row"><dt>Data display <span>17</span></dt><dd><a href="#Avatar">Avatar</a> <a href="#Badge">Badge</a> <a href="#Card">Card</a> <a href="#Code">Code</a> <a href="#Description">Description</a> <a href="#EmptyState">EmptyState</a> <a href="#Entity">Entity</a> <a href="#FileTree">FileTree</a> <a href="#Gauge">Gauge</a> <a href="#JsonView">JsonView</a> <a href="#Kbd">Kbd</a> <a href="#MiddleTruncate">MiddleTruncate</a> <a href="#ProgressBar">ProgressBar</a> <a href="#Separator">Separator</a> <a href="#Snippet">Snippet</a> <a href="#StatusDot">StatusDot</a> <a href="#Table">Table</a></dd></div>
+        <div class="cats__row"><dt>Feedback <span>8</span></dt><dd><a href="#Alert">Alert</a> <a href="#Banner">Banner</a> <a href="#ErrorCard">ErrorCard</a> <a href="#ErrorMessage">ErrorMessage</a> <a href="#LoadingDots">LoadingDots</a> <a href="#ProjectBanner">ProjectBanner</a> <a href="#Skeleton">Skeleton</a> <a href="#Spinner">Spinner</a></dd></div>
+        <div class="cats__row"><dt>Media <span>3</span></dt><dd><a href="#BrowserFrame">BrowserFrame</a> <a href="#PhoneFrame">PhoneFrame</a> <a href="#Video">Video</a></dd></div>
+        <div class="cats__row"><dt>Agent <span>20</span></dt><dd><a href="#AgentHandoffBanner">AgentHandoffBanner</a> <a href="#AgentRunLayout">AgentRunLayout</a> <a href="#ApprovalPrompt">ApprovalPrompt</a> <a href="#BudgetMeter">BudgetMeter</a> <a href="#CheckpointRewind">CheckpointRewind</a> <a href="#ConfidenceMeter">ConfidenceMeter</a> <a href="#DiffLine">DiffLine</a> <a href="#DiffReview">DiffReview</a> <a href="#FleetSky">FleetSky</a> <a href="#KeyboardHint">KeyboardHint</a> <a href="#KillSwitch">KillSwitch</a> <a href="#NeedsYouInbox">NeedsYouInbox</a> <a href="#PermissionLedger">PermissionLedger</a> <a href="#PlanEditor">PlanEditor</a> <a href="#QuestionCard">QuestionCard</a> <a href="#RiskLabel">RiskLabel</a> <a href="#RunTimeline">RunTimeline</a> <a href="#StatusBadge">StatusBadge</a> <a href="#ToolCallCard">ToolCallCard</a> <a href="#ToolCallHeader">ToolCallHeader</a></dd></div>
+      </dl>
+    </section>
+
+    <section class="closing window" aria-labelledby="closing-title">
+      <div>
+        <h2 class="h2" id="closing-title">Where version 0.2.0 stands</h2>
+        <p class="lead">The code is complete and passes its checks. It is not on npm yet, no real agent is connected, and a manual screen-reader pass has not been done.</p>
+      </div>
+      <ul class="closing__links">
+        <li><a href="#Architecture">How it works</a></li>
+        <li><a href="#Testing">How it is checked</a></li>
+        <li><a href="#Status">Where it stands</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <main class="view" id="view-components" hidden>
+    <div id="playground"><p class="docs__wait">Loading the component browser. It needs its script, which ships with this page.</p></div>
+    <p class="small">The editor reads JSX with literal values, the sample data each example names, and simple arrow functions. It is not a full JavaScript runtime, so operators and statements are not supported.</p>
+  </main>
+
+  <footer class="foot">
+    <span>Creance 0.2.0. MIT licence. © 2026 Amit Shrivastava.</span>
+    <span>Packages: <code>creance</code> and <code>creance-tokens</code></span>
+  </footer>
+</div>
+<!-- page:end -->
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

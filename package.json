@@ -22,7 +22,9 @@
     "release": "pnpm build && changeset publish",
     "release:dry-run": "pnpm build && pnpm -r --filter './packages/**' publish --dry-run --no-git-checks",
     "test:next": "pnpm --filter next-app build && playwright test -c playwright.next.config.ts",
-    "test:react18": "sh scripts/test-react18.sh"
+    "test:react18": "sh scripts/test-react18.sh",
+    "site": "pnpm --filter site dev",
+    "test:site": "pnpm --filter site build && playwright test -c playwright.site.config.ts"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

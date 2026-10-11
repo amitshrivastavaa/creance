@@ -39,7 +39,9 @@ Creance is a design system for those screens. It deliberately has no chat compon
 | [`creance-tokens`](packages/tokens) | Design tokens in JSON, built with Style Dictionary into CSS custom properties (light, dark, solid surfaces for reduced transparency, reduced motion) and a typed JS export |
 | [`creance`](packages/react) | The components, the event model, `useAgentRun`, selectors, and `creance/simulator` |
 | [`apps/docs`](apps/docs) | Storybook: usage guidelines for every organism, a Tokens page, live stories |
+| [`apps/site`](apps/site) | The project site: an overview, guides, and every component running live with code you can edit, plus props and keyboard tables generated from the types |
 | [`apps/demo`](apps/demo) | A Vite app that runs one full scenario, consuming the built package like any app would |
+| [`apps/next`](apps/next) | A Next.js App Router app that renders all 90 components, used to test server rendering and hydration |
 
 ## How it works
 
@@ -120,10 +122,11 @@ All of these run in GitHub Actions on every push and pull request (`.github/work
 | Visual regression | Playwright screenshots, Linux baselines from the Playwright Docker image | 46 key stories × light and dark (92 screenshots) |
 | End to end | Playwright + axe | The demo: the full scenario, and the deny path |
 | Next.js | Playwright on a Next.js 16 App Router app (`pnpm test:next`) | All 90 components: rendered by the server, hydrated without errors, interactive |
+| Site | Playwright on the site (`pnpm test:site`) | All 99 pages and every live example render; editing an example updates its preview |
 | Bundle size | size-limit | Budgets: all components 28 kB, ApprovalPrompt alone 2.5 kB, CSS 12 kB, simulator 2.5 kB (brotli, without React and Radix). Today: 25.8 kB, 1.87 kB, 10.9 kB, 2.2 kB |
 | Release | Changesets status + `pnpm publish --dry-run` | Both packages |
 
-On `main`, a final job deploys Storybook and the demo to GitHub Pages.
+On `main`, a final job deploys the site, Storybook (at `/storybook/`) and the demo (at `/demo/`) to GitHub Pages.
 
 ## Versioning and lifecycle
 
@@ -153,11 +156,12 @@ Node 22 or later and pnpm 12.
 ```sh
 pnpm install
 pnpm build              # tokens and the component package
-pnpm storybook          # docs on http://localhost:6006
+pnpm site               # the site, with live examples
+pnpm storybook          # stories on http://localhost:6006
 pnpm --filter demo dev  # the demo app
 ```
 
-Checks: `pnpm typecheck`, `pnpm lint`, `pnpm test` (unit and story axe tests), `pnpm test:e2e`, `pnpm test:next` (builds the Next.js app and tests it), `pnpm test:react18`, `pnpm --filter creance size`. Visual regression runs in Docker so it matches CI: `pnpm test:visual:docker`, or `pnpm test:visual:update` to refresh baselines.
+Checks: `pnpm typecheck`, `pnpm lint`, `pnpm test` (unit and story axe tests), `pnpm test:e2e`, `pnpm test:next` (builds the Next.js app and tests it), `pnpm test:site`, `pnpm test:react18`, `pnpm --filter creance size`. Visual regression runs in Docker so it matches CI: `pnpm test:visual:docker`, or `pnpm test:visual:update` to refresh baselines.
 
 ## Status
 

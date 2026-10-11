@@ -9,3 +9,5 @@ playwright-report
 .next
 next-env.d.ts
 *.tsbuildinfo
+apps/site/src/props.json
+apps/site/artifact

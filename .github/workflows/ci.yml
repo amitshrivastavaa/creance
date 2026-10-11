@@ -58,7 +58,7 @@ jobs:
       - run: pnpm --filter docs test
 
   visual-and-e2e:
-    name: Visual regression, demo end-to-end and Next.js
+    name: Visual regression, demo end-to-end, Next.js and the site
     runs-on: ubuntu-latest
     # The same image the baselines were generated in (scripts/visual-docker.sh), so rendering matches.
     container:
@@ -78,6 +78,8 @@ jobs:
       - run: pnpm exec playwright test
       # Next.js App Router: server rendering, hydration and interaction for all 90 components.
       - run: pnpm test:next
+      # The site: every guide and every component example renders, and examples can be edited.
+      - run: pnpm test:site
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
@@ -106,7 +108,7 @@ jobs:
       - run: pnpm release:dry-run
 
   pages:
-    name: Deploy Storybook and demo to GitHub Pages
+    name: Deploy the site, Storybook and demo to GitHub Pages
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: [checks, storybook-a11y, visual-and-e2e, release-dry-run]
     runs-on: ubuntu-latest
@@ -129,10 +131,12 @@ jobs:
       - run: pnpm --filter demo build
         env:
           DEMO_BASE: /${{ github.event.repository.name }}/demo/
-      # Storybook at the site root, the demo at /demo/.
+      - run: pnpm --filter site build
+      # The site at the root, Storybook at /storybook/, the demo at /demo/.
       - run: |
           mkdir site
-          cp -r apps/docs/storybook-static/. site/
+          cp -r apps/site/dist/. site/
+          cp -r apps/docs/storybook-static site/storybook
           cp -r apps/demo/dist site/demo
       - uses: actions/upload-pages-artifact@v3
         with:
