@@ -1,0 +1,115 @@
+.cr-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-6);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-footer__top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cr-space-8) var(--cr-space-12);
+}
+
+.cr-footer__about {
+  display: flex;
+  flex: 1 1 260px;
+  flex-direction: column;
+  gap: var(--cr-space-2);
+  max-width: 340px;
+  margin-inline-end: auto;
+}
+
+.cr-footer__brand {
+  font-size: var(--cr-font-size-lg);
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: var(--cr-font-tracking-tight);
+}
+
+.cr-footer__brand a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  border-radius: var(--cr-radius-sm);
+  color: inherit;
+  text-decoration: none;
+}
+
+.cr-footer__description,
+.cr-footer__legal {
+  margin: 0;
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-footer__column {
+  min-width: 140px;
+}
+
+.cr-footer__title {
+  margin: 0 0 var(--cr-space-3);
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-footer__list,
+.cr-footer__inline {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cr-footer__list {
+  flex-direction: column;
+  gap: var(--cr-space-2);
+}
+
+.cr-footer__inline {
+  flex-wrap: wrap;
+  gap: var(--cr-space-2) var(--cr-space-4);
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-footer__link {
+  border-radius: 6px;
+  color: var(--cr-color-text-secondary);
+  text-decoration: none;
+}
+
+.cr-footer__link[href]:hover {
+  color: var(--cr-color-text-default);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cr-footer__link:focus-visible,
+.cr-footer__brand a:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cr-space-2) var(--cr-space-4);
+}
+
+.cr-footer__bottom[data-ruled] {
+  padding-top: var(--cr-space-4);
+  border-top: 1px solid var(--cr-color-border-default);
+}
+
+.cr-footer__end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cr-space-2) var(--cr-space-4);
+  margin-inline-start: auto;
+  color: var(--cr-color-text-secondary);
+  font-size: var(--cr-font-size-sm);
+}

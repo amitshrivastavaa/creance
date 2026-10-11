@@ -37,7 +37,7 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **ErrorMessage** | One line of red text: what went wrong and what to do; announced only when asked. |
 | **Separator**, **Skeleton** | A hairline and a loading placeholder, both hidden from screen readers by default. |
 
-### Molecules (54)
+### Molecules (58)
 
 | Component | Built from | Why it is a molecule |
 |---|---|---|
@@ -62,6 +62,8 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **SplitButton** | Button + Menu | A main action with alternatives. |
 | **LoadMoreButton**, **ShowMore** | Button + Spinner; a fade and a toggle | Keep the person's place in long lists and long text. |
 | **Feedback**, **ThemeSwitcher** | Toggle buttons + Textarea; native radios | A rating with an optional comment; light, dark or system, applied to `<html>`. |
+| **Navbar**, **Sidebar**, **Footer** | Links; IconButton, Tooltip | The navigation around a screen. Navbar moves its links into a menu when narrow; Sidebar collapses to icons that keep their names; Footer is full or one line. |
+| **Steps** | A list; icons | Progress through a fixed sequence, with each status also spoken. |
 | **Breadcrumbs**, **Pagination** | Links; buttons | Where you are, folding long trails; page numbers with gaps folded. |
 | **CommandMenu** | Radix Dialog + the Combobox keyboard model | ⌘K search across agents, runs and actions, grouped. |
 | **ContextMenu**, **DotsMenu** | Radix ContextMenu; IconButton + Menu | Secondary actions on right-click or a "…" button, sharing Menu's styles. |
@@ -96,9 +98,11 @@ Each organism owns a whole interaction: its own structure, keyboard model, focus
 | **PermissionLedger** | Table, Button | Standing "Always allow" grants, their use since, revoking with undo. |
 | **FleetSky** | Canvas + buttons | Many agents at once as birds on lines back to you; arrivals that need you are announced. |
 
-### Template (1)
+### Templates (2)
 
 **AgentRunLayout**: the run screen's layout. A header with agent, status and budget, timeline left, detail right, a banner slot, and the inbox in a Radix Dialog drawer. It takes organisms as slots (`timeline`, `detail`, `banner`, `inbox`) rather than data, so an app decides what goes in the detail panel. That is what keeps it a template rather than an organism.
+
+**AppShell**: the frame of an app. A sidebar, a header, the content in `<main>` and an optional aside, as slots. It starts with a skip link, and when it is narrow the sidebar moves into a Sheet opened from the header. Like AgentRunLayout it renders what it is given and owns no data.
 
 ### Page
 

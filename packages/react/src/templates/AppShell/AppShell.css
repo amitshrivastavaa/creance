@@ -1,0 +1,138 @@
+/* The shell is the container, so it responds to the space it is given, not the window. */
+.cr-app-shell {
+  container-type: inline-size;
+  height: var(--cr-app-shell-height, 100dvh);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+}
+
+.cr-app-shell__frame {
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+.cr-app-shell__skip {
+  position: absolute;
+  top: var(--cr-space-2);
+  left: var(--cr-space-2);
+  z-index: 20;
+  padding: var(--cr-space-2) var(--cr-space-3);
+  border-radius: var(--cr-radius-md);
+  background: var(--cr-color-ink-bg);
+  color: var(--cr-color-ink-fg);
+  font-weight: var(--cr-font-weight-semibold);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.cr-app-shell__skip:focus {
+  transform: none;
+}
+
+.cr-app-shell__sidebar {
+  display: flex;
+  flex: none;
+  overflow-y: auto;
+  border-inline-end: 1px solid var(--cr-color-border-default);
+  background: color-mix(in srgb, var(--cr-color-glass-tint) 22%, transparent);
+}
+
+.cr-app-shell__column {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.cr-app-shell__header {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-3);
+  box-sizing: border-box;
+  min-height: 60px;
+  padding: var(--cr-space-3) var(--cr-space-5);
+  border-bottom: 1px solid var(--cr-color-border-default);
+  background: var(--cr-color-glass-tile);
+}
+
+/* With no header content, the bar is only needed for the menu button on a narrow shell. */
+.cr-app-shell__header[data-empty] {
+  display: none;
+}
+
+.cr-app-shell__header-slot {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--cr-space-3);
+  min-width: 0;
+}
+
+.cr-app-shell__menu {
+  display: none;
+}
+
+.cr-app-shell__content {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.cr-app-shell__main {
+  flex: 1;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: var(--cr-space-6) var(--cr-space-8);
+  overflow-y: auto;
+}
+
+.cr-app-shell__main:focus {
+  outline: none;
+}
+
+.cr-app-shell__aside {
+  flex: none;
+  box-sizing: border-box;
+  width: var(--cr-app-shell-aside-width, 300px);
+  padding: var(--cr-space-6) var(--cr-space-5);
+  overflow-y: auto;
+  border-inline-start: 1px solid var(--cr-color-border-default);
+  background: color-mix(in srgb, var(--cr-color-glass-tint) 22%, transparent);
+}
+
+.cr-app-shell__sheet .cr-sidebar {
+  width: 100%;
+  padding: 0;
+}
+
+/* Narrow: the sidebar leaves for a sheet, and the aside drops below the content. */
+@container (max-width: 900px) {
+  .cr-app-shell__sidebar {
+    display: none;
+  }
+
+  .cr-app-shell__menu,
+  .cr-app-shell__header[data-empty] {
+    display: flex;
+  }
+
+  .cr-app-shell__content {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .cr-app-shell__main {
+    flex: none;
+    padding: var(--cr-space-5);
+    overflow: visible;
+  }
+
+  .cr-app-shell__aside {
+    width: auto;
+    overflow: visible;
+    border-inline-start: 0;
+    border-top: 1px solid var(--cr-color-border-default);
+  }
+}

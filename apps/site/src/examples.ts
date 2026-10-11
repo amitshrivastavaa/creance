@@ -425,6 +425,89 @@ const all: Example[] = [
     ]}
   />
 </>`, { open: false }),
+  ex('Navigation', 'Molecule', 'Navbar', 'The bar across the top. When it gets narrow, the links move into a menu.', `
+<div ${col(900)}>
+  <Navbar
+    brand={<a href="#Navbar">Acme</a>}
+    items={[
+      { label: 'Overview', href: '#Navbar' },
+      { label: 'Runs', href: '#Navbar', current: true },
+      { label: 'Agents', href: '#Navbar' },
+      { label: 'Inbox', href: '#Navbar', count: 5 },
+    ]}
+    actions={<Button size="sm">Sign in</Button>}
+  />
+  <div style={{ maxWidth: 360 }}>
+    <Navbar
+      label="Main, narrow"
+      brand={<a href="#Navbar">Acme</a>}
+      items={[{ label: 'Overview', href: '#Navbar' }, { label: 'Runs', href: '#Navbar', current: true }, { label: 'Inbox', href: '#Navbar', count: 5 }]}
+    />
+  </div>
+</div>`),
+  ex('Navigation', 'Molecule', 'Sidebar', 'Links down the side, in groups. Collapses to icons that keep their names.', `
+<div style={{ height: 420, display: 'flex' }}>
+  <Sidebar
+    variant="card"
+    label="Workspace"
+    collapsible
+    onCollapsedChange={log}
+    groups={[
+      { items: [
+        { label: 'Overview', href: '#Sidebar', icon: icons.home },
+        { label: 'Runs', href: '#Sidebar', icon: icons.runs, current: true },
+        { label: 'Agents', href: '#Sidebar', icon: icons.agents },
+        { label: 'Inbox', href: '#Sidebar', icon: icons.inbox, count: 5 },
+      ] },
+      { title: 'Manage', items: [{ label: 'Settings', href: '#Sidebar', icon: icons.settings }] },
+    ]}
+    footer={(s) => <Avatar name="Amit Shrivastava" decorative />}
+  />
+</div>`),
+  ex('Navigation', 'Molecule', 'Steps', 'Where someone is in a fixed sequence. Each status has a shape and a spoken label.', `
+<div ${col(720)}>
+  <Steps
+    label="Set up"
+    current={2}
+    steps={[
+      { title: 'Connect a repository', description: 'acme/web' },
+      { title: 'Choose an agent', description: 'Deploy Fixer' },
+      { title: 'Set permissions', description: 'Step 3 of 4' },
+      { title: 'Review and start', description: 'Not started' },
+    ]}
+  />
+</div>`),
+  ex('Navigation', 'Molecule', 'Footer', 'The end of a page: brand, groups of links, and a line for copyright.', `
+<Footer
+  brand={<a href="#Footer">Acme</a>}
+  description="Agents that ask before they act, and hand back when they are done."
+  columns={[
+    { title: 'Product', links: [{ label: 'Runs', href: '#Footer' }, { label: 'Agents', href: '#Footer' }] },
+    { title: 'Developers', links: [{ label: 'Docs', href: '#Footer' }, { label: 'Changelog', href: '#Footer' }] },
+  ]}
+  legal="© 2026 Acme. MIT licence."
+  links={[{ label: 'GitHub', href: '#Footer' }, { label: 'npm', href: '#Footer' }]}
+/>`),
+  ex('Navigation', 'Template', 'AppShell', 'The frame of an app: sidebar, header, content and an optional aside.', `
+<AppShell
+  height={460}
+  sidebar={
+    <Sidebar
+      label="Workspace"
+      groups={[{ items: [
+        { label: 'Overview', href: '#AppShell', icon: icons.home },
+        { label: 'Runs', href: '#AppShell', icon: icons.runs, current: true },
+        { label: 'Inbox', href: '#AppShell', icon: icons.inbox, count: 5 },
+      ] }]}
+    />
+  }
+  header={<Breadcrumbs items={[{ label: 'Acme', href: '#AppShell' }, { label: 'Runs', href: '#AppShell' }]} />}
+  aside={<p style={{ margin: 0 }}>Three runs are waiting for you.</p>}
+  asideLabel="Needs you"
+>
+  <h2 style={{ margin: 0 }}>Runs</h2>
+  <p>Everything your agents are doing, newest first.</p>
+</AppShell>`),
   ex('Navigation', 'Molecule', 'Breadcrumbs', 'Where you are. Long trails fold the middle.', `
 <Breadcrumbs
   maxItems={4}

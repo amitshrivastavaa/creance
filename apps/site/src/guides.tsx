@@ -108,7 +108,7 @@ export const guides: Guide[] = [
         <h2>What is in it</h2>
         <ul>
           <li>
-            <strong>90 components</strong> in four levels: 23 atoms, 54 molecules, 12 organisms and one page template.
+            <strong>95 components</strong> in four levels: 23 atoms, 58 molecules, 12 organisms and two page templates.
           </li>
           <li>
             <strong>Design tokens</strong> as CSS variables, with light, dark and solid themes.
@@ -202,7 +202,7 @@ import '@creance-ui/tokens/tokens.css';
 import '@creance-ui/react/styles.css';`}
         />
         <p>
-          Components can be imported straight into a server component. The 51 modules that use state, effects or Radix are marked <code>"use client"</code>, so Next.js treats them as client components without any extra step. The other 54, including Button,
+          Components can be imported straight into a server component. The 55 modules that use state, effects or Radix are marked <code>"use client"</code>, so Next.js treats them as client components without any extra step. The other 54, including Button,
           Input, Badge and Alert, have no client-only code and run on the server alone.
         </p>
         <Block
@@ -252,7 +252,7 @@ export function Approval({ id }) {
         </p>
         <h2>How this was checked</h2>
         <p>
-          The repository has a Next.js app that renders all 90 components: 78 from a server component and the rest from a client page. A browser test checks what the server sends, that the page hydrates without errors, and that the components respond. A lint step
+          The repository has a Next.js app that renders all 95 components: 83 from a server component and the rest from a client page. A browser test checks what the server sends, that the page hydrates without errors, and that the components respond. A lint step
           fails if a file needs the client marker and lacks it.
         </p>
       </>
@@ -501,13 +501,13 @@ sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: 'all
                 {[
                   ['Types', 'TypeScript in strict mode', 'Passes in every package and app'],
                   ['Lint', 'ESLint with accessibility rules, import-direction rules, and a check that component CSS uses only tokens', '83 CSS files, no raw colours'],
-                  ['Unit and interaction', 'Vitest and React Testing Library', '88 tests'],
-                  ['Accessibility', 'axe on every Storybook story, in light and dark', '292 runs; any violation fails the build'],
-                  ['Visual regression', 'Playwright screenshots in the CI Docker image', '46 stories in 2 themes, 92 screenshots'],
-                  ['React 18', 'The same unit tests with React 18 installed', '88 tests'],
+                  ['Unit and interaction', 'Vitest and React Testing Library', '94 tests'],
+                  ['Accessibility', 'axe on every Storybook story, in light and dark', '304 runs; any violation fails the build'],
+                  ['Visual regression', 'Playwright screenshots in the CI Docker image', '50 stories in 2 themes, 100 screenshots'],
+                  ['React 18', 'The same unit tests with React 18 installed', '94 tests'],
                   ['End to end', 'Playwright on the demo app', '2 scenarios: the full run and the deny path'],
-                  ['Next.js', 'Playwright on a Next.js 16 App Router app', 'All 90 components: sent by the server, hydrated without errors, interactive'],
-                  ['Bundle size', 'size-limit, compressed, without React and Radix', 'All components 25.8 kB, styles 10.9 kB'],
+                  ['Next.js', 'Playwright on a Next.js 16 App Router app', 'All 95 components: sent by the server, hydrated without errors, interactive'],
+                  ['Bundle size', 'size-limit, compressed, without React and Radix', 'All components 27.2 kB, styles 12.2 kB'],
                 ].map(([check, how, result]) => (
                   <tr key={check}>
                     <th scope="row">{check}</th>
@@ -542,7 +542,7 @@ sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: 'all
       <>
         <ul className="status-list">
           <li>
-            <StatusDot status="done">The 90 components, tokens, event model and simulator are built.</StatusDot>
+            <StatusDot status="done">The 95 components, tokens, event model and simulator are built.</StatusDot>
           </li>
           <li>
             <StatusDot status="done">Every automated check passes on the latest commit.</StatusDot>

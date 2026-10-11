@@ -43,7 +43,20 @@ const waiting = reduce(scenario('approval.requested'));
 const finished = reduce(scenario());
 const minute = 60_000;
 
+const glyph = (d: string) => (
+  <svg width="1em" height="1em" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d={d} />
+  </svg>
+);
 const data: Record<string, unknown> = {
+  /** Sample icons for navigation examples. Any icon set works; the kit does not ship one. */
+  icons: {
+    home: glyph('M2.5 7.2L8 2.8l5.5 4.4V13a.6.6 0 0 1-.6.6H3.1a.6.6 0 0 1-.6-.6z'),
+    runs: glyph('M3 4h10M3 8h10M3 12h6'),
+    agents: glyph('M8 8a2.6 2.6 0 1 0 0-5.200A2.600 2.600 0 0 0 8 8zM3 13.400c.6-2.400 2.600-3.600 5-3.600s4.400 1.200 5 3.600'),
+    inbox: glyph('M2.5 9.200l1.800-5.400h7.400l1.800 5.400v3.300a.6.6 0 0 1-.6.6H3.100a.6.6 0 0 1-.6-.6zM2.500 9.200h3.200l.8 1.600h3l.8-1.600h3.200'),
+    settings: glyph('M8 10.200a2.200 2.200 0 1 0 0-4.400 2.200 2.200 0 0 0 0 4.400zM8 1.800v1.700M8 12.500v1.700M1.800 8h1.700M12.500 8h1.700'),
+  },
   steps: Creance.timelineSteps(waiting),
   inbox: [
     ...Creance.inboxItems(waiting),

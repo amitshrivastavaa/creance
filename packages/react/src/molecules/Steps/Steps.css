@@ -1,0 +1,167 @@
+/* The wrapper is the container, so a horizontal list can stack when it runs out of room. */
+.cr-steps {
+  container-type: inline-size;
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+.cr-steps__list {
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* A step is its marker with the line running on to the next marker, then its text beneath. */
+.cr-steps__step {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--cr-space-2);
+  min-width: 0;
+}
+
+.cr-steps__step:last-child {
+  flex: none;
+}
+
+.cr-steps__rail {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-3);
+  padding-inline-end: var(--cr-space-3);
+}
+
+.cr-steps__marker {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-bg-subtle);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-bold);
+}
+
+.cr-steps__line {
+  flex: 1;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--cr-color-border-strong);
+}
+
+.cr-steps__step:last-child .cr-steps__line {
+  display: none;
+}
+
+.cr-steps__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-inline-end: var(--cr-space-4);
+}
+
+.cr-steps__title {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-steps__description {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-steps__step[data-status='done'] .cr-steps__marker {
+  background: var(--cr-color-ink-bg);
+  color: var(--cr-color-ink-fg);
+}
+
+.cr-steps__step[data-status='done'] .cr-steps__line {
+  background: var(--cr-color-ink-bg);
+}
+
+.cr-steps__step[data-status='current'] .cr-steps__marker {
+  background: var(--cr-color-bg-raised);
+  box-shadow: 0 0 0 2px var(--cr-color-ink-bg);
+  color: var(--cr-color-text-default);
+}
+
+.cr-steps__step[data-status='done'] .cr-steps__title,
+.cr-steps__step[data-status='current'] .cr-steps__title {
+  color: var(--cr-color-text-default);
+}
+
+.cr-steps__step[data-status='error'] .cr-steps__marker {
+  background: var(--cr-color-status-failed-bg);
+  box-shadow: 0 0 0 1.5px var(--cr-color-danger-text);
+  color: var(--cr-color-danger-text);
+}
+
+.cr-steps__step[data-status='error'] .cr-steps__title {
+  color: var(--cr-color-danger-text);
+}
+
+/* Vertical: the marker and line form a column beside the text. */
+.cr-steps[data-orientation='vertical'] .cr-steps__list {
+  flex-direction: column;
+}
+
+.cr-steps[data-orientation='vertical'] .cr-steps__step {
+  flex: none;
+  flex-direction: row;
+  gap: var(--cr-space-3);
+}
+
+.cr-steps[data-orientation='vertical'] .cr-steps__rail {
+  flex-direction: column;
+  gap: 6px;
+  padding: 0;
+}
+
+.cr-steps[data-orientation='vertical'] .cr-steps__line {
+  width: 2px;
+  min-height: 20px;
+  height: auto;
+  margin-bottom: 6px;
+}
+
+.cr-steps[data-orientation='vertical'] .cr-steps__text {
+  padding: 3px 0 var(--cr-space-4);
+}
+
+.cr-steps[data-orientation='vertical'] .cr-steps__step:last-child .cr-steps__text {
+  padding-bottom: 0;
+}
+
+@container (max-width: 480px) {
+  .cr-steps[data-orientation='horizontal'] .cr-steps__list {
+    flex-direction: column;
+  }
+
+  .cr-steps[data-orientation='horizontal'] .cr-steps__step {
+    flex: none;
+    flex-direction: row;
+    gap: var(--cr-space-3);
+  }
+
+  .cr-steps[data-orientation='horizontal'] .cr-steps__rail {
+    flex-direction: column;
+    gap: 6px;
+    padding: 0;
+  }
+
+  .cr-steps[data-orientation='horizontal'] .cr-steps__line {
+    width: 2px;
+    min-height: 20px;
+    height: auto;
+    margin-bottom: 6px;
+  }
+
+  .cr-steps[data-orientation='horizontal'] .cr-steps__text {
+    padding: 3px 0 var(--cr-space-4);
+  }
+}

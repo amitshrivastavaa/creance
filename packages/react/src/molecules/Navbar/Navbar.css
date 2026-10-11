@@ -1,0 +1,178 @@
+/* The nav is the container, so the bar responds to its own width, not the window's. */
+.cr-navbar {
+  container-type: inline-size;
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+.cr-navbar__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  box-sizing: border-box;
+  min-height: 56px;
+  padding: var(--cr-space-2) var(--cr-space-3) var(--cr-space-2) var(--cr-space-4);
+  border-radius: var(--cr-radius-full);
+}
+
+.cr-navbar[data-variant='flush'] .cr-navbar__inner {
+  padding-inline: var(--cr-space-2);
+  border-bottom: 1px solid var(--cr-color-border-default);
+  border-radius: 0;
+}
+
+.cr-navbar__brand {
+  display: flex;
+  align-items: center;
+  margin-inline-end: var(--cr-space-2);
+  font-size: var(--cr-font-size-lg);
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: var(--cr-font-tracking-tight);
+}
+
+.cr-navbar__brand a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  border-radius: var(--cr-radius-sm);
+  color: inherit;
+  text-decoration: none;
+}
+
+.cr-navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cr-navbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  box-sizing: border-box;
+  min-height: var(--cr-control-height-sm);
+  padding: 0 var(--cr-space-3);
+  border-radius: var(--cr-radius-full);
+  color: var(--cr-color-text-secondary);
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-semibold);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cr-navbar__link:hover {
+  background: var(--cr-color-bg-subtle);
+  color: var(--cr-color-text-default);
+}
+
+.cr-navbar__link[aria-current='page'] {
+  background: var(--cr-color-ink-bg);
+  color: var(--cr-color-ink-fg);
+}
+
+/* Flush: the current page is underlined instead of filled. */
+.cr-navbar[data-variant='flush'] .cr-navbar__link[aria-current='page'] {
+  border-radius: 0;
+  background: none;
+  box-shadow: inset 0 -2px 0 var(--cr-color-ink-bg);
+  color: var(--cr-color-text-default);
+}
+
+.cr-navbar__count {
+  min-width: 18px;
+  padding: 0 5px;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-bg-subtle);
+  font-size: 11px;
+  font-weight: var(--cr-font-weight-bold);
+  line-height: 18px;
+  text-align: center;
+}
+
+.cr-navbar__link[aria-current='page'] .cr-navbar__count {
+  background: color-mix(in srgb, currentColor 22%, transparent);
+}
+
+.cr-navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  margin-inline-start: auto;
+}
+
+.cr-navbar__toggle {
+  display: none;
+  place-items: center;
+  flex: none;
+  width: var(--cr-control-height-sm);
+  height: var(--cr-control-height-sm);
+  margin-inline-start: auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--cr-radius-full);
+  background: none;
+  color: var(--cr-color-text-secondary);
+  font-size: var(--cr-font-size-lg);
+  cursor: pointer;
+}
+
+.cr-navbar__actions + .cr-navbar__toggle {
+  margin-inline-start: 0;
+}
+
+.cr-navbar__toggle:hover,
+.cr-navbar__toggle[aria-expanded='true'] {
+  background: var(--cr-color-bg-subtle);
+  color: var(--cr-color-text-default);
+}
+
+.cr-navbar__link:focus-visible,
+.cr-navbar__brand a:focus-visible,
+.cr-navbar__toggle:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+/* Narrow: the links leave the row and open below it from the menu button. */
+@container (max-width: 640px) {
+  .cr-navbar__inner {
+    flex-wrap: wrap;
+    border-radius: var(--cr-radius-xl);
+  }
+
+  .cr-navbar__toggle {
+    display: grid;
+  }
+
+  .cr-navbar__links {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    order: 1;
+    width: 100%;
+    padding-bottom: var(--cr-space-1);
+  }
+
+  .cr-navbar[data-open] .cr-navbar__links {
+    display: flex;
+  }
+
+  .cr-navbar__link {
+    display: flex;
+    min-height: var(--cr-control-height-md);
+    border-radius: var(--cr-radius-md);
+  }
+
+  .cr-navbar__link .cr-navbar__count {
+    margin-inline-start: auto;
+  }
+
+  .cr-navbar[data-variant='flush'] .cr-navbar__link[aria-current='page'] {
+    border-radius: var(--cr-radius-md);
+    background: var(--cr-color-bg-subtle);
+    box-shadow: none;
+  }
+}

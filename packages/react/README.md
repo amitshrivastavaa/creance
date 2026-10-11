@@ -1,6 +1,6 @@
 # @creance-ui/react
 
-A React component library in a frosted-glass style: 90 components in light and dark. It has the general set an app needs (forms, navigation, overlays, tables, feedback) and a set for supervising AI agents: approvals, tool calls, run timelines, diff review, an inbox of everything waiting on a person, and handoffs. No chat components.
+A React component library in a frosted-glass style: 95 components in light and dark. It has the general set an app needs (forms, navigation, overlays, tables, feedback) and a set for supervising AI agents: approvals, tool calls, run timelines, diff review, an inbox of everything waiting on a person, and handoffs. No chat components.
 
 ```sh
 npm install @creance-ui/react @creance-ui/tokens

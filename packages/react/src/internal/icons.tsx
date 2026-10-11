@@ -51,3 +51,5 @@ export const VolumeIcon = (p: IconProps) => <Icon {...p}><path d="M3 6h2.5L9 3v1
 export const MutedIcon = (p: IconProps) => <Icon {...p}><path d="M3 6h2.5L9 3v10L5.5 10H3z" /><path d="M11.5 6l3 4M14.5 6l-3 4" /></Icon>;
 export const ExpandIcon = (p: IconProps) => <Icon {...p}><path d="M2.5 6V2.5H6M10 2.5h3.5V6M13.5 10v3.5H10M6 13.5H2.5V10" /></Icon>;
 export const StopIcon = (p: IconProps) => <Icon {...p}><rect x="4" y="4" width="8" height="8" rx="1.5" fill="currentColor" stroke="none" /></Icon>;
+export const MenuIcon = (p: IconProps) => <Icon {...p}><path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11" /></Icon>;
+export const SidebarIcon = (p: IconProps) => <Icon {...p}><rect x="2.2" y="2.8" width="11.6" height="10.4" rx="2.2" /><path d="M6.2 2.8v10.4" /></Icon>;

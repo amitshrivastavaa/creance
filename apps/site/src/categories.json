@@ -30,14 +30,19 @@
   "ThemeSwitcher"
  ],
  "Navigation": [
+  "AppShell",
   "Breadcrumbs",
   "Collapse",
   "CommandMenu",
   "ContextMenu",
   "DotsMenu",
+  "Footer",
   "Menu",
+  "Navbar",
   "Pagination",
   "Scroller",
+  "Sidebar",
+  "Steps",
   "Tabs"
  ],
  "Overlays": [

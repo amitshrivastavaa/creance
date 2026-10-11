@@ -1,0 +1,167 @@
+.cr-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-1);
+  box-sizing: border-box;
+  width: var(--cr-sidebar-width, 256px);
+  min-height: 100%;
+  padding: var(--cr-space-3);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+.cr-sidebar.cr-surface {
+  border-radius: var(--cr-radius-xl);
+}
+
+.cr-sidebar[data-collapsed] {
+  width: var(--cr-sidebar-collapsed-width, 68px);
+  align-items: center;
+}
+
+.cr-sidebar__header {
+  margin-bottom: var(--cr-space-1);
+}
+
+.cr-sidebar__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.cr-sidebar__title {
+  margin: var(--cr-space-4) var(--cr-space-3) var(--cr-space-1);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-sidebar__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cr-sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-3);
+  box-sizing: border-box;
+  min-height: 40px;
+  padding: 0 var(--cr-space-3);
+  border-radius: var(--cr-radius-md);
+  color: var(--cr-color-text-secondary);
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-medium);
+  text-decoration: none;
+}
+
+.cr-sidebar__link:hover {
+  background: var(--cr-color-bg-subtle);
+  color: var(--cr-color-text-default);
+}
+
+.cr-sidebar__link[aria-current='page'] {
+  background: var(--cr-color-ink-bg);
+  color: var(--cr-color-ink-fg);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-sidebar__link:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-sidebar__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 18px;
+  font-size: var(--cr-font-size-lg);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-sidebar__label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cr-sidebar__count {
+  min-width: 18px;
+  padding: 0 5px;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-bg-subtle);
+  font-size: 11px;
+  font-weight: var(--cr-font-weight-bold);
+  line-height: 18px;
+  text-align: center;
+}
+
+.cr-sidebar__link[aria-current='page'] .cr-sidebar__count {
+  background: color-mix(in srgb, currentColor 22%, transparent);
+}
+
+.cr-sidebar__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  padding-top: var(--cr-space-3);
+  border-top: 1px solid var(--cr-color-border-default);
+}
+
+.cr-sidebar__footer-slot {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Collapsed: icons only. Labels stay in the page for screen readers; the count becomes a dot. */
+.cr-sidebar[data-collapsed] .cr-sidebar__title {
+  height: 1px;
+  margin: var(--cr-space-3) var(--cr-space-2);
+  overflow: hidden;
+  background: var(--cr-color-border-default);
+  color: transparent;
+}
+
+.cr-sidebar[data-collapsed] .cr-sidebar__link {
+  position: relative;
+  justify-content: center;
+  width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border-radius: 14px;
+}
+
+.cr-sidebar[data-collapsed] .cr-sidebar__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.cr-sidebar[data-collapsed] .cr-sidebar__count {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 8px;
+  min-width: 0;
+  height: 8px;
+  padding: 0;
+  overflow: hidden;
+  background: currentColor;
+  color: inherit;
+  font-size: 0;
+}
+
+.cr-sidebar[data-collapsed] .cr-sidebar__footer {
+  flex-direction: column;
+}

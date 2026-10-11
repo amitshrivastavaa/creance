@@ -2,7 +2,7 @@
 
 **[Live site and docs](https://creance.pages.dev)** · **[Demo](https://creance.pages.dev/demo/)** · **[Storybook](https://creance.pages.dev/storybook/)** · **[npm](https://www.npmjs.com/package/@creance-ui/react)**
 
-**An open-source React component library in a frosted-glass style.** 90 components in light and dark: the general set an app needs (forms, navigation, overlays, tables, feedback), plus a set for supervising AI agents, where a person approves what an agent wants to do, watches it work, reviews its changes and takes back control when it is done.
+**An open-source React component library in a frosted-glass style.** 95 components in light and dark: the general set an app needs (forms, navigation, overlays, tables, feedback), plus a set for supervising AI agents, where a person approves what an agent wants to do, watches it work, reviews its changes and takes back control when it is done.
 
 ![The demo: an agent fixes a failing deploy, asks to install a package, proposes a config diff, and hands back](docs/images/demo.gif)
 
@@ -71,14 +71,14 @@ The twelve agent organisms are built for those screens. Creance deliberately has
 
 ## What's in it
 
-90 components across four Atomic Design levels, plus a typed event model and a run simulator. The general-purpose set covers the same ground as Vercel's Geist component list (built in Creance's own style, not copied); the agent-specific organisms are Creance's own. [`docs/ATOMIC.md`](docs/ATOMIC.md) explains where each one sits and why.
+95 components across four Atomic Design levels, plus a typed event model and a run simulator. The general-purpose set covers the same ground as Vercel's Geist component list (built in Creance's own style, not copied); the agent-specific organisms are Creance's own. [`docs/ATOMIC.md`](docs/ATOMIC.md) explains where each one sits and why.
 
 | Level | Components |
 |---|---|
 | **Atoms** (23) | Button, IconButton, Toggle, Badge, StatusDot, Spinner, LoadingDots, Skeleton, Kbd, Code, ProgressBar, Gauge, Avatar, Tooltip, Input, Textarea, Select, Checkbox, Radio, Switch, Separator, MiddleTruncate, ErrorMessage |
-| **Molecules** (54) | Forms: Field, RadioGroup, Choicebox, ClearableInput, SearchInput, Combobox, MultiSelect, Calendar, Slider, ToggleGroup, ThemeSwitcher, Feedback. Actions: SplitButton, CopyButton, TextWithCopy, LoadMoreButton, ShowMore. Navigation: Tabs, Menu, ContextMenu, DotsMenu, CommandMenu, Breadcrumbs, Pagination, Scroller, Collapse. Overlays: Dialog, Sheet, DestructiveActionModal, ContextCard, RelativeTimeCard, Toast. Data: Table, FileTree, JsonView, Snippet, Entity, Description, EmptyState, Card. Feedback and media: Alert, Banner, ProjectBanner, ErrorCard, BrowserFrame, PhoneFrame, Video. Agent: StatusBadge ("Running · 12s"), ToolCallHeader, RiskLabel, BudgetMeter, ConfidenceMeter, DiffLine, KeyboardHint |
+| **Molecules** (58) | Forms: Field, RadioGroup, Choicebox, ClearableInput, SearchInput, Combobox, MultiSelect, Calendar, Slider, ToggleGroup, ThemeSwitcher, Feedback. Actions: SplitButton, CopyButton, TextWithCopy, LoadMoreButton, ShowMore. Navigation: Navbar, Sidebar, Steps, Footer, Tabs, Menu, ContextMenu, DotsMenu, CommandMenu, Breadcrumbs, Pagination, Scroller, Collapse. Overlays: Dialog, Sheet, DestructiveActionModal, ContextCard, RelativeTimeCard, Toast. Data: Table, FileTree, JsonView, Snippet, Entity, Description, EmptyState, Card. Feedback and media: Alert, Banner, ProjectBanner, ErrorCard, BrowserFrame, PhoneFrame, Video. Agent: StatusBadge ("Running · 12s"), ToolCallHeader, RiskLabel, BudgetMeter, ConfidenceMeter, DiffLine, KeyboardHint |
 | **Organisms** (12) | **ApprovalPrompt**, **ToolCallCard**, **RunTimeline**, **DiffReview**, **NeedsYouInbox**, **AgentHandoffBanner**, **FleetSky**, **PlanEditor**, **QuestionCard**, **KillSwitch**, **CheckpointRewind**, **PermissionLedger** |
-| **Template** (1) | AgentRunLayout |
+| **Templates** (2) | AgentRunLayout, AppShell |
 | **Page** | `apps/demo`, wired to the simulator |
 
 | Package | What it is |
@@ -88,7 +88,7 @@ The twelve agent organisms are built for those screens. Creance deliberately has
 | [`apps/docs`](apps/docs) | Storybook: usage guidelines for every organism, a Tokens page, live stories |
 | [`apps/site`](apps/site) | The project site: an overview, guides, and every component running live with code you can edit, plus props and keyboard tables generated from the types |
 | [`apps/demo`](apps/demo) | A Vite app that runs one full scenario, consuming the built package like any app would |
-| [`apps/next`](apps/next) | A Next.js App Router app that renders all 90 components, used to test server rendering and hydration |
+| [`apps/next`](apps/next) | A Next.js App Router app that renders all 95 components, used to test server rendering and hydration |
 
 ## How it works
 
@@ -126,7 +126,7 @@ Creance is a React library. What has been tested:
 | Next.js Pages Router, React Router, Remix, Astro | Not tested. Plain React, so expected to work. |
 | Vue, Svelte, Angular, Solid | Not supported. Only `@creance-ui/tokens` (plain CSS variables) is usable there. |
 
-For the App Router, the 51 modules that use state, effects, Radix or their own event handlers start with `"use client"`, so they can be imported straight into a server component. The other 54, including Button, Input, Badge, Alert and the event reducer, have no client-only code and can run on the server alone. A lint step (`scripts/check-use-client.mjs`) fails if a file needs the directive and lacks it, or if the build drops it. A component that takes a callback, such as `onAllow`, has to be used from a client file, because a server component cannot pass a function as a prop.
+For the App Router, the 55 modules that use state, effects, Radix or their own event handlers start with `"use client"`, so they can be imported straight into a server component. The other 55, including Button, Input, Badge, Alert and the event reducer, have no client-only code and can run on the server alone. A lint step (`scripts/check-use-client.mjs`) fails if a file needs the directive and lacks it, or if the build drops it. A component that takes a callback, such as `onAllow`, has to be used from a client file, because a server component cannot pass a function as a prop.
 
 ## Key decisions and trade-offs
 
@@ -163,14 +163,14 @@ All of these run in GitHub Actions on every push and pull request (`.github/work
 |---|---|---|
 | Types | TypeScript (strict, `noUncheckedIndexedAccess`) | All packages and apps |
 | Lint | ESLint (typescript-eslint, react-hooks, jsx-a11y), Atomic import-direction rules, raw-colour check on CSS | Repo |
-| Unit and interaction | Vitest + React Testing Library | Reducer, selectors, simulator, codemod, keyboard and focus behaviour (88 tests) |
-| React 18 | The same unit suite with React 18 installed (`pnpm test:react18`) | 88 tests; the package is developed on React 19 |
-| Accessibility | Storybook addon-vitest + axe, violations fail the build | Every story, in light **and** dark (146 stories, 292 runs) |
-| Visual regression | Playwright screenshots, Linux baselines from the Playwright Docker image | 46 key stories × light and dark (92 screenshots) |
+| Unit and interaction | Vitest + React Testing Library | Reducer, selectors, simulator, codemod, keyboard and focus behaviour (94 tests) |
+| React 18 | The same unit suite with React 18 installed (`pnpm test:react18`) | 94 tests; the package is developed on React 19 |
+| Accessibility | Storybook addon-vitest + axe, violations fail the build | Every story, in light **and** dark (152 stories, 304 runs) |
+| Visual regression | Playwright screenshots, Linux baselines from the Playwright Docker image | 50 key stories × light and dark (100 screenshots) |
 | End to end | Playwright + axe | The demo: the full scenario, and the deny path |
-| Next.js | Playwright on a Next.js 16 App Router app (`pnpm test:next`) | All 90 components: rendered by the server, hydrated without errors, interactive |
-| Site | Playwright on the site (`pnpm test:site`) | All 99 pages and every live example render; editing an example updates its preview; a `:root` token override restyles components in both themes |
-| Bundle size | size-limit | Budgets: all components 28 kB, ApprovalPrompt alone 2.5 kB, CSS 12 kB, simulator 2.5 kB (brotli, without React and Radix). Today: 25.8 kB, 1.87 kB, 10.9 kB, 2.2 kB |
+| Next.js | Playwright on a Next.js 16 App Router app (`pnpm test:next`) | All 95 components: rendered by the server, hydrated without errors, interactive |
+| Site | Playwright on the site (`pnpm test:site`) | All 104 pages and every live example render; editing an example updates its preview; a `:root` token override restyles components in both themes |
+| Bundle size | size-limit | Budgets: all components 28 kB, ApprovalPrompt alone 2.5 kB, CSS 13 kB, simulator 2.5 kB (brotli, without React and Radix). Today: 27.2 kB, 1.87 kB, 12.2 kB, 2.2 kB |
 | Release | Changesets status + `pnpm publish --dry-run` | Both packages |
 
 On `main`, a final job deploys the site, Storybook (at `/storybook/`) and the demo (at `/demo/`) to Cloudflare Pages.

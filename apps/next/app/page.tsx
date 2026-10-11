@@ -3,6 +3,7 @@
 import {
   AgentHandoffBanner,
   AgentRunLayout,
+  AppShell,
   Alert,
   ApprovalPrompt,
   Avatar,
@@ -43,6 +44,7 @@ import {
   Field,
   FileTree,
   FleetSky,
+  Footer,
   Gauge,
   IconButton,
   Input,
@@ -57,6 +59,7 @@ import {
   MenuTrigger,
   MiddleTruncate,
   MultiSelect,
+  Navbar,
   NeedsYouInbox,
   PhoneFrame,
   ProgressBar,
@@ -74,6 +77,7 @@ import {
   SheetContent,
   SheetTrigger,
   ShowMore,
+  Sidebar,
   Skeleton,
   Slider,
   Snippet,
@@ -81,6 +85,7 @@ import {
   SplitButton,
   StatusBadge,
   StatusDot,
+  Steps,
   Switch,
   Tabs,
   TabsContent,
@@ -355,6 +360,23 @@ export default function Page() {
               Input and output tokens both count.
             </CollapseItem>
           </Collapse>
+        </Cell>
+        <Cell name="Navbar" wide>
+          <Navbar brand={<Link href="/">Acme</Link>} items={[{ label: 'Runs', href: '/', current: true }, { label: 'Inbox', href: '/', count: 5 }]} />
+        </Cell>
+        <Cell name="Sidebar">
+          <Sidebar label="Workspace" variant="card" collapsible groups={[{ title: 'Manage', items: [{ label: 'Runs', href: '/', current: true }, { label: 'Settings', href: '/' }] }]} />
+        </Cell>
+        <Cell name="Steps" wide>
+          <Steps label="Set up" current={1} steps={[{ title: 'Connect a repository' }, { title: 'Choose an agent' }, { title: 'Review and start' }]} />
+        </Cell>
+        <Cell name="Footer" wide>
+          <Footer legal="© 2026 Acme. MIT licence." links={[{ label: 'Docs', href: '/' }]} />
+        </Cell>
+        <Cell name="AppShell" wide>
+          <AppShell height={240} header="Runs" sidebar={<Sidebar label="App" groups={[{ items: [{ label: 'Runs', href: '/', current: true }] }]} />}>
+            Content
+          </AppShell>
         </Cell>
         <Cell name="Breadcrumbs">
           <Breadcrumbs items={[{ label: 'Acme', href: '/' }, { label: 'Run 41' }]} />
