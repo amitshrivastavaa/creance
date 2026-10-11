@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   pull_request:
+  # Lets a run, and so a deploy, be started by hand from the Actions tab.
+  workflow_dispatch:
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -109,7 +111,7 @@ jobs:
 
   deploy:
     name: Deploy the site, Storybook and demo to Cloudflare Pages
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: [checks, react-18, storybook-a11y, visual-and-e2e, release-dry-run]
     runs-on: ubuntu-latest
     permissions:
