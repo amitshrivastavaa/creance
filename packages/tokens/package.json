@@ -1,8 +1,16 @@
 {
   "name": "creance-tokens",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Design tokens for Creance, as CSS custom properties (light and dark) and a typed JS export.",
   "license": "MIT",
+  "author": "Amit Shrivastava",
+  "homepage": "https://creance.pages.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amitshrivastavaa/creance.git",
+    "directory": "packages/tokens"
+  },
+  "bugs": "https://github.com/amitshrivastavaa/creance/issues",
   "type": "module",
   "sideEffects": [
     "*.css"

@@ -1,8 +1,16 @@
 {
   "name": "creance",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A React component library in a frosted-glass style: 90 components in light and dark, with a set for supervising AI agents (approvals, tool calls, run timelines, diff review and handoffs).",
   "license": "MIT",
+  "author": "Amit Shrivastava",
+  "homepage": "https://creance.pages.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amitshrivastavaa/creance.git",
+    "directory": "packages/react"
+  },
+  "bugs": "https://github.com/amitshrivastavaa/creance/issues",
   "type": "module",
   "sideEffects": [
     "*.css"

@@ -1,5 +1,39 @@
 # creance
 
+## 0.3.0
+
+### Minor Changes
+
+- 73fbadb: Agent controls. Organisms: `KillSwitch` (hold to stop, by pointer or keyboard; `compact` for headers), `QuestionCard`, `PlanEditor` (reorder with Alt+arrows, edit, remove, add, announced), `CheckpointRewind` (see what a rewind undoes before confirming) and `PermissionLedger` (standing grants, revoke with undo). Molecule: `ConfidenceMeter`, a range in words with reasons, full or compact.
+- bffccc4: Core controls. Atoms: `Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `Switch`, `Separator`, `Skeleton`, all native elements styled as glass. Molecules: `Field` (label, hint and error wired to any control), `RadioGroup`, `Tabs`, `Menu`, `Dialog`, `Toast` with `toast()` and `<Toaster />`, `Alert` and `Card`. Tabs, Menu, Dialog and Toast are built on Radix.
+  
+  The package now ships one module per source file, so bundlers drop components an app does not import. Importing only `ApprovalPrompt` costs 1.87 kB of Creance code, minified and brotlied.
+  
+  Fix: under `prefers-reduced-motion`, `FleetSky` drew once and could be left blank after its first resize; it also ignored agent status changes and theme switches. It now redraws on resize, on theme change and when agents change.
+- 4e7c3b7: Overlays and data display. Atoms: `StatusDot`, `LoadingDots`, `Gauge`, `MiddleTruncate`. Molecules: `Sheet`, `DestructiveActionModal`, `ContextCard`, `RelativeTimeCard`, `Table` (sorting, selection with Shift-click ranges, bulk actions), `FileTree`, `JsonView`, `Snippet`, `Entity`, `Description` and `EmptyState`. Sheet, DestructiveActionModal and ContextCard use Radix Dialog and Popover; Table and FileTree are hand-built.
+- 62b9417: Feedback and media. Atom: `ErrorMessage`. Molecules: `Banner` (neutral, ink or danger, dismissals remembered with `storageKey`), `ProjectBanner`, `ErrorCard`, `BrowserFrame`, `PhoneFrame` and `Video` (glass controls, starts muted, captions on, never autoplays).
+- 30bf3e5: New visual language: frosted glass, neutral greys and one blue, in light and dark themes. Blue is for the one action that answers a request; ink (near-black in light, off-white in dark) marks what needs you and what is selected; red is only for failure and refusal. Titles and the interface use the system face (SF Pro on Apple devices, Inter elsewhere), commands SF Mono or JetBrains Mono. Buttons are glass capsules, 44px by default.
+  
+  Four public glass layers: `.cr-window`, `.cr-surface` (tile), `.cr-glass` (sheet) and `.cr-popover`. All turn solid with no blur under `prefers-reduced-transparency`, `prefers-contrast: more` or `data-transparency="reduce"`.
+  
+  New `FleetSky` organism and `skyAgent(run)` selector: your agents as birds on lines back to you; an agent that needs you flies back on a taut line. Name tags are real buttons, arrivals are announced, and nothing moves under `prefers-reduced-motion`.
+  
+  Token changes in `creance-tokens` (breaking for anyone reading these variables directly):
+  
+  - The `slate` primitive palette is now `gray`; new `blue` primitives; `red` gains `300`, `400` and `500`.
+  - `--cr-glass-opacity` and `--cr-glass-filter` are replaced by per-layer tokens: `--cr-glass-opacity-{window,tile,sheet,popover,control}` and `--cr-glass-filter-{window,sheet}`.
+  - `--cr-color-accent-*` is now blue (the primary action). The previous ink accent is `--cr-color-ink-*`.
+  - New: `--cr-color-glass-{window,tile,sheet,popover,control,edge,highlight}`, `--cr-color-text-secondary`, `--cr-color-danger-text`, `--cr-control-height-{md,sm}`, `--cr-radius-2xl`, `--cr-shadow-sheet`, `--cr-shadow-accent`, `--cr-font-size-4xl`, `--cr-font-weight-bold`.
+- e415e17: Inputs. Atom: `Toggle`. Molecules: `ClearableInput`, `SearchInput`, `Combobox`, `MultiSelect`, `Calendar` (single or range), `Slider` (single, range or stepped), `ToggleGroup`, `Choicebox`, `CopyButton`, `TextWithCopy`, `SplitButton`, `LoadMoreButton`, `ShowMore`, `Feedback` and `ThemeSwitcher`. Combobox, MultiSelect and Calendar are hand-built to the ARIA patterns; Slider and ToggleGroup use Radix.
+- 807a54a: Navigation. Molecules: `Breadcrumbs`, `Pagination` (numbered or compact), `CommandMenu` (⌘K or Ctrl+K, grouped, filtered by label and keywords), `ContextMenu`, `DotsMenu`, `Scroller` and `Collapse`. ContextMenu and Collapse use Radix; CommandMenu uses Radix Dialog with the Combobox keyboard model.
+- 3c40f9b: Next.js App Router support. The 51 modules that use state, effects, Radix or their own event handlers now start with `"use client"`, so they can be imported directly into a server component; the other 54, including Button, Input, Badge, Alert and the event reducer, stay free of client-only code. A new `apps/next` app renders all 90 components with Next.js 16, and a Playwright suite checks that the server sends them, that they hydrate without errors and that they respond.
+  
+  The unit tests now also run on React 18 in CI, the oldest version the peer dependency allows.
+
+### Patch Changes
+
+- 11455a9: SearchInput no longer shows two clear buttons in Chrome and Safari. The browser's own clear button for search fields is hidden inside ClearableInput, which already has one.
+
 ## 0.2.0
 
 ### Minor Changes
