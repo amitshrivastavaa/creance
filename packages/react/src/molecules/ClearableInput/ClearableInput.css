@@ -59,3 +59,9 @@
 .cr-clearable:not([data-empty]) .cr-clearable__hint {
   display: none;
 }
+
+/* Chrome and Safari give a search field a clear button of their own; this component has one already. */
+.cr-clearable > .cr-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
