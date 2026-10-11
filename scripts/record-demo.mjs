@@ -45,6 +45,6 @@ try {
 }
 
 const video = join(videoDir, readdirSync(videoDir)[0]);
-const filters = 'fps=10,scale=960:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128[p];[b][p]paletteuse=dither=bayer:bayer_scale=5';
+const filters = 'fps=8,scale=800:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=96[p];[b][p]paletteuse=dither=bayer:bayer_scale=5';
 execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', video, '-vf', filters, 'docs/images/demo.gif']);
 console.log('Wrote docs/images/demo.gif and docs/images/demo.png');

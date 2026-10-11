@@ -1,7 +1,7 @@
 {
   "name": "creance",
   "version": "0.2.0",
-  "description": "React components for human-in-the-loop agent interfaces: approvals, tool calls, run timelines, diff review and handoffs.",
+  "description": "A React component library in a frosted-glass style: 90 components in light and dark, with a set for supervising AI agents (approvals, tool calls, run timelines, diff review and handoffs).",
   "license": "MIT",
   "type": "module",
   "sideEffects": [
@@ -67,6 +67,8 @@
     "human-in-the-loop",
     "approval",
     "design-system",
+    "components",
+    "ui",
     "accessibility"
   ],
   "engines": {

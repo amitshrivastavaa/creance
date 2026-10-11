@@ -1,6 +1,6 @@
 # Creance
 
-**An open-source React UI kit for supervising AI agents.** It covers the screens where a person approves what an agent wants to do, watches it work, reviews its changes and takes back control when it is done.
+**An open-source React component library in a frosted-glass style.** 90 components in light and dark: the general set an app needs (forms, navigation, overlays, tables, feedback), plus a set for supervising AI agents, where a person approves what an agent wants to do, watches it work, reviews its changes and takes back control when it is done.
 
 ![The demo: an agent fixes a failing deploy, asks to install a package, proposes a config diff, and hands back](docs/images/demo.gif)
 
@@ -10,7 +10,54 @@
 
 ---
 
-## The problem
+## Use it
+
+Creance is not on npm yet, so today it runs from a clone of this repository:
+
+```sh
+pnpm install
+pnpm build   # the tokens and the components
+pnpm site    # every component running live, with code you can edit
+```
+
+![The docs site: the Table page, with a live preview above the code that produces it](docs/images/site.png)
+
+Once it is published, installing will be `npm install creance creance-tokens`. Import the two stylesheets once, tokens first, then use the components:
+
+```tsx
+import 'creance-tokens/tokens.css';
+import 'creance/styles.css';
+import { Button, Field, Input } from 'creance';
+
+<Field label="Agent name" hint="Shown in the run header and the inbox.">
+  <Input defaultValue="Deploy Fixer" />
+</Field>
+<Button variant="primary">Save</Button>
+```
+
+React 18 or later is the only peer dependency. [Frameworks](#frameworks) lists where it has been tested.
+
+## Design and theming
+
+- **Frosted glass.** Four surface layers, from the page window down to popovers, each a tint at its own opacity over a blurred backdrop. The classes are public: `.cr-window`, `.cr-surface`, `.cr-glass`, `.cr-popover`.
+- **Colour is rationed.** Neutral greys throughout. Blue marks the one primary action, near-black marks what needs you or is selected, and red is only for failure and refusal. Every status also has an icon and text.
+- **Light and dark.** The theme follows the operating system; `data-theme="light"` or `data-theme="dark"` on `<html>` forces one.
+- **Solid mode.** Every glass layer turns opaque with no blur when someone asks their system for less transparency or more contrast, or when you set `data-transparency="reduce"`.
+
+Every colour, radius, shadow, font and glass opacity is a CSS variable. To theme, set them in a `:root` rule after the Creance stylesheets; it applies in both themes.
+
+```css
+:root {
+  --cr-color-accent-bg: #7c3aed;
+  --cr-color-accent-bg-hover: #6d28d9;
+  --cr-glass-opacity-sheet: 80%;
+  --cr-font-family-sans: 'Your Font', system-ui, sans-serif;
+}
+```
+
+Two limits: glass tint and opacity only take effect on `:root`, not on a section of a page, and a system request for less transparency, more contrast or reduced motion always wins over your values.
+
+## The agent components
 
 Most agent UI work goes into chat: message bubbles, streaming text, prompt boxes. That is well covered already. Once an agent can run commands, edit files and spend money, the harder interface problem is **control and trust**:
 
@@ -20,7 +67,7 @@ Most agent UI work goes into chat: message bubbles, streaming text, prompt boxes
 - *What is waiting on me?* One place for everything blocked on a person, across agents.
 - *Is it finished?* A clear point where the agent hands control back.
 
-Creance is a design system for those screens. It deliberately has no chat components.
+The twelve agent organisms are built for those screens. Creance deliberately has no chat components.
 
 ## What's in it
 
@@ -122,7 +169,7 @@ All of these run in GitHub Actions on every push and pull request (`.github/work
 | Visual regression | Playwright screenshots, Linux baselines from the Playwright Docker image | 46 key stories × light and dark (92 screenshots) |
 | End to end | Playwright + axe | The demo: the full scenario, and the deny path |
 | Next.js | Playwright on a Next.js 16 App Router app (`pnpm test:next`) | All 90 components: rendered by the server, hydrated without errors, interactive |
-| Site | Playwright on the site (`pnpm test:site`) | All 99 pages and every live example render; editing an example updates its preview |
+| Site | Playwright on the site (`pnpm test:site`) | All 99 pages and every live example render; editing an example updates its preview; a `:root` token override restyles components in both themes |
 | Bundle size | size-limit | Budgets: all components 28 kB, ApprovalPrompt alone 2.5 kB, CSS 12 kB, simulator 2.5 kB (brotli, without React and Radix). Today: 25.8 kB, 1.87 kB, 10.9 kB, 2.2 kB |
 | Release | Changesets status + `pnpm publish --dry-run` | Both packages |
 

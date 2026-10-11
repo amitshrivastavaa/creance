@@ -1,6 +1,6 @@
 # creance
 
-React components for supervising AI agents: approvals, tool calls, run timelines, diff review, an inbox of everything waiting on a person, and handoffs. Not chat.
+A React component library in a frosted-glass style: 90 components in light and dark. It has the general set an app needs (forms, navigation, overlays, tables, feedback) and a set for supervising AI agents: approvals, tool calls, run timelines, diff review, an inbox of everything waiting on a person, and handoffs. No chat components.
 
 ```sh
 npm install creance creance-tokens
@@ -24,6 +24,6 @@ import { ApprovalPrompt } from 'creance';
 
 Drive everything from an event stream with `useAgentRun(events)`, or try it with no backend using `creance/simulator`. Components take plain props and work on their own.
 
-React 18 or later. Plain CSS on `--cr-*` custom properties; no CSS-in-JS runtime. MIT licence.
+React 18 or later. Works in the Next.js App Router: modules that need the browser are marked `"use client"`. Plain CSS on `--cr-*` custom properties with no CSS-in-JS runtime; theme it by setting those properties in a `:root` rule. MIT licence.
 
-See the repository README and the Storybook for docs, usage guidelines and accessibility notes.
+See the repository README and the project site for docs, live examples, props and accessibility notes.
