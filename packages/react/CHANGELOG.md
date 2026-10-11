@@ -1,5 +1,19 @@
 # @creance-ui/react
 
+## 0.4.0
+
+### Minor Changes
+
+- 120ea54: App shell. Molecules: `Navbar` (a glass pill or flush bar; on a narrow bar the links move into a menu), `Sidebar` (grouped links with icons and counts, collapsing to icons that keep their names), `Steps` (horizontal or vertical, with done, current, upcoming and error states that are also spoken) and `Footer` (full, or one line). Template: `AppShell`, which arranges a sidebar, header, content and optional aside, starts with a skip link, and moves the sidebar into a sheet when it is narrow.
+  
+  All five respond to the width they are given, not the window, using container queries.
+- 02e72b8: Charts. An atom, `Sparkline` (line, area or bars), and five molecules: `StatCard` (a number, a trend chip whose direction is also read out, and room for a sparkline), `LineChart` (a solid main series with a soft fill and dashed comparisons; point at it or use the arrow keys to read each point), `BarChart` (single with one bar picked out, or stacked), `DonutChart` (with each slice's value and share in the legend) and `BarList` (a ranking).
+  
+  They are hand-built in SVG and HTML with no charting dependency. Series are ink and grey, differing in lightness and line style, with red for failure. Every chart carries its data as a visually hidden table. The set is meant for two or three series or five slices; beyond that, use a charting library.
+- 730a9ee: Conversation. Seven molecules for talking with an agent: `Message` (yours in a tile on the right, the agent's as plain text under its name, with pending and streaming states), `MessageList` (follows new messages until you scroll up, then offers "Jump to latest"), `PromptInput` (Enter sends, Shift+Enter starts a new line, Send becomes Stop while the agent works, files attach as chips), `Reasoning` (the thinking, folded behind how long it took), `Sources` with `Citation` markers, `Suggestions` and `ModelPicker`.
+  
+  `Message` takes whatever you render, so markdown is yours to parse. Existing components such as `ApprovalPrompt` and `ToolCallHeader` can sit inside a conversation.
+
 ## 0.3.0
 
 ### Minor Changes
