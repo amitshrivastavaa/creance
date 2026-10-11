@@ -8,6 +8,7 @@
     "build": "pnpm props && vite build",
     "build:artifact": "pnpm props && vite build --config vite.artifact.config.ts && node scripts/build-artifact.mjs",
     "preview": "vite preview",
+    "images": "node scripts/brand-images.mjs",
     "typecheck": "pnpm props && tsc --noEmit -p ."
   },
   "dependencies": {

@@ -100,3 +100,22 @@ test('tokens set on :root restyle components in both themes, but not past system
   // The built stylesheet is minified, so zero may be written as 0s.
   expect(await token('--cr-motion-duration-base')).toMatch(/^0m?s$/);
 });
+
+test('the page describes itself to search engines and link previews', async ({ page, request }) => {
+  await page.goto('/');
+  const site = 'https://creance.pages.dev/';
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', site);
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /React component library/);
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `${site}og.png`);
+  JSON.parse((await page.locator('script[type="application/ld+json"]').textContent()) ?? '');
+
+  // Every file the head and the crawlers ask for is in the build.
+  const icons = await page.locator('link[rel~="icon"], link[rel="apple-touch-icon"]').evaluateAll((links) => links.map((l) => (l as HTMLLinkElement).href));
+  expect(icons).toHaveLength(3);
+  for (const url of [...icons, '/og.png', '/robots.txt', '/sitemap.xml']) expect((await request.get(url)).status(), url).toBe(200);
+  expect(await (await request.get('/robots.txt')).text()).toContain(`Sitemap: ${site}sitemap.xml`);
+
+  // A component page names itself in the tab.
+  await page.goto('/#Table');
+  await expect(page).toHaveTitle('Table · Creance');
+});

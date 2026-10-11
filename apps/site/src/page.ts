@@ -16,6 +16,7 @@ const page = el('page');
 const views = { overview: el('view-overview'), components: el('view-components') };
 const isSection = (id: string) => !id || id === 'overview' || !!views.overview.querySelector(`#${CSS.escape(id)}`);
 let last = '';
+const homeTitle = document.title;
 
 function go(target: string, scroll = true) {
   const id = String(target || '').replace(/^#/, '');
@@ -30,6 +31,7 @@ function go(target: string, scroll = true) {
     // Some frames forbid changing the address; the view has still changed.
   }
   if (view === 'components') window.dispatchEvent(new CustomEvent('creance:go', { detail: id }));
+  document.title = view === 'components' && id !== 'components' ? `${id} · Creance` : homeTitle;
   if (scroll) {
     const section = view === 'overview' && id && id !== 'overview' ? document.getElementById(id) : null;
     if (section) section.scrollIntoView();

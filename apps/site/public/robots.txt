@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://creance.pages.dev/sitemap.xml

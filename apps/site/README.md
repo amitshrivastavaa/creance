@@ -21,6 +21,19 @@ pnpm test:site    # build it and run the browser tests
 - `scripts/extract-props.mjs` reads the library's TypeScript types and writes `src/props.json`,
   which is generated on every dev, build and typecheck run and is not committed.
 
+## Search engines and link previews
+
+`index.html` carries the title, description, canonical address, Open Graph tags and structured data.
+`public/` holds the favicons, `robots.txt`, `sitemap.xml` and `og.png`, the card shown when a link is
+shared. `pnpm --filter site images` redraws the PNG and ICO files from `scripts/brand-images.mjs`.
+
+The site's address, `https://creance.pages.dev/`, is written in `index.html`, `robots.txt` and
+`sitemap.xml`. Change all three if it moves.
+
+Guides and components are views of one page, switched by the part of the address after `#`, so a
+search engine sees a single page. Giving each its own address would need a build step that writes
+one HTML file per page.
+
 ## A single-page build
 
 `pnpm --filter site build:artifact` writes `artifact/creance-ui-kit.html` and
