@@ -1,0 +1,98 @@
+/* Series step down in ink, so they differ in lightness rather than hue. Red is for a failure. */
+.cr-chart {
+  --cr-chart-1: var(--cr-color-text-default);
+  --cr-chart-2: color-mix(in srgb, var(--cr-color-text-default) 50%, transparent);
+  --cr-chart-3: color-mix(in srgb, var(--cr-color-text-default) 30%, transparent);
+  --cr-chart-4: color-mix(in srgb, var(--cr-color-text-default) 18%, transparent);
+  --cr-chart-5: color-mix(in srgb, var(--cr-color-text-default) 10%, transparent);
+  --cr-chart-danger: var(--cr-color-danger-text);
+  --cr-chart-axis: 44px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-3);
+  margin: 0;
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The plot sits to the right of the axis labels. Ticks are lines across it, with a label hanging off the left. */
+.cr-chart__plot {
+  position: relative;
+  margin-inline-start: var(--cr-chart-axis);
+}
+
+.cr-chart__tick {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--cr-color-border-default);
+}
+
+.cr-chart__tick-label {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  padding-inline-end: var(--cr-space-2);
+  color: var(--cr-color-text-muted);
+  font-size: 11px;
+  line-height: 1;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.cr-chart__labels {
+  position: relative;
+  height: 16px;
+  margin-inline-start: var(--cr-chart-axis);
+  color: var(--cr-color-text-muted);
+  font-size: 11px;
+}
+
+.cr-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cr-space-2) var(--cr-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--cr-color-text-secondary);
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-chart-legend__item {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+}
+
+.cr-chart-legend__swatch {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: currentColor;
+}
+
+/* A dashed series shows a dashed key, so the legend matches the line and not only its shade. */
+.cr-chart-legend__swatch[data-dashed] {
+  width: 14px;
+  height: 0;
+  border-top: 2px dashed currentColor;
+  border-radius: 0;
+  background: none;
+}
+
+.cr-chart-legend__value {
+  margin-inline-start: auto;
+  color: var(--cr-color-text-default);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-chart-legend__share {
+  width: 36px;
+  color: var(--cr-color-text-muted);
+  text-align: end;
+}

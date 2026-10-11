@@ -1,0 +1,32 @@
+.cr-sparkline {
+  display: block;
+  flex: none;
+  overflow: visible;
+  color: var(--cr-color-text-default);
+}
+
+.cr-sparkline__line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cr-sparkline__area {
+  fill: currentColor;
+  opacity: 0.1;
+}
+
+.cr-sparkline__dot {
+  fill: currentColor;
+}
+
+.cr-sparkline__bar {
+  fill: currentColor;
+  opacity: 0.3;
+}
+
+.cr-sparkline__bar[data-last] {
+  opacity: 1;
+}

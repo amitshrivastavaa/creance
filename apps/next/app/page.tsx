@@ -9,6 +9,8 @@ import {
   Avatar,
   Badge,
   Banner,
+  BarChart,
+  BarList,
   Breadcrumbs,
   BrowserFrame,
   BudgetMeter,
@@ -39,6 +41,7 @@ import {
   DiffReview,
   DotsMenu,
   EmptyState,
+  DonutChart,
   Entity,
   ErrorCard,
   ErrorMessage,
@@ -59,6 +62,7 @@ import {
   MenuItem,
   MenuTrigger,
   MiddleTruncate,
+  LineChart,
   Message,
   MessageList,
   ModelPicker,
@@ -88,8 +92,10 @@ import {
   Slider,
   Snippet,
   Sources,
+  Sparkline,
   Spinner,
   SplitButton,
+  StatCard,
   StatusBadge,
   Suggestions,
   StatusDot,
@@ -368,6 +374,24 @@ export default function Page() {
               Input and output tokens both count.
             </CollapseItem>
           </Collapse>
+        </Cell>
+        <Cell name="StatCard">
+          <StatCard label="Runs today" value="20" trend={{ direction: 'up', label: '4' }} note="vs yesterday" chart={<Sparkline label="Runs, last 5 days" values={[3, 5, 4, 8, 6]} width={80} />} />
+        </Cell>
+        <Cell name="Sparkline">
+          <Sparkline variant="area" label="Tokens per day" values={[42, 55, 48, 61, 73]} />
+        </Cell>
+        <Cell name="LineChart" wide>
+          <LineChart label="Tokens per day" height={160} labels={['Mon', 'Tue', 'Wed']} series={[{ name: 'Tokens', values: [42, 55, 48] }]} />
+        </Cell>
+        <Cell name="BarChart" wide>
+          <BarChart label="Runs per day" height={140} labels={['Mon', 'Tue', 'Wed']} series={[{ name: 'Runs', values: [12, 18, 9] }]} />
+        </Cell>
+        <Cell name="DonutChart" wide>
+          <DonutChart label="Run outcomes" size={120} data={[{ label: 'Completed', value: 64 }, { label: 'Failed', value: 7, tone: 'danger' }]} />
+        </Cell>
+        <Cell name="BarList">
+          <BarList label="Tokens by agent" items={[{ label: 'Deploy Fixer', value: 84 }, { label: 'Docs Writer', value: 46 }]} />
         </Cell>
         <Cell name="Message" wide>
           <Message from="assistant" name="Deploy Fixer">

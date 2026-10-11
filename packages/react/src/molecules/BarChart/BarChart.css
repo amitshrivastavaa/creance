@@ -1,0 +1,71 @@
+/* Room under the plot for the category labels, which hang below each column. */
+.cr-bar-chart__plot {
+  margin-bottom: 22px;
+}
+
+.cr-bar-chart__bars {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cr-bar-chart__column {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+  height: 100%;
+}
+
+/* First series at the bottom. */
+.cr-bar-chart__stack {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+  width: min(60%, 28px);
+  min-height: 2px;
+  overflow: hidden;
+  border-radius: 6px 6px 0 0;
+}
+
+.cr-bar-chart__bar {
+  flex-basis: 0;
+}
+
+.cr-bar-chart__column[data-dim] .cr-bar-chart__bar {
+  opacity: 0.32;
+}
+
+.cr-bar-chart__value {
+  margin-bottom: var(--cr-space-1);
+  font-size: 11px;
+  font-weight: var(--cr-font-weight-semibold);
+  visibility: hidden;
+}
+
+.cr-bar-chart__column:hover .cr-bar-chart__value,
+.cr-bar-chart__column[data-highlight] .cr-bar-chart__value {
+  visibility: visible;
+}
+
+.cr-bar-chart__column:hover .cr-bar-chart__bar {
+  opacity: 1;
+}
+
+.cr-bar-chart__label {
+  position: absolute;
+  top: 100%;
+  padding-top: 6px;
+  color: var(--cr-color-text-muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.cr-bar-chart__column[data-highlight] .cr-bar-chart__label {
+  color: var(--cr-color-text-default);
+  font-weight: var(--cr-font-weight-semibold);
+}

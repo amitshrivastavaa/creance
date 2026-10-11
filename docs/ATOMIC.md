@@ -16,7 +16,7 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 
 ## Where each component sits, and why
 
-### Atoms (23)
+### Atoms (24)
 
 | Component | Why it is an atom |
 |---|---|
@@ -35,9 +35,10 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **StatusDot**, **LoadingDots** | A status as shape, tone and word; three pulsing dots beside what is happening. |
 | **Gauge**, **MiddleTruncate** | A ring meter that turns red only past a set limit; a path or ID shortened in the middle, whole for screen readers. |
 | **ErrorMessage** | One line of red text: what went wrong and what to do; announced only when asked. |
+| **Sparkline** | A trend with no axes, as one named image. It has no parts worth a molecule. |
 | **Separator**, **Skeleton** | A hairline and a loading placeholder, both hidden from screen readers by default. |
 
-### Molecules (65)
+### Molecules (70)
 
 | Component | Built from | Why it is a molecule |
 |---|---|---|
@@ -62,6 +63,8 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **SplitButton** | Button + Menu | A main action with alternatives. |
 | **LoadMoreButton**, **ShowMore** | Button + Spinner; a fade and a toggle | Keep the person's place in long lists and long text. |
 | **Feedback**, **ThemeSwitcher** | Toggle buttons + Textarea; native radios | A rating with an optional comment; light, dark or system, applied to `<html>`. |
+| **StatCard** | Sparkline; icons | One number, what it is and how it moved, with the direction also in words. |
+| **LineChart**, **BarChart**, **DonutChart**, **BarList** | SVG and HTML | Hand-built charts in ink and grey, red for failure. Each carries its data as a table for screen readers; LineChart reads point by point with the arrow keys. |
 | **Message**, **MessageList** | Avatar, LoadingDots; Button | One turn of a conversation, and the scrolling column that follows new turns until the person scrolls up. |
 | **PromptInput** | A textarea and buttons | Where you write to an agent: Enter sends, Send becomes Stop while it works, files attach as chips. |
 | **Reasoning**, **Sources**, **Suggestions**, **ModelPicker** | `<details>`; links; Button; Radix menu | The parts around an answer: its thinking, what it is based on, where to start, and which model replies. |

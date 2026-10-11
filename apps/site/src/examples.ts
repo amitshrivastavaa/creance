@@ -365,6 +365,71 @@ const all: Example[] = [
   </ShowMore>
 </div>`),
 
+  // ───────────── Charts
+  ex('Charts', 'Molecule', 'StatCard', 'One number, what it is, and how it moved.', `
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 14 }}>
+  <StatCard label="Runs today" value="20" trend={{ direction: 'up', label: '4' }} note="vs yesterday" chart={<Sparkline variant="bars" width={84} height={34} label="Runs per day, last 7 days" values={[12, 18, 9, 22, 16, 5, 20]} />} />
+  <StatCard label="Tokens today" value="184K" trend={{ direction: 'up', label: '12%' }} note="vs last week" />
+  <StatCard label="Failed runs" value="3" trend={{ direction: 'up', label: '2', tone: 'bad' }} note="vs yesterday" />
+</div>`),
+  ex('Charts', 'Atom', 'Sparkline', 'A trend with no axes, for a table cell or a stat card.', `
+<div ${row}>
+  <Sparkline variant="area" width={160} height={40} label="Tokens per day, with fill" values={[42, 55, 48, 61, 73, 39, 28, 64, 82, 77, 91, 68, 45, 96]} />
+  <Sparkline width={160} height={40} label="Tokens per day" values={[42, 55, 48, 61, 73, 39, 28, 64, 82, 77, 91, 68, 45, 96]} />
+  <Sparkline variant="bars" width={160} height={40} label="Runs per day" values={[12, 18, 9, 22, 16, 5, 20, 14, 19, 23]} />
+</div>`),
+  ex('Charts', 'Molecule', 'LineChart', 'A trend over time. Point at it, or focus it and press the arrow keys.', `
+<LineChart
+  label="Tokens per day"
+  axisLabel="Day"
+  unit="K"
+  labels={['28 Sep', '29 Sep', '30 Sep', '1 Oct', '2 Oct', '3 Oct', '4 Oct', '5 Oct', '6 Oct', '7 Oct', '8 Oct', '9 Oct', '10 Oct', '11 Oct']}
+  series={[
+    { name: 'This period', values: [42, 55, 48, 61, 73, 39, 28, 64, 82, 77, 91, 68, 45, 96] },
+    { name: 'Previous period', values: [38, 44, 51, 47, 58, 35, 30, 52, 60, 66, 70, 62, 41, 74], style: 'dashed' },
+  ]}
+/>`),
+  ex('Charts', 'Molecule', 'BarChart', 'Amounts across categories. More than one series stacks.', `
+<div ${col(620)}>
+  <BarChart label="Runs per day" axisLabel="Day" highlight={3} labels={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']} series={[{ name: 'Runs', values: [12, 18, 9, 22, 16, 5, 8] }]} />
+  <BarChart
+    label="Runs per day, by outcome"
+    axisLabel="Day"
+    height={170}
+    labels={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
+    series={[
+      { name: 'Completed', values: [11, 16, 9, 19, 15, 5, 7] },
+      { name: 'Failed', values: [1, 2, 0, 3, 1, 0, 1], tone: 'danger' },
+    ]}
+  />
+</div>`),
+  ex('Charts', 'Molecule', 'DonutChart', 'Parts of a whole, with each slice\u2019s value and share in the legend.', `
+<div style={{ maxWidth: 560 }}>
+  <DonutChart
+    label="Run outcomes"
+    centerLabel="runs"
+    data={[
+      { label: 'Completed', value: 64 },
+      { label: 'Waiting for you', value: 5 },
+      { label: 'Stopped by you', value: 9 },
+      { label: 'Failed', value: 7, tone: 'danger' },
+    ]}
+  />
+</div>`),
+  ex('Charts', 'Molecule', 'BarList', 'A ranking: a name, a bar and a value on every row.', `
+<div style={{ maxWidth: 520 }}>
+  <BarList
+    label="Tokens by agent"
+    unit="K"
+    items={[
+      { label: 'Deploy Fixer', value: 84 },
+      { label: 'Docs Writer', value: 46 },
+      { label: 'Data Loader', value: 31 },
+      { label: 'Upgrader', value: 23 },
+    ]}
+  />
+</div>`),
+
   // ───────────── Conversation
   ex('Conversation', 'Molecule', 'Message', 'One turn. Yours sit right in a tile; the agent\u2019s are plain text under its name.', `
 <div ${col(620)}>

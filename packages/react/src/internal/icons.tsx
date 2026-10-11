@@ -57,3 +57,5 @@ export const SendIcon = (p: IconProps) => <Icon {...p}><path d="M8 13V3.5M4 7.5l
 export const SparkIcon = (p: IconProps) => <Icon {...p}><path d="M8 2.5v3M8 10.5v3M2.5 8h3M10.5 8h3M4.300 4.300l1.900 1.900M9.800 9.800l1.900 1.900M4.300 11.700l1.900-1.900M9.800 6.200l1.900-1.900" /></Icon>;
 export const FileIcon = (p: IconProps) => <Icon {...p}><path d="M4 2.5h5l3 3V13a.5.5 0 0 1-.5.5h-7.500a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5z" /><path d="M9 2.5v3h3" /></Icon>;
 export const ImageIcon = (p: IconProps) => <Icon {...p}><rect x="2.5" y="3" width="11" height="10" rx="2" /><circle cx="6" cy="6.5" r="1.200" /><path d="M3 12l3.500-3.500 2.500 2.500 2-2 2.500 2.500" /></Icon>;
+export const ArrowUpIcon = (p: IconProps) => <Icon {...p}><path d="M8 13V3M4 7l4-4 4 4" /></Icon>;
+export const MinusIcon = (p: IconProps) => <Icon {...p}><path d="M3 8h10" /></Icon>;

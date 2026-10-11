@@ -1,0 +1,45 @@
+.cr-donut {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cr-space-4) var(--cr-space-8);
+}
+
+.cr-donut__ring {
+  position: relative;
+  flex: none;
+}
+
+/* Slices start at twelve o'clock. */
+.cr-donut__ring svg {
+  display: block;
+  transform: rotate(-90deg);
+}
+
+.cr-donut__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cr-donut__total {
+  font-family: var(--cr-font-family-display);
+  font-size: var(--cr-font-size-2xl);
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: var(--cr-font-tracking-tight);
+  line-height: 1.1;
+}
+
+.cr-donut__unit {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}
+
+.cr-donut .cr-chart-legend {
+  flex: 1 1 200px;
+  flex-direction: column;
+  gap: var(--cr-space-2);
+}

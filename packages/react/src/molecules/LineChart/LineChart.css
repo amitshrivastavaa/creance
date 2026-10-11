@@ -1,0 +1,106 @@
+.cr-line-chart__plot {
+  border-radius: var(--cr-radius-sm);
+  cursor: crosshair;
+  touch-action: pan-y;
+}
+
+.cr-line-chart__plot:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-line-chart__svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.cr-line-chart__line {
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.cr-line-chart__line[data-style='dashed'] {
+  stroke-width: 1.6;
+  stroke-dasharray: 5 5;
+}
+
+.cr-line-chart__rule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-inline-start: 1px dashed var(--cr-chart-2);
+  pointer-events: none;
+}
+
+.cr-line-chart__marker {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--cr-radius-full);
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cr-line-chart__marker[data-main] {
+  box-sizing: border-box;
+  width: 11px;
+  height: 11px;
+  border: 2px solid currentColor;
+  background: var(--cr-color-bg-raised);
+}
+
+.cr-line-chart__tip {
+  position: absolute;
+  bottom: var(--cr-space-2);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 132px;
+  margin-inline: var(--cr-space-3);
+  padding: var(--cr-space-2) var(--cr-space-3);
+  border-radius: 14px;
+  font-size: var(--cr-font-size-xs);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Past the middle, the tooltip sits to the left of the rule so it stays inside the plot. */
+.cr-line-chart__tip[data-side='left'] {
+  transform: translateX(calc(-100% - 2 * var(--cr-space-3)));
+}
+
+.cr-line-chart__tip-title {
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-line-chart__tip .cr-chart-legend {
+  flex-direction: column;
+  gap: var(--cr-space-1);
+  font-size: var(--cr-font-size-xs);
+}
+
+.cr-line-chart__label {
+  position: absolute;
+  top: 2px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+/* The ends are pulled in so they do not hang outside the plot. */
+.cr-line-chart__label[data-edge='start'] {
+  transform: none;
+}
+
+.cr-line-chart__label[data-edge='end'] {
+  transform: translateX(-100%);
+}

@@ -88,6 +88,14 @@
   "PhoneFrame",
   "Video"
  ],
+ "Charts": [
+  "BarChart",
+  "BarList",
+  "DonutChart",
+  "LineChart",
+  "Sparkline",
+  "StatCard"
+ ],
  "Conversation": [
   "Message",
   "MessageList",

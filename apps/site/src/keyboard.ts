@@ -55,6 +55,7 @@ export const keyboard: Record<string, { keys: Keys; note?: string }> = {
   },
   Slider: { keys: [['← → ↑ ↓', 'One step'], ['Page Up, Page Down', 'A larger step'], ['Home, End', 'Minimum or maximum']] },
   ToggleGroup: { keys: [['← →', 'Move between items'], ['Home, End', 'First or last item'], ['Space or Enter', 'Toggle the item']] },
+  LineChart: { keys: [['Tab', 'Focus the plot'], ['← →', 'Read the previous or next point'], ['Home, End', 'Read the first or last point'], ['Esc', 'Hide the tooltip']] },
   PromptInput: { keys: [['Enter', 'Send the message'], ['Shift + Enter', 'Start a new line'], ['Tab', 'Move to attach, the tools, then Send or Stop']] },
   MessageList: { keys: [['Tab', 'Focus the list so it can be scrolled'], ['↑ ↓, Page Up, Page Down', 'Scroll, once the list has focus']] },
   Reasoning: { keys: [['Enter or Space', 'Open or close the thinking']] },
