@@ -32,7 +32,7 @@ const card = `
   <div class="copy">
     <div class="brand">${mark(false)}Creance</div>
     <h1>A React UI kit for supervising AI agents</h1>
-    <p>108 open-source components. Light, dark and solid themes.</p>
+    <p>109 open-source components. Light, dark and solid themes.</p>
   </div>
   <img class="shot" src="data:image/png;base64,${shot}" alt="" />`;
 

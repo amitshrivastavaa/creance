@@ -430,8 +430,23 @@ const all: Example[] = [
   />
 </div>`),
 
-  // ───────────── Conversation
-  ex('Conversation', 'Molecule', 'Message', 'One turn. Yours sit right in a tile; the agent\u2019s are plain text under its name.', `
+  // ───────────── Chat
+  ex('Chat', 'Organism', 'Chat', 'A whole conversation with an agent: messages, suggestions and the input. Type something to try it.', `
+<div className="cr-window" style={{ borderRadius: 22, overflow: 'hidden' }}>
+  <Chat
+    height={520}
+    agentName="Deploy Fixer"
+    avatar={<Avatar name="Deploy Fixer" kind="agent" size="sm" decorative />}
+    messages={state.messages}
+    status={state.status}
+    onSend={agent.send}
+    onStop={agent.stop}
+    suggestions={['Why is the deploy failing?', 'What changed last?']}
+    placeholder="Ask Deploy Fixer, or tell it what to do"
+    empty="Ask anything about this deploy. The agent here is simulated."
+  />
+</div>`, { messages: [], status: 'ready' }),
+  ex('Chat', 'Molecule', 'Message', 'One turn. Yours sit right in a tile; the agent\u2019s are plain text under its name.', `
 <div ${col(620)}>
   <Message from="user">The production deploy for web is failing. Can you find out why?</Message>
   <Message from="assistant" name="Deploy Fixer" avatar={<Avatar name="Deploy Fixer" kind="agent" size="sm" decorative />} actions={<CopyButton value="zod is missing from web/package.json" label="Copy answer" />}>
@@ -442,7 +457,7 @@ const all: Example[] = [
   </Message>
   <Message from="assistant" name="Deploy Fixer" status="pending" />
 </div>`),
-  ex('Conversation', 'Molecule', 'MessageList', 'A scrolling column that follows new messages until you scroll up.', `
+  ex('Chat', 'Molecule', 'MessageList', 'A scrolling column that follows new messages until you scroll up.', `
 <div style={{ height: 320 }}>
   <MessageList label="Conversation with Deploy Fixer">
     <Message from="user">Why is the deploy failing?</Message>
@@ -453,7 +468,7 @@ const all: Example[] = [
     <Message from="assistant" name="Deploy Fixer" status="streaming"><p>Installing zod@3</p></Message>
   </MessageList>
 </div>`),
-  ex('Conversation', 'Molecule', 'PromptInput', 'Where you write to an agent. Enter sends; Send becomes Stop while it works.', `
+  ex('Chat', 'Molecule', 'PromptInput', 'Where you write to an agent. Enter sends; Send becomes Stop while it works.', `
 <div ${col(620)}>
   <PromptInput
     label="Message Deploy Fixer"
@@ -466,7 +481,7 @@ const all: Example[] = [
   />
   <PromptInput label="Message Deploy Fixer, working" placeholder="Reply while it works, or stop it" status="working" onStop={log} hint="Deploy Fixer is working" />
 </div>`),
-  ex('Conversation', 'Molecule', 'Reasoning', 'The agent\u2019s thinking, folded away behind how long it took.', `
+  ex('Chat', 'Molecule', 'Reasoning', 'The agent\u2019s thinking, folded away behind how long it took.', `
 <div ${col(560)}>
   <Reasoning seconds={8}>
     <p>The log stops at the build step with "Cannot find module zod". That is a missing dependency, not a code error.</p>
@@ -476,7 +491,7 @@ const all: Example[] = [
     <p>Reading the deploy log.</p>
   </Reasoning>
 </div>`),
-  ex('Conversation', 'Molecule', 'Sources', 'What an answer is based on, with numbered markers in the text.', `
+  ex('Chat', 'Molecule', 'Sources', 'What an answer is based on, with numbered markers in the text.', `
 <div ${col(560)}>
   <p style={{ margin: 0 }}>The import arrived after the last deploy that passed.<Citation index={2} onClick={log} label="Source 2, Commit a41c9e2" /></p>
   <Sources
@@ -486,9 +501,9 @@ const all: Example[] = [
     ]}
   />
 </div>`),
-  ex('Conversation', 'Molecule', 'Suggestions', 'Starting points above the input. Choosing one sends it.', `
+  ex('Chat', 'Molecule', 'Suggestions', 'Starting points above the input. Choosing one sends it.', `
 <Suggestions items={['Explain the failure', 'Show the diff', 'Retry the deploy']} onSelect={log} />`),
-  ex('Conversation', 'Molecule', 'ModelPicker', 'Chooses which model answers.', `
+  ex('Chat', 'Molecule', 'ModelPicker', 'Chooses which model answers.', `
 <ModelPicker
   onValueChange={log}
   defaultValue="medium"

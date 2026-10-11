@@ -20,6 +20,7 @@ const stories = [
   'molecules-charts--line',
   'molecules-charts--bars',
   'molecules-charts--donut',
+  'organisms-chat--conversation',
   'molecules-conversation--messages',
   'molecules-conversation--sources-story',
   'molecules-conversation--prompt-input-story',

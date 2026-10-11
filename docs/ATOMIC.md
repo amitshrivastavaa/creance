@@ -85,12 +85,13 @@ Outside the levels: the event model (`events.ts`), the reducer and selectors (`r
 | **ConfidenceMeter** | A band on a five-word scale + reasons | How sure the agent is, as a range in words, never a percentage. Rounds down when the range straddles two words. |
 | **DiffLine** | — | Same reasoning. One line of a diff has several coordinated parts (two line numbers, a sign, `<ins>`/`<del>`, screen-reader text) and only makes sense inside a diff. A strict reading would call it an atom; it's here because of what it means, not how it's built. |
 
-### Organisms (12)
+### Organisms (13)
 
 Each organism owns a whole interaction: its own structure, keyboard model, focus behaviour and live announcements.
 
 | Component | Built from | What it owns |
 |---|---|---|
+| **Chat** | MessageList, Message, Reasoning, Sources, Suggestions, PromptInput | A whole conversation: following new messages, sending and stopping, and announcing each finished reply once. |
 | **ApprovalPrompt** | Button, Code, KeyboardHint, RiskLabel, Badge | The allow/deny decision: focus on arrival, scoped shortcuts, the resolved state. |
 | **ToolCallCard** | ToolCallHeader, Code, Spinner, Button | One tool call's lifecycle, collapsible input and output, errors, retry. |
 | **RunTimeline** | StatusBadge, Code, Button | The run's step tree, follow/pause/jump scrolling, and which transitions get announced. |

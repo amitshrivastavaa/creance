@@ -96,7 +96,8 @@
   "Sparkline",
   "StatCard"
  ],
- "Conversation": [
+ "Chat": [
+  "Chat",
   "Message",
   "MessageList",
   "ModelPicker",

@@ -1,0 +1,33 @@
+.cr-chat {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+.cr-chat > .cr-message-list {
+  flex: 1;
+  height: auto;
+}
+
+.cr-chat__empty {
+  display: grid;
+  place-items: center;
+  min-height: 160px;
+  color: var(--cr-color-text-muted);
+  text-align: center;
+}
+
+/* The input lines up with the column of messages above it. */
+.cr-chat__composer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-3);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--cr-message-list-width, 760px);
+  margin-inline: auto;
+  padding: var(--cr-space-2) var(--cr-space-4) var(--cr-space-4);
+}

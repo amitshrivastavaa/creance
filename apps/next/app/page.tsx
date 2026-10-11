@@ -17,6 +17,7 @@ import {
   Button,
   Calendar,
   Card,
+  Chat,
   Checkbox,
   Citation,
   Choicebox,
@@ -392,6 +393,9 @@ export default function Page() {
         </Cell>
         <Cell name="BarList">
           <BarList label="Tokens by agent" items={[{ label: 'Deploy Fixer', value: 84 }, { label: 'Docs Writer', value: 46 }]} />
+        </Cell>
+        <Cell name="Chat" wide>
+          <Chat height={320} agentName="Deploy Fixer" messages={[{ id: '1', from: 'user', content: 'Why is the deploy failing?' }, { id: '2', from: 'assistant', content: 'The build cannot find zod.' }]} />
         </Cell>
         <Cell name="Message" wide>
           <Message from="assistant" name="Deploy Fixer">

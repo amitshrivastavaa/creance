@@ -78,7 +78,7 @@ jobs:
       - run: pnpm build-storybook
       - run: pnpm --filter demo build
       - run: pnpm exec playwright test
-      # Next.js App Router: server rendering, hydration and interaction for all 108 components.
+      # Next.js App Router: server rendering, hydration and interaction for all 109 components.
       - run: pnpm test:next
       # The site: every guide and every component example renders, and examples can be edited.
       - run: pnpm test:site

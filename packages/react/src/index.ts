@@ -99,6 +99,7 @@ export * from './molecules/Video';
 // Organisms
 export * from './organisms/AgentHandoffBanner';
 export * from './organisms/ApprovalPrompt';
+export * from './organisms/Chat';
 export * from './organisms/CheckpointRewind';
 export * from './organisms/DiffReview';
 export * from './organisms/FleetSky';

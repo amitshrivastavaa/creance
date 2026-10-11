@@ -32,8 +32,8 @@ test('every guide and every component example renders', async ({ page }) => {
   const problems = watch(page);
   await page.goto('/#components');
   const names = await page.locator('.docs__list a').allTextContents();
-  // 9 guides and 108 components.
-  expect(names).toHaveLength(117);
+  // 9 guides and 109 components.
+  expect(names).toHaveLength(118);
 
   for (const name of names) {
     await page.evaluate((n) => window.creanceGo?.(n), name);
@@ -126,4 +126,16 @@ test('the page describes itself to search engines and link previews', async ({ p
   // A component page names itself in the tab.
   await page.goto('/#Table');
   await expect(page).toHaveTitle('Table · Creance');
+});
+
+test('the Chat example answers what is typed, streaming a reply and then citing a source', async ({ page }) => {
+  await page.goto('/#Chat');
+  const stage = page.locator('.doc__stage').first();
+  await stage.getByRole('textbox', { name: 'Message Deploy Fixer' }).fill('Is it the build or the tests?');
+  await page.keyboard.press('Enter');
+  await expect(stage.getByText('Is it the build or the tests?')).toBeVisible();
+  // While the agent works, Send is Stop.
+  await expect(stage.getByRole('button', { name: 'Stop' })).toBeVisible();
+  await expect(stage.getByRole('link', { name: /Build 482 log/ })).toBeVisible({ timeout: 15_000 });
+  await expect(stage.getByRole('button', { name: 'Send' })).toBeVisible();
 });

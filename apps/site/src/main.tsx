@@ -112,6 +112,44 @@ class Boundary extends Component<{ code: string; onError: (m: string) => void; c
   }
 }
 
+type Turn = { id: string; from: 'user' | 'assistant'; content?: string; status?: string; reasoning?: unknown; sources?: unknown };
+type ChatState = { messages?: Turn[]; status?: string };
+const answer = 'I read the deploy log. The build stops because zod is missing from web/package.json. I can add it and run the tests again, but I will ask before I install anything.';
+
+/** A stand-in agent for the Chat example: it thinks, streams a fixed answer word by word, then cites its sources. */
+function simulatedAgent(update: (change: (s: ChatState) => ChatState) => void) {
+  const timers: { current: ReturnType<typeof setTimeout>[] } = { current: [] };
+  const last = (s: ChatState, patch: Partial<Turn>): ChatState => ({ ...s, messages: (s.messages ?? []).map((m, i, all) => (i === all.length - 1 ? { ...m, ...patch } : m)) });
+  const clear = () => {
+    timers.current.forEach(clearTimeout);
+    timers.current = [];
+  };
+  return {
+    send(text: string) {
+      clear();
+      const id = String(Date.now());
+      update((s) => ({ ...s, status: 'working', messages: [...(s.messages ?? []), { id: `${id}-you`, from: 'user', content: text }, { id: `${id}-agent`, from: 'assistant', status: 'pending' }] }));
+      const words = answer.split(' ');
+      words.forEach((_, i) => timers.current.push(setTimeout(() => update((s) => last(s, { status: 'streaming', content: words.slice(0, i + 1).join(' ') })), 900 + i * 70)));
+      timers.current.push(
+        setTimeout(
+          () =>
+            update((s) => ({
+              ...last(s, { status: 'done', reasoning: { seconds: 1, content: 'The log ends at the build step with "Cannot find module zod".' }, sources: [{ title: 'Build 482 log', detail: 'deploys/web/482', href: '#Chat' }] }),
+              status: 'ready',
+            })),
+          900 + words.length * 70 + 200,
+        ),
+      );
+    },
+    stop() {
+      clear();
+      update((s) => ({ ...last(s, { status: 'done' }), status: 'ready' }));
+    },
+    dispose: clear,
+  };
+}
+
 const show = (a: unknown): string => {
   if (a && typeof a === 'object' && ('nativeEvent' in a || a instanceof Event)) return 'event';
   if (a === undefined) return 'undefined';
@@ -134,6 +172,8 @@ function Playground({ id, label, code: initial, state: initialState, lead }: { i
   // The last preview that rendered, shown dimmed while the code is being edited into shape.
   const [good, setGood] = useState<ReactNode>(null);
   const area = useRef<HTMLTextAreaElement>(null);
+  const [agent] = useState(() => simulatedAgent(setSt as never));
+  useEffect(() => agent.dispose, [agent]);
 
   const report = (name: string, args: unknown[]) => setEvents((e) => [`${name}(${args.map(show).join(', ')})`, ...e].slice(0, 4));
 
@@ -143,7 +183,7 @@ function Playground({ id, label, code: initial, state: initialState, lead }: { i
       setSt((s) => ({ ...s, permissions: ((s.permissions as { id: string }[] | undefined) ?? []).map((p) => (p.id === pid ? { ...p, revoked } : p)) }));
     try {
       const el = run(code, {
-        scope: { ...data, state: st, set, revoke: mark(true), restore: mark(false) },
+        scope: { ...data, state: st, set, revoke: mark(true), restore: mark(false), agent },
         components,
         report,
         onError: (message) => setCrashed({ code, message }),
