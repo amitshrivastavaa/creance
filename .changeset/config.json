@@ -3,7 +3,7 @@
   "baseBranch": "main",
   "access": "public",
   "ignore": [],
-  "fixed": [],
+  "fixed": [["@creance-ui/react", "@creance-ui/tokens"]],
   "linked": [],
   "format": "auto",
   "updateInternalDependencies": "patch",
