@@ -7,6 +7,7 @@ Design tokens for Creance: colour, spacing, type, radius, motion and shadow.
 ```
 
 - `--cr-*` CSS custom properties. Light by default; dark follows `prefers-color-scheme`, and `data-theme="light"` or `data-theme="dark"` on `<html>` forces either.
+- To theme, set tokens in a `:root` rule after this file. It applies in both themes; use `:root[data-theme="dark"]` for a dark-only value.
 - Motion durations drop to `0ms` under `prefers-reduced-motion: reduce`.
 - `import { tokens, values } from 'creance-tokens'`: `tokens` holds the `var(--cr-…)` references, `values` the resolved light values, both fully typed.
 

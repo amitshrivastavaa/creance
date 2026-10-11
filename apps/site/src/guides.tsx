@@ -350,6 +350,15 @@ sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: 'all
   --cr-font-family-sans: 'Your Font', system-ui, sans-serif;
 }`}
         />
+        <p>
+          A <code>:root</code> rule applies in both themes. To change a token in dark only, use the selectors the kit uses:{' '}
+          <code>:root[data-theme="dark"]</code>, and <code>:root:not([data-theme="light"])</code> inside a{' '}
+          <code>prefers-color-scheme: dark</code> media query.
+        </p>
+        <p>
+          Glass opacity and animation durations are the exception: when someone asks their system for less transparency, more contrast or reduced
+          motion, the kit's values win over yours.
+        </p>
         <p>White text sits on the accent colour, so check its contrast when you change it.</p>
         <h2>Light, dark and solid</h2>
         <ul>

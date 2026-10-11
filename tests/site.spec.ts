@@ -76,3 +76,27 @@ test('each component page has props, and search finds pages', async ({ page }) =
   await page.keyboard.press('Enter');
   await expect(title(page)).toHaveText('CheckpointRewind');
 });
+
+test('tokens set on :root restyle components in both themes, but not past system preferences', async ({ page }) => {
+  await page.goto('/#Button');
+  const primary = page.locator('.doc__stage .cr-button[data-variant="primary"]').first();
+  const token = (name: string) => page.evaluate((n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim(), name);
+  await page.addStyleTag({
+    content: ':root { --cr-color-accent-bg: rgb(124, 58, 237); --cr-glass-opacity-sheet: 80%; --cr-motion-duration-base: 300ms; }',
+  });
+
+  const tints: string[] = [];
+  for (const theme of ['light', 'dark']) {
+    await page.evaluate((t) => document.documentElement.setAttribute('data-theme', t), theme);
+    await expect(primary, theme).toHaveCSS('background-color', 'rgb(124, 58, 237)');
+    tints.push(await token('--cr-color-glass-tint'));
+  }
+  // Tokens that were not overridden still change with the theme.
+  expect(tints[0]).not.toBe(tints[1]);
+  expect(await token('--cr-glass-opacity-sheet')).toBe('80%');
+
+  await page.emulateMedia({ contrast: 'more', reducedMotion: 'reduce' });
+  expect(await token('--cr-glass-opacity-sheet')).toBe('100%');
+  // The built stylesheet is minified, so zero may be written as 0s.
+  expect(await token('--cr-motion-duration-base')).toMatch(/^0m?s$/);
+});
