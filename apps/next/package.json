@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start --port 6010",
-    "typecheck": "tsc --noEmit -p ."
+    "typecheck": "next typegen && tsc --noEmit -p ."
   },
   "dependencies": {
     "creance": "workspace:*",
