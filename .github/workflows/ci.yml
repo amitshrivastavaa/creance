@@ -107,21 +107,18 @@ jobs:
       # Builds and packs both packages exactly as `npm publish` would, without publishing.
       - run: pnpm release:dry-run
 
-  pages:
-    name: Deploy the site, Storybook and demo to GitHub Pages
-    # GitHub Pages is not available for a private repository on the free plan, so the deploy waits
-    # until the repository is public.
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !github.event.repository.private
+  deploy:
+    name: Deploy the site, Storybook and demo to Cloudflare Pages
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: [checks, react-18, storybook-a11y, visual-and-e2e, release-dry-run]
     runs-on: ubuntu-latest
     permissions:
-      # Listing any permission removes the rest, and checkout needs to read the repository.
       contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+    env:
+      # Repository secrets. The token needs the "Cloudflare Pages: Edit" account permission.
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      PROJECT: creance
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -132,7 +129,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm build-storybook
-      # A relative base, so the demo works at a domain root and under /<repository>/ alike.
+      # A relative base, so the demo works at a domain root and under a path alike.
       - run: pnpm --filter demo build
         env:
           DEMO_BASE: ./
@@ -143,8 +140,10 @@ jobs:
           cp -r apps/site/dist/. site/
           cp -r apps/docs/storybook-static site/storybook
           cp -r apps/demo/dist site/demo
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-      - id: deploy
-        uses: actions/deploy-pages@v4
+      - if: env.CLOUDFLARE_API_TOKEN == ''
+        run: echo "::notice::Built but not deployed. Add the CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets to deploy."
+      # Creating the project fails harmlessly once it exists; a real problem shows up in the deploy.
+      - if: env.CLOUDFLARE_API_TOKEN != ''
+        run: |
+          pnpm dlx wrangler@4 pages project create "$PROJECT" --production-branch=main || true
+          pnpm dlx wrangler@4 pages deploy site --project-name="$PROJECT" --branch=main --commit-dirty=true

@@ -173,7 +173,7 @@ All of these run in GitHub Actions on every push and pull request (`.github/work
 | Bundle size | size-limit | Budgets: all components 28 kB, ApprovalPrompt alone 2.5 kB, CSS 12 kB, simulator 2.5 kB (brotli, without React and Radix). Today: 25.8 kB, 1.87 kB, 10.9 kB, 2.2 kB |
 | Release | Changesets status + `pnpm publish --dry-run` | Both packages |
 
-On `main`, a final job deploys the site, Storybook (at `/storybook/`) and the demo (at `/demo/`) to GitHub Pages. It is skipped while the repository is private, because Pages needs a public repository on the free plan.
+On `main`, a final job deploys the site, Storybook (at `/storybook/`) and the demo (at `/demo/`) to Cloudflare Pages.
 
 ## Versioning and lifecycle
 
