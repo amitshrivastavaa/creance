@@ -1,5 +1,7 @@
 # Creance
 
+**[Live site and docs](https://creance.pages.dev)** · **[Demo](https://creance.pages.dev/demo/)** · **[Storybook](https://creance.pages.dev/storybook/)** · **[npm](https://www.npmjs.com/package/@creance-ui/react)**
+
 **An open-source React component library in a frosted-glass style.** 90 components in light and dark: the general set an app needs (forms, navigation, overlays, tables, feedback), plus a set for supervising AI agents, where a person approves what an agent wants to do, watches it work, reviews its changes and takes back control when it is done.
 
 ![The demo: an agent fixes a failing deploy, asks to install a package, proposes a config diff, and hands back](docs/images/demo.gif)
@@ -12,17 +14,11 @@
 
 ## Use it
 
-Creance is not on npm yet, so today it runs from a clone of this repository:
-
 ```sh
-pnpm install
-pnpm build   # the tokens and the components
-pnpm site    # every component running live, with code you can edit
+npm install @creance-ui/react @creance-ui/tokens
 ```
 
-![The docs site: the Table page, with a live preview above the code that produces it](docs/images/site.png)
-
-Once it is published, installing will be `npm install @creance-ui/react @creance-ui/tokens`. Import the two stylesheets once, tokens first, then use the components:
+Import the two stylesheets once, tokens first, then use the components:
 
 ```tsx
 import '@creance-ui/tokens/tokens.css';
@@ -36,6 +32,10 @@ import { Button, Field, Input } from '@creance-ui/react';
 ```
 
 React 18 or later is the only peer dependency. [Frameworks](#frameworks) lists where it has been tested.
+
+Every component runs live on [the site](https://creance.pages.dev/#components), with code you can edit, props and keyboard tables.
+
+![The docs site: the Table page, with a live preview above the code that produces it](docs/images/site.png)
 
 ## Design and theming
 
@@ -212,7 +212,7 @@ Checks: `pnpm typecheck`, `pnpm lint`, `pnpm test` (unit and story axe tests), `
 
 ## Status
 
-Version 0.2.0. Not yet published to npm (`pnpm release:dry-run` shows what would go out). The scenario is simulated: no real agent is connected. Built as a portfolio project; there are no production users.
+Version 0.3.0, published to npm as [`@creance-ui/react`](https://www.npmjs.com/package/@creance-ui/react) and [`@creance-ui/tokens`](https://www.npmjs.com/package/@creance-ui/tokens). The scenario is simulated: no real agent is connected. Built as a portfolio project; there are no production users.
 
 [`docs/PLAN.md`](docs/PLAN.md) has the original plan and architecture notes.
 

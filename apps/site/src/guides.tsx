@@ -128,8 +128,8 @@ export const guides: Guide[] = [
           <li>Every component takes plain props. None of them depends on the event model.</li>
         </ul>
         <h2>Where it stands</h2>
-        <Alert title="Version 0.2.0, not yet published">
-          Creance is a one-person project. It is not on npm, no real agent is connected to it, and it has no production users. The automated checks pass; a manual screen-reader pass has not been done.
+        <Alert title="Version 0.3.0, on npm">
+          Creance is a one-person project. No real agent is connected to it, and it has no production users. The automated checks pass; a manual screen-reader pass has not been done.
         </Alert>
       </>
     ),
@@ -137,19 +137,14 @@ export const guides: Guide[] = [
   {
     name: 'Installation',
     group: 'Getting started',
-    about: 'Creance is not on npm yet. Today it runs from source.',
+    about: 'Two packages from npm, and two stylesheets imported once.',
     body: () => (
       <>
-        <Alert title="Not published yet">The packages are named @creance-ui/react and @creance-ui/tokens, but neither is on npm. Until they are, build them from the repository.</Alert>
-        <h2>From source</h2>
-        <p>You need Node 22 or later and pnpm 12.</p>
-        <Snippet commands={['pnpm install', 'pnpm build', 'pnpm storybook']} />
+        <h2>Install</h2>
         <p>
-          <code>pnpm build</code> builds the tokens and the components. <code>pnpm storybook</code> opens the docs on localhost:6006, and <code>pnpm --filter demo dev</code> runs the demo app.
+          The components are in <code>@creance-ui/react</code> and the design tokens in <code>@creance-ui/tokens</code>. React 18 or later is the only peer dependency, and the unit tests run on both 18 and 19.
         </p>
-        <h2>Once it is published</h2>
-        <p>Installation will be one command. React 18 or later is the only peer dependency, and the unit tests run on both 18 and 19.</p>
-        <Snippet tone="light" commands="npm install @creance-ui/react @creance-ui/tokens" />
+        <Snippet commands="npm install @creance-ui/react @creance-ui/tokens" />
         <h2>Add the styles once</h2>
         <p>Import the tokens and the component styles at the root of your app, tokens first.</p>
         <Block
@@ -157,6 +152,12 @@ export const guides: Guide[] = [
 import '@creance-ui/tokens/tokens.css';
 import '@creance-ui/react/styles.css';`}
         />
+        <h2>From source</h2>
+        <p>To work on Creance itself, clone the repository. You need Node 22 or later and pnpm 12.</p>
+        <Snippet tone="light" commands={['pnpm install', 'pnpm build', 'pnpm site']} />
+        <p>
+          <code>pnpm build</code> builds the tokens and the components. <code>pnpm site</code> runs this site, <code>pnpm storybook</code> opens the stories on localhost:6006, and <code>pnpm --filter demo dev</code> runs the demo app.
+        </p>
       </>
     ),
   },
@@ -536,7 +537,7 @@ sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: 'all
   {
     name: 'Status',
     group: 'Project',
-    about: 'Version 0.2.0. The code is complete and passes its checks. This is what is not done.',
+    about: 'Version 0.3.0, on npm. The code is complete and passes its checks. This is what is not done.',
     body: () => (
       <>
         <ul className="status-list">
@@ -550,7 +551,7 @@ sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: 'all
             <StatusDot status="done">It is tested in Vite and in the Next.js App Router, on React 18 and 19.</StatusDot>
           </li>
           <li>
-            <StatusDot status="queued">It is not published to npm, and the repository is private.</StatusDot>
+            <StatusDot status="done">It is published to npm as @creance-ui/react and @creance-ui/tokens, and the repository is public.</StatusDot>
           </li>
           <li>
             <StatusDot status="queued">No real agent is connected. The demo plays a simulated run.</StatusDot>
