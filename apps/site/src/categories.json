@@ -88,6 +88,15 @@
   "PhoneFrame",
   "Video"
  ],
+ "Conversation": [
+  "Message",
+  "MessageList",
+  "ModelPicker",
+  "PromptInput",
+  "Reasoning",
+  "Sources",
+  "Suggestions"
+ ],
  "Agent": [
   "AgentHandoffBanner",
   "AgentRunLayout",

@@ -1,0 +1,65 @@
+.cr-message {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-2);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+  font-size: var(--cr-font-size-md);
+  line-height: 1.55;
+}
+
+.cr-message[data-from='user'] {
+  align-items: flex-end;
+}
+
+/* Your own words: a tile on the right, with the corner nearest the input squared off. */
+.cr-message[data-from='user'] .cr-message__content {
+  box-sizing: border-box;
+  max-width: 78%;
+  padding: var(--cr-space-3) var(--cr-space-4);
+  border: 1px solid var(--cr-color-glass-edge);
+  border-radius: 20px 20px 6px;
+  background: var(--cr-color-glass-sheet);
+  box-shadow: var(--cr-shadow-card);
+}
+
+.cr-message__who {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-message__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-3);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.cr-message__content > p {
+  margin: 0;
+}
+
+/* While it writes: a caret at the end of the last block, or of the text itself when there are no blocks. */
+.cr-message[data-status='streaming'] .cr-message__content > :last-child::after,
+.cr-message[data-status='streaming'] .cr-message__content:not(:has(> *))::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  margin-inline-start: 2px;
+  border-radius: 2px;
+  background: var(--cr-color-ink-bg);
+  vertical-align: -0.2em;
+}
+
+.cr-message__actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-inline-start: calc(-1 * var(--cr-space-2));
+  color: var(--cr-color-text-muted);
+}

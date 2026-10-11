@@ -17,7 +17,7 @@
       "@radix-ui/react-toggle-group",
       "@radix-ui/react-tooltip"
     ],
-    "limit": "28 kB"
+    "limit": "32 kB"
   },
   {
     "name": "@creance-ui/react: ApprovalPrompt only (tree-shaken)",
@@ -42,7 +42,7 @@
   {
     "name": "@creance-ui/react/styles.css",
     "path": "dist/styles.css",
-    "limit": "13 kB",
+    "limit": "15 kB",
     "rolldown": false
   },
   {

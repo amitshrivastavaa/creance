@@ -16,6 +16,7 @@ import {
   Calendar,
   Card,
   Checkbox,
+  Citation,
   Choicebox,
   ClearableInput,
   Code,
@@ -58,14 +59,19 @@ import {
   MenuItem,
   MenuTrigger,
   MiddleTruncate,
+  Message,
+  MessageList,
+  ModelPicker,
   MultiSelect,
   Navbar,
   NeedsYouInbox,
   PhoneFrame,
   ProgressBar,
   ProjectBanner,
+  PromptInput,
   Radio,
   RadioGroup,
+  Reasoning,
   RelativeTimeCard,
   RiskLabel,
   RunTimeline,
@@ -81,9 +87,11 @@ import {
   Skeleton,
   Slider,
   Snippet,
+  Sources,
   Spinner,
   SplitButton,
   StatusBadge,
+  Suggestions,
   StatusDot,
   Steps,
   Switch,
@@ -360,6 +368,36 @@ export default function Page() {
               Input and output tokens both count.
             </CollapseItem>
           </Collapse>
+        </Cell>
+        <Cell name="Message" wide>
+          <Message from="assistant" name="Deploy Fixer">
+            <p>
+              The build cannot find zod.
+              <Citation index={1} href="/" />
+            </p>
+          </Message>
+        </Cell>
+        <Cell name="MessageList" wide>
+          <div style={{ height: 160 }}>
+            <MessageList>
+              <Message from="user">Why is the deploy failing?</Message>
+            </MessageList>
+          </div>
+        </Cell>
+        <Cell name="PromptInput" wide>
+          <PromptInput label="Message Deploy Fixer" placeholder="Ask Deploy Fixer" />
+        </Cell>
+        <Cell name="Reasoning">
+          <Reasoning seconds={8}>The log stops at the build step.</Reasoning>
+        </Cell>
+        <Cell name="Sources">
+          <Sources items={[{ title: 'Build 482 log', detail: 'deploys/web/482', href: '/' }]} />
+        </Cell>
+        <Cell name="Suggestions">
+          <Suggestions items={['Explain the failure', 'Show the diff']} />
+        </Cell>
+        <Cell name="ModelPicker">
+          <ModelPicker models={[{ value: 'large', label: 'Large' }, { value: 'small', label: 'Small' }]} />
         </Cell>
         <Cell name="Navbar" wide>
           <Navbar brand={<Link href="/">Acme</Link>} items={[{ label: 'Runs', href: '/', current: true }, { label: 'Inbox', href: '/', count: 5 }]} />

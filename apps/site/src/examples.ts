@@ -365,6 +365,75 @@ const all: Example[] = [
   </ShowMore>
 </div>`),
 
+  // ───────────── Conversation
+  ex('Conversation', 'Molecule', 'Message', 'One turn. Yours sit right in a tile; the agent\u2019s are plain text under its name.', `
+<div ${col(620)}>
+  <Message from="user">The production deploy for web is failing. Can you find out why?</Message>
+  <Message from="assistant" name="Deploy Fixer" avatar={<Avatar name="Deploy Fixer" kind="agent" size="sm" decorative />} actions={<CopyButton value="zod is missing from web/package.json" label="Copy answer" />}>
+    <p>The build fails because <Code>zod</Code> is missing from <Code>web/package.json</Code>.<Citation index={1} onClick={log} /></p>
+  </Message>
+  <Message from="assistant" name="Deploy Fixer" status="streaming">
+    <p>Installing zod@3 and running the tests again</p>
+  </Message>
+  <Message from="assistant" name="Deploy Fixer" status="pending" />
+</div>`),
+  ex('Conversation', 'Molecule', 'MessageList', 'A scrolling column that follows new messages until you scroll up.', `
+<div style={{ height: 320 }}>
+  <MessageList label="Conversation with Deploy Fixer">
+    <Message from="user">Why is the deploy failing?</Message>
+    <Message from="assistant" name="Deploy Fixer"><p>The build cannot find the zod package.</p></Message>
+    <Message from="user">Which file needs it?</Message>
+    <Message from="assistant" name="Deploy Fixer"><p>server/validate.ts imports it on line 3.</p></Message>
+    <Message from="user">Add it and run the tests.</Message>
+    <Message from="assistant" name="Deploy Fixer" status="streaming"><p>Installing zod@3</p></Message>
+  </MessageList>
+</div>`),
+  ex('Conversation', 'Molecule', 'PromptInput', 'Where you write to an agent. Enter sends; Send becomes Stop while it works.', `
+<div ${col(620)}>
+  <PromptInput
+    label="Message Deploy Fixer"
+    placeholder="Ask Deploy Fixer, or tell it what to do"
+    onSubmit={log}
+    onAttach={log}
+    attachments={[{ id: 'log', name: 'deploy.log', detail: '48 KB' }]}
+    onRemoveAttachment={log}
+    tools={<ModelPicker models={[{ value: 'large', label: 'Large' }, { value: 'small', label: 'Small' }]} />}
+  />
+  <PromptInput label="Message Deploy Fixer, working" placeholder="Reply while it works, or stop it" status="working" onStop={log} hint="Deploy Fixer is working" />
+</div>`),
+  ex('Conversation', 'Molecule', 'Reasoning', 'The agent\u2019s thinking, folded away behind how long it took.', `
+<div ${col(560)}>
+  <Reasoning seconds={8}>
+    <p>The log stops at the build step with "Cannot find module zod". That is a missing dependency, not a code error.</p>
+    <p>Check which file imports it, then compare with package.json.</p>
+  </Reasoning>
+  <Reasoning thinking defaultOpen>
+    <p>Reading the deploy log.</p>
+  </Reasoning>
+</div>`),
+  ex('Conversation', 'Molecule', 'Sources', 'What an answer is based on, with numbered markers in the text.', `
+<div ${col(560)}>
+  <p style={{ margin: 0 }}>The import arrived after the last deploy that passed.<Citation index={2} onClick={log} label="Source 2, Commit a41c9e2" /></p>
+  <Sources
+    items={[
+      { title: 'Build 482 log', detail: 'deploys/web/482', href: '#Sources' },
+      { title: 'Commit a41c9e2', detail: 'acme/web · 2 days ago', href: '#Sources' },
+    ]}
+  />
+</div>`),
+  ex('Conversation', 'Molecule', 'Suggestions', 'Starting points above the input. Choosing one sends it.', `
+<Suggestions items={['Explain the failure', 'Show the diff', 'Retry the deploy']} onSelect={log} />`),
+  ex('Conversation', 'Molecule', 'ModelPicker', 'Chooses which model answers.', `
+<ModelPicker
+  onValueChange={log}
+  defaultValue="medium"
+  models={[
+    { value: 'large', label: 'Large', description: 'Most capable, for hard problems' },
+    { value: 'medium', label: 'Medium', description: 'Balanced, for everyday work' },
+    { value: 'small', label: 'Small', description: 'Fastest, for quick answers' },
+  ]}
+/>`),
+
   // ───────────── Navigation
   ex('Navigation', 'Molecule', 'Tabs', 'A segmented control and its panels. Arrow keys move between tabs.', `
 <Tabs defaultValue="timeline">

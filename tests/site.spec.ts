@@ -32,8 +32,8 @@ test('every guide and every component example renders', async ({ page }) => {
   const problems = watch(page);
   await page.goto('/#components');
   const names = await page.locator('.docs__list a').allTextContents();
-  // 9 guides and 95 components.
-  expect(names).toHaveLength(104);
+  // 9 guides and 102 components.
+  expect(names).toHaveLength(111);
 
   for (const name of names) {
     await page.evaluate((n) => window.creanceGo?.(n), name);

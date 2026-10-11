@@ -1,6 +1,6 @@
 # Creance site
 
-The project site: an overview page, and docs with getting-started guides and all 95 components.
+The project site: an overview page, and docs with getting-started guides and all 102 components.
 Each component runs from the built `@creance-ui/react` package, with example code that can be edited in place.
 
 ```sh

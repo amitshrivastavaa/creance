@@ -1,0 +1,157 @@
+.cr-prompt {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-2);
+  box-sizing: border-box;
+  padding: var(--cr-space-3);
+  border-radius: var(--cr-radius-2xl);
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+.cr-prompt:focus-within {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.cr-prompt__attachments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cr-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cr-prompt__attachment {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  padding: 6px 6px 6px 10px;
+  border-radius: var(--cr-radius-md);
+  background: var(--cr-color-bg-subtle);
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-prompt__attachment-icon {
+  display: flex;
+  color: var(--cr-color-text-muted);
+}
+
+.cr-prompt__attachment-name {
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.cr-prompt__attachment-detail {
+  color: var(--cr-color-text-muted);
+}
+
+.cr-prompt__field {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  max-height: 200px;
+  padding: var(--cr-space-2);
+  border: 0;
+  outline: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: var(--cr-font-size-md);
+  line-height: 1.5;
+  resize: none;
+}
+
+.cr-prompt__field::placeholder {
+  color: var(--cr-color-text-muted);
+  opacity: 1;
+}
+
+.cr-prompt__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+}
+
+.cr-prompt__hint {
+  margin-inline-start: auto;
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}
+
+.cr-prompt__hint kbd {
+  font-family: var(--cr-font-family-mono);
+}
+
+.cr-prompt__attach,
+.cr-prompt__remove,
+.cr-prompt__go {
+  display: grid;
+  place-items: center;
+  flex: none;
+  padding: 0;
+  border: 0;
+  border-radius: var(--cr-radius-full);
+  cursor: pointer;
+}
+
+.cr-prompt__attach {
+  width: 32px;
+  height: 32px;
+  background: var(--cr-color-bg-subtle);
+  color: var(--cr-color-text-secondary);
+  font-size: var(--cr-font-size-lg);
+}
+
+.cr-prompt__remove {
+  width: 24px;
+  height: 24px;
+  background: none;
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}
+
+.cr-prompt__attach:hover,
+.cr-prompt__remove:hover {
+  color: var(--cr-color-text-default);
+}
+
+.cr-prompt__go {
+  width: var(--cr-control-height-sm);
+  height: var(--cr-control-height-sm);
+  font-size: var(--cr-font-size-lg);
+}
+
+/* With no hint, the button still sits at the end. */
+.cr-prompt__bar > .cr-prompt__go:not(.cr-prompt__hint + *) {
+  margin-inline-start: auto;
+}
+
+.cr-prompt__go[data-kind='send'] {
+  background: var(--cr-color-accent-bg);
+  box-shadow: var(--cr-shadow-accent);
+  color: var(--cr-color-accent-fg);
+}
+
+.cr-prompt__go[data-kind='send']:hover {
+  background: var(--cr-color-accent-bg-hover);
+}
+
+.cr-prompt__go[data-kind='send']:disabled {
+  background: var(--cr-color-bg-subtle);
+  box-shadow: none;
+  color: var(--cr-color-text-muted);
+  cursor: not-allowed;
+}
+
+.cr-prompt__go[data-kind='stop'] {
+  background: var(--cr-color-ink-bg);
+  color: var(--cr-color-ink-fg);
+}
+
+.cr-prompt__attach:focus-visible,
+.cr-prompt__remove:focus-visible,
+.cr-prompt__go:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
