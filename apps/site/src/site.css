@@ -288,7 +288,7 @@ a.btn--primary { color: #ffffff; }
 .docs__order button { min-height: 30px; border: 0; border-radius: 9px; background: none; color: var(--text-2); font-size: 13px; font-weight: 600; }
 .docs__order button[aria-pressed="true"] { background: rgb(var(--glass) / 0.95); box-shadow: var(--shadow-sm); color: var(--ink); }
 .docs__list { flex: 1; min-height: 0; margin-inline: -8px; padding: 0 8px 24px; overflow-y: auto; }
-.docs__list h2 { margin: 20px 10px 6px; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: 0.01em; }
+.docs__list h2 { margin: 28px 10px 8px; color: var(--ink); font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
 .docs__list section:first-child h2 { margin-top: 4px; }
 .docs__order { margin: 20px 0 0; }
 .docs__list a { display: block; padding: 6px 10px; border-radius: 9px; color: var(--text-2); font-size: 14px; text-decoration: none; }
