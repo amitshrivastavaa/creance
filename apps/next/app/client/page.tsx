@@ -23,8 +23,8 @@ import {
   useAgentRun,
   type StandingPermission,
   type TableColumn,
-} from 'creance';
-import { deployFix, useSimulator } from 'creance/simulator';
+} from '@creance-ui/react';
+import { deployFix, useSimulator } from '@creance-ui/react/simulator';
 import { useState } from 'react';
 import { Cell } from '../Cell';
 

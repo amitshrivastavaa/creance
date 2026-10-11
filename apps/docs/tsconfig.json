@@ -3,8 +3,8 @@
   "compilerOptions": {
     "types": ["vite/client"],
     "paths": {
-      "creance": ["../../packages/react/src/index.ts"],
-      "creance/simulator": ["../../packages/react/src/simulator/index.ts"]
+      "@creance-ui/react": ["../../packages/react/src/index.ts"],
+      "@creance-ui/react/simulator": ["../../packages/react/src/simulator/index.ts"]
     }
   },
   "include": ["src", ".storybook", "stories", "vitest.config.ts"]

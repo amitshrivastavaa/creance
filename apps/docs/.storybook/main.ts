@@ -14,8 +14,8 @@ const config: StorybookConfig = {
     resolve: {
       ...config.resolve,
       alias: [
-        { find: /^creance\/simulator$/, replacement: src('simulator/index.ts') },
-        { find: /^creance$/, replacement: src('index.ts') },
+        { find: /^@creance-ui\/react\/simulator$/, replacement: src('simulator/index.ts') },
+        { find: /^@creance-ui\/react$/, replacement: src('index.ts') },
       ],
     },
   }),

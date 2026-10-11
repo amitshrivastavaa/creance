@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Button, Tooltip } from 'creance';
+import { Button, Tooltip } from '@creance-ui/react';
 
 const meta = {
   title: 'Atoms/Tooltip',

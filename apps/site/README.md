@@ -1,7 +1,7 @@
 # Creance site
 
 The project site: an overview page, and docs with getting-started guides and all 90 components.
-Each component runs from the built `creance` package, with example code that can be edited in place.
+Each component runs from the built `@creance-ui/react` package, with example code that can be edited in place.
 
 ```sh
 pnpm build        # at the repo root: the site consumes the built packages

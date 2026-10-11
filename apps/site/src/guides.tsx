@@ -1,6 +1,6 @@
 // The "Getting started" pages. Everything here describes the repository as it is today.
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
-import { Alert, ApprovalPrompt, Button, Snippet, StatusDot, Switch } from 'creance';
+import { Alert, ApprovalPrompt, Button, Snippet, StatusDot, Switch } from '@creance-ui/react';
 import { Colored } from './colored';
 
 export interface Guide {
@@ -140,7 +140,7 @@ export const guides: Guide[] = [
     about: 'Creance is not on npm yet. Today it runs from source.',
     body: () => (
       <>
-        <Alert title="Not published yet">The packages are named creance and creance-tokens, but neither is on npm. Until they are, build them from the repository.</Alert>
+        <Alert title="Not published yet">The packages are named @creance-ui/react and @creance-ui/tokens, but neither is on npm. Until they are, build them from the repository.</Alert>
         <h2>From source</h2>
         <p>You need Node 22 or later and pnpm 12.</p>
         <Snippet commands={['pnpm install', 'pnpm build', 'pnpm storybook']} />
@@ -149,13 +149,13 @@ export const guides: Guide[] = [
         </p>
         <h2>Once it is published</h2>
         <p>Installation will be one command. React 18 or later is the only peer dependency, and the unit tests run on both 18 and 19.</p>
-        <Snippet tone="light" commands="npm install creance creance-tokens" />
+        <Snippet tone="light" commands="npm install @creance-ui/react @creance-ui/tokens" />
         <h2>Add the styles once</h2>
         <p>Import the tokens and the component styles at the root of your app, tokens first.</p>
         <Block
           code={`
-import 'creance-tokens/tokens.css';
-import 'creance/styles.css';`}
+import '@creance-ui/tokens/tokens.css';
+import '@creance-ui/react/styles.css';`}
         />
       </>
     ),
@@ -197,8 +197,8 @@ import 'creance/styles.css';`}
         <Block
           code={`
 // app/layout.tsx
-import 'creance-tokens/tokens.css';
-import 'creance/styles.css';`}
+import '@creance-ui/tokens/tokens.css';
+import '@creance-ui/react/styles.css';`}
         />
         <p>
           Components can be imported straight into a server component. The 51 modules that use state, effects or Radix are marked <code>"use client"</code>, so Next.js treats them as client components without any extra step. The other 54, including Button,
@@ -207,7 +207,7 @@ import 'creance/styles.css';`}
         <Block
           code={`
 // app/page.tsx: a server component
-import { Badge, Tabs, TabsContent, TabsList, TabsTrigger } from 'creance';
+import { Badge, Tabs, TabsContent, TabsList, TabsTrigger } from '@creance-ui/react';
 
 export default function Page() {
   return (
@@ -231,7 +231,7 @@ export default function Page() {
           code={`
 'use client';
 
-import { ApprovalPrompt } from 'creance';
+import { ApprovalPrompt } from '@creance-ui/react';
 
 export function Approval({ id }) {
   return (
@@ -267,7 +267,7 @@ export function Approval({ id }) {
         <p>Every component takes plain props, so each one works with data from anywhere.</p>
         <Block
           code={`
-import { ApprovalPrompt } from 'creance';
+import { ApprovalPrompt } from '@creance-ui/react';
 
 <ApprovalPrompt
   agentName="Deploy Fixer"
@@ -285,7 +285,7 @@ import { ApprovalPrompt } from 'creance';
         </p>
         <Block
           code={`
-import { ApprovalPrompt, RunTimeline, timelineSteps, useAgentRun } from 'creance';
+import { ApprovalPrompt, RunTimeline, timelineSteps, useAgentRun } from '@creance-ui/react';
 
 const run = useAgentRun(events);
 const approval = run.approvals.find((a) => !a.decision);
@@ -307,8 +307,8 @@ const approval = run.approvals.find((a) => !a.decision);
         <p>The simulator plays a scripted run as real events. Approval and diff steps wait until a person answers, and a denial takes a different branch.</p>
         <Block
           code={`
-import { useAgentRun } from 'creance';
-import { deployFix, useSimulator } from 'creance/simulator';
+import { useAgentRun } from '@creance-ui/react';
+import { deployFix, useSimulator } from '@creance-ui/react/simulator';
 
 const sim = useSimulator(deployFix, { autoplay: true });
 const run = useAgentRun(sim.events);

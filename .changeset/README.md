@@ -1,6 +1,6 @@
 # Changesets
 
-Every pull request that changes a published package (`creance`, `creance-tokens`) adds a changeset:
+Every pull request that changes a published package (`@creance-ui/react`, `@creance-ui/tokens`) adds a changeset:
 
 ```sh
 pnpm changeset

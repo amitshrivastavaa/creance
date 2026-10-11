@@ -12,7 +12,7 @@ import {
   ProjectBanner,
   Skeleton,
   Video,
-} from 'creance';
+} from '@creance-ui/react';
 
 const meta = {
   title: 'Molecules/Feedback and media',

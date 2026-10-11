@@ -12,7 +12,7 @@ import {
   reduceRun,
   timelineSteps,
   type RunState,
-} from 'creance';
+} from '@creance-ui/react';
 import { frozenEvents } from '../../src/frozen';
 import { otherAgents } from '../../src/inboxFixtures';
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Kbd } from 'creance';
+import { Kbd } from '@creance-ui/react';
 
 const meta = {
   title: 'Atoms/Kbd',

@@ -1,4 +1,4 @@
-import { tokens, values } from 'creance-tokens';
+import { tokens, values } from '@creance-ui/tokens';
 
 type Tree = { [key: string]: string | number | Tree };
 

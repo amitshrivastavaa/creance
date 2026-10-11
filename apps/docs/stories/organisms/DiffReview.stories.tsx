@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { DiffReview, type DiffHunk } from 'creance';
-import { deployFix } from 'creance/simulator';
+import { DiffReview, type DiffHunk } from '@creance-ui/react';
+import { deployFix } from '@creance-ui/react/simulator';
 import { fn } from 'storybook/test';
 import { LiveRun, WaitingControls } from '../../src/LiveRun';
 

@@ -9,8 +9,8 @@
     "typecheck": "next typegen && tsc --noEmit -p ."
   },
   "dependencies": {
-    "creance": "workspace:*",
-    "creance-tokens": "workspace:*",
+    "@creance-ui/react": "workspace:*",
+    "@creance-ui/tokens": "workspace:*",
     "next": "^16.4.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"

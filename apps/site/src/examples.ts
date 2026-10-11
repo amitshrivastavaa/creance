@@ -351,7 +351,7 @@ const all: Example[] = [
   ex('Actions', 'Molecule', 'TextWithCopy', 'Text with a copy button beside it.', `
 <div ${col(420)}>
   <TextWithCopy value="run_8f3a91c4b2e7d0a6c21d" label="Copy run ID">run_8f3a…c21d</TextWithCopy>
-  <TextWithCopy variant="block" value="npm install creance creance-tokens" label="Copy install command" />
+  <TextWithCopy variant="block" value="npm install @creance-ui/react @creance-ui/tokens" label="Copy install command" />
 </div>`),
   ex('Actions', 'Molecule', 'LoadMoreButton', 'A full-width button under a list that says when it is loading.', `
 <div ${col(360)}>
@@ -574,7 +574,7 @@ const all: Example[] = [
 </div>`),
   ex('Data', 'Molecule', 'Snippet', 'Shell commands with a copy button. The prompt sign is never copied.', `
 <div ${col(460)}>
-  <Snippet commands="pnpm add creance creance-tokens" />
+  <Snippet commands="pnpm add @creance-ui/react @creance-ui/tokens" />
   <Snippet tone="light" commands={['pnpm install', 'pnpm build']} />
 </div>`),
   ex('Data', 'Molecule', 'Entity', 'An agent or a person as a row.', `

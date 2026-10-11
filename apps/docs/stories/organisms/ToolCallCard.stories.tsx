@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ToolCallCard } from 'creance';
+import { ToolCallCard } from '@creance-ui/react';
 import { fn } from 'storybook/test';
 import { LiveRun, WaitingControls } from '../../src/LiveRun';
 

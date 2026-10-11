@@ -1,13 +1,13 @@
 // The docs: getting-started guides and every component, running from the real library with
 // example code that can be edited in place.
 import './site.css';
-import 'creance-tokens/tokens.css';
-import 'creance/styles.css';
+import '@creance-ui/tokens/tokens.css';
+import '@creance-ui/react/styles.css';
 import './page';
 import { Component, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { createRoot } from 'react-dom/client';
-import * as Creance from 'creance';
-import { deployFix } from 'creance/simulator';
+import * as Creance from '@creance-ui/react';
+import { deployFix } from '@creance-ui/react/simulator';
 import { examples, groups, type Example } from './examples';
 import { guides, type Guide } from './guides';
 import { keyboard } from './keyboard';
@@ -146,7 +146,7 @@ function Playground({ id, label, code: initial, state: initialState, lead }: { i
   const problem = error || (crashed?.code === code ? crashed.message : '');
   const edited = code !== initial;
   const imports = [...new Set([...code.matchAll(/<([A-Z]\w*)/g)].map((m) => m[1]!))].sort().join(', ');
-  const importLine = `import { ${imports} } from 'creance';`;
+  const importLine = `import { ${imports} } from '@creance-ui/react';`;
 
   return (
     <section className="doc__panel window" aria-label={label}>

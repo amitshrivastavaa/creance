@@ -1,5 +1,5 @@
-import type { AgentEvent, AgentEventBody, AgentEventType } from 'creance';
-import { deployFix } from 'creance/simulator';
+import type { AgentEvent, AgentEventBody, AgentEventType } from '@creance-ui/react';
+import { deployFix } from '@creance-ui/react/simulator';
 
 /**
  * The deploy scenario frozen at a point, for static stories and screenshots. Wait steps are answered

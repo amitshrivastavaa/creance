@@ -22,12 +22,12 @@ pnpm site    # every component running live, with code you can edit
 
 ![The docs site: the Table page, with a live preview above the code that produces it](docs/images/site.png)
 
-Once it is published, installing will be `npm install creance creance-tokens`. Import the two stylesheets once, tokens first, then use the components:
+Once it is published, installing will be `npm install @creance-ui/react @creance-ui/tokens`. Import the two stylesheets once, tokens first, then use the components:
 
 ```tsx
-import 'creance-tokens/tokens.css';
-import 'creance/styles.css';
-import { Button, Field, Input } from 'creance';
+import '@creance-ui/tokens/tokens.css';
+import '@creance-ui/react/styles.css';
+import { Button, Field, Input } from '@creance-ui/react';
 
 <Field label="Agent name" hint="Shown in the run header and the inbox.">
   <Input defaultValue="Deploy Fixer" />
@@ -83,8 +83,8 @@ The twelve agent organisms are built for those screens. Creance deliberately has
 
 | Package | What it is |
 |---|---|
-| [`creance-tokens`](packages/tokens) | Design tokens in JSON, built with Style Dictionary into CSS custom properties (light, dark, solid surfaces for reduced transparency, reduced motion) and a typed JS export |
-| [`creance`](packages/react) | The components, the event model, `useAgentRun`, selectors, and `creance/simulator` |
+| [`@creance-ui/tokens`](packages/tokens) | Design tokens in JSON, built with Style Dictionary into CSS custom properties (light, dark, solid surfaces for reduced transparency, reduced motion) and a typed JS export |
+| [`@creance-ui/react`](packages/react) | The components, the event model, `useAgentRun`, selectors, and `@creance-ui/react/simulator` |
 | [`apps/docs`](apps/docs) | Storybook: usage guidelines for every organism, a Tokens page, live stories |
 | [`apps/site`](apps/site) | The project site: an overview, guides, and every component running live with code you can edit, plus props and keyboard tables generated from the types |
 | [`apps/demo`](apps/demo) | A Vite app that runs one full scenario, consuming the built package like any app would |
@@ -93,9 +93,9 @@ The twelve agent organisms are built for those screens. Creance deliberately has
 ## How it works
 
 ```
-your agent backend ──┐
-                     ├─► AgentEvent stream ─► useAgentRun(events) ─► RunState ─► selectors ─► components (plain props)
-creance/simulator ───┘
+your agent backend ───────────┐
+                              ├─► AgentEvent stream ─► useAgentRun(events) ─► RunState ─► selectors ─► components (plain props)
+@creance-ui/react/simulator ──┘
 ```
 
 ```tsx
@@ -124,7 +124,7 @@ Creance is a React library. What has been tested:
 | Vite | Tested. The demo app and Storybook run on it. |
 | Next.js 16, App Router | Tested in [`apps/next`](apps/next): every component is rendered by the server and hydrates without errors. |
 | Next.js Pages Router, React Router, Remix, Astro | Not tested. Plain React, so expected to work. |
-| Vue, Svelte, Angular, Solid | Not supported. Only `creance-tokens` (plain CSS variables) is usable there. |
+| Vue, Svelte, Angular, Solid | Not supported. Only `@creance-ui/tokens` (plain CSS variables) is usable there. |
 
 For the App Router, the 51 modules that use state, effects, Radix or their own event handlers start with `"use client"`, so they can be imported straight into a server component. The other 54, including Button, Input, Badge, Alert and the event reducer, have no client-only code and can run on the server alone. A lint step (`scripts/check-use-client.mjs`) fails if a file needs the directive and lacks it, or if the build drops it. A component that takes a callback, such as `onAllow`, has to be used from a client file, because a server component cannot pass a function as a prop.
 
@@ -208,7 +208,7 @@ pnpm storybook          # stories on http://localhost:6006
 pnpm --filter demo dev  # the demo app
 ```
 
-Checks: `pnpm typecheck`, `pnpm lint`, `pnpm test` (unit and story axe tests), `pnpm test:e2e`, `pnpm test:next` (builds the Next.js app and tests it), `pnpm test:site`, `pnpm test:react18`, `pnpm --filter creance size`. Visual regression runs in Docker so it matches CI: `pnpm test:visual:docker`, or `pnpm test:visual:update` to refresh baselines.
+Checks: `pnpm typecheck`, `pnpm lint`, `pnpm test` (unit and story axe tests), `pnpm test:e2e`, `pnpm test:next` (builds the Next.js app and tests it), `pnpm test:site`, `pnpm test:react18`, `pnpm --filter @creance-ui/react size`. Visual regression runs in Docker so it matches CI: `pnpm test:visual:docker`, or `pnpm test:visual:update` to refresh baselines.
 
 ## Status
 

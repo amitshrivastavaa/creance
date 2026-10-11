@@ -15,7 +15,7 @@ import {
   StatusDot,
   Table,
   type TableColumn,
-} from 'creance';
+} from '@creance-ui/react';
 
 const meta = {
   title: 'Molecules/Data display',
@@ -162,7 +162,7 @@ export const Measures: Story = {
 export const Snippets: Story = {
   render: () => (
     <div style={{ display: 'grid', gap: 12, maxWidth: 520 }}>
-      <Snippet commands="pnpm add creance creance-tokens" />
+      <Snippet commands="pnpm add @creance-ui/react @creance-ui/tokens" />
       <Snippet tone="light" commands={['npx creance-codemod-on-allow src --dry', 'npx creance-codemod-on-allow src']} />
     </div>
   ),

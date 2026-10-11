@@ -12,7 +12,7 @@ export interface ThemeSwitcherProps {
   defaultValue?: ThemeChoice;
   onValueChange?: (value: ThemeChoice) => void;
   /**
-   * Sets `data-theme` on `<html>` (removed for "system"), which is how creance-tokens switch theme.
+   * Sets `data-theme` on `<html>` (removed for "system"), which is how @creance-ui/tokens switch theme.
    * Turn off to apply the theme yourself. Default true. Saving the choice is up to the app.
    */
   apply?: boolean;

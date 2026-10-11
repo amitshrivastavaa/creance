@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Avatar } from 'creance';
+import { Avatar } from '@creance-ui/react';
 
 const meta = {
   title: 'Atoms/Avatar',

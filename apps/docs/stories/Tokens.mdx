@@ -5,13 +5,13 @@ import { SemanticColors, PrimitiveColors, Spacing, Radius, Typography } from '..
 
 # Tokens
 
-Every value in Creance comes from `creance-tokens`. The package ships two things:
+Every value in Creance comes from `@creance-ui/tokens`. The package ships two things:
 
-- `creance-tokens/tokens.css`: CSS custom properties prefixed `--cr-`, with light and dark themes.
+- `@creance-ui/tokens/tokens.css`: CSS custom properties prefixed `--cr-`, with light and dark themes.
 - A typed JS export: `tokens` (the `var(--cr-…)` references) and `values` (the resolved light values).
 
 ```css
-@import 'creance-tokens/tokens.css';
+@import '@creance-ui/tokens/tokens.css';
 ```
 
 The theme follows the operating system by default. Set `data-theme="light"` or `data-theme="dark"` on `<html>` to force one. Use the **Theme** button in the toolbar to switch this page.

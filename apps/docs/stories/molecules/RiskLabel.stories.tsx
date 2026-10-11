@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { RiskLabel } from 'creance';
+import { RiskLabel } from '@creance-ui/react';
 
 const meta = {
   title: 'Molecules/RiskLabel',

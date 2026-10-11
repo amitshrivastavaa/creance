@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ToolCallHeader } from 'creance';
+import { ToolCallHeader } from '@creance-ui/react';
 
 const meta = {
   title: 'Molecules/ToolCallHeader',

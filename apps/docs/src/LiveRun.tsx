@@ -1,5 +1,5 @@
-import { Badge, Button, useAgentRun, type RunState } from 'creance';
-import { deployFix, useSimulator, type UseSimulatorResult } from 'creance/simulator';
+import { Badge, Button, useAgentRun, type RunState } from '@creance-ui/react';
+import { deployFix, useSimulator, type UseSimulatorResult } from '@creance-ui/react/simulator';
 import type { ReactNode } from 'react';
 
 /** Quick answers for whatever the run is waiting on, for stories that show something else. */

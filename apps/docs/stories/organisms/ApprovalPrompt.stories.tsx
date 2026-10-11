@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ApprovalPrompt } from 'creance';
+import { ApprovalPrompt } from '@creance-ui/react';
 import { useState } from 'react';
 import { fn } from 'storybook/test';
 import { LiveRun } from '../../src/LiveRun';

@@ -24,7 +24,7 @@ import {
   Textarea,
   Toaster,
   toast,
-} from 'creance';
+} from '@creance-ui/react';
 
 const meta = {
   title: 'Molecules/Core controls',

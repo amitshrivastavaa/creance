@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { RunTimeline, reduceRun, initialRunState, timelineSteps } from 'creance';
+import { RunTimeline, reduceRun, initialRunState, timelineSteps } from '@creance-ui/react';
 import { fn } from 'storybook/test';
 import { useState } from 'react';
 import { frozenEvents } from '../../src/frozen';

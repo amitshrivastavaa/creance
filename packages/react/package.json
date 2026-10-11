@@ -1,5 +1,5 @@
 {
-  "name": "creance",
+  "name": "@creance-ui/react",
   "version": "0.3.0",
   "description": "A React component library in a frosted-glass style: 90 components in light and dark, with a set for supervising AI agents (approvals, tool calls, run timelines, diff review and handoffs).",
   "license": "MIT",
@@ -84,5 +84,8 @@
   },
   "bin": {
     "creance-codemod-on-allow": "./codemods/on-approve-to-on-allow.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

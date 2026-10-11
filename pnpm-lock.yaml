@@ -199,10 +199,10 @@ importers:
 
   apps/demo:
     dependencies:
-      creance:
+      '@creance-ui/react':
         specifier: workspace:*
         version: link:../../packages/react
-      creance-tokens:
+      '@creance-ui/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
       react:
@@ -230,10 +230,10 @@ importers:
 
   apps/docs:
     dependencies:
-      creance:
+      '@creance-ui/react':
         specifier: workspace:*
         version: link:../../packages/react
-      creance-tokens:
+      '@creance-ui/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
       react:
@@ -282,10 +282,10 @@ importers:
 
   apps/next:
     dependencies:
-      creance:
+      '@creance-ui/react':
         specifier: workspace:*
         version: link:../../packages/react
-      creance-tokens:
+      '@creance-ui/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
       next:
@@ -313,10 +313,10 @@ importers:
 
   apps/site:
     dependencies:
-      creance:
+      '@creance-ui/react':
         specifier: workspace:*
         version: link:../../packages/react
-      creance-tokens:
+      '@creance-ui/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
       react:

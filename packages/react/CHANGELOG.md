@@ -1,4 +1,4 @@
-# creance
+# @creance-ui/react
 
 ## 0.3.0
 

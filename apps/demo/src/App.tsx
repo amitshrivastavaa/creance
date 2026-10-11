@@ -13,8 +13,8 @@ import {
   timelineSteps,
   useAgentRun,
   type InboxItem,
-} from 'creance';
-import { deployFix, useSimulator } from 'creance/simulator';
+} from '@creance-ui/react';
+import { deployFix, useSimulator } from '@creance-ui/react/simulator';
 import { useState } from 'react';
 import { otherAgents, otherSkyAgents } from './otherAgents';
 
@@ -59,7 +59,7 @@ function Run({ speed, onSpeedChange, onRestart }: { speed: number; onSpeedChange
   return (
     <>
       <aside className="demo-note" aria-label="About this demo">
-        A simulated agent run. Nothing is installed, edited or deployed. Built only from <code>creance</code> components.
+        A simulated agent run. Nothing is installed, edited or deployed. Built only from <code>@creance-ui/react</code> components.
       </aside>
       <div className="demo-sky">
         <FleetSky

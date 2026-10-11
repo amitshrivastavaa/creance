@@ -26,8 +26,8 @@ jobs:
       - run: pnpm build
       - run: pnpm typecheck
       - run: pnpm lint
-      - run: pnpm --filter creance test
-      - run: pnpm --filter creance size
+      - run: pnpm --filter @creance-ui/react test
+      - run: pnpm --filter @creance-ui/react size
 
   react-18:
     name: Unit tests on React 18

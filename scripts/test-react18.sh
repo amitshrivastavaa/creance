@@ -12,6 +12,6 @@ restore() {
   rm -rf "$tmp"
 }
 trap restore EXIT
-pnpm --filter creance add -D react@^18.3.1 react-dom@^18.3.1 >/dev/null
+pnpm --filter @creance-ui/react add -D react@^18.3.1 react-dom@^18.3.1 >/dev/null
 # The test setup fails the run if it is not really on React 18.
-REACT=18 pnpm --filter creance test
+REACT=18 pnpm --filter @creance-ui/react test

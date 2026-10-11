@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { NeedsYouInbox, inboxItems } from 'creance';
+import { NeedsYouInbox, inboxItems } from '@creance-ui/react';
 import { fn } from 'storybook/test';
 import { NOW, otherAgents } from '../../src/inboxFixtures';
 import { LiveRun, WaitingControls } from '../../src/LiveRun';

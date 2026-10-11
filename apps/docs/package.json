@@ -9,8 +9,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "creance": "workspace:*",
-    "creance-tokens": "workspace:*",
+    "@creance-ui/react": "workspace:*",
+    "@creance-ui/tokens": "workspace:*",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
   },

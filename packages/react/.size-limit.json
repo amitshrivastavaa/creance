@@ -1,6 +1,6 @@
 [
   {
-    "name": "creance (all components, JS)",
+    "name": "@creance-ui/react (all components, JS)",
     "path": "dist/index.js",
     "import": "*",
     "ignore": [
@@ -20,7 +20,7 @@
     "limit": "28 kB"
   },
   {
-    "name": "creance: ApprovalPrompt only (tree-shaken)",
+    "name": "@creance-ui/react: ApprovalPrompt only (tree-shaken)",
     "path": "dist/index.js",
     "import": "{ ApprovalPrompt }",
     "ignore": [
@@ -40,13 +40,13 @@
     "limit": "2.5 kB"
   },
   {
-    "name": "creance/styles.css",
+    "name": "@creance-ui/react/styles.css",
     "path": "dist/styles.css",
     "limit": "12 kB",
     "rolldown": false
   },
   {
-    "name": "creance/simulator",
+    "name": "@creance-ui/react/simulator",
     "path": "dist/simulator.js",
     "import": "*",
     "ignore": [

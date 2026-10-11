@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { FleetSky, skyAgent, type SkyAgent } from 'creance';
+import { FleetSky, skyAgent, type SkyAgent } from '@creance-ui/react';
 import { fn } from 'storybook/test';
 import { LiveRun, WaitingControls } from '../../src/LiveRun';
 

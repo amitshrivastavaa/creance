@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/react-vite';
 import { GLOBALS_UPDATED, SET_GLOBALS } from 'storybook/internal/core-events';
 import { addons } from 'storybook/preview-api';
-import 'creance-tokens/tokens.css';
+import '@creance-ui/tokens/tokens.css';
 import '../src/docs.css';
 
 const preview: Preview = {

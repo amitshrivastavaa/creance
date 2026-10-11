@@ -1,6 +1,6 @@
 # Migrations
 
-How to move between versions of `creance` when an API changes. Each entry says what changed, why, what still works, and how to migrate.
+How to move between versions of `@creance-ui/react` when an API changes. Each entry says what changed, why, what still works, and how to migrate.
 
 ## Deprecation policy
 

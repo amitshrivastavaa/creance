@@ -1,4 +1,4 @@
-import type { InboxItem, SkyAgent } from 'creance';
+import type { InboxItem, SkyAgent } from '@creance-ui/react';
 
 const min = 60_000;
 

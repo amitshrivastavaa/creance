@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Checkbox, Input, Radio, Select, Separator, Skeleton, Switch, Textarea } from 'creance';
+import { Checkbox, Input, Radio, Select, Separator, Skeleton, Switch, Textarea } from '@creance-ui/react';
 
 const meta = {
   title: 'Atoms/Form controls',

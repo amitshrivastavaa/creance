@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Spinner } from 'creance';
+import { Spinner } from '@creance-ui/react';
 
 const meta = {
   title: 'Atoms/Spinner',

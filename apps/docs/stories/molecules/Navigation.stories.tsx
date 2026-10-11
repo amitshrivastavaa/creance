@@ -18,7 +18,7 @@ import {
   MenuSeparator,
   Pagination,
   Scroller,
-} from 'creance';
+} from '@creance-ui/react';
 
 const meta = {
   title: 'Molecules/Navigation',

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Badge } from 'creance';
+import { Badge } from '@creance-ui/react';
 
 const meta = {
   title: 'Atoms/Badge',

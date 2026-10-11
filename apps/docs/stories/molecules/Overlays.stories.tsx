@@ -11,7 +11,7 @@ import {
   SheetContent,
   SheetTrigger,
   StatusDot,
-} from 'creance';
+} from '@creance-ui/react';
 
 const meta = {
   title: 'Molecules/Overlays',

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { DiffLine } from 'creance';
+import { DiffLine } from '@creance-ui/react';
 
 const meta = {
   title: 'Molecules/DiffLine',

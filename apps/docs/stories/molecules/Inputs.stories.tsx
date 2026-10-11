@@ -21,7 +21,7 @@ import {
   Toggle,
   ToggleGroup,
   ToggleGroupItem,
-} from 'creance';
+} from '@creance-ui/react';
 
 const meta = {
   title: 'Molecules/Inputs',
@@ -167,7 +167,7 @@ export const Actions: Story = {
         </TextWithCopy>
       </div>
       <div style={{ width: 420 }}>
-        <TextWithCopy variant="block" value="npm install creance creance-tokens" label="Copy install command" />
+        <TextWithCopy variant="block" value="npm install @creance-ui/react @creance-ui/tokens" label="Copy install command" />
       </div>
     </div>
   ),

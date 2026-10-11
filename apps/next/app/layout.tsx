@@ -1,5 +1,5 @@
-import 'creance-tokens/tokens.css';
-import 'creance/styles.css';
+import '@creance-ui/tokens/tokens.css';
+import '@creance-ui/react/styles.css';
 import './app.css';
 import type { ReactNode } from 'react';
 

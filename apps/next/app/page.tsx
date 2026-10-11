@@ -99,8 +99,8 @@ import {
   initialRunState,
   reduceRun,
   timelineSteps,
-} from 'creance';
-import { deployFix, scenarioEvents } from 'creance/simulator';
+} from '@creance-ui/react';
+import { deployFix, scenarioEvents } from '@creance-ui/react/simulator';
 import Link from 'next/link';
 import { Cell } from './Cell';
 
@@ -218,7 +218,7 @@ export default function Page() {
           <TextWithCopy value="run_8f3a91c4b2e7d0a6c21d" label="Copy run ID" />
         </Cell>
         <Cell name="Snippet">
-          <Snippet commands="pnpm add creance" />
+          <Snippet commands="pnpm add @creance-ui/react" />
         </Cell>
         <Cell name="Entity">
           <Entity name="Deploy Fixer" description="Asks for risky actions" />

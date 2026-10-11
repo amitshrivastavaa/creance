@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ProgressBar } from 'creance';
+import { ProgressBar } from '@creance-ui/react';
 
 const meta = {
   title: 'Atoms/ProgressBar',

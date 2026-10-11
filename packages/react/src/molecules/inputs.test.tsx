@@ -118,9 +118,9 @@ test('Calendar picks a range in two steps, in either order, and skips disabled d
 test('CopyButton writes to the clipboard and announces it', async () => {
   const writeText = vi.fn().mockResolvedValue(undefined);
   Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true });
-  render(<CopyButton value="pnpm add creance" label="Copy command" />);
+  render(<CopyButton value="pnpm add @creance-ui/react" label="Copy command" />);
   await userEvent.click(screen.getByRole('button', { name: 'Copy command' }));
-  expect(writeText).toHaveBeenCalledWith('pnpm add creance');
+  expect(writeText).toHaveBeenCalledWith('pnpm add @creance-ui/react');
   expect(await screen.findByText('Copied')).toBeInTheDocument();
 });
 

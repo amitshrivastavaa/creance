@@ -21,9 +21,9 @@ Most agent UI work goes into chat: message bubbles, streaming text, prompt boxes
 ## How it fits together
 
 ```
-your agent backend ──┐
-                     ├── AgentEvent stream ──► useAgentRun(events) ──► RunState ──► components (plain props)
-creance/simulator ───┘
+your agent backend ───────────┐
+                              ├── AgentEvent stream ──► useAgentRun(events) ──► RunState ──► components (plain props)
+@creance-ui/react/simulator ──┘
 ```
 
 - **Components take plain props.** None of them knows about the event model. Use any one on its own with your own data.
@@ -33,13 +33,13 @@ creance/simulator ───┘
 ## Install
 
 ```sh
-npm install creance creance-tokens
+npm install @creance-ui/react @creance-ui/tokens
 ```
 
 ```tsx
-import 'creance-tokens/tokens.css';
-import 'creance/styles.css';
-import { ApprovalPrompt } from 'creance';
+import '@creance-ui/tokens/tokens.css';
+import '@creance-ui/react/styles.css';
+import { ApprovalPrompt } from '@creance-ui/react';
 ```
 
 ## Principles

@@ -1,4 +1,4 @@
-# creance-tokens
+# @creance-ui/tokens
 
 ## 0.2.0
 

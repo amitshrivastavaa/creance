@@ -1,4 +1,4 @@
-import type { InboxItem } from 'creance';
+import type { InboxItem } from '@creance-ui/react';
 
 export const NOW = Date.now();
 const min = 60_000;

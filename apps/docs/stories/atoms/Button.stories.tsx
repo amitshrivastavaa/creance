@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Button } from 'creance';
+import { Button } from '@creance-ui/react';
 
 const meta = {
   title: 'Atoms/Button',

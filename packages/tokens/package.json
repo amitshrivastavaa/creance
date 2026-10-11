@@ -1,5 +1,5 @@
 {
-  "name": "creance-tokens",
+  "name": "@creance-ui/tokens",
   "version": "0.2.0",
   "description": "Design tokens for Creance, as CSS custom properties (light and dark) and a typed JS export.",
   "license": "MIT",
@@ -39,5 +39,8 @@
   ],
   "engines": {
     "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

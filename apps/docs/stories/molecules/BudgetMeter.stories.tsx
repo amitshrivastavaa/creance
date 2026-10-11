@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { BudgetMeter } from 'creance';
+import { BudgetMeter } from '@creance-ui/react';
 
 const meta = {
   title: 'Molecules/BudgetMeter',

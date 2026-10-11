@@ -8,7 +8,7 @@ import {
   PlanEditor,
   QuestionCard,
   type StandingPermission,
-} from 'creance';
+} from '@creance-ui/react';
 
 const meta = {
   title: 'Organisms/Agent controls',

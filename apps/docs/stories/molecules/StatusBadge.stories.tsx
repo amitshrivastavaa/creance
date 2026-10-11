@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { StatusBadge } from 'creance';
+import { StatusBadge } from '@creance-ui/react';
 
 const meta = {
   title: 'Molecules/StatusBadge',
