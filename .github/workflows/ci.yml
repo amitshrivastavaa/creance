@@ -109,10 +109,14 @@ jobs:
 
   pages:
     name: Deploy the site, Storybook and demo to GitHub Pages
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: [checks, storybook-a11y, visual-and-e2e, release-dry-run]
+    # GitHub Pages is not available for a private repository on the free plan, so the deploy waits
+    # until the repository is public.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !github.event.repository.private
+    needs: [checks, react-18, storybook-a11y, visual-and-e2e, release-dry-run]
     runs-on: ubuntu-latest
     permissions:
+      # Listing any permission removes the rest, and checkout needs to read the repository.
+      contents: read
       pages: write
       id-token: write
     environment:
