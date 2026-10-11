@@ -94,7 +94,9 @@ test('AppShell starts with a skip link to the content, and opens the sidebar in 
     </AppShell>,
   );
   const main = screen.getByRole('main');
-  expect(screen.getAllByRole('link')[0]).toHaveAttribute('href', `#${main.id}`);
+  const skip = screen.getAllByRole('link')[0]!;
+  expect(skip).toHaveAttribute('href', `#${main.id}`);
+  expect(skip).toHaveTextContent('Skip to content');
   expect(screen.getByRole('complementary', { name: 'Needs you' })).toHaveTextContent('Waiting');
 
   await userEvent.click(screen.getByRole('button', { name: 'Open navigation' }));

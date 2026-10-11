@@ -623,6 +623,7 @@ const all: Example[] = [
   links={[{ label: 'GitHub', href: '#Footer' }, { label: 'npm', href: '#Footer' }]}
 />`),
   ex('Navigation', 'Template', 'AppShell', 'The frame of an app: sidebar, header, content and an optional aside.', `
+<div className="cr-window" style={{ borderRadius: 22, overflow: 'hidden' }}>
 <AppShell
   height={460}
   sidebar={
@@ -641,7 +642,8 @@ const all: Example[] = [
 >
   <h2 style={{ margin: 0 }}>Runs</h2>
   <p>Everything your agents are doing, newest first.</p>
-</AppShell>`),
+</AppShell>
+</div>`),
   ex('Navigation', 'Molecule', 'Breadcrumbs', 'Where you are. Long trails fold the middle.', `
 <Breadcrumbs
   maxItems={4}

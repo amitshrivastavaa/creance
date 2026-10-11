@@ -24,11 +24,16 @@
   color: var(--cr-color-ink-fg);
   font-weight: var(--cr-font-weight-semibold);
   text-decoration: none;
-  transform: translateY(-200%);
 }
 
-.cr-app-shell__skip:focus {
-  transform: none;
+/* Hidden until it has focus. Clipped, not moved, so it cannot show above a shell that is not at the top of the page. */
+.cr-app-shell__skip:not(:focus) {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .cr-app-shell__sidebar {
