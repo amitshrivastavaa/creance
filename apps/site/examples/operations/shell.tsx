@@ -21,6 +21,7 @@ import {
 } from '@creance-ui/react';
 import { agents } from './data';
 import { SampleNote } from '../SampleNote';
+import { savedTheme } from '../theme';
 
 /** What a screen can read and change. */
 export interface App {
@@ -156,7 +157,7 @@ export function Shell({ app, route, crumbs, aside, children }: { app: App; route
         <span>Search</span>
         <Kbd>⌘K</Kbd>
       </button>
-      <ThemeSwitcher className="ex-theme" />
+      <ThemeSwitcher className="ex-theme" defaultValue={savedTheme} />
       <Button size="sm" onClick={() => app.go('inbox')}>
         Needs you <span className="ex-count">{count}</span>
       </Button>

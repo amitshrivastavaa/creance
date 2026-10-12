@@ -1,4 +1,9 @@
 /* What every example app shares. Every colour and size is a kit token; the components bring their own look. */
+/* Moving between the site's pages cross-fades instead of flashing blank, in browsers that support it. */
+@view-transition {
+  navigation: auto;
+}
+
 html,
 body {
   margin: 0;

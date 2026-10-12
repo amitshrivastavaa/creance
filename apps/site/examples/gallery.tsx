@@ -7,6 +7,7 @@ import './gallery.css';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Card, ThemeSwitcher } from '@creance-ui/react';
+import { savedTheme } from './theme';
 
 const repo = 'https://github.com/amitshrivastavaa/creance/tree/main/apps/';
 
@@ -36,7 +37,7 @@ function Gallery() {
             </ul>
           </nav>
           <div className="tools">
-            <ThemeSwitcher />
+            <ThemeSwitcher defaultValue={savedTheme} />
           </div>
         </header>
         <main>

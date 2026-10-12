@@ -23,6 +23,7 @@ import {
   type StepItem,
 } from '@creance-ui/react';
 import { SampleNote } from '../SampleNote';
+import { savedTheme } from '../theme';
 
 const glyph = (...d: string[]) => (
   <svg width="1em" height="1em" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -203,7 +204,7 @@ function App() {
   return (
     <>
       <aside className="ex-theme" aria-label="Theme">
-        <ThemeSwitcher />
+        <ThemeSwitcher defaultValue={savedTheme} />
       </aside>
       {route === 'setup' ? <Setup /> : <SignIn />}
       <Toaster />

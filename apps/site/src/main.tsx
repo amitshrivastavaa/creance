@@ -49,6 +49,10 @@ const glyph = (d: string) => (
   </svg>
 );
 const data: Record<string, unknown> = {
+  /** The theme this page has now, so the ThemeSwitcher example starts there instead of resetting it. */
+  get pageTheme() {
+    return themeNow();
+  },
   /** Sample icons for navigation examples. Any icon set works; the kit does not ship one. */
   icons: {
     home: glyph('M2.5 7.2L8 2.8l5.5 4.4V13a.6.6 0 0 1-.6.6H3.1a.6.6 0 0 1-.6-.6z'),

@@ -22,6 +22,7 @@ import {
   type StepItem,
 } from '@creance-ui/react';
 import { SampleNote } from '../SampleNote';
+import { savedTheme } from '../theme';
 
 const minute = 60_000;
 const openedAt = Date.now();
@@ -137,7 +138,7 @@ function App() {
     <main className="ex-page">
       <div className="ex-top">
         <SampleNote source="mobile/main.tsx" />
-        <ThemeSwitcher />
+        <ThemeSwitcher defaultValue={savedTheme} />
       </div>
       <header className="ex-intro">
         <h1>Approvals on the go</h1>

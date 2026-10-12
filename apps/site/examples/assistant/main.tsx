@@ -22,6 +22,7 @@ import {
   type PromptAttachment,
 } from '@creance-ui/react';
 import { SampleNote } from '../SampleNote';
+import { savedTheme } from '../theme';
 
 const glyph = (d: string) => (
   <svg width="1em" height="1em" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -269,7 +270,7 @@ function App() {
   const header = (
     <div className="ex-header">
       <h1 className="ex-title">{thread?.title ?? 'New chat'}</h1>
-      <ThemeSwitcher />
+      <ThemeSwitcher defaultValue={savedTheme} />
       {thread && <CopyButton value={() => window.location.href} label="Copy link to this chat" onCopy={() => toast({ title: 'Link copied. It only works in this sample, on this device.' })} />}
     </div>
   );
