@@ -40,7 +40,7 @@ const links = [
   { label: 'Inbox', href: '#', count: 5 },
 ];
 const account = ({ collapsed }: { collapsed: boolean }) =>
-  collapsed ? <Avatar name="Amit Shrivastava" decorative /> : <Entity name="Amit Shrivastava" description="Owner" />;
+  collapsed ? <Avatar name="Sam Rivera" decorative /> : <Entity name="Sam Rivera" description="Owner" />;
 
 export const NavbarStory: Story = {
   name: 'Navbar',

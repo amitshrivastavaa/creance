@@ -77,7 +77,9 @@ function Gallery() {
             <a href="https://www.npmjs.com/package/@creance-ui/react">npm</a>
             <a href="../storybook/">Storybook</a>
             <a href="../demo/">Demo</a>
+            <a href="./" aria-current="page">Examples</a>
             <a href="../llms.txt">llms.txt</a>
+            <a href="https://github.com/amitshrivastavaa/creance/blob/main/packages/react/CHANGELOG.md">v{import.meta.env.VITE_CREANCE_VERSION}</a>
           </nav>
         </footer>
       </div>

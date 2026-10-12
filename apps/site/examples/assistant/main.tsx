@@ -263,7 +263,7 @@ function App() {
         </div>
       }
       groups={groups}
-      footer={<Entity name="Amit Shrivastava" kind="human" description="Acme" />}
+      footer={<Entity name="Sam Rivera" kind="human" description="Acme" />}
     />
   );
   const header = (

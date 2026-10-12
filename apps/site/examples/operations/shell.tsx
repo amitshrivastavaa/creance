@@ -126,7 +126,7 @@ function SidebarFooter({ go }: { go: App['go'] }) {
         <ProgressBar label="Tokens this month" value={40} />
         <span className="ex-usage__note">1.2M of 3M · resets 1 Nov</span>
       </button>
-      <Entity name="Amit Shrivastava" kind="human" description="Owner" />
+      <Entity name="Sam Rivera" kind="human" description="Owner" />
     </div>
   );
 }
