@@ -1,21 +1,8 @@
 /* Layout for the Examples page. */
 @import './shared.css';
 
-.ex-wrap {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: var(--cr-space-5) var(--cr-space-4) var(--cr-space-12);
-}
-
-.ex-brand {
-  color: inherit;
-  font-size: var(--cr-font-size-lg);
-  font-weight: var(--cr-font-weight-bold);
-  text-decoration: none;
-}
-
 .ex-intro {
-  padding: var(--cr-space-10) var(--cr-space-2) var(--cr-space-8);
+  padding: 0 var(--cr-space-2) var(--cr-space-8);
 }
 
 .ex-intro h1 {

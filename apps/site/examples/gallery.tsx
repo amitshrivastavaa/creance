@@ -1,10 +1,12 @@
 // The Examples page: every sample app, with a screenshot, what it shows, and where its code is.
+// The home page's styles first, so this page has the same header and footer.
+import '../src/site.css';
 import '@creance-ui/tokens/tokens.css';
 import '@creance-ui/react/styles.css';
 import './gallery.css';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Card, Footer, Navbar, ThemeSwitcher } from '@creance-ui/react';
+import { Card, ThemeSwitcher } from '@creance-ui/react';
 
 const repo = 'https://github.com/amitshrivastavaa/creance/tree/main/apps/';
 
@@ -20,16 +22,23 @@ const examples = [
 function Gallery() {
   return (
     <>
-      <div className="ex-wrap">
-        <Navbar
-          brand={<a href="../" className="ex-brand">Creance</a>}
-          items={[
-            { label: 'Overview', href: '../' },
-            { label: 'Components', href: '../#components' },
-            { label: 'Examples', href: './', current: true },
-          ]}
-          actions={<ThemeSwitcher />}
-        />
+      <div className="page">
+        <header className="top">
+          <a className="brand" href="../">
+            <svg className="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="9" fill="var(--ink-bg)"></rect><path d="M21.6 11.3A7.4 7.4 0 1 0 21.6 20.7" fill="none" stroke="var(--ink-fg)" strokeWidth="2.6" strokeLinecap="round"></path><circle cx="21.6" cy="11.3" r="2.3" fill="var(--ink-fg)"></circle></svg>
+            Creance
+          </a>
+          <nav aria-label="Pages">
+            <ul>
+              <li><a href="../">Overview</a></li>
+              <li><a href="../#components">Components</a></li>
+              <li><a href="./" aria-current="page">Examples</a></li>
+            </ul>
+          </nav>
+          <div className="tools">
+            <ThemeSwitcher />
+          </div>
+        </header>
         <main>
           <header className="ex-intro">
             <h1>Examples</h1>
@@ -39,13 +48,16 @@ function Gallery() {
             {examples.map((e) => (
               <li key={e.id}>
                 <Card as="article" className="ex-tile" aria-labelledby={`${e.id}-h`}>
-                  <a href={e.href} className="ex-tile__shot" tabIndex={-1} aria-hidden="true">
+                  <a href={e.href} target="_blank" className="ex-tile__shot" tabIndex={-1} aria-hidden="true">
                     <img className="ex-shot--light" src={`thumbs/${e.id}-light.jpg`} alt="" width="720" height="450" loading="lazy" />
                     <img className="ex-shot--dark" src={`thumbs/${e.id}-dark.jpg`} alt="" width="720" height="450" loading="lazy" />
                   </a>
                   <div className="ex-tile__text">
                     <h2 id={`${e.id}-h`}>
-                      <a href={e.href}>{e.title}</a>
+                      <a href={e.href} target="_blank">
+                        {e.title}
+                        <span className="ex-sr"> (opens in a new tab)</span>
+                      </a>
                       <span className="ex-pill">{e.screens}</span>
                     </h2>
                     <p>{e.about}</p>
@@ -58,8 +70,17 @@ function Gallery() {
             ))}
           </ul>
         </main>
+        <footer className="foot">
+          <span>© 2026 Amit Shrivastava. MIT licence.</span>
+          <nav aria-label="Project links">
+            <a href="https://github.com/amitshrivastavaa/creance">GitHub</a>
+            <a href="https://www.npmjs.com/package/@creance-ui/react">npm</a>
+            <a href="../storybook/">Storybook</a>
+            <a href="../demo/">Demo</a>
+            <a href="../llms.txt">llms.txt</a>
+          </nav>
+        </footer>
       </div>
-      <Footer legal="© 2026 Amit Shrivastava. MIT licence." links={[{ label: 'Docs', href: '../' }, { label: 'GitHub', href: 'https://github.com/amitshrivastavaa/creance' }, { label: 'npm', href: 'https://www.npmjs.com/package/@creance-ui/react' }]} />
     </>
   );
 }
