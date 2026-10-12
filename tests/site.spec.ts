@@ -278,3 +278,29 @@ test('on the phones, answering a request takes it off that phone only', async ({
   await expect(page.getByRole('figure', { name: 'What needs you' }).getByRole('button', { name: /Needs you 3/ })).toBeVisible();
   expect(problems).toEqual([]);
 });
+
+test('the theme you pick stays as you move between pages and reload', async ({ page }) => {
+  await page.goto('/');
+  // The radios are visually hidden; people click the icons.
+  await page.getByTitle('Dark').click();
+  await page.getByRole('navigation', { name: 'Pages' }).getByRole('link', { name: 'Examples' }).click();
+  await expect(page.getByRole('heading', { level: 1, name: 'Examples' })).toBeVisible();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await expect(page.getByRole('radio', { name: 'Dark' })).toBeChecked();
+  await page.goto('/examples/review/');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  // Back to following the system.
+  await page.getByTitle('Match system').click();
+  await page.reload();
+  await expect(page.locator('html')).not.toHaveAttribute('data-theme');
+  await expect(page.getByRole('radio', { name: 'Match system' })).toBeChecked();
+});
+
+test('the docs page for ThemeSwitcher does not change the saved theme', async ({ page }) => {
+  await page.goto('/');
+  await page.getByTitle('Dark').click();
+  await page.goto('/#ThemeSwitcher');
+  await expect(page.locator('.doc__stage').first()).toBeVisible();
+  await page.goto('/examples/');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+});

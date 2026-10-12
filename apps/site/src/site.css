@@ -84,6 +84,8 @@
   --code-bg: rgb(0 0 0 / 0.45);
 }
 
+/* Moving between the site's pages cross-fades instead of flashing blank, in browsers that support it. */
+@view-transition { navigation: auto; }
 *, *::before, *::after { box-sizing: border-box; }
 [hidden] { display: none !important; }
 body {

@@ -39,6 +39,7 @@ import {
 } from '@creance-ui/react';
 import { deployFix } from '@creance-ui/react/simulator';
 import { SampleNote } from '../SampleNote';
+import { savedTheme } from '../theme';
 
 /** The sample deploy run, played to the end with every wait answered. */
 function finishedRun() {
@@ -132,7 +133,7 @@ function App() {
     <div className="ex-header">
       <Breadcrumbs items={[{ label: 'acme/web', href: '#' }, { label: 'Pull requests', href: '#' }, { label: '#212' }]} />
       <span className="ex-space" />
-      <ThemeSwitcher />
+      <ThemeSwitcher defaultValue={savedTheme} />
     </div>
   );
   const aside = (

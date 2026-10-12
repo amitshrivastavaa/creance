@@ -324,8 +324,8 @@ const all: Example[] = [
     <ToggleGroupItem value="split">Split</ToggleGroupItem>
   </ToggleGroup>
 </div>`),
-  ex('Forms', 'Molecule', 'ThemeSwitcher', 'Light, dark or match the system. This one really switches this page.', `
-<ThemeSwitcher onValueChange={log} />`),
+  ex('Forms', 'Molecule', 'ThemeSwitcher', 'Light, dark or match the system. This one really switches this page, starting from its current theme.', `
+<ThemeSwitcher defaultValue={pageTheme} onValueChange={log} />`),
   ex('Forms', 'Molecule', 'Feedback', 'Thumbs up or down, then an optional comment.', `
 <div style={{ maxWidth: 420 }}>
   <Feedback question="Was this run useful?" onSubmit={log} />
