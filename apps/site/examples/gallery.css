@@ -1,8 +1,7 @@
-/* Layout for the Examples page. */
-@import './shared.css';
+/* The Examples view on the home page. */
 
 .ex-intro {
-  padding: 0 var(--cr-space-2) var(--cr-space-8);
+  padding-bottom: var(--cr-space-8);
 }
 
 .ex-intro h1 {

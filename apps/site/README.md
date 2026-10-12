@@ -19,7 +19,7 @@ pnpm test:site    # build it and run the browser tests
 - `src/jsx.ts` reads the edited example code. It parses a subset of JSX and evaluates it against a
   fixed scope, so nothing is passed to `eval`. Operators and statements are not supported.
 - `examples/` holds sample apps built only from the kit, each its own page under `/examples/`.
-  `examples/gallery.tsx` is the Examples page that lists them. `operations/` is a whole product: its
+  `examples/gallery.tsx` lists them on the home page's Examples view (`/#examples`); `/examples/` forwards there. `operations/` is a whole product: its
   `main.tsx` routes between screens by hash, `shell.tsx` is the sidebar and header they share, `data.ts`
   is the made-up data, and each screen is one file in `operations/screens/`. `assistant/`, `review/`,
   `sign-in/` and `mobile/` are one file each. `shared.css` and `SampleNote.tsx` are what they share.

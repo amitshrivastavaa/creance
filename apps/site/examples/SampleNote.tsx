@@ -5,7 +5,7 @@ export function SampleNote({ company = 'Acme', source, sourceLabel = 'View the s
   return (
     <aside className="ex-note" aria-label="About this sample">
       A sample app built only from <code>@creance-ui/react</code>. {company} and its data are made up; nothing is connected.{' '}
-      <a href={repo + source}>{sourceLabel}</a> · <a href="../">All examples</a>
+      <a href={repo + source}>{sourceLabel}</a> · <a href="../../#examples">All examples</a>
     </aside>
   );
 }
