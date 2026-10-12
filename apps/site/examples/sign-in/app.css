@@ -1,0 +1,165 @@
+/* Layout for the sign-in and setup example. */
+@import '../shared.css';
+
+body {
+  min-height: 100dvh;
+}
+
+.ex-theme {
+  position: fixed;
+  top: var(--cr-space-4);
+  right: var(--cr-space-4);
+  z-index: 2;
+}
+
+.ex-brand {
+  font-size: var(--cr-font-size-xl);
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: var(--cr-font-tracking-tight);
+}
+
+.ex-space {
+  flex: 1;
+}
+
+/* Sign in: the pitch on one side, the form on the other. */
+.ex-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 560px);
+  min-height: 100dvh;
+}
+
+.ex-pitch {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--cr-space-8);
+  padding: var(--cr-space-12);
+  border-inline-end: 1px solid var(--cr-color-border-default);
+  background: color-mix(in srgb, var(--cr-color-glass-tint) 22%, transparent);
+}
+
+.ex-pitch__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-5);
+  max-width: 520px;
+}
+
+.ex-pitch__body h2 {
+  font-size: var(--cr-font-size-4xl);
+  font-weight: var(--cr-font-weight-bold);
+  line-height: var(--cr-font-line-height-tight);
+  letter-spacing: var(--cr-font-tracking-title);
+}
+
+.ex-pitch__body p {
+  color: var(--cr-color-text-secondary);
+  font-size: var(--cr-font-size-lg);
+}
+
+.ex-form-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--cr-space-6);
+  padding: var(--cr-space-12) var(--cr-space-10, var(--cr-space-12));
+}
+
+.ex-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-4);
+}
+
+.ex-form h1 {
+  font-size: var(--cr-font-size-3xl);
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: var(--cr-font-tracking-title);
+}
+
+.ex-or {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-3);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}
+
+.ex-or::before,
+.ex-or::after {
+  flex: 1;
+  height: 1px;
+  background: var(--cr-color-border-default);
+  content: '';
+}
+
+.ex-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cr-space-3);
+  font-size: var(--cr-font-size-sm);
+}
+
+.ex-center {
+  font-size: var(--cr-font-size-sm);
+  text-align: center;
+}
+
+/* Setup: one card in the middle. */
+.ex-setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--cr-space-5);
+  padding: var(--cr-space-8) var(--cr-space-4);
+}
+
+.ex-wizard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-5);
+  box-sizing: border-box;
+  width: min(820px, 100%);
+  padding: var(--cr-space-8);
+}
+
+.ex-wizard h1 {
+  padding-top: var(--cr-space-5);
+  border-top: 1px solid var(--cr-color-border-default);
+  font-size: var(--cr-font-size-2xl);
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: var(--cr-font-tracking-title);
+}
+
+.ex-wizard__actions {
+  display: flex;
+  gap: var(--cr-space-2);
+}
+
+.ex-perm {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cr-space-2);
+}
+
+@media (max-width: 860px) {
+  .ex-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ex-pitch {
+    display: none;
+  }
+
+  .ex-form-side,
+  .ex-wizard {
+    padding: var(--cr-space-5);
+  }
+
+  .ex-theme {
+    display: none;
+  }
+}

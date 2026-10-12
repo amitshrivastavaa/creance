@@ -20,6 +20,7 @@ import {
   type InboxItem,
 } from '@creance-ui/react';
 import { agents } from './data';
+import { SampleNote } from '../SampleNote';
 
 /** What a screen can read and change. */
 export interface App {
@@ -74,7 +75,6 @@ export const screens: Screen[] = [
   { route: 'audit-log', title: 'Audit log', icon: icons.log, file: 'AuditLog.tsx' },
   { route: 'settings', title: 'Settings', icon: icons.gear, file: 'Settings.tsx' },
 ];
-const source = 'https://github.com/amitshrivastavaa/creance/blob/main/apps/site/examples/screens/';
 
 function Workspace() {
   return (
@@ -175,10 +175,7 @@ export function Shell({ app, route, crumbs, aside, children }: { app: App; route
   );
   return (
     <AppShell sidebar={sidebar} header={header} aside={aside} asideLabel="Details">
-      <aside className="ex-note" aria-label="About this sample">
-        A sample app built only from <code>@creance-ui/react</code>. Acme and its data are made up; nothing is connected.{' '}
-        <a href={source + screen.file}>View this screen&rsquo;s source</a> · <a href="../">Back to the docs</a>
-      </aside>
+      <SampleNote source={`operations/screens/${screen.file}`} sourceLabel="View this screen’s source" />
       {children}
     </AppShell>
   );

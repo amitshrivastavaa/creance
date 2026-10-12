@@ -1,0 +1,64 @@
+/* What every example app shares. Every colour and size is a kit token; the components bring their own look. */
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: var(--cr-gradient-horizon), var(--cr-gradient-canvas), var(--cr-color-bg-canvas);
+  background-attachment: fixed;
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--cr-color-text-link);
+}
+
+code {
+  font-family: var(--cr-font-family-mono);
+  font-size: 0.92em;
+}
+
+.ex-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.ex-muted {
+  color: var(--cr-color-text-muted);
+}
+
+.ex-small {
+  font-size: var(--cr-font-size-sm);
+}
+
+.ex-danger {
+  color: var(--cr-color-danger-text);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.ex-label {
+  margin-bottom: var(--cr-space-2);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+/* The note that says an app is a sample */
+.ex-note {
+  margin-bottom: calc(var(--cr-space-2) * -1);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}

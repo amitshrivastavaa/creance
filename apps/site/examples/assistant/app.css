@@ -1,0 +1,86 @@
+/* Layout for the assistant example. */
+@import '../shared.css';
+
+.cr-app-shell__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-3);
+}
+
+.ex-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--cr-space-1) var(--cr-space-2);
+  font-size: var(--cr-font-size-lg);
+}
+
+.ex-header {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--cr-space-3);
+  min-width: 0;
+}
+
+.ex-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-semibold);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ex-chat {
+  flex: 1;
+  width: 100%;
+  max-width: 760px;
+  min-height: 0;
+  margin: 0 auto;
+}
+
+.ex-empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-2);
+  padding: var(--cr-space-12) var(--cr-space-4) var(--cr-space-4);
+  text-align: center;
+}
+
+.ex-empty h2 {
+  color: var(--cr-color-text-default);
+  font-size: var(--cr-font-size-3xl);
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: var(--cr-font-tracking-title);
+}
+
+.ex-empty p {
+  color: var(--cr-color-text-muted);
+}
+
+.ex-code {
+  margin: 0;
+  padding: var(--cr-space-3) var(--cr-space-4);
+  overflow-x: auto;
+  border-radius: var(--cr-radius-lg);
+  background: var(--cr-color-bg-inverse);
+  color: var(--cr-color-text-inverse);
+  font-size: var(--cr-font-size-sm);
+  line-height: var(--cr-font-line-height-normal);
+}
+
+.ex-attached {
+  display: block;
+  margin-bottom: var(--cr-space-1);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+@media (max-width: 720px) {
+  .ex-header .cr-theme-switcher {
+    display: none;
+  }
+}

@@ -1,0 +1,157 @@
+/* Layout for the Examples page. */
+@import './shared.css';
+
+.ex-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: var(--cr-space-5) var(--cr-space-4) var(--cr-space-12);
+}
+
+.ex-brand {
+  color: inherit;
+  font-size: var(--cr-font-size-lg);
+  font-weight: var(--cr-font-weight-bold);
+  text-decoration: none;
+}
+
+.ex-intro {
+  padding: var(--cr-space-10) var(--cr-space-2) var(--cr-space-8);
+}
+
+.ex-intro h1 {
+  font-size: var(--cr-font-size-4xl);
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: var(--cr-font-tracking-title);
+}
+
+.ex-intro p {
+  max-width: 66ch;
+  margin-top: var(--cr-space-3);
+  color: var(--cr-color-text-secondary);
+  font-size: var(--cr-font-size-lg);
+  line-height: var(--cr-font-line-height-normal);
+}
+
+/* Every tile the same size: equal columns, equal rows, links at the bottom. */
+.ex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--cr-space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ex-grid li {
+  display: flex;
+}
+
+.ex-tile {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--cr-space-4);
+  padding: var(--cr-space-3) var(--cr-space-3) var(--cr-space-5);
+}
+
+.ex-tile__shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top left;
+  border-radius: var(--cr-radius-lg);
+  box-shadow: var(--cr-shadow-md);
+}
+
+.ex-tile__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--cr-space-2);
+  padding: 0 var(--cr-space-2);
+}
+
+.ex-tile__text h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cr-space-2);
+  font-size: var(--cr-font-size-lg);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.ex-tile__text h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* The title link covers the whole tile, so the tile is one click target. */
+.ex-tile {
+  position: relative;
+}
+
+.ex-tile__text h2 a::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  content: '';
+}
+
+.ex-tile__text h2 a:focus-visible {
+  outline: none;
+}
+
+.ex-tile:has(h2 a:focus-visible) {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.ex-tile__text p {
+  color: var(--cr-color-text-secondary);
+  font-size: var(--cr-font-size-sm);
+  line-height: var(--cr-font-line-height-normal);
+}
+
+.ex-tile__source {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: var(--cr-space-1);
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.ex-pill {
+  padding: 2px var(--cr-space-2);
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-bg-subtle);
+  color: var(--cr-color-text-secondary);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+/* The screenshot follows the theme: the system's, unless the switcher picked one. */
+.ex-tile__shot .ex-shot--dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .ex-tile__shot .ex-shot--light {
+    display: none;
+  }
+
+  :root:not([data-theme='light']) .ex-tile__shot .ex-shot--dark {
+    display: block;
+  }
+}
+
+:root[data-theme='dark'] .ex-tile__shot .ex-shot--light {
+  display: none;
+}
+
+:root[data-theme='dark'] .ex-tile__shot .ex-shot--dark {
+  display: block;
+}

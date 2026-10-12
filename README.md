@@ -1,6 +1,6 @@
 # Creance
 
-**[Live site and docs](https://creance.pages.dev)** · **[Demo](https://creance.pages.dev/demo/)** · **[Example app](https://creance.pages.dev/examples/)** · **[Storybook](https://creance.pages.dev/storybook/)** · **[npm](https://www.npmjs.com/package/@creance-ui/react)**
+**[Live site and docs](https://creance.pages.dev)** · **[Demo](https://creance.pages.dev/demo/)** · **[Example apps](https://creance.pages.dev/examples/)** · **[Storybook](https://creance.pages.dev/storybook/)** · **[npm](https://www.npmjs.com/package/@creance-ui/react)**
 
 **An open-source React component library in a frosted-glass style.** 109 components in light and dark: the general set an app needs (forms, navigation, overlays, tables, charts, feedback), plus a set for supervising AI agents, where a person approves what an agent wants to do, watches it work, reviews its changes and takes back control when it is done.
 
@@ -33,7 +33,7 @@ import { Button, Field, Input } from '@creance-ui/react';
 
 React 18 or later is the only peer dependency. [Frameworks](#frameworks) lists where it has been tested.
 
-Every component runs live on [the site](https://creance.pages.dev/#components), with code you can edit, props and keyboard tables.
+Every component runs live on [the site](https://creance.pages.dev/#components), with code you can edit, props and keyboard tables. For coding agents, the same docs are markdown: [llms.txt](https://creance.pages.dev/llms.txt) lists a file per guide and component, and [llms-full.txt](https://creance.pages.dev/llms-full.txt) has them all in one.
 
 ![The docs site: the Table page, with a live preview above the code that produces it](docs/images/site.png)
 
@@ -86,7 +86,7 @@ The twelve agent organisms are built for those screens. `Chat`, a whole conversa
 | [`@creance-ui/tokens`](packages/tokens) | Design tokens in JSON, built with Style Dictionary into CSS custom properties (light, dark, solid surfaces for reduced transparency, reduced motion) and a typed JS export |
 | [`@creance-ui/react`](packages/react) | The components, the event model, `useAgentRun`, selectors, and `@creance-ui/react/simulator` |
 | [`apps/docs`](apps/docs) | Storybook: usage guidelines for every organism, a Tokens page, live stories |
-| [`apps/site`](apps/site) | The project site: an overview, guides, and every component running live with code you can edit, plus props and keyboard tables generated from the types. It also serves a sample app at `/examples/`: ten screens of an agent operations product, built only from the kit |
+| [`apps/site`](apps/site) | The project site: an overview, guides, and every component running live with code you can edit, plus props and keyboard tables generated from the types. It also serves sample apps built only from the kit at `/examples/`: an agent operations product, an assistant chat, a code review, sign in and onboarding, and mobile approvals |
 | [`apps/demo`](apps/demo) | A Vite app that runs one full scenario, consuming the built package like any app would |
 | [`apps/next`](apps/next) | A Next.js App Router app that renders all 109 components, used to test server rendering and hydration |
 
@@ -173,7 +173,7 @@ All of these run in GitHub Actions on every push and pull request (`.github/work
 | Bundle size | size-limit | Budgets: all components 32 kB, ApprovalPrompt alone 2.5 kB, CSS 15 kB, simulator 2.5 kB (brotli, without React and Radix). Today: 31.4 kB, 1.87 kB, 14.1 kB, 2.2 kB |
 | Release | Changesets status + `pnpm publish --dry-run` | Both packages |
 
-On `main`, a final job deploys the site (with the example app at `/examples/`), Storybook (at `/storybook/`) and the demo (at `/demo/`) to Cloudflare Pages.
+On `main`, a final job deploys the site (with the example apps at `/examples/`), Storybook (at `/storybook/`) and the demo (at `/demo/`) to Cloudflare Pages.
 
 ## Versioning and lifecycle
 

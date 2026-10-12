@@ -5,11 +5,12 @@
   "scripts": {
     "props": "node scripts/extract-props.mjs",
     "dev": "pnpm props && vite",
-    "build": "pnpm props && vite build",
+    "build": "pnpm props && vite build && node scripts/build-llms.mjs",
     "build:artifact": "pnpm props && vite build --config vite.artifact.config.ts && node scripts/build-artifact.mjs",
     "preview": "vite preview",
     "images": "node scripts/brand-images.mjs",
-    "typecheck": "pnpm props && tsc --noEmit -p ."
+    "typecheck": "pnpm props && tsc --noEmit -p .",
+    "thumbs": "node scripts/example-thumbs.mjs"
   },
   "dependencies": {
     "@creance-ui/react": "workspace:*",
