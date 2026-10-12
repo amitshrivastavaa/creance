@@ -10,6 +10,7 @@ import * as Creance from '@creance-ui/react';
 import { deployFix } from '@creance-ui/react/simulator';
 import { examples, groups, type Example } from './examples';
 import { guides, type Guide } from './guides';
+import { Gallery } from '../examples/gallery';
 import { keyboard } from './keyboard';
 import propsData from './props.json';
 import { Colored } from './colored';
@@ -615,6 +616,8 @@ function Tools() {
 
 const mount = document.getElementById('playground');
 if (mount) createRoot(mount).render(<Browser />);
+const gallery = document.getElementById('view-examples');
+if (gallery) createRoot(gallery).render(<Gallery base="examples/" />);
 const tools = document.getElementById('tools');
 if (tools) createRoot(tools).render(<Tools />);
 

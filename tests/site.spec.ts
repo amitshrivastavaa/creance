@@ -159,7 +159,7 @@ test('the Chat example answers what is typed, streaming a reply and then citing 
 // The example apps under /examples/, built only from the kit, and the gallery that lists them.
 const pages = [
   ...['overview', 'inbox', 'runs', 'run/r41', 'agents', 'permissions', 'budgets', 'integrations', 'audit-log', 'settings'].map((s) => `/examples/operations/#${s}`),
-  '/examples/',
+  '/#examples',
   '/examples/assistant/',
   '/examples/assistant/#build-482',
   '/examples/review/',
@@ -194,6 +194,9 @@ test('the gallery lists every example, each with a screenshot in both themes', a
   await page.goto('/');
   await page.getByRole('link', { name: 'See example apps' }).click();
   await expect(page.getByRole('heading', { level: 1, name: 'Examples' })).toBeVisible();
+  // A view of the home page, so getting there does not load a new page.
+  await expect(page).toHaveURL(/\/#examples$/);
+  await expect(page.getByRole('navigation', { name: 'Pages' }).getByRole('link', { name: 'Examples' })).toHaveAttribute('aria-current', 'page');
   const titles = page.locator('.ex-tile h2 a');
   await expect(titles).toHaveCount(6);
   for (const src of await page.locator('.ex-tile img').evaluateAll((imgs) => imgs.map((i) => (i as HTMLImageElement).src))) {
@@ -301,6 +304,12 @@ test('the docs page for ThemeSwitcher does not change the saved theme', async ({
   await page.getByTitle('Dark').click();
   await page.goto('/#ThemeSwitcher');
   await expect(page.locator('.doc__stage').first()).toBeVisible();
-  await page.goto('/examples/');
+  await page.goto('/#examples');
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+});
+
+test('the old /examples/ address forwards to the Examples view', async ({ page }) => {
+  await page.goto('/examples/');
+  await expect(page).toHaveURL(/\/#examples$/);
+  await expect(page.getByRole('heading', { level: 1, name: 'Examples' })).toBeVisible();
 });

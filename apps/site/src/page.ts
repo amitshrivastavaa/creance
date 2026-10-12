@@ -1,4 +1,4 @@
-// The page shell around the React app: two views in one document, and the demo run in the hero.
+// The page shell around the React app: three views in one document, and the demo run in the hero.
 
 declare global {
   interface Window {
@@ -13,14 +13,14 @@ const el = <T extends HTMLElement = HTMLElement>(id: string) => document.getElem
 // Links are handled here rather than left to the browser, so navigation still works where a host
 // frame will not let the address change.
 const page = el('page');
-const views = { overview: el('view-overview'), components: el('view-components') };
+const views = { overview: el('view-overview'), examples: el('view-examples'), components: el('view-components') };
 const isSection = (id: string) => !id || id === 'overview' || !!views.overview.querySelector(`#${CSS.escape(id)}`);
 let last = '';
 const homeTitle = document.title;
 
 function go(target: string, scroll = true) {
   const id = String(target || '').replace(/^#/, '');
-  const view = isSection(id) ? 'overview' : 'components';
+  const view = id === 'examples' ? 'examples' : isSection(id) ? 'overview' : 'components';
   const changed = page.dataset.view !== view;
   page.dataset.view = view;
   for (const [name, node] of Object.entries(views)) node.hidden = name !== view;
@@ -31,7 +31,7 @@ function go(target: string, scroll = true) {
     // Some frames forbid changing the address; the view has still changed.
   }
   if (view === 'components') window.dispatchEvent(new CustomEvent('creance:go', { detail: id }));
-  document.title = view === 'components' && id !== 'components' ? `${id} · Creance` : homeTitle;
+  document.title = view === 'examples' ? 'Examples · Creance' : view === 'components' && id !== 'components' ? `${id} · Creance` : homeTitle;
   if (scroll) {
     const section = view === 'overview' && id && id !== 'overview' ? document.getElementById(id) : null;
     if (section) section.scrollIntoView();

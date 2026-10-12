@@ -20,7 +20,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-        examples: 'examples/index.html',
         operations: 'examples/operations/index.html',
         assistant: 'examples/assistant/index.html',
         review: 'examples/review/index.html',

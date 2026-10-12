@@ -1,6 +1,6 @@
 # Creance
 
-**[Live site and docs](https://creance.pages.dev)** · **[Demo](https://creance.pages.dev/demo/)** · **[Example apps](https://creance.pages.dev/examples/)** · **[Storybook](https://creance.pages.dev/storybook/)** · **[npm](https://www.npmjs.com/package/@creance-ui/react)**
+**[Live site and docs](https://creance.pages.dev)** · **[Demo](https://creance.pages.dev/demo/)** · **[Example apps](https://creance.pages.dev/#examples)** · **[Storybook](https://creance.pages.dev/storybook/)** · **[npm](https://www.npmjs.com/package/@creance-ui/react)**
 
 **An open-source React component library in a frosted-glass style.** 109 components in light and dark: the general set an app needs (forms, navigation, overlays, tables, charts, feedback), plus a set for supervising AI agents, where a person approves what an agent wants to do, watches it work, reviews its changes and takes back control when it is done.
 

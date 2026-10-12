@@ -52,7 +52,7 @@
       <ul>
         <li><a href="#overview" data-tab="overview" aria-current="page">Overview</a></li>
         <li><a href="#components" data-tab="components">Components</a></li>
-        <li><a href="examples/">Examples</a></li>
+        <li><a href="#examples" data-tab="examples">Examples</a></li>
       </ul>
     </nav>
     <div class="tools" id="tools"></div>
@@ -67,7 +67,7 @@
         <div class="actions">
           <a class="btn btn--primary" href="#Introduction">Get started</a>
           <a class="btn" href="#components">Browse components</a>
-          <a class="btn" href="examples/">See example apps</a>
+          <a class="btn" href="#examples">See example apps</a>
         </div>
         </div>
       </div>
@@ -183,6 +183,8 @@
     </section>
   </main>
 
+  <main class="view" id="view-examples" hidden></main>
+
   <main class="view" id="view-components" hidden>
     <div id="playground"><p class="docs__wait">Loading the component browser. It needs its script, which ships with this page.</p></div>
     <p class="small">The editor reads JSX with literal values, the sample data each example names, and simple arrow functions. It is not a full JavaScript runtime, so operators and statements are not supported.</p>
@@ -195,7 +197,7 @@
       <a href="https://www.npmjs.com/package/@creance-ui/react">npm</a>
       <a href="https://creance.pages.dev/storybook/">Storybook</a>
       <a href="https://creance.pages.dev/demo/">Demo</a>
-      <a href="https://creance.pages.dev/examples/">Examples</a>
+      <a href="#examples">Examples</a>
       <a href="https://creance.pages.dev/llms.txt">llms.txt</a>
       <a href="https://github.com/amitshrivastavaa/creance/blob/main/packages/react/CHANGELOG.md">v%VITE_CREANCE_VERSION%</a>
     </nav>
