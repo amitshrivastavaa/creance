@@ -1,6 +1,6 @@
 {
   "name": "@creance-ui/react",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A React component library in a frosted-glass style: 109 components in light and dark, with a set for supervising AI agents (approvals, tool calls, run timelines, diff review and handoffs).",
   "license": "MIT",
   "author": "Amit Shrivastava",

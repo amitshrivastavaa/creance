@@ -1,5 +1,15 @@
 # @creance-ui/react
 
+## 0.5.0
+
+### Minor Changes
+
+- e547c41: `Chat`, an organism that is a whole conversation in one component. Give it a list of messages and an `onSend`; it renders each turn with its reasoning and sources, starting suggestions, and the prompt input, follows new messages, turns Send into Stop while the agent works, and announces each finished reply once. Anything passed as children, such as an `ApprovalPrompt`, appears after the last message.
+
+### Patch Changes
+
+- 52c6645: AppShell's "Skip to content" link no longer shows above the shell when the shell is not at the top of the page. It was moved out of view rather than hidden, so it was only off-screen in a full-height app. It is now clipped until it has focus.
+
 ## 0.4.0
 
 ### Minor Changes
