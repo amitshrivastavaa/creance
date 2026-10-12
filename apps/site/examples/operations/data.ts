@@ -162,15 +162,15 @@ export interface AuditEvent {
 export const audit: AuditEvent[] = [
   { id: 'e7', time: '10:42', actor: 'Deploy Fixer', kind: 'agent', event: 'Asked for permission', target: 'npm install zod@3', result: 'Waiting', detail: { event: 'permission.requested', run: 'Fix the failing deploy', command: 'npm install zod@3', risk: 'medium' } },
   { id: 'e6', time: '10:41', actor: 'Deploy Fixer', kind: 'agent', event: 'Called a tool', target: 'read_logs deploys/web/482', result: 'Succeeded', detail: { event: 'tool.called', tool: 'read_logs', input: 'deploys/web/482', duration_ms: 1800 } },
-  { id: 'e5', time: '10:38', actor: 'Amit Shrivastava', kind: 'human', event: 'Started a run', target: 'Fix the failing deploy', result: 'Succeeded', detail: { event: 'run.started', agent: 'Deploy Fixer', budget_tokens: 50000 } },
-  { id: 'e4', time: '09:55', actor: 'Amit Shrivastava', kind: 'human', event: 'Granted a permission', target: 'shell for Docs Writer', result: 'Succeeded', detail: { event: 'permission.granted', tool: 'shell', scope: 'Read-only commands', always: true } },
-  { id: 'e3', time: '07:20', actor: 'Upgrader', kind: 'agent', event: 'Asked for permission', target: 'git push origin main', result: 'Denied', detail: { event: 'permission.denied', run: 'Upgrade react-router', command: 'git push origin main', risk: 'high', decided_by: 'Amit Shrivastava', reason: 'Use a pull request' } },
+  { id: 'e5', time: '10:38', actor: 'Sam Rivera', kind: 'human', event: 'Started a run', target: 'Fix the failing deploy', result: 'Succeeded', detail: { event: 'run.started', agent: 'Deploy Fixer', budget_tokens: 50000 } },
+  { id: 'e4', time: '09:55', actor: 'Sam Rivera', kind: 'human', event: 'Granted a permission', target: 'shell for Docs Writer', result: 'Succeeded', detail: { event: 'permission.granted', tool: 'shell', scope: 'Read-only commands', always: true } },
+  { id: 'e3', time: '07:20', actor: 'Upgrader', kind: 'agent', event: 'Asked for permission', target: 'git push origin main', result: 'Denied', detail: { event: 'permission.denied', run: 'Upgrade react-router', command: 'git push origin main', risk: 'high', decided_by: 'Sam Rivera', reason: 'Use a pull request' } },
   { id: 'e2', time: '07:18', actor: 'Upgrader', kind: 'agent', event: 'Ran tests', target: 'pnpm test router', result: 'Failed', detail: { event: 'tool.failed', tool: 'run_tests', failing: 3, passing: 45 } },
   { id: 'e1', time: '06:02', actor: 'Triage', kind: 'agent', event: 'Labelled an issue', target: 'acme/web#1182', result: 'Succeeded', detail: { event: 'issue.labelled', issue: 'acme/web#1182', labels: 'bug, checkout' } },
 ];
 
 export const members = [
-  { id: 'm1', name: 'Amit Shrivastava', email: 'owner@acme.example', role: 'Owner' },
+  { id: 'm1', name: 'Sam Rivera', email: 'owner@acme.example', role: 'Owner' },
   { id: 'm2', name: 'Priya Natarajan', email: 'priya@acme.example', role: 'Admin' },
   { id: 'm3', name: 'Jonas Weber', email: 'jonas@acme.example', role: 'Member' },
 ];

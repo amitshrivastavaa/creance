@@ -199,8 +199,9 @@ test('the gallery lists every example, each with a screenshot in both themes', a
   for (const src of await page.locator('.ex-tile img').evaluateAll((imgs) => imgs.map((i) => (i as HTMLImageElement).src))) {
     expect((await request.get(src)).status(), src).toBe(200);
   }
-  await page.getByRole('link', { name: 'Agent operations', exact: true }).click();
-  await expect(page).toHaveTitle(/Overview · Acme/);
+  // Each example opens in a new tab.
+  const [tab] = await Promise.all([page.waitForEvent('popup'), page.getByRole('link', { name: 'Agent operations (opens in a new tab)' }).click()]);
+  await expect(tab).toHaveTitle(/Overview · Acme/);
 });
 
 test('answering in the operations inbox moves the run on', async ({ page }) => {

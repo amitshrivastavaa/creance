@@ -610,7 +610,7 @@ const all: Example[] = [
       ] },
       { title: 'Manage', items: [{ label: 'Settings', href: '#Sidebar', icon: icons.settings }] },
     ]}
-    footer={(s) => <Avatar name="Amit Shrivastava" decorative />}
+    footer={(s) => <Avatar name="Sam Rivera" decorative />}
   />
 </div>`),
   ex('Navigation', 'Molecule', 'Steps', 'Where someone is in a fixed sequence. Each status has a shape and a spoken label.', `
@@ -814,7 +814,7 @@ const all: Example[] = [
   ex('Data', 'Molecule', 'Entity', 'An agent or a person as a row.', `
 <div ${col(420)}>
   <Entity name="Deploy Fixer" description="Asks for risky actions" actions={<Button size="sm" onClick={log}>Open</Button>} />
-  <Entity name="Amit Shrivastava" kind="human" description="Approver" />
+  <Entity name="Sam Rivera" kind="human" description="Approver" />
 </div>`),
   ex('Data', 'Molecule', 'Description', 'Terms and their values.', `
 <Description
@@ -968,7 +968,7 @@ const all: Example[] = [
   ex('Atoms', 'Atom', 'Avatar', 'Agents are rounded squares; people are circles.', `
 <div ${row}>
   <Avatar name="Deploy Fixer" kind="agent" />
-  <Avatar name="Amit Shrivastava" kind="human" />
+  <Avatar name="Sam Rivera" kind="human" />
   <Avatar name="Data Loader" kind="agent" size="sm" />
 </div>`),
   ex('Atoms', 'Atom', 'Tooltip', 'Extra text on hover and keyboard focus.', `
