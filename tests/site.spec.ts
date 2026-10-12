@@ -168,18 +168,18 @@ const pages = [
   '/examples/mobile/',
 ];
 
-test('every example page renders without errors or axe violations, in both themes', async ({ page }) => {
-  const problems = watch(page);
-  for (const scheme of ['light', 'dark'] as const) {
-    await page.emulateMedia({ colorScheme: scheme });
-    for (const url of pages) {
+for (const url of pages) {
+  test(`${url} renders without errors or axe violations, in both themes`, async ({ page }) => {
+    const problems = watch(page);
+    for (const scheme of ['light', 'dark'] as const) {
+      await page.emulateMedia({ colorScheme: scheme });
       await page.goto(url);
-      await expect(page.getByRole('heading', { level: 1 }), url).toBeAttached();
+      await expect(page.getByRole('heading', { level: 1 })).toBeAttached();
       await expectNoAxeViolations(page);
     }
-  }
-  expect(problems).toEqual([]);
-});
+    expect(problems).toEqual([]);
+  });
+}
 
 test('the example pages fit a phone without scrolling sideways', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
