@@ -18,6 +18,10 @@ pnpm test:site    # build it and run the browser tests
 - `src/guides.tsx` holds the guide pages.
 - `src/jsx.ts` reads the edited example code. It parses a subset of JSX and evaluates it against a
   fixed scope, so nothing is passed to `eval`. Operators and statements are not supported.
+- `examples/` is a second page, served at `/examples/`: a sample agent operations app built only from
+  the kit. `examples/main.tsx` routes between screens by hash, `examples/shell.tsx` is the sidebar and
+  header they share, `examples/data.ts` is the made-up data, and each screen is one file in
+  `examples/screens/`, linked from the page as its source.
 - `scripts/extract-props.mjs` reads the library's TypeScript types and writes `src/props.json`,
   which is generated on every dev, build and typecheck run and is not committed.
 

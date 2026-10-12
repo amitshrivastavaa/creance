@@ -1,0 +1,530 @@
+/* Layout for the examples app. Every colour and size is a kit token; the components bring their own look. */
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: var(--cr-gradient-horizon), var(--cr-gradient-canvas), var(--cr-color-bg-canvas);
+  background-attachment: fixed;
+  color: var(--cr-color-text-default);
+  font-family: var(--cr-font-family-sans);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--cr-color-text-link);
+}
+
+code {
+  font-family: var(--cr-font-family-mono);
+  font-size: 0.92em;
+}
+
+.ex-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.ex-muted {
+  color: var(--cr-color-text-muted);
+}
+
+.ex-small {
+  font-size: var(--cr-font-size-sm);
+}
+
+.ex-danger {
+  color: var(--cr-color-danger-text);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.ex-label {
+  margin-bottom: var(--cr-space-2);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+/* The note at the top of every screen */
+.ex-note {
+  margin-bottom: calc(var(--cr-space-2) * -1);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}
+
+/* Sidebar */
+.ex-workspace {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-3);
+  width: 100%;
+  padding: var(--cr-space-2);
+  border: 0;
+  border-radius: var(--cr-radius-lg);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.ex-workspace:hover {
+  background: var(--cr-color-bg-subtle);
+}
+
+.ex-workspace:focus-visible,
+.ex-usage:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.ex-workspace__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: var(--cr-font-size-sm);
+}
+
+.ex-workspace__text span {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}
+
+.ex-side-foot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-3);
+}
+
+.ex-side-foot__title {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 var(--cr-space-2);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.ex-side-foot__title a {
+  color: var(--cr-color-text-secondary);
+  text-decoration: none;
+}
+
+.ex-side-agents {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: calc(var(--cr-space-2) * -1) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ex-side-agents a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 32px;
+  padding: 0 var(--cr-space-2);
+  border-radius: var(--cr-radius-md);
+  color: inherit;
+  text-decoration: none;
+}
+
+.ex-side-agents a:hover {
+  background: var(--cr-color-bg-subtle);
+}
+
+.ex-side-agents .cr-status-dot {
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-medium);
+}
+
+.ex-side-agents .cr-status-dot[data-status] {
+  color: var(--cr-color-text-default);
+}
+
+.ex-side-agents__state {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}
+
+.ex-side-agents__state[data-failed] {
+  color: var(--cr-color-danger-text);
+}
+
+.ex-usage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-2);
+  padding: var(--cr-space-3);
+  border: 1px solid var(--cr-color-glass-edge);
+  border-radius: var(--cr-radius-lg);
+  background: var(--cr-color-glass-tile);
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.ex-usage__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--cr-font-size-xs);
+}
+
+.ex-usage__note {
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+}
+
+/* Header */
+.ex-header {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--cr-space-3);
+  min-width: 0;
+}
+
+.ex-header__space {
+  flex: 1;
+}
+
+.ex-search {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  width: 240px;
+  min-height: var(--cr-control-height-sm);
+  padding: 0 var(--cr-space-2) 0 var(--cr-space-3);
+  border: 0;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-bg-subtle);
+  color: var(--cr-color-text-muted);
+  font: inherit;
+  font-size: var(--cr-font-size-sm);
+  cursor: pointer;
+}
+
+.ex-search span {
+  flex: 1;
+  text-align: start;
+}
+
+.ex-search:focus-visible {
+  outline: var(--cr-focus-width) solid var(--cr-color-focus);
+  outline-offset: var(--cr-focus-offset);
+}
+
+.ex-count {
+  min-width: 18px;
+  padding: 0 5px;
+  border-radius: var(--cr-radius-full);
+  background: var(--cr-color-ink-bg);
+  color: var(--cr-color-ink-fg);
+  font-size: var(--cr-font-size-xs);
+  line-height: 18px;
+}
+
+/* Narrow: search shrinks to its icon and the theme follows the system. */
+@media (max-width: 720px) {
+  .ex-search {
+    width: auto;
+  }
+
+  .ex-search span,
+  .ex-search kbd,
+  .ex-theme {
+    display: none;
+  }
+}
+
+/* Page */
+.cr-app-shell__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-5);
+}
+
+.ex-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--cr-space-3);
+}
+
+.ex-head > div:first-child {
+  flex: 1;
+  min-width: 240px;
+}
+
+.ex-head h1 {
+  font-size: var(--cr-font-size-3xl);
+  font-weight: var(--cr-font-weight-bold);
+  letter-spacing: var(--cr-font-tracking-title);
+}
+
+.ex-head p {
+  margin-top: var(--cr-space-1);
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-sm);
+}
+
+.ex-head__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cr-space-2);
+}
+
+.ex-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cr-space-2);
+}
+
+.ex-filters .cr-clearable,
+.ex-filters .cr-search {
+  width: min(280px, 100%);
+}
+
+.ex-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-4);
+  min-width: 0;
+}
+
+/* Grids collapse to one column on narrow screens. */
+.ex-grid {
+  display: grid;
+  gap: var(--cr-space-4);
+  align-items: start;
+}
+
+.ex-grid--2 {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.ex-grid--3 {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.ex-grid--4 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.ex-grid--side {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+}
+
+.ex-grid--inbox {
+  grid-template-columns: minmax(300px, 400px) minmax(0, 1fr);
+}
+
+@media (max-width: 1100px) {
+  .ex-grid--side,
+  .ex-grid--inbox {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.ex-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-4);
+  min-width: 0;
+  padding: var(--cr-space-5);
+}
+
+.ex-card h2 {
+  font-size: var(--cr-font-size-lg);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.ex-card h3 {
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.ex-card--flush {
+  /* Holds the table's visually hidden parts inside the scroll area. */
+  position: relative;
+  gap: 0;
+  padding: 0;
+  overflow-x: auto;
+}
+
+.ex-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cr-space-3);
+  padding: var(--cr-space-5) var(--cr-space-5) var(--cr-space-3);
+}
+
+.ex-card__head a,
+.ex-more {
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.ex-card__foot {
+  padding: var(--cr-space-3) var(--cr-space-4);
+  border-top: 1px solid var(--cr-color-border-default);
+}
+
+.ex-steps {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-3);
+  font-size: var(--cr-font-size-sm);
+  white-space: nowrap;
+}
+
+.ex-steps .cr-progress {
+  width: 80px;
+}
+
+.ex-actor {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cr-space-2);
+  white-space: nowrap;
+}
+
+/* Agents and services */
+.ex-agent__head,
+.ex-service__head {
+  display: flex;
+  align-items: center;
+  gap: var(--cr-space-3);
+}
+
+.ex-agent__head > div,
+.ex-service__head > div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ex-agent__head .cr-status-dot,
+.ex-service__head .cr-status-dot {
+  font-size: var(--cr-font-size-xs);
+}
+
+.ex-agent p,
+.ex-service p {
+  min-height: 2.8em;
+  color: var(--cr-color-text-secondary);
+  font-size: var(--cr-font-size-sm);
+  line-height: var(--cr-font-line-height-normal);
+}
+
+.ex-agent__facts {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--cr-space-3);
+  padding-top: var(--cr-space-3);
+  border-top: 1px solid var(--cr-color-border-default);
+}
+
+.ex-agent__facts dt {
+  white-space: nowrap;
+  color: var(--cr-color-text-muted);
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.ex-agent__facts dd {
+  margin: 0;
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+.ex-agent__facts dl {
+  margin: 0;
+}
+
+.ex-agent__facts dl:last-child {
+  text-align: end;
+}
+
+.ex-agent__actions {
+  display: flex;
+  gap: var(--cr-space-2);
+}
+
+/* Lists inside cards */
+.ex-switches {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-4);
+}
+
+.ex-limits,
+.ex-files {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cr-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ex-limits__row,
+.ex-files li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--cr-space-3);
+  margin-bottom: var(--cr-space-2);
+  font-size: var(--cr-font-size-sm);
+}
+
+.ex-files {
+  gap: 0;
+}
+
+.ex-files span {
+  color: var(--cr-color-text-muted);
+}
+
+/* The run */
+.ex-chat {
+  height: calc(100dvh - 61px - 2 * var(--cr-space-6) - 3 * var(--cr-space-5));
+  min-height: 420px;
+}
+
+.ex-run-aside h2 {
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-semibold);
+}
+
+/* Settings */
+.ex-form {
+  max-width: 720px;
+}
+
+.ex-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--cr-space-2);
+}
+
+.cr-tabs__content {
+  padding-top: var(--cr-space-4);
+}

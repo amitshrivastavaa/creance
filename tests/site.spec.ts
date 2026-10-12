@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { expectNoAxeViolations } from './axe';
 
 function watch(page: Page) {
   const problems: string[] = [];
@@ -138,4 +139,51 @@ test('the Chat example answers what is typed, streaming a reply and then citing 
   await expect(stage.getByRole('button', { name: 'Stop' })).toBeVisible();
   await expect(stage.getByRole('link', { name: /Build 482 log/ })).toBeVisible({ timeout: 15_000 });
   await expect(stage.getByRole('button', { name: 'Send' })).toBeVisible();
+});
+
+// The examples app at /examples/: a sample product built only from the kit.
+const screens = ['overview', 'inbox', 'runs', 'run/r41', 'agents', 'permissions', 'budgets', 'integrations', 'audit-log', 'settings'];
+
+test('every example screen renders without errors or axe violations, in both themes', async ({ page }) => {
+  const problems = watch(page);
+  for (const scheme of ['light', 'dark'] as const) {
+    await page.emulateMedia({ colorScheme: scheme });
+    for (const screen of screens) {
+      await page.goto(`/examples/#${screen}`);
+      await expect(page.getByRole('heading', { level: 1 }), screen).toBeAttached();
+      await expectNoAxeViolations(page);
+    }
+  }
+  expect(problems).toEqual([]);
+});
+
+test('answering in the examples inbox moves the run on, and the sidebar leads between screens', async ({ page }) => {
+  const problems = watch(page);
+  await page.goto('/');
+  await page.getByRole('link', { name: 'See an example app' }).click();
+  await expect(page).toHaveTitle(/Overview · Acme/);
+
+  await page.getByRole('navigation', { name: 'Workspace' }).getByRole('link', { name: /Inbox/ }).click();
+  await page.getByRole('button', { name: /Allow once/ }).click();
+  await expect(page.getByRole('button', { name: /Needs you/ })).toContainText('4');
+
+  // The run already shows what happened after the approval.
+  await page.goto('/examples/#run/r41');
+  await expect(page.getByText(/Installed zod@3 and ran the tests/)).toBeVisible();
+  await expect(page.getByRole('button', { name: /Allow once/ })).toHaveCount(0);
+
+  // Typing in the run gets an honest answer from the sample agent.
+  await page.getByRole('textbox').fill('Also bump the timeout');
+  await page.keyboard.press('Enter');
+  await expect(page.getByText(/sample agent, so it cannot act/)).toBeVisible();
+  expect(problems).toEqual([]);
+});
+
+test('the example screens fit a phone without scrolling sideways', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const screen of screens) {
+    await page.goto(`/examples/#${screen}`);
+    await expect(page.getByRole('heading', { level: 1 })).toBeAttached();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth), screen).toBeLessThanOrEqual(390);
+  }
 });

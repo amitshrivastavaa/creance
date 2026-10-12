@@ -136,7 +136,7 @@ jobs:
         env:
           DEMO_BASE: ./
       - run: pnpm --filter site build
-      # The site at the root, Storybook at /storybook/, the demo at /demo/.
+      # The site at the root (its example app at /examples/), Storybook at /storybook/, the demo at /demo/.
       - run: |
           mkdir site
           cp -r apps/site/dist/. site/

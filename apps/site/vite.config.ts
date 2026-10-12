@@ -11,4 +11,6 @@ export default defineConfig({
   plugins: [react()],
   // Relative paths, so the build works at a site root or under any sub-path.
   base: './',
+  // Two pages: the docs at the root, and a sample app built from the kit at /examples/.
+  build: { rollupOptions: { input: { main: 'index.html', examples: 'examples/index.html' } } },
 });
