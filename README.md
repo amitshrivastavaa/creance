@@ -41,6 +41,16 @@ import { Button, Field, Input } from '@creance-ui/react';
 
 React 18 or later is the only peer dependency. [Frameworks](#frameworks) lists where it has been tested.
 
+### Or copy the source in, with shadcn
+
+Creance is also a [shadcn registry](https://ui.shadcn.com/docs/registry). In a project set up with `shadcn init`, add any component by its address:
+
+```sh
+npx shadcn@latest add https://creance.pages.dev/r/approval-prompt.json
+```
+
+That copies the component's source and CSS into `components/creance/`, with every Creance component it uses, and the shared helpers and design tokens into `lib/creance/`. Import `lib/creance/tokens.css` once in your root layout; the files are yours to change. Like the rest of a shadcn app, dark mode follows the `.dark` class. Each component's page on the site shows its command. The registry is built from `main`, so it can be a little ahead of the npm release.
+
 Every component runs live on [the site](https://creance.pages.dev/#components), with code you can edit, props and keyboard tables. For coding agents, the same docs are markdown: [llms.txt](https://creance.pages.dev/llms.txt) lists a file per guide and component, and [llms-full.txt](https://creance.pages.dev/llms-full.txt) has them all in one.
 
 ![The docs site: the Table page, with a live preview above the code that produces it](docs/images/site.png)

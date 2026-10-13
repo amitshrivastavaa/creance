@@ -304,6 +304,7 @@ a.btn--primary { color: #ffffff; }
 .doc__crumb span { margin-inline: 4px; opacity: 0.6; }
 .doc__head h1 { font-size: clamp(32px, 4.4vw, 46px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; overflow-wrap: anywhere; }
 .doc__about { max-width: 62ch; color: var(--text-2); font-size: 17px; }
+.doc__shadcn { max-width: 100%; margin-top: 4px; }
 .doc__panel { border-radius: 22px; }
 .doc__stage { min-height: 200px; padding: 40px 32px; }
 .doc__stage[data-stale] { opacity: 0.45; }

@@ -12,3 +12,5 @@ next-env.d.ts
 apps/site/src/props.json
 apps/site/artifact
 .env*.local
+apps/site/registry
+apps/site/public/r

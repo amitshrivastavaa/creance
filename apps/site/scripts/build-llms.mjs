@@ -32,7 +32,16 @@ function propsTable(props) {
 }
 
 function componentPage(e) {
-  const out = [`# ${e.name}`, `> ${e.about}`, `${e.group} / ${e.level.toLowerCase()}. Live example: ${SITE}#${e.name}`, fence(importLine(e.code)), '## Example', fence(e.code)];
+  const item = e.name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/([A-Z])([A-Z][a-z])/g, '$1-$2').toLowerCase();
+  const out = [
+    `# ${e.name}`,
+    `> ${e.about}`,
+    `${e.group} / ${e.level.toLowerCase()}. Live example: ${SITE}#${e.name}`,
+    fence(importLine(e.code)),
+    `Or copy its source into a shadcn project: \`npx shadcn@latest add ${SITE}r/${item}.json\``,
+    '## Example',
+    fence(e.code),
+  ];
   for (const m of e.more ?? []) out.push(`### ${m.title}`, ...(m.about ? [m.about] : []), fence(m.code));
 
   const parts = reference[e.name] ?? [];

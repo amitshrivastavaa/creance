@@ -1,6 +1,6 @@
 # Creance as a shadcn registry
 
-Date: 2026-10-13. Status: design approved in conversation; this spec is awaiting review.
+Date: 2026-10-13. Status: approved and built. Sections marked "found while building" record what the smoke test changed.
 
 ## Why
 
@@ -11,7 +11,7 @@ index, it is also a place people find Creance.
 
 Success: in a fresh Next.js project set up with shadcn, `npx shadcn add https://creance.pages.dev/r/approval-prompt.json`
 installs ApprovalPrompt and the components it uses; after importing one CSS file, it builds, typechecks, renders
-as it does in Creance, and passes axe, in light and dark (including next-themes' `.dark` class).
+as it does in Creance, and passes axe, in light and in dark through the `.dark` class.
 
 ## What a spike established (2026-10-13, throwaway, shadcn 4.21.4, Next.js 16.4.0, Tailwind 4)
 
@@ -69,15 +69,22 @@ React is assumed present.
 
 ## Dark mode in shadcn projects
 
-shadcn projects usually switch theme with next-themes, which sets `class="dark"` or `class="light"` on `<html>`.
-Creance's tokens only follow `data-theme` and the system setting. The tokens build (`packages/tokens/build.mjs`)
-will also accept the classes:
+shadcn projects switch theme with the `.dark` class on `<html>` (next-themes sets it, and follows the system when
+asked); their own CSS ignores the system setting. Creance's tokens followed only `data-theme` and the system setting.
 
-- `:root:where([data-theme="dark"], .dark)` for dark,
-- `:root:where(:not([data-theme="light"], .light))` inside `prefers-color-scheme: dark`.
+- The tokens build (`packages/tokens/build.mjs`) also accepts the classes: `:root:where([data-theme="dark"], .dark)`
+  for dark, and `:root:where(:not([data-theme="light"], .light))` inside `prefers-color-scheme: dark`. This ships in
+  `@creance-ui/tokens` (a minor changeset), so npm users on next-themes get it too.
+- The registry's copy of `tokens.css` drops the `prefers-color-scheme` block, so Creance follows the app like the
+  rest of a shadcn project. Found by the smoke test: on a dark system, a plain shadcn app stays light, and Creance
+  turning dark on its white page failed axe contrast. The generator fails loudly if that block's shape changes.
 
-`:where()` keeps specificity at zero, as today. This ships in `@creance-ui/tokens` too (a patch changeset), so npm
-users on next-themes get it as well.
+## Found while building: no clock reads while rendering
+
+The smoke test's `next build` failed: `create-next-app` now turns on `cacheComponents`, and Next.js 16 then refuses
+`Date.now()` or `new Date()` during prerendering. StatusBadge, RelativeTimeCard, NeedsYouInbox and Calendar read the
+clock while rendering, so this affected npm users too. They now read it after mount through `internal/useNow.ts`
+(a patch changeset), and `apps/next` builds with `cacheComponents` on, so all 109 components are checked under it.
 
 ## Hosting
 
@@ -105,7 +112,8 @@ users on next-themes get it as well.
   are `~/…`, not `@/…`) to a temporary folder, installs it, runs `shadcn add` for `approval-prompt`, `chat`,
   `run-timeline` and `agent-run`, then `tsc --noEmit` and `next build`.
 - `tests/registry.spec.ts` (Playwright, run by the smoke script against `next start`): the fixture's page shows the
-  three components, passes axe in light, in dark by system setting, and in dark by the `.dark` class.
+  three components and they work; axe passes in light (also on a dark system, where the app stays light) and with
+  the `.dark` class; `data-theme="dark"` works too.
 - A tokens unit test for the new selectors.
 
 ## Out of scope
