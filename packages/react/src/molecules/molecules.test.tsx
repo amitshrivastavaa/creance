@@ -34,6 +34,8 @@ test('StatusBadge keeps counting while waiting for a person', () => {
 });
 
 test('nothing reads the clock while rendering on the server, so Next.js can prerender', () => {
+  // Under jsdom, React 18 warns about Radix's useLayoutEffect, and Vitest timestamps the warning with Date.now.
+  const quiet = vi.spyOn(console, 'error').mockImplementation(() => {});
   const now = vi.spyOn(Date, 'now');
   const running = renderToString(<StatusBadge status="running" startedAt={88_000} />);
   const relative = renderToString(<RelativeTimeCard date={new Date('2026-10-13T12:00:00Z')} />);
@@ -41,6 +43,7 @@ test('nothing reads the clock while rendering on the server, so Next.js can prer
   const inbox = renderToString(<NeedsYouInbox items={[{ id: 'a', kind: 'approval', title: 'Install zod', agentName: 'Deploy Fixer', createdAt: 0, urgency: 'high' }]} />);
   expect(now).not.toHaveBeenCalled();
   now.mockRestore();
+  quiet.mockRestore();
   // An open-ended time is left out until mounted; a finished one is known.
   expect(running).toContain('Running');
   expect(running).not.toMatch(/\d+s/);
