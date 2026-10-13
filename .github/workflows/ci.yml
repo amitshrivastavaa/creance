@@ -28,6 +28,7 @@ jobs:
       - run: pnpm lint
       - run: pnpm --filter @creance-ui/react test
       - run: pnpm --filter ai-sdk-example test
+      - run: pnpm --filter @creance-ui/tokens test
       - run: pnpm --filter @creance-ui/react size
 
   react-18:
@@ -84,6 +85,9 @@ jobs:
       # The site: every guide and every component example renders, and examples can be edited.
       - run: pnpm test:site
       - run: pnpm test:ai-sdk
+      # The shadcn registry: its items check out, and installing some into a fresh shadcn project builds and works.
+      - run: pnpm --filter site test
+      - run: pnpm test:registry
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
@@ -138,7 +142,7 @@ jobs:
         env:
           DEMO_BASE: ./
       - run: pnpm --filter site build
-      # The site at the root (its example app at /examples/), Storybook at /storybook/, the demo at /demo/.
+      # The site at the root (its example apps at /examples/, the shadcn registry at /r/), Storybook at /storybook/, the demo at /demo/.
       - run: |
           mkdir site
           cp -r apps/site/dist/. site/

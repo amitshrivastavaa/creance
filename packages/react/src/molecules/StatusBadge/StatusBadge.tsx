@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Badge, statusLabels, type Status } from '../../atoms/Badge/Badge';
 import { formatDuration } from '../../internal/formatDuration';
+import { useNow } from '../../internal/useNow';
 import './StatusBadge.css';
 
 export interface StatusBadgeProps {
@@ -16,24 +16,16 @@ export interface StatusBadgeProps {
   className?: string;
 }
 
-function useNow(active: boolean): number {
-  const [now, setNow] = useState(() => Date.now());
-  useEffect(() => {
-    if (!active) return;
-    const id = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(id);
-  }, [active]);
-  return now;
-}
-
 /**
  * The ticking time is deliberately not a live region: announcing every second would drown out everything else.
  * Organisms announce status transitions instead.
  */
 export function StatusBadge({ status, startedAt, endedAt, label, className }: StatusBadgeProps) {
   const ticking = startedAt !== undefined && endedAt === undefined && (status === 'running' || status === 'waiting');
-  const now = useNow(ticking);
-  const elapsed = startedAt === undefined ? undefined : (endedAt ?? now) - startedAt;
+  const now = useNow(1000, ticking);
+  // Until mounted, an open-ended time is unknown, so it is left out rather than shown wrong.
+  const end = endedAt ?? now;
+  const elapsed = startedAt === undefined || end === undefined ? undefined : end - startedAt;
   return (
     <Badge status={status} className={className}>
       {label ?? statusLabels[status]}

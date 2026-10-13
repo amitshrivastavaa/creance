@@ -137,7 +137,7 @@ export const guides: Guide[] = [
   {
     name: 'Installation',
     group: 'Getting started',
-    about: 'Two packages from npm, and two stylesheets imported once.',
+    about: 'Two packages from npm and two stylesheets imported once, or the source copied in with shadcn.',
     body: () => (
       <>
         <h2>Install</h2>
@@ -152,6 +152,21 @@ export const guides: Guide[] = [
 import '@creance-ui/tokens/tokens.css';
 import '@creance-ui/react/styles.css';`}
         />
+        <h2>Or copy the source in, with shadcn</h2>
+        <p>
+          Creance is also a shadcn registry. In a project set up with <code>shadcn init</code>, add any component by its address, here ApprovalPrompt:
+        </p>
+        <Snippet commands="npx shadcn@latest add https://creance.pages.dev/r/approval-prompt.json" />
+        <p>
+          That copies its source and CSS into <code>components/creance/approval-prompt</code>, with every Creance component it uses beside it, the shared helpers into{' '}
+          <code>lib/creance</code>, and the design tokens into <code>lib/creance/tokens.css</code>. Import that file once, in your root layout:
+        </p>
+        <Block code={`import '@/lib/creance/tokens.css';`} />
+        <p>
+          The files are yours to change: edit <code>tokens.css</code> to retheme. Like the rest of a shadcn app, dark mode follows the <code>.dark</code> class (or{' '}
+          <code>data-theme=&quot;dark&quot;</code>); to follow the system, let next-themes set the class. The <code>agent-run</code> item adds the event model and{' '}
+          <code>useAgentRun</code>. The registry is built from the main branch, so it can be a little ahead of the latest npm release. Every component page shows its own command.
+        </p>
         <h2>From source</h2>
         <p>To work on Creance itself, clone the repository. You need Node 22 or later and pnpm 12.</p>
         <Snippet tone="light" commands={['pnpm install', 'pnpm build', 'pnpm site']} />

@@ -281,6 +281,8 @@ function Playground({ id, label, code: initial, state: initialState, lead }: { i
   );
 }
 
+const registryUrl = (name: string) => `https://creance.pages.dev/r/${name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/([A-Z])([A-Z][a-z])/g, '$1-$2').toLowerCase()}.json`;
+
 function Doc({ example, prev, next }: { example: Example; prev?: Entry; next?: Entry }) {
   return (
     <article className="doc">
@@ -290,6 +292,8 @@ function Doc({ example, prev, next }: { example: Example; prev?: Entry; next?: E
         </p>
         <h1>{example.name}</h1>
         <p className="doc__about">{example.about}</p>
+        {/* The same address scripts/build-registry.mjs gives the component's registry item. */}
+        <Creance.Snippet className="doc__shadcn" commands={`npx shadcn@latest add ${registryUrl(example.name)}`} />
       </header>
 
       <Playground id="pg-code" label={`${example.name} example`} code={example.code} state={example.state} lead />

@@ -1,10 +1,11 @@
 'use client';
 
-import { createElement, useId, useState, type ReactNode } from 'react';
+import { createElement, useId, type ReactNode } from 'react';
 import { Avatar } from '../../atoms/Avatar/Avatar';
 import { cx } from '../../internal/cx';
 import { AlertIcon, CrossIcon, PauseIcon, ShieldIcon } from '../../internal/icons';
 import { formatDuration } from '../../internal/formatDuration';
+import { useNow } from '../../internal/useNow';
 import './NeedsYouInbox.css';
 
 export type InboxKind = 'approval' | 'question' | 'failed-run' | 'review';
@@ -57,7 +58,8 @@ export function NeedsYouInbox({
   className,
 }: NeedsYouInboxProps) {
   const headingId = useId();
-  const [mountedAt] = useState(Date.now);
+  // Read once after mount: a clock read while rendering differs between server and browser.
+  const mountedAt = useNow(60_000, false);
   const reference = now ?? mountedAt;
   const sorted = sortInbox(items);
   const countByKind = (Object.keys(kinds) as InboxKind[])
@@ -107,8 +109,12 @@ export function NeedsYouInbox({
               <span className="cr-inbox__meta">
                 <Avatar name={item.agentName} size="sm" decorative />
                 {item.agentName}
-                <span aria-hidden="true">·</span>
-                <span>waiting {formatDuration(reference - item.createdAt)}</span>
+                {reference !== undefined && (
+                  <>
+                    <span aria-hidden="true">·</span>
+                    <span>waiting {formatDuration(reference - item.createdAt)}</span>
+                  </>
+                )}
               </span>
             </li>
           ))}

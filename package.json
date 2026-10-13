@@ -25,7 +25,8 @@
     "test:react18": "sh scripts/test-react18.sh",
     "site": "pnpm --filter site dev",
     "test:site": "pnpm --filter site build && playwright test -c playwright.site.config.ts",
-    "test:ai-sdk": "pnpm --filter ai-sdk-example build && playwright test -c playwright.ai-sdk.config.ts"
+    "test:ai-sdk": "pnpm --filter ai-sdk-example build && playwright test -c playwright.ai-sdk.config.ts",
+    "test:registry": "node scripts/registry-smoke.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

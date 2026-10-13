@@ -28,8 +28,10 @@ test('denying the install is passed back to the agent, which carries on without 
   await page.goto('/');
   await page.getByRole('button', { name: 'Start the agent' }).click();
   await page.getByRole('button', { name: /Deny/ }).click();
-  await expect(page.getByText('Denied by you')).toBeVisible();
+  // The agent carries on to the config edit; the denied call stays in the timeline, failed.
   await expect(page.getByRole('button', { name: 'Accept all' })).toBeVisible();
+  await expect(page.getByRole('button', { name: /install_package Failed/ })).toBeVisible();
+  await expect(page.getByText('Denied by you', { exact: true })).toBeVisible();
 });
 
 test('the kill switch stops the run', async ({ page }) => {
