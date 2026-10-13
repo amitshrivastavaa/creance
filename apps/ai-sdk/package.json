@@ -1,0 +1,30 @@
+{
+  "name": "ai-sdk-example",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --port 6030",
+    "build": "next build",
+    "start": "next start --port 6030",
+    "test": "vitest run",
+    "typecheck": "next typegen && tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "4.0.72",
+    "@ai-sdk/react": "4.0.131",
+    "@creance-ui/react": "workspace:*",
+    "@creance-ui/tokens": "workspace:*",
+    "ai": "7.0.128",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.3"
+  }
+}

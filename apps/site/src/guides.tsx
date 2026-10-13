@@ -129,7 +129,7 @@ export const guides: Guide[] = [
         </ul>
         <h2>Where it stands</h2>
         <Alert title="Early, and on npm">
-          Creance is a one-person project. No real agent is connected to it, and it has no production users. The automated checks pass; a manual screen-reader pass has not been done.
+          Creance is a one-person project, and it has no production users. The hosted demo is simulated; an example in the repository runs a real model through the Vercel AI SDK. The automated checks pass; a manual screen-reader pass has not been done.
         </Alert>
       </>
     ),
@@ -316,7 +316,10 @@ const run = useAgentRun(sim.events);
 
 sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: 'allow-once' });`}
         />
-        <p>Connecting a real agent means emitting these events yourself. That adapter is not part of Creance.</p>
+        <p>
+          Connecting a real agent means emitting these events yourself. For the Vercel AI SDK,{' '}
+          <a href="https://github.com/amitshrivastavaa/creance/tree/main/apps/ai-sdk">apps/ai-sdk</a> does it in one adapter file that turns <code>useChat</code>'s messages into events. Copy it; it is not part of the package.
+        </p>
       </>
     ),
   },
@@ -473,7 +476,7 @@ sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: 'all
             <strong>One module per component.</strong> The package ships a file per component so bundlers can drop what an app does not import. Importing only ApprovalPrompt adds 1.87 kB of Creance code, minified and compressed.
           </li>
           <li>
-            <strong>Simulated, not connected.</strong> A simulator ships instead of a real agent integration, so components can be built, tested and shown the same way every time.
+            <strong>Simulated by default.</strong> A simulator ships instead of a real agent integration, so components can be built, tested and shown the same way every time. A real model runs only in the AI SDK example, locally, with your own key.
           </li>
         </ul>
         <h2>Atomic levels</h2>
@@ -554,7 +557,7 @@ sim.respond({ type: 'approval.resolved', approvalId: approval.id, decision: 'all
             <StatusDot status="done">It is published to npm as @creance-ui/react and @creance-ui/tokens, and the repository is public.</StatusDot>
           </li>
           <li>
-            <StatusDot status="queued">No real agent is connected. The demo plays a simulated run.</StatusDot>
+            <StatusDot status="done">A real model runs through the Vercel AI SDK in apps/ai-sdk, locally with your own key. The hosted demo still plays a simulated run.</StatusDot>
           </li>
           <li>
             <StatusDot status="queued">A manual screen-reader pass with VoiceOver and NVDA has not been done.</StatusDot>
