@@ -45,6 +45,7 @@ export function toAgentEvents(messages: Message[], { status, stopped, error, age
   let step: string | undefined;
   let tokens = 0;
   let summary = '';
+  // A decision is still open, or a tool call has not finished: either way the run is not over.
   let open = false;
   const endStep = () => {
     if (step) emit(`${step}:end`, { type: 'step.completed', stepId: step });
@@ -94,6 +95,7 @@ export function toAgentEvents(messages: Message[], { status, stopped, error, age
         }
       }
 
+      if (part.state === 'input-available' || part.state === 'approval-responded') open = true;
       if (part.state === 'output-available') {
         emit(`${callId}:end`, { type: 'tool.call.completed', callId, output: part.output });
         if (tool === 'read_file' && typeof part.output === 'string') known[input.path!] = part.output;

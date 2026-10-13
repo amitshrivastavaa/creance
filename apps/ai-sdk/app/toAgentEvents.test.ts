@@ -63,6 +63,12 @@ describe('toAgentEvents', () => {
     expect(after.find((e) => e.type === 'tool.call.failed')).toMatchObject({ error: 'Denied by you' });
   });
 
+  it('does not end the run while an answered approval is still waiting to run', () => {
+    const input = { name: 'zod', version: '^3', reason: 'It is imported.' };
+    const answered = [user(), assistant([{ type: 'step-start' }, tool('install_package', 'c1', 'approval-responded', { input, approval: { id: 'ap1', approved: true } })])];
+    expect(types(answered)).not.toContain('run.completed');
+  });
+
   it('shows a proposed write as a diff against what the agent read', () => {
     const messages = [
       user(),

@@ -18,6 +18,14 @@ test('StatusBadge ticks while running and freezes once ended', () => {
   expect(screen.getByText(/Done/)).toHaveTextContent('Done · , 16s');
 });
 
+test('StatusBadge keeps counting while waiting for a person', () => {
+  vi.useFakeTimers({ now: 100_000 });
+  render(<StatusBadge status="waiting" startedAt={95_000} />);
+  expect(screen.getByText(/5s/)).toBeInTheDocument();
+  act(() => vi.advanceTimersByTime(4_000));
+  expect(screen.getByText(/9s/)).toBeInTheDocument();
+});
+
 test('BudgetMeter warns at 80% and flags over-limit', () => {
   const { container, rerender } = render(<BudgetMeter used={40_000} limit={50_000} unit="tokens" />);
   expect(container.firstElementChild).toHaveAttribute('data-tone', 'warning');
