@@ -89,6 +89,7 @@ The twelve agent organisms are built for those screens. `Chat`, a whole conversa
 | [`apps/site`](apps/site) | The project site: an overview, guides, and every component running live with code you can edit, plus props and keyboard tables generated from the types. It also serves sample apps built only from the kit at `/examples/`: an agent operations product, an assistant chat, a code review, sign in and onboarding, and mobile approvals |
 | [`apps/demo`](apps/demo) | A Vite app that runs one full scenario, consuming the built package like any app would |
 | [`apps/next`](apps/next) | A Next.js App Router app that renders all 109 components, used to test server rendering and hydration |
+| [`apps/ai-sdk`](apps/ai-sdk) | A real model on Creance through the Vercel AI SDK: it fixes a sample project in memory, asks before installing, shows its edit as a diff and can be stopped. Runs locally with your own key |
 
 ## How it works
 
@@ -140,7 +141,7 @@ For the App Router, the 62 modules that use state, effects, Radix or their own e
 
 **ApprovalPrompt is not a modal.** People usually need to read the timeline before allowing something, so the prompt is an inline, labelled group that takes focus when it appears, instead of trapping it. High-risk actions hide "Always allow" by default.
 
-**Simulated, not connected.** The kit ships with a simulator instead of a real agent integration, so the components can be built, tested and demoed deterministically. Connecting a real backend means emitting `AgentEvent`s; that adapter is not part of this repo.
+**Simulated, not connected.** The kit ships with a simulator instead of a real agent integration, so the components can be built, tested and demoed deterministically. Connecting a real backend means emitting `AgentEvent`s. [`apps/ai-sdk`](apps/ai-sdk) does that for the Vercel AI SDK with one adapter file; it is an example to copy, not part of the published package.
 
 ## Accessibility
 
@@ -212,7 +213,7 @@ Checks: `pnpm typecheck`, `pnpm lint`, `pnpm test` (unit and story axe tests), `
 
 ## Status
 
-Published to npm as [`@creance-ui/react`](https://www.npmjs.com/package/@creance-ui/react) and [`@creance-ui/tokens`](https://www.npmjs.com/package/@creance-ui/tokens). The scenario is simulated: no real agent is connected. Built as a portfolio project; there are no production users.
+Published to npm as [`@creance-ui/react`](https://www.npmjs.com/package/@creance-ui/react) and [`@creance-ui/tokens`](https://www.npmjs.com/package/@creance-ui/tokens). The hosted demo is simulated; [`apps/ai-sdk`](apps/ai-sdk) runs a real model locally with your own key. Built as a portfolio project; there are no production users.
 
 [`docs/PLAN.md`](docs/PLAN.md) has the original plan and architecture notes.
 

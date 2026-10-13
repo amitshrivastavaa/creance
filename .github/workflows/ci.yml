@@ -27,6 +27,7 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm lint
       - run: pnpm --filter @creance-ui/react test
+      - run: pnpm --filter ai-sdk-example test
       - run: pnpm --filter @creance-ui/react size
 
   react-18:
@@ -82,6 +83,7 @@ jobs:
       - run: pnpm test:next
       # The site: every guide and every component example renders, and examples can be edited.
       - run: pnpm test:site
+      - run: pnpm test:ai-sdk
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
