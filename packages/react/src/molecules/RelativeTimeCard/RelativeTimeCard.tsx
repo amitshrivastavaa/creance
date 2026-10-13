@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useNow } from '../../internal/useNow';
 import { cx } from '../../internal/cx';
 import { Description } from '../Description';
 import { ContextCard } from '../ContextCard';
@@ -37,13 +37,8 @@ export function formatRelative(date: Date, now: Date, locale?: string) {
  * time zone and in UTC. The `<time>` element carries the machine-readable date.
  */
 export function RelativeTimeCard({ date, locale, now, className }: RelativeTimeCardProps) {
-  const [tick, setTick] = useState(() => Date.now());
-  useEffect(() => {
-    if (now) return;
-    const id = setInterval(() => setTick(Date.now()), 60_000);
-    return () => clearInterval(id);
-  }, [now]);
-  const current = now ?? new Date(tick);
+  const tick = useNow(60_000, !now);
+  const current = now ?? (tick === undefined ? undefined : new Date(tick));
   const exact = (timeZone?: string) =>
     new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short', timeZone }).format(date);
 
@@ -54,7 +49,7 @@ export function RelativeTimeCard({ date, locale, now, className }: RelativeTimeC
           items={[
             { term: 'Your time', details: exact() },
             { term: 'UTC', details: exact('UTC') },
-            { term: 'Relative', details: formatRelative(date, current, locale) },
+            ...(current ? [{ term: 'Relative', details: formatRelative(date, current, locale) }] : []),
           ]}
         />
       }
@@ -62,7 +57,8 @@ export function RelativeTimeCard({ date, locale, now, className }: RelativeTimeC
       {/* Focusable so keyboard users can reveal the exact time, the same way hover does. */}
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
       <time dateTime={date.toISOString()} tabIndex={0} className={cx('cr-relative-time', className)}>
-        {formatRelative(date, current, locale)}
+        {/* Until mounted the current time is unknown, so the exact UTC time stands in. */}
+        {current ? formatRelative(date, current, locale) : exact('UTC')}
       </time>
     </ContextCard>
   );

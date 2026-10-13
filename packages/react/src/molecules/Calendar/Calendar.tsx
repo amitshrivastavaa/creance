@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react'
 import { cx } from '../../internal/cx';
 import { ChevronIcon, ChevronLeftIcon } from '../../internal/icons';
 import { addDays, addMonths, compare, monthGrid, sameDay, toDay } from './dates';
+import { useNow } from '../../internal/useNow';
 import './Calendar.css';
 
 export interface DateRange {
@@ -39,7 +40,9 @@ export type CalendarProps = Base &
  */
 export function Calendar(props: CalendarProps) {
   const { weekStartsOn = 1, locale, min, max, isDateDisabled, className } = props;
-  const today = toDay(props.today ?? new Date());
+  // Today is read after mount: a clock read while rendering differs between server and browser.
+  const now = useNow(60_000, false);
+  const today = props.today ? toDay(props.today) : now === undefined ? undefined : toDay(new Date(now));
   const range = props.mode === 'range';
 
   const [ownSingle, setOwnSingle] = useState<Date | null>(range ? null : ((props.defaultValue as Date | null) ?? null));
@@ -50,16 +53,22 @@ export function Calendar(props: CalendarProps) {
   const [anchor, setAnchor] = useState<Date | null>(null);
   const [hover, setHover] = useState<Date | null>(null);
 
-  const initial = toDay(props.defaultMonth ?? single ?? span?.start ?? today);
-  const [focused, setFocused] = useState(initial);
-  const [month, setMonth] = useState(initial);
-  const grid = useMemo(() => monthGrid(month, weekStartsOn), [month, weekStartsOn]);
+  const start = props.defaultMonth ?? single ?? span?.start ?? today;
+  const [ownFocused, setFocused] = useState(start && toDay(start));
+  const [ownMonth, setMonth] = useState(ownFocused);
+  // Until the person moves, both follow the starting month, which may only be known after mount.
+  const focused = ownFocused ?? (start && toDay(start));
+  const month = ownMonth ?? focused;
+  const grid = useMemo(() => (month ? monthGrid(month, weekStartsOn) : []), [month, weekStartsOn]);
   const gridRef = useRef<HTMLTableElement>(null);
   const moved = useRef(false);
 
   useEffect(() => {
     if (moved.current) gridRef.current?.querySelector<HTMLButtonElement>('[tabindex="0"]')?.focus();
   }, [focused]);
+
+  // No value, no defaultMonth and no today prop: the month is only known once mounted.
+  if (!month || !focused) return <div className={cx('cr-calendar cr-popover', className)} aria-busy="true" />;
 
   const fmt = (o: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat(locale, o);
   const monthTitle = fmt({ month: 'long', year: 'numeric' }).format(month);
