@@ -84,6 +84,8 @@
 
 .cr-run-layout__detail {
   display: grid;
+  /* minmax(0, …): a long line in a card scrolls inside it instead of widening the column. */
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--cr-space-4);
   min-width: 0;
 }

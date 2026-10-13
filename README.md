@@ -10,6 +10,14 @@
 
 > In falconry, a *creance* is the long line tied to a bird in training. The bird flies and hunts on its own; the falconer can always bring it back.
 
+### With a real agent
+
+[`apps/ai-sdk`](apps/ai-sdk) puts a real model on the kit through the Vercel AI SDK: an ordinary `ToolLoopAgent`, `useChat`, and [one adapter file](apps/ai-sdk/app/toAgentEvents.ts) that turns its messages into Creance events. Approvals, the diff and the kill switch all answer through the AI SDK. It runs locally with your own key.
+
+![The AI SDK example: the agent runs the checks, asks to install zod, shows its config edit as a diff, and hands back when the checks pass](docs/images/ai-sdk-run.gif)
+
+*Recorded against the example's scripted model (`MOCK=1`), so the run is the same every time; with a key, a real model makes the calls. [MP4](docs/images/ai-sdk-run.mp4).*
+
 ---
 
 ## Use it

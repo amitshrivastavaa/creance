@@ -7,6 +7,10 @@ tokens in `BudgetMeter`, and a `KillSwitch` that stops it.
 The model is real. The project it works on is not: a few files held in memory, rebuilt on every request.
 Nothing reads or writes your disk, and nothing runs except the model call.
 
+![The agent runs the checks, asks to install zod, shows its config edit as a diff, and hands back](../../docs/images/ai-sdk-run.gif)
+
+*Recorded with the scripted model (`MOCK=1`).*
+
 ## Run it
 
 From the root of this repo:

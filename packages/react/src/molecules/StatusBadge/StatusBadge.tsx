@@ -9,7 +9,7 @@ export interface StatusBadgeProps {
   status: Status;
   /** Epoch ms. When set, the badge shows elapsed time: "Running · 12s". */
   startedAt?: number | undefined;
-  /** Epoch ms. Freezes the elapsed time. Without it, the time ticks while status is running. */
+  /** Epoch ms. Freezes the elapsed time. Without it, the time ticks while status is running or waiting. */
   endedAt?: number | undefined;
   /** Overrides the status word, e.g. "Retrying". */
   label?: string;
@@ -31,7 +31,7 @@ function useNow(active: boolean): number {
  * Organisms announce status transitions instead.
  */
 export function StatusBadge({ status, startedAt, endedAt, label, className }: StatusBadgeProps) {
-  const ticking = startedAt !== undefined && endedAt === undefined && status === 'running';
+  const ticking = startedAt !== undefined && endedAt === undefined && (status === 'running' || status === 'waiting');
   const now = useNow(ticking);
   const elapsed = startedAt === undefined ? undefined : (endedAt ?? now) - startedAt;
   return (

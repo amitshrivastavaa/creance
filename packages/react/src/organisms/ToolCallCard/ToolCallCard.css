@@ -1,5 +1,7 @@
 .cr-tool-card {
   display: grid;
+  /* minmax(0, …): long input or output scrolls inside its block instead of widening the card. */
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--cr-space-2);
   padding: var(--cr-space-4);
   border-radius: var(--cr-radius-lg);
