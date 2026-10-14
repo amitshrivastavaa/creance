@@ -1,6 +1,6 @@
 {
   "name": "@creance-ui/tokens",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Design tokens for Creance, as CSS custom properties (light and dark) and a typed JS export.",
   "license": "MIT",
   "author": "Amit Shrivastava",
