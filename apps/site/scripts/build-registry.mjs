@@ -137,4 +137,22 @@ try {
   process.stderr.write(e.stderr ?? '');
   throw e;
 }
+// Someone opening /r/ in a browser gets the install instructions.
+fs.writeFileSync(
+  path.join(publicDir, 'index.html'),
+  `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Installation · Creance</title>
+    <link rel="canonical" href="https://creance.pages.dev/#Installation" />
+    <meta http-equiv="refresh" content="0; url=../#Installation" />
+    <script>location.replace('../#Installation');</script>
+  </head>
+  <body>
+    <a href="../#Installation">Installation</a>
+  </body>
+</html>
+`,
+);
 console.log(`registry: ${registry.items.length} items in public/r, pointing at ${base}`);
