@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found · Creance</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- Cloudflare Pages serves this, with a 404 status, at any address that has no file. So it loads
+         nothing relative and links from the root. Without it, Pages serves the home page instead. -->
+    <script>
+      try{var t=localStorage.getItem('creance-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}
+    </script>
+    <style>
+      /* The token names and values from @creance-ui/tokens. */
+      :root { color-scheme: light; --cr-color-bg-canvas: #e9ebef; --cr-color-text-default: #1d1d1f; --cr-color-text-muted: #5f6368; }
+      :root[data-theme="dark"] { color-scheme: dark; --cr-color-bg-canvas: #101216; --cr-color-text-default: #f5f5f7; --cr-color-text-muted: #a3a8b0; }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) { color-scheme: dark; --cr-color-bg-canvas: #101216; --cr-color-text-default: #f5f5f7; --cr-color-text-muted: #a3a8b0; }
+      }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px; box-sizing: border-box; background: var(--cr-color-bg-canvas); color: var(--cr-color-text-default); font: 16px/1.5 Inter, system-ui, sans-serif; }
+      main { max-width: 32rem; }
+      h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 8px; }
+      p { margin: 0 0 20px; color: var(--cr-color-text-muted); }
+      a { color: var(--cr-color-text-default); font-weight: 600; margin-right: 20px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Page not found</h1>
+      <p>There is nothing at this address.</p>
+      <a href="/">Home</a>
+      <a href="/#components">Components</a>
+      <a href="/#Installation">Installation</a>
+    </main>
+  </body>
+</html>

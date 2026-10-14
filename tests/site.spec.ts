@@ -313,3 +313,23 @@ test('the old /examples/ address forwards to the Examples view', async ({ page }
   await expect(page).toHaveURL(/\/#examples$/);
   await expect(page.getByRole('heading', { level: 1, name: 'Examples' })).toBeVisible();
 });
+
+test('/r/, the shadcn registry, opens the install instructions', async ({ page }) => {
+  await page.goto('/r/');
+  await expect(page).toHaveURL(/\/#Installation$/);
+  await expect(title(page)).toHaveText('Installation');
+});
+
+// Cloudflare Pages serves it at any address with no file, so it can't rely on relative paths.
+test('the 404 page works in both themes and leads back into the docs', async ({ page }) => {
+  const problems = watch(page);
+  for (const scheme of ['light', 'dark'] as const) {
+    await page.emulateMedia({ colorScheme: scheme });
+    await page.goto('/404.html');
+    await expect(page.getByRole('heading', { level: 1, name: 'Page not found' })).toBeVisible();
+    await expectNoAxeViolations(page);
+  }
+  await page.getByRole('link', { name: 'Installation' }).click();
+  await expect(title(page)).toHaveText('Installation');
+  expect(problems).toEqual([]);
+});
