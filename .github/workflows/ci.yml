@@ -110,8 +110,10 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      # Lists pending changesets and the version bumps they would make.
-      - run: pnpm changeset status
+      # Lists pending changesets and the version bumps they would make. Skipped on a release branch,
+      # whose version bump has used the changesets up.
+      - if: ${{ !startsWith(github.head_ref, 'release/') }}
+        run: pnpm changeset status
       # Builds and packs both packages exactly as `npm publish` would, without publishing.
       - run: pnpm release:dry-run
 
